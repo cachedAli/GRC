@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
@@ -83,8 +83,17 @@ const features: Feature[] = [
 
 export default function Features() {
   const [activeId, setActiveId] = useState(1);
+  const [isDesktop, setIsDesktop] = useState(false);
   const activeFeature = features.find((f) => f.id === activeId)!;
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 768px)");
+    const update = () => setIsDesktop(mq.matches);
+    update();
+    mq.addEventListener("change", update);
+    return () => mq.removeEventListener("change", update);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -92,6 +101,7 @@ export default function Features() {
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    if (!isDesktop) return;
     const idx = Math.min(
       Math.floor(latest * features.length),
       features.length - 1,
@@ -134,8 +144,11 @@ export default function Features() {
                     const isPast = f.id < activeId;
                     const isActive = f.id === activeId;
                     return (
-                      <motion.div
+                      <motion.button
                         key={f.id}
+                        type="button"
+                        onClick={() => setActiveId(f.id)}
+                        aria-pressed={isActive}
                         animate={{
                           opacity: isPast ? 0.35 : isActive ? 1 : 0.7,
                           y: isPast ? -4 : 0,
@@ -150,7 +163,7 @@ export default function Features() {
                             number,
                           ],
                         }}
-                        className={`px-4 sm:px-5 py-3 rounded-2xl flex items-center gap-3 sm:gap-4 ${
+                        className={`w-full text-left px-4 sm:px-5 py-3 rounded-2xl flex items-center gap-3 sm:gap-4 cursor-pointer ${
                           isActive
                             ? "bg-[#2020CC]"
                             : "bg-transparent border border-[#E2E2DA]"
@@ -182,7 +195,7 @@ export default function Features() {
                             isActive ? "text-white/60" : "text-[#C4C4BE]"
                           }
                         />
-                      </motion.div>
+                      </motion.button>
                     );
                   })}
                 </div>

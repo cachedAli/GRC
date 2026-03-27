@@ -39,7 +39,7 @@ export default function Home() {
         </div>
       </div>
       <SectionDivider variant="rule" />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <SectionDivider variant="diamonds" />
       <CTA />
     </>
