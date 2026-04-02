@@ -3,142 +3,149 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Zap, BarChart3 } from "lucide-react";
+import Image from "next/image";
 
-export default function Hero() {
+export default function Hero({ moveLogo }: { moveLogo: boolean }) {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="relative bg-[#2020CC] my-2 rounded-xl overflow-hidden flex flex-col min-h-[76vh] md:min-h-[88vh] pt-14 sm:pt-16">
-      {/* Pink organic blob — top right */}
-      <div
-        className="absolute top-0 right-0 w-[42%] sm:w-[50%] h-full pointer-events-none select-none"
-        aria-hidden="true"
-      >
-        <svg
-          viewBox="0 0 560 700"
-          className="w-full h-full"
-          preserveAspectRatio="xMaxYMin slice"
+    <section className="relative min-h-screen h-auto bg-[#F0FDFB]   overflow-hidden flex-col flex items-center justify-center max-md:px-6  pt-14 sm:pt-16">
+      {!moveLogo && (
+        <motion.div
+          layout
+          layoutId="logo"
+          initial={{ rotate: 90, scale: 0.8 }}
+          animate={{ rotate: 0, scale: 1 }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
         >
-          <path
-            d="M560,0 L560,700 L220,680 C340,620 460,500 510,360 C545,260 558,140 560,0Z"
-            fill="#BAE6FD"
-            opacity="0.9"
+          <Image
+            src="/compliwerseIcon.png"
+            alt="Compliwerse"
+            width={45}
+            height={40}
+            priority
           />
-        </svg>
-      </div>
+        </motion.div>
+      )}
 
-      {/* Subtle dot pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-10 pointer-events-none"
-        aria-hidden="true"
-        style={{
-          backgroundImage:
-            "radial-gradient(circle, #ffffff 1px, transparent 1px)",
-          backgroundSize: "32px 32px",
+      <motion.div
+        initial={{ y: -500, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
+        className="w-full border px-4 py-8   border-gray-300 bg-linear-to-b from-[#10B981] via-[#14B8A6]/80 to-[#F0FDFB] h-full absolute top-0 left-0 rounded-b-[70px]"
+      ></motion.div>
+
+      <motion.div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        {[...Array(25)].map((_, i) => (
+          <motion.div
+            key={i}
+            className="absolute bg-white/20 rounded-full "
+            style={{
+              width: `${Math.random() * 10 + 20}px`,
+              height: `${Math.random() * 3 + 2}px`,
+              top: `${Math.random() * 100}%`,
+              left: `-${Math.random() * 20 + 5}%`, // start slightly offscreen left
+            }}
+            animate={{
+              x: [`0`, `120vw`], // move across the screen to the right
+              y: [`0`, `${Math.random() * 40 - 20}px`], // slight vertical drift
+            }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "loop",
+              duration: 20 + Math.random() * 15,
+              ease: "linear",
+              delay: Math.random() * 5,
+            }}
+          />
+        ))}
+      </motion.div>
+
+      <motion.div
+        initial={{
+          opacity: 0,
+          y: 30,
+          scale: 0.95,
+          height: 0,
+          overflow: "hidden",
         }}
-      />
+        animate={{ opacity: 1, y: 0, scale: 1, height: "auto" }}
+        transition={{ delay: 1.8, duration: 0.6, ease: "easeOut" }}
+        className="z-10"
+      >
+        <Image
+          src="/screenshots/slide_01.png"
+          alt="hero"
+          width={580}
+          height={130}
+          className="object-cover select-none rounded-lg mt-16"
+        />
+      </motion.div>
 
-      {/* Main content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 py-14 sm:py-20 md:py-28 max-w-3xl mx-auto w-full">
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.5,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-          }}
-          className="mb-8"
-        >
-          <span className="inline-flex flex-wrap justify-center items-center gap-2 border border-white/20 bg-white/10 rounded-full px-3 sm:px-4 py-1.5 text-white/90 font-body text-[10px] sm:text-xs tracking-widest uppercase backdrop-blur-sm max-w-full">
-            <ShieldCheck size={12} />
-            Now available for design partners
-            <span className="bg-white text-[#2020CC] px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider">
-              New
-            </span>
-          </span>
-        </motion.div>
-
-        {/* Headline */}
-        <motion.h1
-          className="font-display font-extrabold text-white text-[44px] sm:text-5xl md:text-6xl leading-[0.95] mb-5 sm:mb-6 max-w-[14ch] sm:max-w-none"
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.05,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-          }}
-        >
-          Governance, Risk &amp;
-          <br />
-          Compliance - Unified.
-        </motion.h1>
-
-        {/* Subtitle */}
-        <motion.p
-          className="font-body text-white/70 text-base md:text-lg max-w-xl mx-auto leading-relaxed mb-8 sm:mb-10"
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.12,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-          }}
-        >
-          Replace your fragmented GRC stack with one AI-powered
-          platform.&nbsp;13 modules, 25+ frameworks, production-ready today.
-        </motion.p>
-
-        {/* Email input + CTA pill */}
-        <motion.div
-          className="w-full max-w-lg"
-          initial={{ opacity: 0, y: 12 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{
-            duration: 0.6,
-            delay: 0.2,
-            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-          }}
-        >
-          <form
-            onSubmit={(e) => e.preventDefault()}
-            className="flex flex-col sm:flex-row items-stretch sm:items-center bg-white rounded-2xl sm:rounded-full shadow-xl p-2 sm:p-1.5 sm:pl-6 gap-2"
-          >
-            <input
-              type="email"
-              placeholder="Enter your work email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="flex-1 bg-transparent font-body text-[#0A0A0A] text-sm placeholder:text-gray-400 outline-none min-w-0 px-2 sm:px-0"
-            />
-            <button
-              type="submit"
-              className="font-body font-semibold text-sm bg-[#2020CC] text-white px-6 py-3 rounded-full whitespace-nowrap hover:bg-[#1818a8] transition-colors flex items-center justify-center gap-2 flex-shrink-0 w-full sm:w-auto"
+      <div className="flex flex-col gap-2 z-10 font-poppins items-center justify-center mt-6 text-center px-4">
+        <h1 className="text-4xl md:text-5xl font-semibold flex flex-wrap justify-center gap-[0.25em]">
+          {["Manage", "governance"].map((word, index) => (
+            <motion.span
+              key={`l1-${index}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 2.1 + index * 0.15,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className="inline-block"
             >
-              Request a Demo <ArrowRight size={14} />
-            </button>
-          </form>
-        </motion.div>
+              {word}
+            </motion.span>
+          ))}
+        </h1>
+        <h1 className="text-4xl md:text-5xl font-semibold flex flex-wrap justify-center gap-[0.25em]">
+          {["without", "the", "chaos"].map((word, index) => (
+            <motion.span
+              key={`l2-${index}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{
+                duration: 0.7,
+                delay: 2.1 + (2 + index) * 0.15, // Continue delay where the first line left off
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
+              className={`inline-block ${
+                word === "chaos" ? "text-[#065F46] font-exo italic" : ""
+              }`}
+            >
+              {word}
+            </motion.span>
+          ))}
+        </h1>
       </div>
 
-      {/* Bottom wave — transitions to white */}
-      {/* Bottom wave — white rises from bottom-left, crests center, rolls right */}
-      <div className="relative z-10 w-full -mb-px" aria-hidden="true">
-        <svg
-          viewBox="0 0 1440 220"
-          xmlns="http://www.w3.org/2000/svg"
-          className="w-full block"
-          preserveAspectRatio="none"
-        >
-          <path
-            d="M0,180 C120,180 280,60 520,80 C720,95 900,180 1200,160 C1320,152 1400,148 1440,145 L1440,220 L0,220 Z"
-            fill="#ffffff"
-          />
-        </svg>
-      </div>
+      <motion.div
+        className="w-full px-4 md:px-19.5 py-12 flex flex-col md:flex-row items-center justify-between z-10 gap-6 text-center md:text-left"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{
+          duration: 0.7,
+          delay: 3.1, // Wait for the headline words to finish
+          ease: [0.25, 0.1, 0.25, 1],
+        }}
+      >
+        <p className="text-xl font-medium max-w-96">
+          Keep your teams aligned, your policies on track, and your risks in
+          check.
+        </p>
 
-      {/* Feature strip moved to its own component (HeroStrip) */}
+        <div className="flex items-center gap-2 font-noto-serif">
+          <button className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap">
+            Request a Demo
+          </button>
+
+          <button className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer whitespace-nowrap">
+            Watch Tour
+          </button>
+        </div>
+      </motion.div>
     </section>
   );
 }

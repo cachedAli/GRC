@@ -117,7 +117,7 @@ export default function Stats() {
                   key={s}
                   className="font-body text-sm text-[#6B7280] flex items-center gap-2"
                 >
-                  <span className="w-1.5 h-1.5 rounded-full bg-[#8B8FE8] flex-shrink-0" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#8B8FE8] shrink-0" />
                   {s}
                 </p>
               ))}

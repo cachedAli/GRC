@@ -186,8 +186,8 @@ export default function CompareTable() {
       className="relative py-20 md:py-28 px-4 sm:px-6 rounded-xl my-2 bg-[#F8FAFF] overflow-hidden"
     >
       {/* Background accents */}
-      <div className="absolute top-0 right-0 w-[320px] h-[220px] sm:w-[600px] sm:h-[400px] bg-gradient-to-bl from-[#EEF0FF] to-transparent rounded-full opacity-60 pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[240px] h-[180px] sm:w-[400px] sm:h-[300px] bg-gradient-to-tr from-[#E0F2FE] to-transparent rounded-full opacity-50 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[320px] h-[220px] sm:w-[600px] sm:h-[400px] bg-linear-to-bl from-[#EEF0FF] to-transparent rounded-full opacity-60 pointer-events-none" />
+      <div className="absolute bottom-0 left-0 w-[240px] h-[180px] sm:w-[400px] sm:h-[300px] bg-linear-to-tr from-[#E0F2FE] to-transparent rounded-full opacity-50 pointer-events-none" />
 
       <div className="max-w-6xl mx-auto relative z-10">
         {/* Header */}

@@ -1,269 +1,196 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
   motion,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
 } from "framer-motion";
-import {
-  Target,
-  CheckSquare,
-  FileText,
-  ClipboardList,
-  Bot,
-  ShieldAlert,
-  Package,
-  Zap,
-  ArrowRight,
-} from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
+import { FileText, Activity, ShieldCheck, PieChart } from "lucide-react";
 
 interface Feature {
   id: number;
-  icon: React.ReactNode;
   title: string;
-  body: string;
-  screenshot?: string;
+  description: string;
+  imageSrc: string;
+  icon: React.ReactNode;
 }
 
-const features: Feature[] = [
+const featuresData: Feature[] = [
   {
     id: 1,
-    icon: <Target size={22} strokeWidth={1.4} />,
-    title: "Enterprise Risk Management",
-    body: "Full risk lifecycle — register, assess, treat, monitor, review. Bow-tie analysis, scenario modeling, KRI monitoring, RCSA campaigns, and AI-generated risk narratives with confidence scoring.",
-    screenshot: "/screenshots/slide_22.png",
+    title: "Smart Policy & Governance",
+    description:
+      "Create, manage, and update policies with clarity and control.",
+    imageSrc: "/screenshots/slide_10.png",
+    icon: <FileText className="w-7 h-7" strokeWidth={1.5} />,
   },
   {
     id: 2,
-    icon: <CheckSquare size={22} strokeWidth={1.4} />,
-    title: "Compliance Automation",
-    body: "25+ pre-built frameworks with guided certification journeys. Control-level assessments, evidence collection, and approval workflows — all in one place.",
+    title: "AI Risk Intelligence",
+    description: "Identify, assess, and prioritize risks instantly.",
+    imageSrc: "/screenshots/slide_22.png",
+    icon: <Activity className="w-7 h-7" strokeWidth={1.5} />,
   },
   {
     id: 3,
-    icon: <FileText size={22} strokeWidth={1.4} />,
-    title: "Governance & Policy",
-    body: "Full document lifecycle with multi-step approvals, committee management, regulatory change tracking, and policy exception handling.",
+    title: "Compliance & Audit Readiness",
+    description: "Stay audit-ready with structured reporting and evidence.",
+    imageSrc: "/screenshots/slide_05.png",
+    icon: <ShieldCheck className="w-7 h-7" strokeWidth={1.5} />,
   },
   {
     id: 4,
-    icon: <ClipboardList size={22} strokeWidth={1.4} />,
-    title: "Internal Audit",
-    body: "Audit universe, planning, engagements, findings, CCM, test scripts, skills matrix, capacity planning, and QAIP — end to end.",
-  },
-  {
-    id: 5,
-    icon: <Bot size={22} strokeWidth={1.4} />,
-    title: "AI That Actually Works",
-    body: "Evidence assessment with clause-level mapping. Cross-framework control similarity. Natural language queries against your live GRC data. Risk narratives with confidence scores. Gap analysis with priority recommendations.",
-    screenshot: "/screenshots/slide_75.png",
-  },
-  {
-    id: 6,
-    icon: <ShieldAlert size={22} strokeWidth={1.4} />,
-    title: "Vulnerability Management",
-    body: "Register, triage, remediate, retest. SLA enforcement by severity, department views, escalation engine, and AI-powered analysis.",
-  },
-  {
-    id: 7,
-    icon: <Package size={22} strokeWidth={1.4} />,
-    title: "Evidence Management",
-    body: "AI-powered assessment scoring. OCR extraction. Audit packages with legal hold. Clause-level control mapping with auditor-defensible output.",
-  },
-  {
-    id: 8,
-    icon: <Zap size={22} strokeWidth={1.4} />,
-    title: "Workflow Automation",
-    body: "Visual drag-and-drop workflow builder. Event triggers, scheduled execution, approval steps, email notifications, and AI assistance.",
+    title: "AI Insights & Executive Visibility",
+    description:
+      "Get real-time insights and decisions without digging through data.",
+    imageSrc: "/screenshots/slide_75.png",
+    icon: <PieChart className="w-7 h-7" strokeWidth={1.5} />,
   },
 ];
 
 export default function Features() {
-  const [activeId, setActiveId] = useState(1);
-  const [isDesktop, setIsDesktop] = useState(false);
-  const activeFeature = features.find((f) => f.id === activeId)!;
+  const [activeFeature, setActiveFeature] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const mq = window.matchMedia("(min-width: 768px)");
-    const update = () => setIsDesktop(mq.matches);
-    update();
-    mq.addEventListener("change", update);
-    return () => mq.removeEventListener("change", update);
-  }, []);
-
+  // Track the scroll progress of the tall container
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"],
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    if (!isDesktop) return;
-    const idx = Math.min(
-      Math.floor(latest * features.length),
-      features.length - 1,
-    );
-    setActiveId(idx + 1);
+    // Determine which feature is active based on scroll (0 to 1)
+    const step = 1 / featuresData.length;
+    const index = Math.min(featuresData.length - 1, Math.floor(latest / step));
+    setActiveFeature(index);
   });
 
   return (
-    <>
-      {/* Header scrolls away naturally — NOT inside the sticky panel */}
-      <section
-        id="features"
-        className="w-full px-4 sm:px-6 pt-16 md:pt-20 pb-10 bg-white"
-      >
-        <div className="max-w-7xl mx-auto">
-          <p className="font-mono text-xs text-[#2020CC] font-semibold uppercase tracking-wide mb-4">
-            Features
-          </p>
-          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] max-w-[600px] leading-tight">
-            Everything you need.
-            <br />
-            Nothing you don&apos;t.
-          </h2>
-          <p className="font-body text-base text-[#6B7280] mt-4 max-w-lg">
-            A unified platform that replaces your entire GRC tool stack — with
-            AI woven into every workflow.
-          </p>
-        </div>
-      </section>
+    // Make the container tall enough to scroll through 4 items
+    <section
+      ref={containerRef}
+      className="bg-bg relative h-[300vh] border-t border-b border-gray-100 my-16 md:my-24"
+    >
+      <div className=" px-4 text-center w-full">
+        <h2 className="text-4xl font-semibold text-gray-900 font-poppins mt-3">
+          Everything you need
+        </h2>
+        <p className="text-lg font-medium max-w-2xl mx-auto text-gray-600 mt-4">
+          From policy creation to audit readiness, Complyverse connects the dots
+          across your entire governance lifecycle.
+        </p>
+      </div>
+      {/* Sticky inner container that stays on screen while scrolling */}
+      <div className="sticky top-0 min-h-screen h-auto py-12 md:py-24 w-full flex items-center justify-center overflow-hidden">
+        <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 lg:gap-20">
+          {/* Left Side: Image Displays */}
+          <div className="w-full md:w-[40%] flex items-center justify-center py-10 md:py-0">
+            <div className="relative w-full aspect-[4/3] md:aspect-auto md:h-[580px] rounded-[40px] overflow-hidden bg-linear-to-br from-green-dark via-green to-teal border-b-[6px] border border-green-900 shadow-2xl flex items-center justify-end p-0">
+              {/* Glass/blur gradient overlay effect (optional, makes it look premium) */}
+              <div className="absolute inset-0 bg-linear-to-b from-white/10 to-black/20 pointer-events-none" />
 
-      {/* Scroll-driven sticky panel — exactly one viewport tall */}
-      <div ref={containerRef} className="min-h-0 md:min-h-[480vh]">
-        <div className="bg-white md:sticky md:top-0 md:h-screen overflow-hidden flex items-center">
-          <div className="w-full px-4 sm:px-6 py-8 md:py-0">
-            <div className="max-w-7xl mx-auto">
-              <div className="grid md:grid-cols-[1fr_1.3fr] gap-6 h-auto md:h-[calc(100vh-3rem)]">
-                {/* Left: scroll-driven list */}
-                <div className="flex flex-col gap-1.5 justify-center overflow-hidden mb-2 md:mb-0">
-                  {features.map((f) => {
-                    const isPast = f.id < activeId;
-                    const isActive = f.id === activeId;
-                    return (
-                      <motion.button
-                        key={f.id}
-                        type="button"
-                        onClick={() => setActiveId(f.id)}
-                        aria-pressed={isActive}
-                        animate={{
-                          opacity: isPast ? 0.35 : isActive ? 1 : 0.7,
-                          y: isPast ? -4 : 0,
-                          scale: isPast ? 0.98 : 1,
-                        }}
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeFeature}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                  transition={{ duration: 0.5, ease: "easeOut" }}
+                  className="relative w-[90%] h-[55%] bg-white/40 shadow-2xl rounded-l-[32px] border-y border-l border-white/60 overflow-hidden backdrop-blur-md"
+                >
+                  <Image
+                    src={featuresData[activeFeature].imageSrc}
+                    alt={featuresData[activeFeature].title}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 40vw"
+                    className="object-cover object-left-top"
+                  />
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          {/* Right Side: 2x2 Text Grid */}
+          <div className="w-full md:w-[60%] flex flex-col justify-center py-4 md:py-0">
+            {/* Header for context, optional but helps anchor the section */}
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:gap-x-12 lg:gap-y-6 relative">
+              {featuresData.map((feature, index) => {
+                const isActive = activeFeature === index;
+
+                return (
+                  <div
+                    key={feature.id}
+                    onClick={() => setActiveFeature(index)}
+                    // We can also let users click to jump to the feature, but scroll primarily controls it
+                    className="relative p-6 lg:p-8 rounded-[32px] cursor-pointer group flex flex-col justify-start"
+                  >
+                    {/* Animated Background / Border that moves to the active item */}
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeFeatureBackground"
+                        className="absolute inset-0 border-[2px] border-green bg-green/5 shadow-[0_4px_30px_rgba(16,185,129,0.1)] rounded-[32px] pointer-events-none"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
                         transition={{
-                          duration: 0.4,
-                          ease: [0.22, 1, 0.36, 1] as [
-                            number,
-                            number,
-                            number,
-                            number,
-                          ],
+                          type: "spring",
+                          bounce: 0.15,
+                          duration: 0.5,
                         }}
-                        className={`w-full text-left px-4 sm:px-5 py-3 rounded-2xl flex items-center gap-3 sm:gap-4 cursor-pointer ${
+                      />
+                    )}
+
+                    {/* Content */}
+                    <div className="relative z-10 flex flex-col h-full">
+                      <div
+                        className={`mb-5 transition-colors duration-300 ${
                           isActive
-                            ? "bg-[#2020CC]"
-                            : "bg-transparent border border-[#E2E2DA]"
+                            ? "text-gray-900"
+                            : "text-gray-400 group-hover:text-gray-600"
                         }`}
                       >
-                        <div
-                          className={`w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 ${
-                            isActive
-                              ? "bg-white/20 text-white"
-                              : "bg-[#EEF0FF] text-[#2020CC]"
-                          }`}
-                        >
-                          {f.icon}
-                        </div>
-                        <span
-                          className={`font-body font-semibold text-sm flex-1 ${
-                            isActive
-                              ? "text-white"
-                              : isPast
-                                ? "text-[#9CA3AF]"
-                                : "text-[#0A0A0A]"
-                          }`}
-                        >
-                          {f.title}
-                        </span>
-                        <ArrowRight
-                          size={15}
-                          className={
-                            isActive ? "text-white/60" : "text-[#C4C4BE]"
-                          }
-                        />
-                      </motion.button>
-                    );
-                  })}
-                </div>
-
-                {/* Right: animated detail panel — fills column height, scrolls internally if needed */}
-                <div className="relative rounded-3xl overflow-hidden">
-                  <div
-                    className="absolute inset-0 bg-[#F0F4FF]"
-                    style={{
-                      backgroundImage:
-                        "radial-gradient(circle, #2020CC 1px, transparent 1px)",
-                      backgroundSize: "24px 24px",
-                      opacity: 0.08,
-                    }}
-                  />
-                  <div
-                    className="absolute inset-0 bg-[#F0F4FF]"
-                    style={{ opacity: 0.92 }}
-                  />
-                  <AnimatePresence mode="wait">
-                    <motion.div
-                      key={activeId}
-                      initial={{ opacity: 0, y: 32 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -32 }}
-                      transition={{
-                        duration: 0.38,
-                        ease: [0.22, 1, 0.36, 1] as [
-                          number,
-                          number,
-                          number,
-                          number,
-                        ],
-                      }}
-                      className="relative z-10 p-5 sm:p-8 flex flex-col justify-center h-full overflow-y-auto"
-                    >
-                      <p className="font-mono text-xs font-semibold text-[#2020CC]/40 uppercase tracking-widest mb-4">
-                        0{activeFeature.id} / 0{features.length}
-                      </p>
-                      <div className="w-12 h-12 rounded-2xl bg-[#2020CC] flex items-center justify-center text-white mb-5 flex-shrink-0">
-                        {activeFeature.icon}
+                        {feature.icon}
                       </div>
-                      <h3 className="font-display text-xl sm:text-2xl md:text-3xl text-[#0A0A0A] mb-3 leading-tight">
-                        {activeFeature.title}
+                      <h3
+                        className={`text-xl lg:text-2xl font-semibold font-poppins mb-3 transition-colors duration-300 ${
+                          isActive
+                            ? "text-gray-900"
+                            : "text-gray-600 group-hover:text-gray-800"
+                        }`}
+                      >
+                        {feature.title}
                       </h3>
-                      <p className="font-body text-sm text-[#6B7280] leading-relaxed max-w-md">
-                        {activeFeature.body}
+                      <p
+                        className={`text-[17px] leading-relaxed transition-colors duration-300 ${
+                          isActive
+                            ? "text-gray-600"
+                            : "text-gray-400 group-hover:text-gray-500"
+                        }`}
+                      >
+                        {feature.description}
                       </p>
-                      {activeFeature.screenshot && (
-                        <div className="mt-5 rounded-2xl overflow-hidden border border-[#E2E2DA] shadow-lg flex-shrink-0">
-                          <Image
-                            src={activeFeature.screenshot}
-                            alt={activeFeature.title}
-                            width={700}
-                            height={400}
-                            className="w-full object-cover"
-                            style={{ maxHeight: "13rem" }}
-                          />
-                        </div>
-                      )}
-                    </motion.div>
-                  </AnimatePresence>
-                </div>
-              </div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="mt-10 px-6 w-full flex justify-end">
+              <Link
+                href="/features"
+                className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46]  hover:text-white transition-colors focus-visible:outline-none cursor-pointer "
+              >
+                View All Features
+              </Link>
             </div>
           </div>
         </div>
       </div>
-    </>
+    </section>
   );
 }

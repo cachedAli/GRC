@@ -2,101 +2,38 @@
 
 import { motion } from "framer-motion";
 
-const trustItems = [
-  "No commitment required",
-  "Setup in under a day",
-  "Your data never leaves your region",
-];
-
-const containerVariants = {
-  hidden: {},
-  visible: { transition: { staggerChildren: 0.1 } },
-};
-const itemVariants = {
-  hidden: { opacity: 0, y: 24 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.55,
-      ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-    },
-  },
-};
-
 export default function CTA() {
   return (
-    <section
-      id="cta"
-      className="py-16 md:py-20 px-4 sm:px-6 rounded-xl relative overflow-hidden bg-[#F0F4FF]"
-    >
+    <section id="cta" className="py-16 md:py-24 px-4 sm:px-6 relative">
       <motion.div
-        className="max-w-2xl mx-auto text-center"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-80px" }}
+        initial={{ opacity: 0, y: 28, scale: 0.98 }}
+        whileInView={{ opacity: 1, y: 0, scale: 1 }}
+        viewport={{ once: true, margin: "-120px" }}
+        transition={{ duration: 0.75, ease: [0.22, 1, 0.36, 1] }}
+        className="max-w-6xl mx-auto text-center rounded-[42px] border border-green-200/80 bg-linear-to-b from-[#10B981] via-[#14B8A6]/80 to-[#F0FDFB] px-6 md:px-12 py-14 md:py-18 shadow-sm"
       >
-        <motion.p
-          variants={itemVariants}
-          className="font-mono text-xs text-[#2020CC] font-semibold uppercase tracking-wide mb-4"
-        >
-          Get started
-        </motion.p>
+        <h2 className="text-4xl md:text-5xl font-semibold font-poppins text-[#052E16] leading-tight">
+          Take control of governance today
+        </h2>
 
-        <motion.h2
-          variants={itemVariants}
-          className="font-display text-3xl sm:text-4xl md:text-6xl text-[#0A0A0A] mb-6 leading-tight"
-        >
-          Ready to unify your GRC program?
-        </motion.h2>
+        <p className="text-lg font-medium max-w-3xl mx-auto text-[#0F172A] mt-5 leading-relaxed">
+          Simplify compliance, manage risks, and keep your organization aligned
+          with a single platform
+        </p>
 
-        <motion.p
-          variants={itemVariants}
-          className="font-body text-lg text-[#6B7280] mb-10 leading-relaxed"
-        >
-          Join our Design Partner program. Get early access at a discounted
-          rate. Shape the platform. Lock in your advantage.
-        </motion.p>
+        <div className="flex flex-wrap items-center justify-center gap-3 mt-9 font-noto-serif">
+          <button className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer">
+            Request a Demo
+          </button>
 
-        {/* Buttons */}
-        <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center items-center gap-4 mb-10"
-        >
-          <motion.a
-            href="mailto:hello@complyverse.io"
-            className="font-body text-[15px] font-bold bg-[#2020CC] text-white px-6 sm:px-8 py-3.5 rounded-full inline-block hover:bg-[#1414A0] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2020CC]"
-            whileHover={{ scale: 1.03, boxShadow: "0 0 32px rgba(0,0,0,0.15)" }}
-            transition={{ duration: 0.2 }}
-          >
-            Become a Design Partner &rarr;
-          </motion.a>
-          <motion.a
-            href="#tour"
-            className="font-body text-[15px] text-[#0A0A0A] border border-[#E2E2DA] px-6 sm:px-8 py-3.5 rounded-full inline-block hover:bg-white hover:border-[#0A0A0A] transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0A0A0A]"
-            whileHover={{ backgroundColor: "#ffffff" }}
-            transition={{ duration: 0.2 }}
-          >
-            Explore Platform
-          </motion.a>
-        </motion.div>
+          <button className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer">
+            Watch Tour
+          </button>
+        </div>
 
-        {/* Trust items */}
-        {/* <motion.div
-          variants={itemVariants}
-          className="flex flex-wrap justify-center gap-8"
-        >
-          {trustItems.map((item) => (
-            <span
-              key={item}
-              className="font-body text-sm text-[#9CA3AF] flex items-center gap-2"
-            >
-              <span className="text-[#F5A623] text-base font-bold">✓</span>
-              {item}
-            </span>
-          ))}
-        </motion.div> */}
+        <p className="text-sm font-medium text-[#1F2937] mt-6">
+          No complex setup. Get started quickly with your team
+        </p>
       </motion.div>
     </section>
   );

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
+import Image from "next/image";
 
 const navLinks = [
   { label: "Features", href: "#features" },
@@ -11,9 +12,10 @@ const navLinks = [
   { label: "Results", href: "#proof" },
 ];
 
-export default function Navbar() {
+export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [showFullLogo, setShowFullLogo] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
@@ -26,83 +28,100 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 w-[calc(100%-1rem)] md:w-[80%] mx-auto mt-3 md:mt-4 rounded-lg z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-lg border-t border-x border-[#E2E2DA]"
-            : "bg-transparent border-t border-x border-transparent"
+        className={`fixed top-0 left-0 right-0 w-[calc(100%-1rem)] md:w-[90%] mx-auto text-black mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
+          showFullLogo
+            ? "bg-linear-to-r from-bg-mint via-teal-50 to-white backdrop-blur-md shadow-sm border border-[#E2E2DA]"
+            : "bg-transparent border-transparent"
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 flex-shrink-0">
-            <div
-              className={`w-7 h-7 rounded-lg flex items-center justify-center transition-colors duration-300 ${onHero ? "bg-white/20" : "bg-[#2020CC]"}`}
-            >
-              <svg
-                width="14"
-                height="14"
-                viewBox="0 0 28 28"
-                fill="none"
-                aria-hidden="true"
+          <a href="#" className="flex items-center gap-2.5 shrink-0">
+            {moveLogo && (
+              <motion.div
+                layout
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                layoutId="logo"
+                onLayoutAnimationComplete={() => setShowFullLogo(true)}
               >
-                <path
-                  d="M14 2L25.5 8.5V19.5L14 26L2.5 19.5V8.5L14 2Z"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  fill="none"
-                />
-              </svg>
-            </div>
-            <span
-              className={`font-body font-bold text-sm tracking-widest uppercase transition-colors duration-300 ${onHero ? "text-white" : "text-[#0A0A0A]"}`}
-            >
-              Compliwerse
-            </span>
+                {!showFullLogo ? (
+                  <Image
+                    src="/compliwerseIcon.png"
+                    alt="Compliwerse Icon"
+                    width={45}
+                    height={45}
+                    priority
+                  />
+                ) : (
+                  <Image
+                    src="/compliwerseLogo.png"
+                    alt="Compliwerse Logo"
+                    width={140}
+                    height={40}
+                    priority
+                  />
+                )}
+              </motion.div>
+            )}
           </a>
 
           {/* Desktop nav links — center */}
-          <div className="hidden md:flex items-center gap-1">
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
+              opacity: showFullLogo ? 1 : 0,
+              y: showFullLogo ? 0 : -10,
+            }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="hidden md:flex items-center gap-1"
+          >
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
-                className={`font-body text-sm px-4 py-2 rounded-full transition-colors duration-200 ${
-                  onHero
-                    ? "text-white/80 hover:text-white hover:bg-white/10"
-                    : "text-[#6B7280] hover:text-[#0A0A0A] hover:bg-[#F5F5F0]"
-                }`}
+                className={`font-body text-sm px-4 py-2 rounded-full transition-colors duration-200`}
               >
                 {link.label}
               </a>
             ))}
-          </div>
+          </motion.div>
 
           {/* Right — Login + Get Started */}
-          <div className="hidden md:flex items-center gap-3">
-            <a
-              href="#"
-              className={`font-body text-sm transition-colors duration-300 ${onHero ? "text-white/80 hover:text-white" : "text-[#6B7280] hover:text-[#0A0A0A]"}`}
-            >
-              Login
-            </a>
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{
+              opacity: showFullLogo ? 1 : 0,
+              y: showFullLogo ? 0 : -10,
+            }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            className="hidden md:flex items-center gap-3"
+          >
             <motion.a
               href="#cta"
-              className="font-body text-sm font-semibold bg-[#2020CC] text-white px-6 py-2.5 rounded-full hover:bg-[#1818a8] transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#2020CC]"
+              className="text-sm font-noto-serif font-semibold bg-[#065F46] text-white px-6 py-2.5 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none "
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.15 }}
             >
               Demo
             </motion.a>
-          </div>
+            <a
+              href="#"
+              className={`text-sm font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-2.5 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer `}
+            >
+              Login
+            </a>
+          </motion.div>
 
           {/* Mobile toggle */}
-          <button
-            className={`md:hidden p-2 rounded transition-colors ${onHero ? "text-white" : "text-[#0A0A0A]"}`}
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: showFullLogo ? 1 : 0 }}
+            className={`md:hidden p-2 rounded transition-colors text-[#0A0A0A] "}`}
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
+          </motion.button>
         </div>
       </nav>
 

@@ -1,5 +1,11 @@
 import type { Metadata } from "next";
-import { Poppins, Inter, JetBrains_Mono } from "next/font/google";
+import {
+  Poppins,
+  Inter,
+  JetBrains_Mono,
+  Exo,
+  Noto_Serif,
+} from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -10,22 +16,25 @@ const poppins = Poppins({
   variable: "--font-display",
 });
 
-const inter = Inter({
+const notoSerif = Noto_Serif({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-body",
+  variable: "--font-noto-serif",
 });
 
-const jetbrainsMono = JetBrains_Mono({
+const exo = Exo({
   subsets: ["latin"],
   weight: ["400", "500"],
-  variable: "--font-mono",
+  variable: "--font-exo",
 });
 
 export const metadata: Metadata = {
   title: "Compliwerse — GRC Platform for Modern Security Teams",
   description:
     "Compliwerse brings your risk registers, audit workflows, and framework mappings into one place. The GRC platform built for modern security teams.",
+  icons: {
+    icon: "/compliwerseIcon.png",
+  },
 };
 
 export default function RootLayout({
@@ -36,9 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${inter.variable} ${jetbrainsMono.variable} font-body bg-white text-[#0A0A0A] antialiased mx-2`}
+        className={`${poppins.variable} ${notoSerif.variable} ${exo.variable} font-noto-serif bg-[#fbfdfc] text-[#0A0A0A] antialiased`}
       >
-        <Navbar />
+        {/* <Navbar /> */}
         <main>{children}</main>
         <Footer />
       </body>

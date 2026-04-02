@@ -55,7 +55,7 @@ function FrameworkPill({
   fw: { name: string; icon: React.ReactNode };
 }) {
   return (
-    <div className="flex items-center gap-2.5 px-5 py-3 rounded-full border border-[#E2E2DA] bg-white mx-3 flex-shrink-0 cursor-default hover:border-[#2020CC] hover:bg-[#F0F4FF] transition-all">
+    <div className="flex items-center gap-2.5 px-5 py-3 rounded-full border border-[#E2E2DA] bg-white mx-3 shrink-0 cursor-default hover:border-[#2020CC] hover:bg-[#F0F4FF] transition-all">
       <span className="text-[#2020CC]">{fw.icon}</span>
       <span className="font-body text-sm font-medium text-[#0A0A0A] whitespace-nowrap">
         {fw.name}

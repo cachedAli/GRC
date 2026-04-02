@@ -52,7 +52,7 @@ export default function HeroStrip() {
                 key={f.title}
                 className="px-0 md:px-8 py-6 flex gap-4 items-start"
               >
-                <div className="w-10 h-10 rounded-xl border border-[#E2E2DA] flex items-center justify-center text-[#2020CC] flex-shrink-0">
+                <div className="w-10 h-10 rounded-xl border border-[#E2E2DA] flex items-center justify-center text-[#2020CC] shrink-0">
                   {f.icon}
                 </div>
                 <div>

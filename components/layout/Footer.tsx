@@ -1,6 +1,7 @@
 "use client";
 
 import { Linkedin, Twitter, Facebook } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   return (
@@ -78,33 +79,25 @@ export default function Footer() {
           </div>
 
           <div className="pt-2">
-            <div className="w-11 h-11 bg-[#2020CC] rounded-xl flex items-center justify-center mb-6">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 28 28"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M14 2L25.5 8.5V19.5L14 26L2.5 19.5V8.5L14 2Z"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  fill="none"
-                />
-              </svg>
-            </div>
+            <Image
+              src="/compliwerseLogo.png"
+              alt="Compliwerse Logo"
+              width={150}
+              height={42}
+              className="mb-6"
+              priority
+            />
 
             <div className="space-y-1 mb-6">
               <a
                 href="mailto:Liztek@liztek.ca"
-                className="block font-body text-base text-[#2020CC] hover:underline"
+                className="block font-body text-base text-[#065F46] hover:underline"
               >
                 Liztek@liztek.ca
               </a>
               <a
                 href="tel:+12896358816"
-                className="block font-body text-base text-[#2020CC] hover:underline"
+                className="block font-body text-base text-[#065F46] hover:underline"
               >
                 +1 (289) 635-8816
               </a>
@@ -126,7 +119,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-10 h-10 rounded-full border border-[#E2E2DA] bg-[#F9F9F7] flex items-center justify-center text-[#6B7280] hover:border-[#2020CC] hover:text-[#2020CC] transition-colors"
+                  className="w-10 h-10 rounded-full border border-[#E2E2DA] bg-[#F9F9F7] flex items-center justify-center text-[#6B7280] hover:border-[#065F46] hover:text-[#065F46] transition-colors"
                 >
                   {icon}
                 </a>
@@ -141,14 +134,14 @@ export default function Footer() {
 
         <div className="hidden md:flex flex-col lg:flex-row items-start gap-10 md:gap-16">
           {/* Left — big blue circle with nav links inside */}
-          <div className="relative flex-shrink-0 flex items-center justify-center lg:justify-start w-full lg:w-auto">
-            {/* Pink blob behind circle, top-left */}
-            <div className="absolute -top-12 -left-12 w-52 h-52 rounded-full bg-[#BAE6FD] opacity-70 pointer-events-none" />
-            {/* Cyan blob behind circle, bottom-right */}
-            <div className="absolute -bottom-10 right-4 w-44 h-44 rounded-full bg-[#A8E6FF] opacity-60 pointer-events-none" />
+          <div className="relative shrink-0 flex items-center justify-center lg:justify-start w-full lg:w-auto">
+            {/* Green blob behind circle, top-left */}
+            <div className="absolute -top-12 -left-12 w-52 h-52 rounded-full bg-[#99F6E4] opacity-70 pointer-events-none" />
+            {/* Teal blob behind circle, bottom-right */}
+            <div className="absolute -bottom-10 right-4 w-44 h-44 rounded-full bg-[#A7F3D0] opacity-60 pointer-events-none" />
 
             {/* The circle */}
-            <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-[#2020CC] flex items-center justify-center mx-auto lg:mx-0 z-10">
+            <div className="relative w-[320px] h-[320px] sm:w-[400px] sm:h-[400px] md:w-[500px] md:h-[500px] rounded-full bg-linear-to-br from-green-dark via-green to-teal border border-green-900 flex items-center justify-center mx-auto lg:mx-0 z-10">
               <div className="flex gap-5 sm:gap-8 px-5 sm:px-8">
                 {/* Company */}
                 <div>
@@ -231,35 +224,27 @@ export default function Footer() {
 
           {/* Right — logo, contact, address, socials */}
           <div className="flex-1 lg:pt-20 pt-4 md:pt-8 w-full">
-            {/* Logo icon */}
-            <div className="w-12 h-12 bg-[#2020CC] rounded-xl flex items-center justify-center mb-8">
-              <svg
-                width="22"
-                height="22"
-                viewBox="0 0 28 28"
-                fill="none"
-                aria-hidden="true"
-              >
-                <path
-                  d="M14 2L25.5 8.5V19.5L14 26L2.5 19.5V8.5L14 2Z"
-                  stroke="white"
-                  strokeWidth="2.5"
-                  fill="none"
-                />
-              </svg>
-            </div>
+            {/* Logo */}
+            <Image
+              src="/compliwerseLogo.png"
+              alt="Compliwerse Logo"
+              width={150}
+              height={42}
+              className="mb-8"
+              priority
+            />
 
             {/* Contact links */}
             <div className="space-y-1 mb-6">
               <a
                 href="mailto:Liztek@liztek.ca"
-                className="block font-body text-base sm:text-lg text-[#2020CC] hover:underline"
+                className="block font-body text-base sm:text-lg text-[#065F46] hover:underline"
               >
                 Liztek@liztek.ca
               </a>
               <a
                 href="tel:+12896358816"
-                className="block font-body text-base sm:text-lg text-[#2020CC] hover:underline"
+                className="block font-body text-base sm:text-lg text-[#065F46] hover:underline"
               >
                 +1 (289) 635-8816
               </a>
@@ -283,7 +268,7 @@ export default function Footer() {
                   key={label}
                   href="#"
                   aria-label={label}
-                  className="w-11 h-11 rounded-full border border-[#E2E2DA] bg-[#F9F9F7] flex items-center justify-center text-[#6B7280] hover:border-[#2020CC] hover:text-[#2020CC] transition-colors"
+                  className="w-11 h-11 rounded-full border border-[#E2E2DA] bg-[#F9F9F7] flex items-center justify-center text-[#6B7280] hover:border-[#065F46] hover:text-[#065F46] transition-colors"
                 >
                   {icon}
                 </a>

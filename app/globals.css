@@ -1,30 +1,49 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Poppins", sans-serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+  --font-noto-serif: "Noto Serif", serif;
+  --font-exo: "Exo", sans-serif;
+
+  --color-bg-mint: #f0fdfb;
+  --color-green-dark: #065f46;
+  --color-green: #10b981;
+  --color-teal: #14b8a6;
+  --color-muted: #64748b;
+  --color-bg: #fbfdfc;
+
+  --color-bg-primary: #0a0d12;
+  --color-bg-surface: #111520;
+  --color-bg-elevated: #181d2b;
+
+  --color-border-subtle: #1f2740;
+  --color-border-active: #2e3d5c;
+
+  --color-fg-primary: #f0f2f7;
+  --color-fg-muted: #8a94aa;
+  --color-fg-dimmed: #4a5270;
+
+  --color-teal: #1ed4b0;
+  --color-teal-dim: #0f6b59;
+
+  --color-amber: #e8a030;
+
+  --color-blue-accent: #3d72f5;
+}
 
 @layer base {
   * {
     box-sizing: border-box;
   }
-  y html {
+  html {
     scroll-behavior: smooth;
   }
 
   body {
     background-color: #ffffff;
     color: #0a0a0a;
-  }
-
-  .font-display {
-    font-family: var(--font-display), sans-serif;
-  }
-
-  .font-body {
-    font-family: var(--font-body), sans-serif;
-  }
-
-  .font-mono {
-    font-family: var(--font-mono), monospace;
   }
 
   h1,

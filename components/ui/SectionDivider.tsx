@@ -8,7 +8,7 @@ export default function SectionDivider({ variant }: SectionDividerProps) {
   if (variant === "rule") {
     return (
       <div className="w-full px-8 py-2">
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-[#C8CAFF] to-transparent" />
+        <div className="w-full h-px bg-linear-to-r from-transparent via-[#C8CAFF] to-transparent" />
       </div>
     );
   }

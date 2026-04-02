@@ -98,7 +98,7 @@ export default function Testimonials() {
             </h2>
           </div>
           {/* Arrow buttons */}
-          <div className="flex gap-3 flex-shrink-0">
+          <div className="flex gap-3 shrink-0">
             <button
               onClick={() => scroll("left")}
               aria-label="Scroll left"
@@ -149,7 +149,7 @@ export default function Testimonials() {
                 duration: 0.5,
                 ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
               }}
-              className="w-[88vw] sm:w-[75vw] md:w-[420px] flex-shrink-0 flex-grow-0 snap-center rounded-2xl p-6 md:p-8 flex flex-col"
+              className="w-[88vw] sm:w-[75vw] md:w-[420px] shrink-0 grow-0 snap-center rounded-2xl p-6 md:p-8 flex flex-col"
               style={{ background: "#EEF0FF" }}
             >
               {/* Company label */}
@@ -165,7 +165,7 @@ export default function Testimonials() {
               {/* Author */}
               <div className="flex items-center gap-3">
                 <div
-                  className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0"
+                  className="w-10 h-10 rounded-full flex items-center justify-center shrink-0"
                   style={{ background: "#8B8FE8" }}
                 >
                   <span className="font-body text-xs font-bold text-white">

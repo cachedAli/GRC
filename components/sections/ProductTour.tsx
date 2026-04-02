@@ -65,15 +65,15 @@ const tourSlides: TourSlide[] = [
         Icon: BarChart3,
         title: "10+ Dashboard Tabs",
         desc: "Overview, Risk, Compliance, Governance, Incidents, Control Testing, and more",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: MapIcon,
         title: "Interactive Heatmaps",
         desc: "Click-through risk visualization with drill-down to individual entries",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
       {
         Icon: Zap,
@@ -96,22 +96,22 @@ const tourSlides: TourSlide[] = [
         Icon: Target,
         title: "Risk Register & Scoring",
         desc: "Inherent/residual scoring, treatment plans, owner assignment, closure workflows",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: PieChart,
         title: "Advanced Analytics",
         desc: "Bow-tie diagrams, scenario modeling, risk aggregation, and AI narratives",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
       {
         Icon: TrendingUp,
         title: "KRI Monitoring",
         desc: "Configurable thresholds, trend analysis, automated alerts when indicators breach tolerance",
-        bg: "#FFFBEB",
-        fg: "#D97706",
+        bg: "#D1FAE5",
+        fg: "#047857",
       },
     ],
   },
@@ -134,15 +134,15 @@ const tourSlides: TourSlide[] = [
         Icon: ClipboardCheck,
         title: "Assessment Workflows",
         desc: "Control-level testing with evidence upload, scoring, and multi-tier approvals",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: ArrowLeftRight,
         title: "Cross-Framework Mapping",
         desc: "Implement once, satisfy multiple regulators. AI finds control overlaps automatically",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
     ],
   },
@@ -158,15 +158,15 @@ const tourSlides: TourSlide[] = [
         Icon: FileText,
         title: "Document Lifecycle",
         desc: "Draft → Review → Approve → Publish → Expire with version control and audit trail",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: Users,
         title: "Committee Management",
         desc: "Board meetings, agendas, actions, attestation campaigns, regulatory feeds",
-        bg: "#FFFBEB",
-        fg: "#D97706",
+        bg: "#D1FAE5",
+        fg: "#047857",
       },
       {
         Icon: Scale,
@@ -189,15 +189,15 @@ const tourSlides: TourSlide[] = [
         Icon: Globe,
         title: "Audit Universe & Planning",
         desc: "Define auditable entities, create risk-based audit plans, allocate resources",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: RefreshCw,
         title: "Continuous Monitoring",
         desc: "Automated control tests with real-time alerting and CCM dashboards",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
       {
         Icon: UserCheck,
@@ -220,15 +220,15 @@ const tourSlides: TourSlide[] = [
         Icon: Brain,
         title: "Intelligent Scoring",
         desc: "Relevance, adequacy, confidence, and audit readiness — scored automatically",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
       {
         Icon: Tag,
         title: "Clause-Level Mapping",
         desc: "Matched text snippets, rationale, coverage types — defensible in audit",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: Package,
@@ -251,22 +251,22 @@ const tourSlides: TourSlide[] = [
         Icon: Link2,
         title: "Cross-Framework Mapping",
         desc: "AI-driven similarity detection with confidence scores and reasoning",
-        bg: "#EEF0FF",
-        fg: "#2020CC",
+        bg: "#ECFDF5",
+        fg: "#065F46",
       },
       {
         Icon: ScanSearch,
         title: "Gap Analysis",
         desc: "Identify coverage gaps with priority recommendations and coverage visualization",
-        bg: "#FFFBEB",
-        fg: "#D97706",
+        bg: "#D1FAE5",
+        fg: "#047857",
       },
       {
         Icon: GitBranch,
         title: "Control Inheritance",
         desc: "Parent-child relationships with coverage percentages and conditional logic",
-        bg: "#F3EEFF",
-        fg: "#7C3AED",
+        bg: "#ECFEF8",
+        fg: "#0F766E",
       },
     ],
   },
@@ -306,13 +306,13 @@ export default function ProductTour() {
       className="relative rounded-xl py-20 md:py-28 px-4 sm:px-6 bg-white overflow-hidden"
     >
       {/* Background: subtle gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#F0F4FF] via-white to-white pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#ECFDF5] via-white to-white pointer-events-none" />
       {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(#2020CC 1px, transparent 1px), linear-gradient(90deg, #2020CC 1px, transparent 1px)",
+            "linear-gradient(#065F46 1px, transparent 1px), linear-gradient(90deg, #065F46 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -329,9 +329,9 @@ export default function ProductTour() {
           }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-[#EEF0FF] border border-[#C7CAFF] rounded-full px-4 py-1.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#2020CC] animate-pulse" />
-            <span className="font-mono text-xs text-[#2020CC] font-semibold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border border-[#A7F3D0] rounded-full px-4 py-1.5 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] animate-pulse" />
+            <span className="font-mono text-xs text-[#065F46] font-semibold uppercase tracking-widest">
               Platform Tour
             </span>
           </div>
@@ -361,7 +361,7 @@ export default function ProductTour() {
                 <TabIcon
                   size={14}
                   className={
-                    activeIdx === i ? "text-[#2020CC]" : "text-[#9CA3AF]"
+                    activeIdx === i ? "text-[#065F46]" : "text-[#9CA3AF]"
                   }
                 />
                 {slide.tab}
@@ -425,7 +425,7 @@ export default function ProductTour() {
                       className="flex items-start gap-4 py-4 group"
                     >
                       <div
-                        className="w-9 h-9 rounded-xl flex items-center justify-center flex-shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
+                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
                         style={{ backgroundColor: feat.bg, color: feat.fg }}
                       >
                         <FeatIcon size={17} strokeWidth={1.8} />
@@ -451,11 +451,11 @@ export default function ProductTour() {
                 className="absolute -inset-3 rounded-3xl opacity-25 blur-2xl pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 60%, #2020CC 0%, transparent 70%)",
+                    "radial-gradient(ellipse at 50% 60%, #10B981 0%, transparent 70%)",
                 }}
               />
               {/* Browser frame */}
-              <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(32,32,204,0.2)] border border-[#E2E2DA] bg-white">
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(16,185,129,0.2)] border border-[#E2E2DA] bg-white">
                 {/* Browser chrome */}
                 <div className="flex items-center gap-2 px-4 py-3 bg-[#F8FAFC] border-b border-[#E8EAEF]">
                   <div className="flex gap-1.5">
@@ -492,7 +492,7 @@ export default function ProductTour() {
             >
               {activeIdx === i && (
                 <motion.div
-                  className="h-full bg-[#2020CC] rounded-full"
+                  className="h-full bg-[#10B981] rounded-full"
                   initial={{ width: "0%" }}
                   animate={{ width: "100%" }}
                   transition={{ duration: 5, ease: "linear" }}
@@ -501,7 +501,7 @@ export default function ProductTour() {
               {activeIdx !== i && (
                 <div
                   className={`h-full rounded-full transition-all duration-300 ${
-                    i < activeIdx ? "w-full bg-[#2020CC]/30" : "w-0"
+                    i < activeIdx ? "w-full bg-[#10B981]/30" : "w-0"
                   }`}
                 />
               )}
