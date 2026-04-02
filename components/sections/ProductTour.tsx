@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import {
@@ -284,16 +284,6 @@ export default function ProductTour() {
     setActiveIdx(i);
   };
 
-  // Auto-advance every 7s
-  useEffect(() => {
-    const timer = setInterval(() => {
-      const next = (activeIdx + 1) % tourSlides.length;
-      goTo(next);
-    }, 5000);
-    return () => clearInterval(timer);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeIdx]);
-
   const slideVariants = {
     enter: (dir: number) => ({ opacity: 0, x: dir * 40 }),
     center: { opacity: 1, x: 0 },
@@ -491,12 +481,7 @@ export default function ProductTour() {
               className="flex-1 h-1 rounded-full overflow-hidden bg-[#E2E2DA] transition-all duration-300"
             >
               {activeIdx === i && (
-                <motion.div
-                  className="h-full bg-[#10B981] rounded-full"
-                  initial={{ width: "0%" }}
-                  animate={{ width: "100%" }}
-                  transition={{ duration: 5, ease: "linear" }}
-                />
+                <div className="h-full bg-[#10B981] rounded-full w-full" />
               )}
               {activeIdx !== i && (
                 <div

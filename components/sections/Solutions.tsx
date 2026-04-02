@@ -94,10 +94,12 @@ export default function Solutions() {
 
       <div
         ref={containerRef}
-        className="relative w-full max-w-7xl min-h-[950px] md:min-h-150 flex justify-center items-center scale-75 md:scale-100"
+        className="relative w-full max-w-7xl min-h-237.5 md:min-h-150 flex justify-center items-center scale-75 md:scale-100"
       >
         {problemCards.map((card, index) => {
           const isActive = isMobile && activeCard === index;
+          const entranceDelay =
+            isMobile && activeCard !== null ? 0 : index * 0.15 + 0.3;
           return (
             <motion.div
               key={index}
@@ -137,14 +139,15 @@ export default function Solutions() {
               viewport={{ once: true, margin: "-100px" }}
               transition={{
                 type: "tween",
-                ease: "circOut",
-                duration: 0.8,
-                delay: isMobile && activeCard !== null ? 0 : index * 0.15 + 0.3,
+                ease: [0.22, 1, 0.36, 1],
+                duration: 0.95,
+                delay: entranceDelay,
               }}
-              className={`absolute flex flex-col items-center justify-center gap-4 p-6 rounded-3xl bg-white border-2 ${card.bg} shadow-xl w-[320px] h-55 ${card.offset} cursor-pointer hover:shadow-2xl`}
+              className={`absolute flex flex-col items-center justify-center gap-4 p-6 rounded-3xl bg-white border-2 ${card.bg} shadow-xl w-[320px] h-55 ${card.offset} cursor-pointer hover:shadow-2xl transform-gpu`}
               style={{
                 boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)",
                 willChange: "transform, left, top",
+                backfaceVisibility: "hidden",
               }}
             >
               {/* <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100 shrink-0">

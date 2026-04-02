@@ -6,10 +6,10 @@ import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
 const navLinks = [
-  { label: "Features", href: "#features" },
+  { label: "Features", href: "/features" },
   { label: "Platform", href: "#tour" },
-  { label: "Compare", href: "#compare" },
-  { label: "Results", href: "#proof" },
+  { label: "AI Agents", href: "#compare" },
+  { label: "Frameworks", href: "#Frameworks" },
 ];
 
 export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
@@ -23,12 +23,23 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  useEffect(() => {
+    if (!moveLogo) {
+      setShowFullLogo(false);
+      return;
+    }
+
+    // Fallback in case layout animation callback doesn't fire on some renders.
+    const timer = setTimeout(() => setShowFullLogo(true), 450);
+    return () => clearTimeout(timer);
+  }, [moveLogo]);
+
   const onHero = !scrolled;
 
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 w-[calc(100%-1rem)] md:w-[90%] mx-auto text-black mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
+        className={`fixed top-0 left-0 right-0 w-[calc(100%_-_1rem)] md:w-[90%] mx-auto text-black mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
           showFullLogo
             ? "bg-linear-to-r from-bg-mint via-teal-50 to-white backdrop-blur-md shadow-sm border border-[#E2E2DA]"
             : "bg-transparent border-transparent"
@@ -104,19 +115,19 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             >
               Demo
             </motion.a>
-            <a
+            {/* <a
               href="#"
               className={`text-sm font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-2.5 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer `}
             >
               Login
-            </a>
+            </a> */}
           </motion.div>
 
           {/* Mobile toggle */}
           <motion.button
             initial={{ opacity: 0 }}
             animate={{ opacity: showFullLogo ? 1 : 0 }}
-            className={`md:hidden p-2 rounded transition-colors text-[#0A0A0A] "}`}
+            className="md:hidden p-2 rounded transition-colors text-[#0A0A0A]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >

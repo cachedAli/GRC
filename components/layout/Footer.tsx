@@ -39,18 +39,16 @@ export default function Footer() {
                 Product
               </h3>
               <ul className="space-y-2">
-                {["Features", "Product Tour", "Compare", "Frameworks"].map(
-                  (l) => (
-                    <li key={l}>
-                      <a
-                        href="#"
-                        className="font-body text-sm text-[#6B7280] hover:text-[#0A0A0A] transition-colors"
-                      >
-                        {l}
-                      </a>
-                    </li>
-                  ),
-                )}
+                {["Features", "Product Tour", "Frameworks"].map((l) => (
+                  <li key={l}>
+                    <a
+                      href="#"
+                      className="font-body text-sm text-[#6B7280] hover:text-[#0A0A0A] transition-colors"
+                    >
+                      {l}
+                    </a>
+                  </li>
+                ))}
               </ul>
             </div>
           </div>
@@ -105,8 +103,8 @@ export default function Footer() {
 
             <div className="font-body text-sm text-[#9CA3AF] leading-relaxed mb-8">
               <p className="font-medium text-[#6B7280]">Compliwerse Inc.</p>
-              <p>100 Main Street, Suite 200</p>
-              <p>San Francisco, CA 94105</p>
+              <p>2192 Heidi Ave,</p>
+              <p>Burlington, ON L7M 3W5</p>
             </div>
 
             <div className="flex items-center gap-3 mb-8">
@@ -197,7 +195,7 @@ export default function Footer() {
                   </div>
                   <div>
                     <h3 className="font-body font-semibold text-white text-base mb-3">
-                      Solutions
+                      Industry
                     </h3>
                     <ul className="space-y-2">
                       {[
@@ -252,9 +250,9 @@ export default function Footer() {
 
             {/* Address */}
             <div className="font-body text-sm text-[#9CA3AF] leading-relaxed mb-8">
-              <p className="font-medium text-[#6B7280]">Compliwerse Inc.</p>
-              <p>100 Main Street, Suite 200</p>
-              <p>San Francisco, CA 94105</p>
+               <p className="font-medium text-[#6B7280]">Compliwerse Inc.</p>
+              <p>2192 Heidi Ave,</p>
+              <p>Burlington, ON L7M 3W5</p>
             </div>
 
             {/* Social icon circles */}

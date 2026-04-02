@@ -62,9 +62,9 @@ export default function Home() {
         <Hero moveLogo={moveLogo} />
       </LayoutGroup>
       {/* <HeroStrip /> */}
-      {/* <SectionDivider variant="dots" /> */}
-      <LogoBar />
+      {/* <LogoBar /> */}
 
+      <SectionDivider variant="dots" />
       <motion.div
         ref={containerRef}
         initial={{ opacity: 0 }}
@@ -74,7 +74,7 @@ export default function Home() {
           marginRight: marginX,
           borderRadius: borderRadius,
         }}
-        className="bg-linear-to-br from-green-dark via-green to-teal border-b-[6px] border border-green-900 pt-20"
+        className=" mt-10 bg-linear-to-br from-green-dark via-green to-teal border-b-[6px] border border-green-900 pt-20"
       >
         <Problem />
         <Solutions />
@@ -84,8 +84,8 @@ export default function Home() {
       <SectionDivider variant="diamonds" /> */}
       <Features />
       <ProductTour />
-      <SectionDivider variant="rule" />
-      <CompareTable />
+      {/* <SectionDivider variant="rule" /> */}
+      {/* <CompareTable /> */}
       {/* <SectionDivider variant="rule" /> */}
       {/* <HowItWorks /> */}
       {/* <div
@@ -98,7 +98,7 @@ export default function Home() {
       </div> */}
       {/* <SectionDivider variant="rule" /> */}
       {/* <Testimonials /> */}
-      <SectionDivider variant="diamonds" />
+      {/* <SectionDivider variant="diamonds" /> */}
       <CTA />
     </>
   );

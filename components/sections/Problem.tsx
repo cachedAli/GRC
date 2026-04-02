@@ -85,14 +85,14 @@ export default function Problem() {
 
       <div
         ref={containerRef}
-        className="relative w-full max-w-7xl min-h-[500px] md:min-h-[600px] flex justify-center items-center scale-75 md:scale-100"
+        className="relative w-full max-w-7xl min-h-125 md:min-h-150 flex justify-center items-center scale-75 md:scale-100"
       >
         {problemCards.map((card, index) => {
           const isActive = isMobile && activeCard === index;
           return (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 150, rotate: 0 }}
+              initial={{ opacity: 0, y: 120, rotate: 0 }}
               whileInView={{ opacity: 1, y: 0, rotate: card.rotation }}
               animate={
                 isActive
@@ -116,15 +116,15 @@ export default function Problem() {
               }
               viewport={{ once: true, margin: "0px" }}
               transition={{
-                type: "spring",
-                stiffness: 100,
-                damping: 20,
-                mass: 1,
-                delay: isMobile && activeCard !== null ? 0 : index * 0.15,
+                type: "tween",
+                ease: [0.22, 1, 0.36, 1],
+                duration: 0.85,
+                delay: isMobile && activeCard !== null ? 0 : index * 0.12,
               }}
-              className={`absolute flex flex-col items-center justify-center gap-4 p-6 rounded-3xl bg-white border-2 ${card.bg} shadow-xl w-[320px] h-[220px] ${card.offset} cursor-pointer hover:shadow-2xl`}
+              className={`absolute flex flex-col items-center justify-center gap-4 p-6 rounded-3xl bg-white border-2 ${card.bg} shadow-xl w-[320px] h-55 ${card.offset} cursor-pointer hover:shadow-2xl transform-gpu`}
               style={{
                 boxShadow: "0 20px 40px -15px rgba(0,0,0,0.1)",
+                willChange: "transform, opacity",
               }}
             >
               {/* <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-sm border border-gray-100 shrink-0">

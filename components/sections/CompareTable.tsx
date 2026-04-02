@@ -220,7 +220,7 @@ export default function CompareTable() {
         <div className="flex gap-2 justify-center flex-wrap mb-8">
           <div className="inline-flex items-center gap-2 font-body text-sm font-bold px-5 py-2.5 rounded-full bg-[#2020CC] text-white cursor-default select-none shadow-md shadow-[#2020CC]/30">
             <span className="w-2 h-2 rounded-full bg-white/60" />
-            ComplyVerse
+            ComplyWerse
           </div>
           {competitors.map((comp) => (
             <button
@@ -267,7 +267,7 @@ export default function CompareTable() {
                   >
                     <span className="flex items-center gap-2">
                       <Sparkles size={13} className="text-white/70" />
-                      ComplyVerse
+                      ComplyWerse
                     </span>
                   </th>
                   {COMPETITORS.map((comp) => {
