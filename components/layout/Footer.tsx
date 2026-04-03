@@ -250,7 +250,7 @@ export default function Footer() {
 
             {/* Address */}
             <div className="font-body text-sm text-[#9CA3AF] leading-relaxed mb-8">
-               <p className="font-medium text-[#6B7280]">Compliwerse Inc.</p>
+               <p className="font-medium text-[#6B7280]">Liztek Consulting.</p>
               <p>2192 Heidi Ave,</p>
               <p>Burlington, ON L7M 3W5</p>
             </div>

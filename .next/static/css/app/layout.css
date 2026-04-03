@@ -1254,12 +1254,6 @@
   .min-h-237\.5 {
     min-height: calc(var(--spacing) * 237.5);
   }
-  .min-h-\[500px\] {
-    min-height: 500px;
-  }
-  .min-h-\[950px\] {
-    min-height: 950px;
-  }
   .min-h-screen {
     min-height: 100vh;
   }
@@ -1343,9 +1337,6 @@
   }
   .w-\[320px\] {
     width: 320px;
-  }
-  .w-\[calc\(100\%-1rem\)\] {
-    width: calc(100% - 1rem);
   }
   .w-\[calc\(100\%_-_1rem\)\] {
     width: calc(100% - 1rem);
@@ -3069,11 +3060,6 @@
   .md\:min-h-150 {
     @media (width >= 48rem) {
       min-height: calc(var(--spacing) * 150);
-    }
-  }
-  .md\:min-h-\[600px\] {
-    @media (width >= 48rem) {
-      min-height: 600px;
     }
   }
   .md\:w-\[40\%\] {
