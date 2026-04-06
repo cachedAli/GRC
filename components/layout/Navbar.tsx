@@ -9,7 +9,7 @@ const navLinks = [
   { label: "Features", href: "/features" },
   { label: "Platform", href: "#tour" },
   { label: "AI Agents", href: "#compare" },
-  { label: "Frameworks", href: "#Frameworks" },
+  { label: "Frameworks", href: "#frameworks" },
 ];
 
 export default function Navbar({ moveLogo }: { moveLogo: boolean }) {

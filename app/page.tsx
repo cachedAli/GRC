@@ -83,6 +83,7 @@ export default function Home() {
       <SectionDivider variant="rule" />
       <SectionDivider variant="diamonds" /> */}
       <Features />
+      <Frameworks/>
       <ProductTour />
       {/* <SectionDivider variant="rule" /> */}
       {/* <CompareTable /> */}

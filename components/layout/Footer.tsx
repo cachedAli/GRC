@@ -14,12 +14,7 @@ export default function Footer() {
                 Company
               </h3>
               <ul className="space-y-2">
-                {[
-                  "Contact",
-                  "Design Partners",
-                  "Privacy Policy",
-                  "Terms of Service",
-                ].map((l) => (
+                {["Contact", "Terms of Service"].map((l) => (
                   <li key={l}>
                     <a
                       href={
@@ -42,7 +37,7 @@ export default function Footer() {
                 {["Features", "Product Tour", "Frameworks"].map((l) => (
                   <li key={l}>
                     <a
-                      href="#"
+                      href={l === "Frameworks" ? "#frameworks" : "#"}
                       className="font-body text-sm text-[#6B7280] hover:text-[#0A0A0A] transition-colors"
                     >
                       {l}
@@ -147,12 +142,7 @@ export default function Footer() {
                     Company
                   </h3>
                   <ul className="space-y-2">
-                    {[
-                      "Contact",
-                      "Design Partners",
-                      "Privacy Policy",
-                      "Terms of Service",
-                    ].map((l) => (
+                    {["Contact", "Terms of Service"].map((l) => (
                       <li key={l}>
                         <a
                           href={
@@ -176,15 +166,10 @@ export default function Footer() {
                       Product
                     </h3>
                     <ul className="space-y-2">
-                      {[
-                        "Features",
-                        "Product Tour",
-                        "Compare",
-                        "Frameworks",
-                      ].map((l) => (
+                      {["Features", "Product Tour", "Frameworks"].map((l) => (
                         <li key={l}>
                           <a
-                            href="#"
+                            href={l === "Frameworks" ? "#frameworks" : "#"}
                             className="font-body text-xs sm:text-sm text-white/65 hover:text-white transition-colors"
                           >
                             {l}
@@ -250,7 +235,7 @@ export default function Footer() {
 
             {/* Address */}
             <div className="font-body text-sm text-[#9CA3AF] leading-relaxed mb-8">
-               <p className="font-medium text-[#6B7280]">Liztek Consulting.</p>
+              <p className="font-medium text-[#6B7280]">Liztek Consulting.</p>
               <p>2192 Heidi Ave,</p>
               <p>Burlington, ON L7M 3W5</p>
             </div>

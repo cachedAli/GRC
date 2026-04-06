@@ -73,7 +73,7 @@ export default function Features() {
     // Make the container tall enough to scroll through 4 items
     <section
       ref={containerRef}
-      className="bg-bg relative h-[300vh] border-t border-b border-gray-100 my-16 md:my-24"
+      className="bg-bg relative h-[300vh] border-t border-b border-gray-100 my-16 md:mt-24"
     >
       <div className=" px-4 text-center w-full">
         <h2 className="text-4xl font-semibold text-gray-900 font-poppins mt-3">
@@ -85,7 +85,7 @@ export default function Features() {
         </p>
       </div>
       {/* Sticky inner container that stays on screen while scrolling */}
-      <div className="sticky top-0 min-h-screen h-auto py-12 md:py-24 w-full flex items-center justify-center overflow-hidden">
+      <div className="sticky top-0 min-h-screen h-auto py-12 md:pt-24 w-full flex items-center justify-center overflow-hidden">
         <div className="max-w-[1400px] w-full mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row gap-12 lg:gap-20">
           {/* Left Side: Image Displays */}
           <div className="w-full md:w-[40%] flex items-center justify-center py-10 md:py-0">
