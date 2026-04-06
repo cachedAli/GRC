@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const navLinks = [
+  { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
   { label: "Platform", href: "#tour" },
   { label: "AI Agents", href: "#compare" },
@@ -13,28 +16,32 @@ const navLinks = [
 ];
 
 export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
+  const pathname = usePathname();
+  const isHomeRoute = pathname === "/";
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [showFullLogo, setShowFullLogo] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => setScrolled(window.scrollY > 60);
+    handleScroll();
+
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   useEffect(() => {
+    setMenuOpen(false);
+
     if (!moveLogo) {
       setShowFullLogo(false);
       return;
     }
 
-    // Fallback in case layout animation callback doesn't fire on some renders.
-    const timer = setTimeout(() => setShowFullLogo(true), 450);
+    setShowFullLogo(false);
+    const timer = setTimeout(() => setShowFullLogo(true), 420);
     return () => clearTimeout(timer);
-  }, [moveLogo]);
-
-  const onHero = !scrolled;
+  }, [moveLogo, pathname]);
 
   return (
     <>
@@ -47,13 +54,17 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="flex items-center gap-2.5 shrink-0">
+          <Link href="/" className="flex items-center gap-2.5 shrink-0">
             {moveLogo && (
               <motion.div
-                layout
+                layout={isHomeRoute}
                 transition={{ type: "spring", stiffness: 300, damping: 30 }}
-                layoutId="logo"
-                onLayoutAnimationComplete={() => setShowFullLogo(true)}
+                layoutId={isHomeRoute ? "logo" : undefined}
+                onLayoutAnimationComplete={() => {
+                  if (isHomeRoute) {
+                    setShowFullLogo(true);
+                  }
+                }}
               >
                 {!showFullLogo ? (
                   <Image
@@ -74,10 +85,11 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                 )}
               </motion.div>
             )}
-          </a>
+          </Link>
 
           {/* Desktop nav links — center */}
           <motion.div
+            key={`desktop-links-${pathname}`}
             initial={{ opacity: 0, y: -10 }}
             animate={{
               opacity: showFullLogo ? 1 : 0,
@@ -87,18 +99,29 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             className="hidden md:flex items-center gap-1"
           >
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                className={`font-body text-sm px-4 py-2 rounded-full transition-colors duration-200`}
-              >
-                {link.label}
-              </a>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  className="font-body text-sm px-4 py-2 rounded-full transition-colors duration-200"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  className="font-body text-sm px-4 py-2 rounded-full transition-colors duration-200"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
           </motion.div>
 
           {/* Right — Login + Get Started */}
           <motion.div
+            key={`desktop-actions-${pathname}`}
             initial={{ opacity: 0, y: -10 }}
             animate={{
               opacity: showFullLogo ? 1 : 0,
@@ -108,7 +131,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             className="hidden md:flex items-center gap-3"
           >
             <motion.a
-              href="#cta"
+              href="/request-demo"
               className="text-sm font-noto-serif font-semibold bg-[#065F46] text-white px-6 py-2.5 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none "
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.15 }}
@@ -125,6 +148,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
 
           {/* Mobile toggle */}
           <motion.button
+            key={`mobile-toggle-${pathname}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: showFullLogo ? 1 : 0 }}
             className="md:hidden p-2 rounded transition-colors text-[#0A0A0A]"
@@ -147,14 +171,25 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             transition={{ duration: 0.3 }}
           >
             {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMenuOpen(false)}
-                className="font-body text-2xl font-bold text-[#0A0A0A] hover:text-[#2020CC] transition-colors"
-              >
-                {link.label}
-              </a>
+              link.href.startsWith("/") ? (
+                <Link
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-body text-2xl font-bold text-[#0A0A0A] hover:text-[#2020CC] transition-colors"
+                >
+                  {link.label}
+                </Link>
+              ) : (
+                <a
+                  key={link.label}
+                  href={link.href}
+                  onClick={() => setMenuOpen(false)}
+                  className="font-body text-2xl font-bold text-[#0A0A0A] hover:text-[#2020CC] transition-colors"
+                >
+                  {link.label}
+                </a>
+              )
             ))}
             <a
               href="#cta"

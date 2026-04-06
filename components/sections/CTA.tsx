@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 export default function CTA() {
   return (
@@ -22,9 +23,12 @@ export default function CTA() {
         </p>
 
         <div className="flex flex-wrap items-center justify-center gap-3 mt-9 font-noto-serif">
-          <button className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer">
+          <Link
+            href="/request-demo"
+            className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer"
+          >
             Request a Demo
-          </button>
+          </Link>
 
           <button className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer">
             Watch Tour

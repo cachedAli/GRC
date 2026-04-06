@@ -18,10 +18,12 @@ import Navbar from "@/components/layout/Navbar";
 import { LayoutGroup } from "framer-motion";
 import Solutions from "@/components/sections/Solutions";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { usePathname } from "next/navigation";
 
 export default function Home() {
+  const pathname = usePathname();
   const [moveLogo, setMoveLogo] = useState(false);
-  const [showFullLogo, setShowFullLogo] = useState(false);
+  const [homeAnimationKey, setHomeAnimationKey] = useState(0);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -48,18 +50,21 @@ export default function Home() {
   );
 
   useEffect(() => {
+    setHomeAnimationKey((current) => current + 1);
+    setMoveLogo(false);
+
     const timer = setTimeout(() => {
       setMoveLogo(true);
     }, 1000);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [pathname]);
 
   return (
     <>
-      <LayoutGroup>
-        <Navbar moveLogo={moveLogo} />
-        <Hero moveLogo={moveLogo} />
+      <LayoutGroup key={homeAnimationKey}>
+        <Navbar key={`home-navbar-${homeAnimationKey}`} moveLogo={moveLogo} />
+        <Hero key={`home-hero-${homeAnimationKey}`} moveLogo={moveLogo} />
       </LayoutGroup>
       {/* <HeroStrip /> */}
       {/* <LogoBar /> */}
@@ -83,7 +88,7 @@ export default function Home() {
       <SectionDivider variant="rule" />
       <SectionDivider variant="diamonds" /> */}
       <Features />
-      <Frameworks/>
+      <Frameworks />
       <ProductTour />
       {/* <SectionDivider variant="rule" /> */}
       {/* <CompareTable /> */}

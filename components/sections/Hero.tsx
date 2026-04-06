@@ -4,6 +4,7 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Zap, BarChart3 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Hero({ moveLogo }: { moveLogo: boolean }) {
   const [email, setEmail] = useState("");
@@ -137,9 +138,12 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
         </p>
 
         <div className="flex items-center gap-2 font-noto-serif">
-          <button className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap">
+          <Link
+            href="/request-demo"
+            className="text-lg font-semibold bg-[#065F46] text-white px-6 py-4 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap"
+          >
             Request a Demo
-          </button>
+          </Link>
 
           <button className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer whitespace-nowrap">
             Watch Tour

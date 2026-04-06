@@ -7,7 +7,7 @@ import {
   Noto_Serif,
 } from "next/font/google";
 import "./globals.css";
-import Navbar from "@/components/layout/Navbar";
+import ConditionalNavbar from "@/components/layout/ConditionalNavbar";
 import Footer from "@/components/layout/Footer";
 
 const poppins = Poppins({
@@ -47,7 +47,7 @@ export default function RootLayout({
       <body
         className={`${poppins.variable} ${notoSerif.variable} ${exo.variable} font-noto-serif bg-[#fbfdfc] text-[#0A0A0A] antialiased`}
       >
-        {/* <Navbar /> */}
+        <ConditionalNavbar />
         <main>{children}</main>
         <Footer />
       </body>
