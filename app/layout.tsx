@@ -29,9 +29,9 @@ const exo = Exo({
 });
 
 export const metadata: Metadata = {
-  title: "Compliwerse — GRC Platform for Modern Security Teams",
+  title: "CompliVerse AI — GRC Platform for Modern Security Teams",
   description:
-    "Compliwerse brings your risk registers, audit workflows, and framework mappings into one place. The GRC platform built for modern security teams.",
+    "CompliVerse AI brings your risk registers, audit workflows, and framework mappings into one place. The GRC platform built for modern security teams.",
   icons: {
     icon: "/compliwerseIcon.png",
   },
