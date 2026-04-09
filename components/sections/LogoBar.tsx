@@ -85,7 +85,7 @@ const all = [...logos, ...logos, ...logos];
 
 export default function LogoBar() {
   return (
-    <section className=" bg-linear-to-b from-[#F0FDFB] to-[#fbfdfc]  overflow-hidden">
+    <section className=" bg-linear-to-b from-[#eef7ff] to-[#fbfdfc]  overflow-hidden">
       <div className="relative  py-20 overflow-hidden mask-fade-edges w-full max-w-7xl mx-auto">
         <motion.div
           className="flex gap-24 md:gap-32 items-center whitespace-nowrap w-max px-12"

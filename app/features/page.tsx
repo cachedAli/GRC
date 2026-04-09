@@ -26,19 +26,19 @@ const moduleMeta: Record<
     icon: <ShieldCheck className="h-4 w-4" />,
     chip: "Policy + Oversight",
     tabActive:
-      "bg-linear-to-r from-green-dark via-green to-teal text-white shadow-[0_10px_24px_rgba(16,185,129,0.35)]",
+      "bg-linear-to-r from-green via-teal to-bg-mint text-white shadow-[0_10px_24px_rgba(1,69,123,0.35)]",
   },
   risk: {
     icon: <AlertTriangle className="h-4 w-4" />,
     chip: "Risk + Treatment",
     tabActive:
-      "bg-linear-to-r from-green-dark via-green to-teal text-white shadow-[0_10px_24px_rgba(16,185,129,0.35)]",
+      "bg-linear-to-r from-green via-teal to-bg-mint text-white shadow-[0_10px_24px_rgba(1,69,123,0.35)]",
   },
   compliance: {
     icon: <ClipboardCheck className="h-4 w-4" />,
     chip: "Controls + Evidence",
     tabActive:
-      "bg-linear-to-r from-green-dark via-green to-teal text-white shadow-[0_10px_24px_rgba(16,185,129,0.35)]",
+      "bg-linear-to-r from-green via-teal to-bg-mint text-white shadow-[0_10px_24px_rgba(1,69,123,0.35)]",
   },
 };
 
@@ -66,7 +66,7 @@ export default function FeaturesPage() {
   return (
     <main className="min-h-screen bg-bg">
       <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 md:py-16 lg:px-8">
-        <div className="rounded-3xl border border-green/20 bg-white p-2 shadow-[0_12px_34px_rgba(6,95,70,0.08)]">
+        <div className="rounded-3xl border border-green/20 bg-white p-2 shadow-[0_12px_34px_rgba(2,26,72,0.08)]">
           <div className="grid grid-cols-1 gap-2 md:grid-cols-3">
             {featureModules.map((module) => {
               const isActive = activeTab === module.id;
@@ -100,7 +100,7 @@ export default function FeaturesPage() {
           </div>
         </div>
 
-        <div className="mt-8 rounded-3xl border border-green/20 bg-white p-6 shadow-[0_14px_36px_rgba(6,95,70,0.08)] md:p-8">
+        <div className="mt-8 rounded-3xl border border-green/20 bg-white p-6 shadow-[0_14px_36px_rgba(2,26,72,0.08)] md:p-8">
           <div className="mb-7 border-b border-green/15 pb-5">
             <div className="mb-3 inline-flex items-center gap-2 rounded-full bg-green/10 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-green-dark">
               {moduleMeta[activeModule.id].icon}

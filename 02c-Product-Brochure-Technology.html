@@ -1,0 +1,474 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Brochure Technology</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-green-dark: #000000;
+        --color-green: #000000;
+        --line: #9fc6df;
+        --surface: #ffffff;
+        --text-900: #000000;
+        --text-700: #000000;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text-900);
+        background: #ffffff;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 297mm;
+        min-height: 210mm;
+        margin: 10mm auto;
+        background: var(--surface);
+        padding: 11mm;
+        box-shadow: 0 10px 34px rgba(2, 26, 72, 0.16);
+        border: 1px solid #b9d5e8;
+        position: relative;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(0, 0, 0, 0.12);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12mm;
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+        margin-bottom: 6mm;
+      }
+
+      .brand-row img {
+        height: 20mm;
+        width: auto;
+      }
+
+      .eyebrow {
+        font-size: 10.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-green);
+        font-weight: 700;
+      }
+
+      .title {
+        margin: 0 0 5mm;
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 30px;
+        line-height: 1.15;
+        color: #000000;
+      }
+
+      .doc-content {
+        font-size: 14.6px;
+        color: #000000;
+      }
+
+      .doc-content .doc-heading,
+      .doc-content h1,
+      .doc-content h2,
+      .doc-content h3,
+      .doc-content h4 {
+        font-family: Poppins, Inter, Arial, sans-serif;
+        color: #000000;
+        margin: 6mm 0 2.5mm;
+        line-height: 1.25;
+      }
+
+      .doc-content h1 {
+        font-size: 23px;
+      }
+      .doc-content h2 {
+        font-size: 19px;
+      }
+      .doc-content h3 {
+        font-size: 16px;
+      }
+
+      .doc-content p,
+      .doc-content li {
+        font-size: 14.6px;
+        line-height: 1.58;
+        color: #000000;
+      }
+
+      .doc-content ul,
+      .doc-content ol {
+        padding-left: 7mm;
+      }
+
+      .doc-content .doc-table,
+      .doc-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 4mm 0 6mm;
+        background: #f8fcff;
+      }
+
+      .doc-content .doc-table th,
+      .doc-content .doc-table td,
+      .doc-content table th,
+      .doc-content table td {
+        border: 1px solid var(--line);
+        padding: 2.2mm;
+        vertical-align: top;
+        font-size: 13.8px;
+        color: #000000;
+      }
+
+      .doc-content .doc-table th,
+      .doc-content table th {
+        background: #e4f1fa;
+        color: #000000;
+        font-weight: 700;
+      }
+
+      .doc-content img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #c5dfef;
+        margin: 3mm 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="brand-row">
+        <img src="./liztek-logo.png" alt="LIZTEK" />
+        <div class="eyebrow">Executive Product Brief | 2026</div>
+      </div>
+      <h1 class="title">Product Brochure Technology</h1>
+      <div class="doc-content">
+        <h2 class="doc-heading" style="text-align: center">
+          Technology &amp; SaaS
+        </h2>
+        <h2 class="doc-heading">The Technology GRC Challenge</h2>
+        <p class="doc-paragraph">
+          Technology and SaaS companies face a distinct compliance challenge:
+          demonstrating security maturity to customers, partners, and regulators
+          — while operating in an environment of continuous change. As companies
+          scale from startup to enterprise, compliance requirements compound:
+        </p>
+        <ul>
+          <li>
+            <strong>SOC 2 Type II</strong> becomes table stakes for B2B SaaS
+            sales
+          </li>
+          <li>
+            <strong>ISO 27001</strong> is required for international enterprise
+            customers
+          </li>
+          <li>
+            <strong>GDPR</strong> and global privacy regulations follow
+            international expansion
+          </li>
+          <li><strong>PCI DSS</strong> applies when processing payment data</li>
+          <li><strong>SOX</strong> arrives with a public listing</li>
+          <li><strong>FedRAMP</strong> opens government sales channels</li>
+        </ul>
+        <p class="doc-paragraph">
+          Each new framework historically requires months of mapping effort.
+          Meanwhile, continuous deployment cycles mean evidence of control
+          operation must be ongoing, not point-in-time. And enterprise customers
+          send lengthy security questionnaires that consume engineering and
+          compliance time.
+        </p>
+        <h2 class="doc-heading">Platform Overview</h2>
+        <p class="doc-paragraph">
+          CompliVerse AI is an enterprise-grade, AI-native GRC platform that
+          unifies audit management, compliance tracking, enterprise risk
+          management, vulnerability management, IT asset governance, and
+          evidence management into a single, multi-tenant platform.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-001.jpg" />
+        </p>
+        <h2 class="doc-heading">Technology-Specific Capabilities</h2>
+        <h3 class="doc-heading">Instant Cross-Framework Mapping</h3>
+        <p class="doc-paragraph">
+          Upload SOC 2 Trust Services Criteria and ISO 27001 Annex A controls.
+          CompliVerse AI's semantic similarity engine immediately maps controls
+          across both frameworks, showing which SOC 2 controls already satisfy
+          ISO 27001 requirements and where gaps exist. When a new framework is
+          added (GDPR, PCI DSS, FedRAMP), the AI instantly shows existing
+          coverage.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-002.jpg" />
+        </p>
+        <p class="doc-paragraph">
+          <strong>Tech Impact:</strong> Adding a new framework drops from 4–6
+          weeks to 1–3 days. One evidence artifact satisfies multiple framework
+          requirements simultaneously.
+        </p>
+        <h3 class="doc-heading">Continuous Evidence Collection</h3>
+        <p class="doc-paragraph">
+          The unified evidence vault captures evidence as it's created — access
+          review screenshots, change management records, incident response logs,
+          security configurations — and maps it to relevant controls
+          automatically. SOC 2 Type II requires evidence of continuous control
+          operation over a review period; CompliVerse AI makes this automatic
+          rather than retroactive.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-003.jpg" />
+        </p>
+        <p class="doc-paragraph">
+          <strong>Tech Impact:</strong> SOC 2 evidence preparation drops from 6+
+          weeks to under 1 week. The external auditor receives organized,
+          pre-approved evidence by control.
+        </p>
+        <h3 class="doc-heading">Gap Analysis for New Markets</h3>
+        <p class="doc-paragraph">
+          Expanding to Europe and need GDPR compliance? Pursuing FedRAMP for
+          government sales? Upload the framework and immediately see which
+          controls you already cover through existing SOC 2 and ISO 27001
+          certifications. Get a prioritized remediation roadmap, not a blank
+          spreadsheet.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-004.jpg" />
+        </p>
+        <h3 class="doc-heading">
+          Vulnerability Management for Engineering Teams
+        </h3>
+        <p class="doc-paragraph">
+          Import vulnerability data into the native vulnerability register.
+          Track remediation with SLA compliance and MTTR metrics. Assign to
+          engineering teams by department. Maintain the documentation trail that
+          SOC 2 auditors require for vulnerability management controls.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-005.jpg" />
+        </p>
+        <h3 class="doc-heading">IS Project Management</h3>
+        <p class="doc-paragraph">
+          Track security initiatives — SIEM deployments, encryption upgrades,
+          penetration testing programs, security training rollouts — with
+          milestones, budgets, team assignments, and direct linkage to the risks
+          they mitigate. Demonstrate to auditors and customers that security
+          investments are planned, resourced, and tracked.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-006.jpg" />
+        </p>
+        <h3 class="doc-heading">
+          IT Asset Governance for Cloud-Native Environments
+        </h3>
+        <p class="doc-paragraph">
+          Manage cloud resources (AWS, Azure, GCP), SaaS dependencies, internal
+          applications, and third-party services. CIA triad ratings ensure that
+          data classification aligns with access controls and encryption
+          requirements.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-007.jpg" />
+        </p>
+        <h3 class="doc-heading">Audit Management for Compliance Cycles</h3>
+        <p class="doc-paragraph">
+          Plan and execute internal audits aligned with SOC 2 control testing
+          periods. AI-powered prior-audit cross-referencing identifies recurring
+          findings from previous audit cycles, ensuring systemic issues are
+          escalated and resolved.
+        </p>
+        <p class="doc-paragraph">
+          <img src="./02c-Product-Brochure-Technology_assets/image-008.jpg" />
+        </p>
+        <h2 class="doc-heading">Technology Compliance Frameworks Supported</h2>
+        <table class="doc-table">
+          <tr>
+            <td>
+              <p class="doc-paragraph"><strong>Framework</strong></p>
+            </td>
+            <td>
+              <p class="doc-paragraph"><strong>Coverage</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">SOC 2 Type I &amp; Type II</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Full Trust Services Criteria with evidence mapping
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">ISO 27001:2022</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Full Annex A controls with cross-framework mapping
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">GDPR</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Data protection requirements with HIPAA/ISO cross-mapping
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">CCPA / CPRA</p></td>
+            <td>
+              <p class="doc-paragraph">
+                California consumer privacy requirements
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">PCI DSS v4.0</p></td>
+            <td><p class="doc-paragraph">Payment card security controls</p></td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">SOX</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Financial reporting controls (public companies)
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">FedRAMP</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Government cloud security requirements
+              </p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">NIST CSF / NIST 800-53</p></td>
+            <td>
+              <p class="doc-paragraph">Cybersecurity framework controls</p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">CIS Controls</p></td>
+            <td>
+              <p class="doc-paragraph">Security best practice benchmarks</p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">Custom Frameworks</p></td>
+            <td>
+              <p class="doc-paragraph">
+                Upload any proprietary or customer-specific requirements
+              </p>
+            </td>
+          </tr>
+        </table>
+        <h2 class="doc-heading">Key Metrics for Technology</h2>
+        <table class="doc-table">
+          <tr>
+            <td>
+              <p class="doc-paragraph"><strong>Metric</strong></p>
+            </td>
+            <td>
+              <p class="doc-paragraph"><strong>Impact</strong></p>
+            </td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">SOC 2 evidence preparation</p></td>
+            <td><p class="doc-paragraph">60–75% reduction</p></td>
+          </tr>
+          <tr>
+            <td><p class="doc-paragraph">New framework onboarding</p></td>
+            <td><p class="doc-paragraph">From 4–6 weeks to 1–3 days</p></td>
+          </tr>
+          <tr>
+            <td>
+              <p class="doc-paragraph">Cross-framework evidence duplication</p>
+            </td>
+            <td><p class="doc-paragraph">Eliminated</p></td>
+          </tr>
+          <tr>
+            <td>
+              <p class="doc-paragraph">
+                Vulnerability remediation documentation
+              </p>
+            </td>
+            <td><p class="doc-paragraph">Automated</p></td>
+          </tr>
+          <tr>
+            <td>
+              <p class="doc-paragraph">
+                Time from zero to compliant (new framework)
+              </p>
+            </td>
+            <td><p class="doc-paragraph">Weeks, not months</p></td>
+          </tr>
+        </table>
+        <h2 class="doc-heading">Getting Started</h2>
+        <ol>
+          <li>
+            <strong>Discovery Call</strong> — Assess your current compliance
+            landscape and certification goals
+          </li>
+          <li>
+            <strong>Framework Upload</strong> — Import SOC 2, ISO 27001, and
+            applicable frameworks
+          </li>
+          <li>
+            <strong>AI Mapping</strong> — Run cross-framework analysis and
+            identify existing coverage
+          </li>
+          <li>
+            <strong>Evidence Integration</strong> — Connect evidence workflows
+            to the unified vault
+          </li>
+          <li><strong>Go-Live</strong> — Continuous compliance from day one</li>
+        </ol>
+        <p class="doc-paragraph">
+          Typical time to first value: <strong>1–2 weeks</strong>
+        </p>
+        <p class="doc-paragraph">
+          <strong>Schedule Your Demo:</strong> https://compliverse.ai
+        </p>
+        <p class="doc-paragraph"><strong>Contact:</strong> Liztek@liztek.ca</p>
+        <p class="doc-paragraph">
+          <em
+            >CompliVerse AI — Governance. Risk. Compliance. Unified by
+            Intelligence</em
+          >
+        </p>
+      </div>
+    </section>
+  </body>
+</html>

@@ -170,26 +170,26 @@ const domainMeta: Record<
 > = {
   finance: {
     label: "Finance & Controls",
-    color: "#065F46",
-    border: "rgba(6,95,70,0.22)",
-    glow: "rgba(6,95,70,0.30)",
+    color: "#021a48",
+    border: "rgba(2,26,72,0.22)",
+    glow: "rgba(2,26,72,0.30)",
     icon: Banknote,
     summary:
       "Track financial controls, evidence, and owners for audit readiness.",
   },
   risk: {
     label: "Technology Risk",
-    color: "#10B981",
-    border: "rgba(16,185,129,0.25)",
-    glow: "rgba(16,185,129,0.34)",
+    color: "#01457b",
+    border: "rgba(1,69,123,0.25)",
+    glow: "rgba(1,69,123,0.34)",
     icon: Activity,
     summary: "See tech-risk gaps, remediation, and ownership before they slip.",
   },
   sustainability: {
     label: "Trust & Resilience",
-    color: "#14B8A6",
-    border: "rgba(20,184,166,0.25)",
-    glow: "rgba(20,184,166,0.35)",
+    color: "#008abe",
+    border: "rgba(0,138,190,0.25)",
+    glow: "rgba(0,138,190,0.35)",
     icon: ShieldCheck,
     summary:
       "Keep privacy, resilience, and cyber obligations traceable from one screen.",
@@ -420,7 +420,7 @@ export default function Frameworks() {
               style={{
                 scaleX: progressFill,
                 transformOrigin: "0% 50%",
-                background: "linear-gradient(90deg, #14B8A6, #10B981, #065F46)",
+                background: "linear-gradient(90deg, #97cadb, #008abe, #021a48)",
               }}
             />
           </motion.div>
@@ -436,7 +436,7 @@ export default function Frameworks() {
           <FilterChip
             label={`All (${frameworks.length})`}
             active={focusDomain === "all"}
-            color="#065F46"
+            color="#021a48"
             onClick={() => setFocusDomain("all")}
           />
           {(Object.keys(domainMeta) as Domain[]).map((domain) => (
@@ -444,7 +444,7 @@ export default function Frameworks() {
               key={domain}
               label={`${domainMeta[domain].label} (${groups[domain].length})`}
               active={focusDomain === domain}
-              color="#065F46"
+              color="#021a48"
               activeColor={domainMeta[domain].color}
               onClick={() => setFocusDomain(domain)}
             />
@@ -458,13 +458,13 @@ export default function Frameworks() {
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
         >
-          <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/88 p-4 shadow-[0_16px_40px_-24px_rgba(6,95,70,0.35)]">
+          <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/88 p-4 shadow-[0_16px_40px_-24px_rgba(2,26,72,0.35)]">
             <div
               className="absolute inset-x-0 top-0 h-24"
               style={{
                 background: selectedMeta
                   ? `linear-gradient(180deg, ${selectedMeta.glow}, transparent)`
-                  : "linear-gradient(180deg, rgba(6,95,70,0.25), transparent)",
+                  : "linear-gradient(180deg, rgba(2,26,72,0.25), transparent)",
               }}
             />
             <div className="relative z-10">
@@ -503,7 +503,7 @@ export default function Frameworks() {
                 )}
               </div>
 
-              <h3 className="mt-4 font-poppins text-lg font-semibold leading-tight text-[#052E16]">
+              <h3 className="mt-4 font-poppins text-lg font-semibold leading-tight text-[#021a48]">
                 {selectedFramework
                   ? selectedFramework.full
                   : "Select a framework to see controls, evidence, owners, and gaps"}
@@ -516,7 +516,7 @@ export default function Frameworks() {
             </div>
           </div>
 
-          <div className="mt-4 rounded-3xl border border-white/80 bg-white/75 p-3 shadow-[0_14px_34px_-24px_rgba(6,95,70,0.32)]">
+          <div className="mt-4 rounded-3xl border border-white/80 bg-white/75 p-3 shadow-[0_14px_34px_-24px_rgba(2,26,72,0.32)]">
             <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
               Tap to inspect frameworks
             </p>
@@ -534,14 +534,14 @@ export default function Frameworks() {
                         current === item.short ? null : item.short,
                       );
                     }}
-                    className="rounded-2xl border bg-white/95 px-2.5 py-2 text-left shadow-[0_8px_16px_-14px_rgba(6,95,70,0.35)] transition-all"
+                    className="rounded-2xl border bg-white/95 px-2.5 py-2 text-left shadow-[0_8px_16px_-14px_rgba(2,26,72,0.35)] transition-all"
                     style={{
                       borderColor: active
                         ? meta.color
                         : "rgba(107,114,128,0.24)",
                       boxShadow: active
                         ? `0 12px 22px -16px ${meta.glow}`
-                        : "0 8px 16px -14px rgba(6,95,70,0.3)",
+                        : "0 8px 16px -14px rgba(2,26,72,0.3)",
                     }}
                   >
                     <span className="inline-flex items-center gap-1.5">
@@ -576,7 +576,7 @@ export default function Frameworks() {
                   rotate: ringRotate,
                   opacity: ringOpacity,
                   background:
-                    "conic-gradient(from -90deg, rgba(16,185,129,0.45) 0deg 120deg, rgba(20,184,166,0.4) 120deg 240deg, rgba(6,95,70,0.38) 240deg 360deg)",
+                    "conic-gradient(from -90deg, rgba(1,69,123,0.45) 0deg 120deg, rgba(0,138,190,0.4) 120deg 240deg, rgba(2,26,72,0.38) 240deg 360deg)",
                   maskImage:
                     "radial-gradient(circle, transparent 43%, black 44%, black 68%, transparent 69%)",
                   WebkitMaskImage:
@@ -589,7 +589,7 @@ export default function Frameworks() {
                 className="absolute inset-[7.5%] rounded-full border border-white/35"
               />
 
-              <div className="absolute inset-[14%] rounded-full border border-white/80 bg-white/65 shadow-[0_12px_40px_-28px_rgba(6,95,70,0.45)] backdrop-blur-sm" />
+              <div className="absolute inset-[14%] rounded-full border border-white/80 bg-white/65 shadow-[0_12px_40px_-28px_rgba(2,26,72,0.45)] backdrop-blur-sm" />
 
               {/* Visible Orbital Tracks matching radii (45%, 37%, 29%) */}
               <div className="absolute inset-[5%] rounded-full border-2 border-teal-900/4 pointer-events-none" />
@@ -605,18 +605,18 @@ export default function Frameworks() {
                   className="absolute left-1/2 top-1/2 z-20 h-0.5 origin-left rounded-full"
                   style={{
                     transform: `translateY(-50%) rotate(${connector.angle}deg)`,
-                    background: `linear-gradient(90deg, ${selectedMeta?.color ?? "#065F46"}, transparent)`,
+                    background: `linear-gradient(90deg, ${selectedMeta?.color ?? "#021a48"}, transparent)`,
                   }}
                 />
               )}
 
-              <div className="absolute left-1/2 top-1/2 z-30 h-[44%] w-[44%] min-h-55 min-w-55 max-h-82 max-w-82 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-4xl border border-white/90 bg-white/88 p-5 shadow-[0_24px_75px_-34px_rgba(6,95,70,0.45)] sm:p-6">
+              <div className="absolute left-1/2 top-1/2 z-30 h-[44%] w-[44%] min-h-55 min-w-55 max-h-82 max-w-82 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-4xl border border-white/90 bg-white/88 p-5 shadow-[0_24px_75px_-34px_rgba(2,26,72,0.45)] sm:p-6">
                 <div
                   className="absolute inset-0"
                   style={{
                     background: selectedMeta
                       ? `radial-gradient(circle at 0% 0%, ${selectedMeta.glow}, transparent 62%)`
-                      : "radial-gradient(circle at 0% 0%, rgba(6,95,70,0.28), transparent 62%)",
+                      : "radial-gradient(circle at 0% 0%, rgba(2,26,72,0.28), transparent 62%)",
                   }}
                 />
 
@@ -653,7 +653,7 @@ export default function Frameworks() {
                       </p>
                     </div>
 
-                    <h3 className="mt-4 font-poppins text-xl font-semibold leading-tight text-[#052E16] sm:text-2xl">
+                    <h3 className="mt-4 font-poppins text-xl font-semibold leading-tight text-[#021a48] sm:text-2xl">
                       {selectedFramework
                         ? selectedFramework.full
                         : "Select a framework to see controls, evidence, owners, and gaps"}
@@ -715,7 +715,7 @@ export default function Frameworks() {
                       scale: active ? 1.05 : 1,
                     }}
                     transition={{ duration: 0.2 }}
-                    className="absolute z-40 whitespace-nowrap -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white/96 px-2.5 py-1.5 text-left shadow-[0_8px_20px_-14px_rgba(6,95,70,0.35)] backdrop-blur-sm transition-all focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-3.5 sm:py-2"
+                    className="absolute z-40 whitespace-nowrap -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white/96 px-2.5 py-1.5 text-left shadow-[0_8px_20px_-14px_rgba(2,26,72,0.35)] backdrop-blur-sm transition-all focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-3.5 sm:py-2"
                     style={{
                       left: node.x,
                       top: node.y,
@@ -724,7 +724,7 @@ export default function Frameworks() {
                         : "rgba(107,114,128,0.25)",
                       boxShadow: active
                         ? `0 12px 28px -16px ${meta.glow}`
-                        : "0 8px 18px -14px rgba(6,95,70,0.32)",
+                        : "0 8px 18px -14px rgba(2,26,72,0.32)",
                     }}
                   >
                     <span className="inline-flex items-center gap-1.5">

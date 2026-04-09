@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Product Brochure Banking</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-green-dark: #021a48;
+        --color-green: #01457b;
+        --line: #9fc6df;
+        --surface: #ffffff;
+        --text-900: #0d2d52;
+        --text-700: #000000;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text-900);
+        background: #ffffff;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 297mm;
+        min-height: 210mm;
+        margin: 10mm auto;
+        background: var(--surface);
+        padding: 11mm;
+        box-shadow: 0 10px 34px rgba(2, 26, 72, 0.16);
+        border: 1px solid #b9d5e8;
+        position: relative;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(1, 69, 123, 0.12);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .page > * { position: relative; z-index: 1; }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12mm;
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+        margin-bottom: 6mm;
+      }
+
+      .brand-row img { height: 20mm; width: auto; }
+
+      .eyebrow {
+        font-size: 10.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-green);
+        font-weight: 700;
+      }
+
+      .title {
+        margin: 0 0 5mm;
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 30px;
+        line-height: 1.15;
+        color: var(--color-green-dark);
+      }
+
+      .doc-content { font-size: 14.6px; color: var(--text-700); }
+
+      .doc-content .doc-heading,
+      .doc-content h1,
+      .doc-content h2,
+      .doc-content h3,
+      .doc-content h4 {
+        font-family: Poppins, Inter, Arial, sans-serif;
+        color: var(--color-green-dark);
+        margin: 6mm 0 2.5mm;
+        line-height: 1.25;
+      }
+
+      .doc-content h1 { font-size: 23px; }
+      .doc-content h2 { font-size: 19px; }
+      .doc-content h3 { font-size: 16px; }
+
+      .doc-content p,
+      .doc-content li {
+        font-size: 14.6px;
+        line-height: 1.58;
+        color: var(--text-700);
+      }
+
+      .doc-content ul,
+      .doc-content ol { padding-left: 7mm; }
+
+      .doc-content .doc-table,
+      .doc-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 4mm 0 6mm;
+        background: #f8fcff;
+      }
+
+      .doc-content .doc-table th,
+      .doc-content .doc-table td,
+      .doc-content table th,
+      .doc-content table td {
+        border: 1px solid var(--line);
+        padding: 2.2mm;
+        vertical-align: top;
+        font-size: 13.8px;
+        color: var(--text-700);
+      }
+
+      .doc-content .doc-table th,
+      .doc-content table th {
+        background: #e4f1fa;
+        color: var(--color-green-dark);
+        font-weight: 700;
+      }
+
+      .doc-content img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #c5dfef;
+        margin: 3mm 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="brand-row">
+        <img src="./liztek-logo.png" alt="LIZTEK" />
+        <div class="eyebrow">Executive Product Brief | 2026</div>
+      </div>
+      <h1 class="title">Product Brochure Banking</h1>
+      <div class="doc-content"><h2 class="doc-heading" style="text-align:center;">Banking &amp; Financial Services</h2><h2 class="doc-heading">The Banking GRC Challenge</h2><p class="doc-paragraph">Financial institutions face the most demanding regulatory environment of any industry. A mid-market bank simultaneously manages compliance across SBP (State Bank of Pakistan) regulations, PCI DSS for payment card security, ISO 27001 for information security management, SOX for financial reporting controls, OCC/FDIC requirements, Basel III capital standards, GLBA, and BSA/AML obligations.</p><p class="doc-paragraph">Multi-entity structures — holding companies with subsidiary banks, wealth management divisions, and insurance arms — multiply this complexity, with each entity potentially subject to different regulatory requirements.</p><p class="doc-paragraph">The result: internal audit departments executing 25–50 engagements annually, compliance teams manually mapping overlapping controls across 8+ frameworks, and examination preparation consuming weeks of senior staff time.</p><h2 class="doc-heading">Platform Overview</h2><p class="doc-paragraph">CompliVerse AI is an enterprise-grade, AI-native GRC platform that unifies audit management, compliance tracking, enterprise risk management, vulnerability management, IT asset governance, and evidence management into a single, multi-tenant platform.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-001.jpg"/></p><h2 class="doc-heading">Banking-Specific Capabilities</h2><h3 class="doc-heading">Multi-Framework Control Mapping</h3><p class="doc-paragraph">Upload SBP regulations, PCI DSS, ISO 27001, and any other frameworks your institution must track. CompliVerse AI's semantic similarity engine automatically identifies overlapping controls across all frameworks, creating unified control groups that eliminate duplicate mapping and evidence collection.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-002.jpg"/></p><p class="doc-paragraph"><strong>Banking Impact:</strong> A bank tracking SBP, PCI DSS, and ISO 27001 typically identifies 300+ cross-framework control mappings automatically — reducing mapping effort by 80%.</p><h3 class="doc-heading">Prior-Audit Intelligence for Examination Readiness</h3><p class="doc-paragraph">Regulatory examiners specifically scrutinize whether previously identified deficiencies have been remediated. CompliVerse AI automatically cross-references findings across all historical engagements, identifying recurring findings with severity trends.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-003.jpg"/></p><p class="doc-paragraph"><strong>Banking Impact:</strong> When an OCC examiner asks "Has this finding appeared before?" — the answer is instant, documented, and defensible.</p><h3 class="doc-heading">Statistical Sampling with Audit Trail</h3><p class="doc-paragraph">Built-in sampling with three methodologies (random, monetary unit, attribute) at configurable confidence levels. Sample calculations are linked directly to workpapers, providing the statistical rigor regulatory examiners expect.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-004.jpg"/></p><h3 class="doc-heading">Complete Audit Lifecycle</h3><p class="doc-paragraph">Annual audit planning with risk-based audit universe scoring, engagement management, fieldwork tracking, digital workpaper management, finding tracking with action plans, and automated notification system for deadlines and overdue items.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-005.jpg"/></p><h3 class="doc-heading">Risk Heat Maps for Board Reporting</h3><p class="doc-paragraph">Interactive risk heat maps with configurable likelihood and impact matrices, inherent and residual risk scoring, and department-level risk ownership. Board-ready risk dashboards available on demand — not after days of manual compilation.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-006.jpg"/></p><h3 class="doc-heading">Vulnerability Management with Compliance Context</h3><p class="doc-paragraph">Track vulnerabilities across the banking IT environment with CVE/CWE tracking, CVSS scoring, SLA compliance monitoring, and direct linkage to the controls and assets they affect.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-007.jpg"/></p><h3 class="doc-heading">IT Asset Governance</h3><p class="doc-paragraph">Complete asset inventory across core banking applications, ATM networks, payment infrastructure, cloud services, and third-party vendor systems. CIA triad ratings ensure data confidentiality obligations are tracked alongside availability requirements.</p><p class="doc-paragraph"><img src="./02a-Product-Brochure-Banking_assets/image-008.jpg"/></p><h2 class="doc-heading">Banking Compliance Frameworks Supported</h2><table class="doc-table"><tr><td><p class="doc-paragraph"><strong>Framework</strong></p></td><td><p class="doc-paragraph"><strong>Coverage</strong></p></td></tr><tr><td><p class="doc-paragraph">SBP (State Bank of Pakistan) Regulations</p></td><td><p class="doc-paragraph">Full framework upload and control mapping</p></td></tr><tr><td><p class="doc-paragraph">PCI DSS v4.0</p></td><td><p class="doc-paragraph">Full control library with evidence mapping</p></td></tr><tr><td><p class="doc-paragraph">ISO 27001:2022</p></td><td><p class="doc-paragraph">Full Annex A controls with cross-framework mapping</p></td></tr><tr><td><p class="doc-paragraph">SOX (Sarbanes-Oxley)</p></td><td><p class="doc-paragraph">Financial reporting control tracking</p></td></tr><tr><td><p class="doc-paragraph">OCC/FDIC Requirements</p></td><td><p class="doc-paragraph">Regulatory examination readiness</p></td></tr><tr><td><p class="doc-paragraph">Basel III</p></td><td><p class="doc-paragraph">Capital and liquidity requirement tracking</p></td></tr><tr><td><p class="doc-paragraph">GLBA</p></td><td><p class="doc-paragraph">Customer data protection controls</p></td></tr><tr><td><p class="doc-paragraph">BSA/AML</p></td><td><p class="doc-paragraph">Anti-money laundering compliance</p></td></tr><tr><td><p class="doc-paragraph">FFIEC CAT</p></td><td><p class="doc-paragraph">Cybersecurity assessment framework</p></td></tr></table><h2 class="doc-heading">Key Metrics for Banking</h2><table class="doc-table"><tr><td><p class="doc-paragraph"><strong>Metric</strong></p></td><td><p class="doc-paragraph"><strong>Impact</strong></p></td></tr><tr><td><p class="doc-paragraph">Examination preparation time</p></td><td><p class="doc-paragraph">50–65% reduction</p></td></tr><tr><td><p class="doc-paragraph">Cross-framework control mapping effort</p></td><td><p class="doc-paragraph">80–90% reduction</p></td></tr><tr><td><p class="doc-paragraph">Prior finding identification</p></td><td><p class="doc-paragraph">Automated (previously manual/ad hoc)</p></td></tr><tr><td><p class="doc-paragraph">Board report preparation</p></td><td><p class="doc-paragraph">From 3–5 days to same-day</p></td></tr><tr><td><p class="doc-paragraph">Annual GRC tooling cost</p></td><td><p class="doc-paragraph">40–60% reduction</p></td></tr></table><h2 class="doc-heading">Getting Started</h2><ol><li><strong>Discovery Call</strong> — Assess your current regulatory landscape and GRC tooling</li><li><strong>Framework Upload</strong> — Import SBP, PCI DSS, ISO 27001, and other framework controls</li><li><strong>AI Analysis</strong> — Run cross-framework mapping and identify coverage gaps</li><li><strong>Operational Rollout</strong> — Configure audit plans, migrate evidence, and go live</li></ol><p class="doc-paragraph">Typical time to first value: <strong>2–4 weeks</strong></p><p class="doc-paragraph"><strong>Schedule Your Demo:</strong> https://compliverse.ai</p><p class="doc-paragraph"><strong>Contact:</strong> Liztek@liztek.ca</p><p class="doc-paragraph"><em>CompliVerse AI — Governance. Risk. Compliance. Unified by Intelligence.</em></p></div>
+    </section>
+  </body>
+</html>

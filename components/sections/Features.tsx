@@ -133,7 +133,7 @@ export default function Features() {
                     {isActive && (
                       <motion.div
                         layoutId="activeFeatureBackground"
-                        className="absolute inset-0 border-[2px] border-green bg-green/5 shadow-[0_4px_30px_rgba(16,185,129,0.1)] rounded-[32px] pointer-events-none"
+                        className="absolute inset-0 border-[2px] border-green bg-green/5 shadow-[0_4px_30px_rgba(1,69,123,0.1)] rounded-[32px] pointer-events-none"
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
@@ -183,7 +183,7 @@ export default function Features() {
             <div className="mt-10 px-6 w-full flex justify-end">
               <Link
                 href="/features"
-                className="text-lg font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-4 rounded-full hover:bg-[#065F46]  hover:text-white transition-colors focus-visible:outline-none cursor-pointer "
+                className="text-lg font-semibold bg-transparent text-[#01457b] border border-[#01457b] px-6 py-4 rounded-full hover:bg-[#008abe]  hover:text-white transition-colors focus-visible:outline-none cursor-pointer "
               >
                 View All Features
               </Link>

@@ -7,13 +7,13 @@ export default function RequestDemoPage() {
       <div className="mx-auto max-w-5xl">
         <Link
           href="/"
-          className="inline-flex items-center gap-2 rounded-full  bg-white px-4 py-2 text-sm font-semibold text-green-dark hover:bg-green/5"
+          className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-green hover:bg-green/10"
         >
           <ArrowLeft className="h-4 w-4" />
           Back to Home
         </Link>
 
-        <div className="mt-5 rounded-[36px] border border-green-200/80 bg-white p-6 shadow-[0_16px_40px_-26px_rgba(6,95,70,0.3)] md:p-10">
+        <div className="mt-5 rounded-[36px] border border-green-200/80 bg-white p-6 shadow-[0_16px_40px_-26px_rgba(2,26,72,0.3)] md:p-10">
           <div className="mt-8 overflow-hidden rounded-2xl border border-green/20 bg-white">
             <iframe
               src="https://docs.google.com/forms/d/e/1FAIpQLSfVNCCZKPNS3a9hVsNmzDJ82mJywaDBucNVHFkXHPjHz-jKFg/viewform?embedded=true"

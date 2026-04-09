@@ -191,7 +191,7 @@ export default function HowItWorks() {
           className="text-center mt-16"
         >
           <a
-            href="#cta"
+            href="/#cta"
             className="font-body text-[15px] font-semibold text-white/60 hover:text-white transition-colors"
           >
             See a full walkthrough →

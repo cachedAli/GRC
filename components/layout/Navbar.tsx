@@ -10,9 +10,9 @@ import Link from "next/link";
 const navLinks = [
   { label: "Home", href: "/" },
   { label: "Features", href: "/features" },
-  { label: "Platform", href: "#tour" },
-  { label: "AI Agents", href: "#compare" },
-  { label: "Frameworks", href: "#frameworks" },
+  { label: "Platform", href: "/#tour" },
+  { label: "AI Agents", href: "/#compare" },
+  { label: "Frameworks", href: "/#frameworks" },
 ];
 
 export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
@@ -48,7 +48,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
       <nav
         className={`fixed top-0 left-0 right-0 w-[calc(100%_-_1rem)] md:w-[90%] mx-auto text-black mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
           showFullLogo
-            ? "bg-linear-to-r from-bg-mint via-teal-50 to-white backdrop-blur-md shadow-sm border border-[#E2E2DA]"
+            ? "bg-linear-to-r from-white via-teal-50 to-bg-mint backdrop-blur-md shadow-sm border border-[#E2E2DA]"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -70,7 +70,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                   <Image
                     src="/compliwerseIcon.png"
                     alt="Compliwerse Icon"
-                    width={45}
+                    width={55}
                     height={45}
                     priority
                   />
@@ -78,7 +78,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                   <Image
                     src="/compliwerseLogo.png"
                     alt="Compliwerse Logo"
-                    width={140}
+                    width={160}
                     height={40}
                     priority
                   />
@@ -98,7 +98,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="hidden md:flex items-center gap-1"
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link) =>
               link.href.startsWith("/") ? (
                 <Link
                   key={link.label}
@@ -115,8 +115,8 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                 >
                   {link.label}
                 </a>
-              )
-            ))}
+              ),
+            )}
           </motion.div>
 
           {/* Right — Login + Get Started */}
@@ -132,7 +132,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
           >
             <motion.a
               href="/request-demo"
-              className="text-sm font-noto-serif font-semibold bg-[#065F46] text-white px-6 py-2.5 rounded-full hover:bg-[#054c38] transition-colors focus-visible:outline-none "
+              className="text-sm font-noto-serif font-semibold bg-[#01457b] text-white px-6 py-2.5 rounded-full hover:bg-[#008abe] transition-colors focus-visible:outline-none "
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.15 }}
             >
@@ -140,7 +140,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             </motion.a>
             {/* <a
               href="#"
-              className={`text-sm font-semibold bg-transparent text-[#065F46] border border-[#065F46] px-6 py-2.5 rounded-full hover:bg-[#065F46] hover:text-white transition-colors focus-visible:outline-none cursor-pointer `}
+              className={`text-sm font-semibold bg-transparent text-[#01457b] border border-[#01457b] px-6 py-2.5 rounded-full hover:bg-[#008abe] hover:text-white transition-colors focus-visible:outline-none cursor-pointer `}
             >
               Login
             </a> */}
@@ -170,7 +170,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             exit={{ opacity: 0, y: -20 }}
             transition={{ duration: 0.3 }}
           >
-            {navLinks.map((link) => (
+            {navLinks.map((link) =>
               link.href.startsWith("/") ? (
                 <Link
                   key={link.label}
@@ -189,10 +189,10 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                 >
                   {link.label}
                 </a>
-              )
-            ))}
+              ),
+            )}
             <a
-              href="#cta"
+              href="/#cta"
               onClick={() => setMenuOpen(false)}
               className="font-body text-base font-semibold bg-[#2020CC] text-white px-8 py-3.5 rounded-full mt-4"
             >

@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>02b Product Brochure Healthcare (1)</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-green-dark: #021a48;
+        --color-green: #01457b;
+        --line: #9fc6df;
+        --surface: #ffffff;
+        --text-900: #0d2d52;
+        --text-700: #1f4d78;
+      }
+
+      * { box-sizing: border-box; }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text-900);
+        background: #ffffff;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 297mm;
+        min-height: 210mm;
+        margin: 10mm auto;
+        background: var(--surface);
+        padding: 11mm;
+        box-shadow: 0 10px 34px rgba(2, 26, 72, 0.16);
+        border: 1px solid #b9d5e8;
+        position: relative;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(1, 69, 123, 0.12);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .page > * { position: relative; z-index: 1; }
+
+      .brand-row {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12mm;
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+        margin-bottom: 6mm;
+      }
+
+      .brand-row img { height: 20mm; width: auto; }
+
+      .eyebrow {
+        font-size: 10.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--color-green);
+        font-weight: 700;
+      }
+
+      .title {
+        margin: 0 0 5mm;
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 30px;
+        line-height: 1.15;
+        color: var(--color-green-dark);
+      }
+
+      .doc-content { font-size: 14.6px; color: var(--text-700); }
+
+      .doc-content .doc-heading,
+      .doc-content h1,
+      .doc-content h2,
+      .doc-content h3,
+      .doc-content h4 {
+        font-family: Poppins, Inter, Arial, sans-serif;
+        color: var(--color-green-dark);
+        margin: 6mm 0 2.5mm;
+        line-height: 1.25;
+      }
+
+      .doc-content h1 { font-size: 23px; }
+      .doc-content h2 { font-size: 19px; }
+      .doc-content h3 { font-size: 16px; }
+
+      .doc-content p,
+      .doc-content li {
+        font-size: 14.6px;
+        line-height: 1.58;
+        color: var(--text-700);
+      }
+
+      .doc-content ul,
+      .doc-content ol { padding-left: 7mm; }
+
+      .doc-content .doc-table,
+      .doc-content table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 4mm 0 6mm;
+        background: #f8fcff;
+      }
+
+      .doc-content .doc-table th,
+      .doc-content .doc-table td,
+      .doc-content table th,
+      .doc-content table td {
+        border: 1px solid var(--line);
+        padding: 2.2mm;
+        vertical-align: top;
+        font-size: 13.8px;
+        color: var(--text-700);
+      }
+
+      .doc-content .doc-table th,
+      .doc-content table th {
+        background: #e4f1fa;
+        color: var(--color-green-dark);
+        font-weight: 700;
+      }
+
+      .doc-content img {
+        max-width: 100%;
+        height: auto;
+        border: 1px solid #c5dfef;
+        margin: 3mm 0;
+      }
+    </style>
+  </head>
+  <body>
+    <section class="page">
+      <div class="brand-row">
+        <img src="./liztek-logo.png" alt="LIZTEK" />
+        <div class="eyebrow">Executive Product Brief | 2026</div>
+      </div>
+      <h1 class="title">02b Product Brochure Healthcare (1)</h1>
+      <div class="doc-content"><h1 class="doc-heading">ComplyVerse AI for Healthcare &amp; Life Sciences</h1><h3 class="doc-heading">Governance. Risk. Compliance. Unified by Intelligence.</h3><h2 class="doc-heading">The Healthcare GRC Challenge</h2><p class="doc-paragraph">Healthcare organizations operate at the intersection of patient safety, data privacy, and regulatory compliance. A multi-facility health system simultaneously manages obligations across HIPAA (Privacy Rule, Security Rule, Breach Notification Rule), JCI (Joint Commission International) accreditation requirements, FDA regulations for life sciences, state privacy laws, and CMS Conditions of Participation.</p><p class="doc-paragraph">The challenge is compounded by the healthcare IT environment: electronic health records, clinical devices (IoT/IoMT), telehealth platforms, imaging systems, patient portals, and extensive third-party vendor ecosystems — all creating a broad attack surface that must be governed, monitored, and documented.</p><h2 class="doc-heading">Platform Overview</h2><p class="doc-paragraph">ComplyVerse AI is an enterprise-grade, AI-native GRC platform that unifies audit management, compliance tracking, enterprise risk management, vulnerability management, IT asset governance, and evidence management into a single, multi-tenant platform.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-001.jpg"/></p><h2 class="doc-heading">Healthcare-Specific Capabilities</h2><h3 class="doc-heading">HIPAA-JCI Unified Control Mapping</h3><p class="doc-paragraph">Upload HIPAA safeguards and JCI accreditation standards. ComplyVerse AI's AI engine automatically identifies overlapping requirements across both frameworks, creating unified control groups. One evidence artifact satisfies both HIPAA and JCI requirements simultaneously, dramatically reducing the burden of dual-compliance programs.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-002.jpg"/></p><p class="doc-paragraph"><strong>Healthcare Impact:</strong> Organizations managing both HIPAA and JCI typically identify 200+ cross-framework control relationships automatically, eliminating duplicate evidence collection and reducing certification preparation by 60–70%.</p><h3 class="doc-heading">Evidence Vault for Continuous Accreditation Readiness</h3><p class="doc-paragraph">Centralize all compliance evidence — access reviews, security configurations, training records, incident response documentation, risk assessments, and policy acknowledgments — in a single vault with version control and approval workflows. When the JCI surveyor or HIPAA auditor arrives, evidence is organized, current, and traceable to specific controls.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-003.jpg"/></p><p class="doc-paragraph"><strong>Healthcare Impact:</strong> Evidence retrieval time drops from 2–4 hours per request to under 5 minutes. Continuous readiness replaces seasonal scrambles.</p><h3 class="doc-heading">Clinical IT Asset Governance</h3><p class="doc-paragraph">Manage the full healthcare IT asset inventory — from EHR systems and clinical devices to cloud services and third-party vendors. CIA triad ratings are critical in healthcare where patient data confidentiality and system availability directly impact care delivery.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-004.jpg"/></p><p class="doc-paragraph"><strong>Healthcare Impact:</strong> Assets with current risk assessments increase from 30–40% to 85%+. Assessment aging analysis identifies which clinical systems haven't been reviewed recently.</p><h3 class="doc-heading">Vulnerability Management with Compensating Controls</h3><p class="doc-paragraph">Track vulnerabilities across the healthcare IT environment with SLA-based remediation timelines. For medical devices and legacy clinical systems where patching is not immediately possible, document compensating controls and risk acceptance decisions — all linked to the relevant HIPAA safeguards and JCI requirements.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-005.jpg"/></p><h3 class="doc-heading">Department-Level Compliance Coordination</h3><p class="doc-paragraph">Healthcare compliance requires coordination across clinical departments, IT, human resources, facilities, legal, and administration. ComplyVerse AI's role-based access and department-level assignment ensure the right people see the right obligations and evidence requirements.</p><h3 class="doc-heading">Audit Management for Healthcare Internal Audit</h3><p class="doc-paragraph">Full audit lifecycle management for healthcare-specific engagements: HIPAA security risk assessments, clinical department reviews, IT general controls testing, and vendor management audits. AI-powered prior-audit cross-referencing identifies recurring compliance gaps that require systemic remediation.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-006.jpg"/></p><h3 class="doc-heading">Enterprise Risk Management</h3><p class="doc-paragraph">Interactive risk heat maps covering clinical, operational, IT, and regulatory risk categories. Department-level risk ownership ensures clinical leaders, IT directors, and compliance officers are accountable for their risk domains.</p><p class="doc-paragraph"><img src="./02b-Product-Brochure-Healthcare (1)_assets/image-007.jpg"/></p><h2 class="doc-heading">Healthcare Compliance Frameworks Supported</h2><table class="doc-table"><tr><td><p class="doc-paragraph"><strong>Framework</strong></p></td><td><p class="doc-paragraph"><strong>Coverage</strong></p></td></tr><tr><td><p class="doc-paragraph">HIPAA Privacy Rule</p></td><td><p class="doc-paragraph">Full safeguard tracking with evidence mapping</p></td></tr><tr><td><p class="doc-paragraph">HIPAA Security Rule</p></td><td><p class="doc-paragraph">Administrative, physical, and technical safeguards</p></td></tr><tr><td><p class="doc-paragraph">HIPAA Breach Notification Rule</p></td><td><p class="doc-paragraph">Incident documentation and notification tracking</p></td></tr><tr><td><p class="doc-paragraph">JCI Accreditation Standards</p></td><td><p class="doc-paragraph">Full standard upload and control mapping</p></td></tr><tr><td><p class="doc-paragraph">FDA 21 CFR Part 11</p></td><td><p class="doc-paragraph">Electronic records and signatures (life sciences)</p></td></tr><tr><td><p class="doc-paragraph">HITECH Act</p></td><td><p class="doc-paragraph">Enforcement and breach notification</p></td></tr><tr><td><p class="doc-paragraph">CMS Conditions of Participation</p></td><td><p class="doc-paragraph">Medicare/Medicaid compliance</p></td></tr><tr><td><p class="doc-paragraph">HITRUST CSF</p></td><td><p class="doc-paragraph">Full framework with HIPAA cross-mapping</p></td></tr><tr><td><p class="doc-paragraph">State Privacy Laws</p></td><td><p class="doc-paragraph">Upload and map state-specific requirements</p></td></tr><tr><td><p class="doc-paragraph">ISO 27001</p></td><td><p class="doc-paragraph">Information security management overlay</p></td></tr></table><h2 class="doc-heading">Key Metrics for Healthcare</h2><table class="doc-table"><tr><td><p class="doc-paragraph"><strong>Metric</strong></p></td><td><p class="doc-paragraph"><strong>Impact</strong></p></td></tr><tr><td><p class="doc-paragraph">JCI/HIPAA evidence preparation time</p></td><td><p class="doc-paragraph">60–70% reduction</p></td></tr><tr><td><p class="doc-paragraph">Controls with evidence coverage</p></td><td><p class="doc-paragraph">From 60–70% to 90%+</p></td></tr><tr><td><p class="doc-paragraph">IT assets with current assessments</p></td><td><p class="doc-paragraph">From 30–40% to 85%+</p></td></tr><tr><td><p class="doc-paragraph">Evidence retrieval time (per request)</p></td><td><p class="doc-paragraph">From 2–4 hours to under 5 minutes</p></td></tr><tr><td><p class="doc-paragraph">Cross-framework evidence duplication</p></td><td><p class="doc-paragraph">Eliminated (unified mapping)</p></td></tr></table><h2 class="doc-heading">Getting Started</h2><ol><li><strong>Discovery Call</strong> — Assess your current compliance landscape across HIPAA, JCI, and other frameworks</li><li><strong>Framework Upload</strong> — Import HIPAA safeguards, JCI standards, and applicable regulations</li><li><strong>Asset Import</strong> — Bulk-import IT asset inventory with CIA ratings via CSV</li><li><strong>Evidence Migration</strong> — Migrate existing evidence library into the unified vault</li><li><strong>AI Analysis</strong> — Run cross-framework mapping and identify coverage gaps</li></ol><p class="doc-paragraph">Typical time to first value: <strong>3–5 weeks</strong></p><p class="doc-paragraph"><strong>Schedule Your Demo:</strong> [demo-link]</p><p class="doc-paragraph"><strong>Contact:</strong> info@[company-domain].com</p><p class="doc-paragraph"><em>ComplyVerse AI — Governance. Risk. Compliance. Unified by Intelligence.</em></p></div>
+    </section>
+  </body>
+</html>

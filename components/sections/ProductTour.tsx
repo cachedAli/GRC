@@ -65,22 +65,22 @@ const tourSlides: TourSlide[] = [
         Icon: BarChart3,
         title: "10+ Dashboard Tabs",
         desc: "Overview, Risk, Compliance, Governance, Incidents, Control Testing, and more",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: MapIcon,
         title: "Interactive Heatmaps",
         desc: "Click-through risk visualization with drill-down to individual entries",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
       {
         Icon: Zap,
         title: "Real-Time Data",
         desc: "No more quarterly snapshots — live metrics that update as your program evolves",
-        bg: "#ECFDF5",
-        fg: "#059669",
+        bg: "#e8f4ff",
+        fg: "#008abe",
       },
     ],
   },
@@ -96,22 +96,22 @@ const tourSlides: TourSlide[] = [
         Icon: Target,
         title: "Risk Register & Scoring",
         desc: "Inherent/residual scoring, treatment plans, owner assignment, closure workflows",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: PieChart,
         title: "Advanced Analytics",
         desc: "Bow-tie diagrams, scenario modeling, risk aggregation, and AI narratives",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
       {
         Icon: TrendingUp,
         title: "KRI Monitoring",
         desc: "Configurable thresholds, trend analysis, automated alerts when indicators breach tolerance",
-        bg: "#D1FAE5",
-        fg: "#047857",
+        bg: "#d8ebfa",
+        fg: "#01457b",
       },
     ],
   },
@@ -127,22 +127,22 @@ const tourSlides: TourSlide[] = [
         Icon: Navigation,
         title: "Certification Journeys",
         desc: "Step-by-step roadmaps with milestones, task tracking, and completion status",
-        bg: "#ECFDF5",
-        fg: "#059669",
+        bg: "#e8f4ff",
+        fg: "#008abe",
       },
       {
         Icon: ClipboardCheck,
         title: "Assessment Workflows",
         desc: "Control-level testing with evidence upload, scoring, and multi-tier approvals",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: ArrowLeftRight,
         title: "Cross-Framework Mapping",
         desc: "Implement once, satisfy multiple regulators. AI finds control overlaps automatically",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
     ],
   },
@@ -158,22 +158,22 @@ const tourSlides: TourSlide[] = [
         Icon: FileText,
         title: "Document Lifecycle",
         desc: "Draft → Review → Approve → Publish → Expire with version control and audit trail",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: Users,
         title: "Committee Management",
         desc: "Board meetings, agendas, actions, attestation campaigns, regulatory feeds",
-        bg: "#D1FAE5",
-        fg: "#047857",
+        bg: "#d8ebfa",
+        fg: "#01457b",
       },
       {
         Icon: Scale,
         title: "Exception Management",
         desc: "Policy exception workflow with risk assessment, compensating controls, and approvals",
-        bg: "#ECFDF5",
-        fg: "#059669",
+        bg: "#e8f4ff",
+        fg: "#008abe",
       },
     ],
   },
@@ -189,22 +189,22 @@ const tourSlides: TourSlide[] = [
         Icon: Globe,
         title: "Audit Universe & Planning",
         desc: "Define auditable entities, create risk-based audit plans, allocate resources",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: RefreshCw,
         title: "Continuous Monitoring",
         desc: "Automated control tests with real-time alerting and CCM dashboards",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
       {
         Icon: UserCheck,
         title: "Skills & Capacity",
         desc: "Auditor competency tracking, certification management, and workload planning",
-        bg: "#ECFDF5",
-        fg: "#059669",
+        bg: "#e8f4ff",
+        fg: "#008abe",
       },
     ],
   },
@@ -220,22 +220,22 @@ const tourSlides: TourSlide[] = [
         Icon: Brain,
         title: "Intelligent Scoring",
         desc: "Relevance, adequacy, confidence, and audit readiness — scored automatically",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
       {
         Icon: Tag,
         title: "Clause-Level Mapping",
         desc: "Matched text snippets, rationale, coverage types — defensible in audit",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: Package,
         title: "Audit Packages",
         desc: "Bundle, finalize, export evidence with retention policies and legal hold",
-        bg: "#ECFDF5",
-        fg: "#059669",
+        bg: "#e8f4ff",
+        fg: "#008abe",
       },
     ],
   },
@@ -251,22 +251,22 @@ const tourSlides: TourSlide[] = [
         Icon: Link2,
         title: "Cross-Framework Mapping",
         desc: "AI-driven similarity detection with confidence scores and reasoning",
-        bg: "#ECFDF5",
-        fg: "#065F46",
+        bg: "#e8f4ff",
+        fg: "#021a48",
       },
       {
         Icon: ScanSearch,
         title: "Gap Analysis",
         desc: "Identify coverage gaps with priority recommendations and coverage visualization",
-        bg: "#D1FAE5",
-        fg: "#047857",
+        bg: "#d8ebfa",
+        fg: "#01457b",
       },
       {
         Icon: GitBranch,
         title: "Control Inheritance",
         desc: "Parent-child relationships with coverage percentages and conditional logic",
-        bg: "#ECFEF8",
-        fg: "#0F766E",
+        bg: "#edf8ff",
+        fg: "#01457b",
       },
     ],
   },
@@ -296,13 +296,13 @@ export default function ProductTour() {
       className="relative rounded-xl py-20 md:py-28 px-4 sm:px-6 bg-white overflow-hidden"
     >
       {/* Background: subtle gradient */}
-      <div className="absolute inset-0 bg-linear-to-b from-[#ECFDF5] via-white to-white pointer-events-none" />
+      <div className="absolute inset-0 bg-linear-to-b from-[#e8f4ff] via-white to-white pointer-events-none" />
       {/* Grid pattern */}
       <div
         className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
           backgroundImage:
-            "linear-gradient(#065F46 1px, transparent 1px), linear-gradient(90deg, #065F46 1px, transparent 1px)",
+            "linear-gradient(#021a48 1px, transparent 1px), linear-gradient(90deg, #021a48 1px, transparent 1px)",
           backgroundSize: "40px 40px",
         }}
       />
@@ -319,9 +319,9 @@ export default function ProductTour() {
           }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 bg-[#ECFDF5] border border-[#A7F3D0] rounded-full px-4 py-1.5 mb-5">
-            <span className="w-1.5 h-1.5 rounded-full bg-[#065F46] animate-pulse" />
-            <span className="font-mono text-xs text-[#065F46] font-semibold uppercase tracking-widest">
+          <div className="inline-flex items-center gap-2 bg-[#e8f4ff] border border-[#97cadb] rounded-full px-4 py-1.5 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#021a48] animate-pulse" />
+            <span className="font-mono text-xs text-[#021a48] font-semibold uppercase tracking-widest">
               Platform Tour
             </span>
           </div>
@@ -351,7 +351,7 @@ export default function ProductTour() {
                 <TabIcon
                   size={14}
                   className={
-                    activeIdx === i ? "text-[#065F46]" : "text-[#9CA3AF]"
+                    activeIdx === i ? "text-[#021a48]" : "text-[#9CA3AF]"
                   }
                 />
                 {slide.tab}
@@ -441,11 +441,11 @@ export default function ProductTour() {
                 className="absolute -inset-3 rounded-3xl opacity-25 blur-2xl pointer-events-none"
                 style={{
                   background:
-                    "radial-gradient(ellipse at 50% 60%, #10B981 0%, transparent 70%)",
+                    "radial-gradient(ellipse at 50% 60%, #01457b 0%, transparent 70%)",
                 }}
               />
               {/* Browser frame */}
-              <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(16,185,129,0.2)] border border-[#E2E2DA] bg-white">
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(1,69,123,0.2)] border border-[#E2E2DA] bg-white">
                 {/* Browser chrome */}
                 <div className="flex items-center gap-2 px-4 py-3 bg-[#F8FAFC] border-b border-[#E8EAEF]">
                   <div className="flex gap-1.5">
@@ -481,12 +481,12 @@ export default function ProductTour() {
               className="flex-1 h-1 rounded-full overflow-hidden bg-[#E2E2DA] transition-all duration-300"
             >
               {activeIdx === i && (
-                <div className="h-full bg-[#10B981] rounded-full w-full" />
+                <div className="h-full bg-[#01457b] rounded-full w-full" />
               )}
               {activeIdx !== i && (
                 <div
                   className={`h-full rounded-full transition-all duration-300 ${
-                    i < activeIdx ? "w-full bg-[#10B981]/30" : "w-0"
+                    i < activeIdx ? "w-full bg-[#01457b]/30" : "w-0"
                   }`}
                 />
               )}

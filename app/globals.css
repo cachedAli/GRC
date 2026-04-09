@@ -7,10 +7,20 @@
   --font-noto-serif: "Noto Serif", serif;
   --font-exo: "Exo", sans-serif;
 
-  --color-bg-mint: #f0fdfb;
-  --color-green-dark: #065f46;
-  --color-green: #10b981;
-  --color-teal: #14b8a6;
+  --color-bg-mint: #97cadb;
+  --color-green-dark: #021a48;
+  --color-green: #01457b;
+  --color-teal: #008abe;
+  --color-green-50: #eef7ff;
+  --color-green-100: #d8ebfa;
+  --color-green-200: #c2def2;
+  --color-green-400: #4f9ed2;
+  --color-green-600: #008abe;
+  --color-green-900: #021a48;
+
+  --color-teal-50: #eef8ff;
+  --color-teal-900: #01457b;
+
   --color-muted: #64748b;
   --color-bg: #fbfdfc;
 
@@ -25,8 +35,7 @@
   --color-fg-muted: #8a94aa;
   --color-fg-dimmed: #4a5270;
 
-  --color-teal: #1ed4b0;
-  --color-teal-dim: #0f6b59;
+  --color-teal-dim: #01457b;
 
   --color-amber: #e8a030;
 
@@ -42,7 +51,7 @@
   }
 
   body {
-    background-color: #ffffff;
+    background-color: var(--color-bg);
     color: #0a0a0a;
   }
 
@@ -58,13 +67,13 @@
 
 @layer utilities {
   .highlight-purple {
-    background-color: #8b8fe8;
+    background-color: #c2def2;
     border-radius: 10px;
     padding: 2px 12px;
   }
 
   .highlight-lime {
-    background-color: #b8ff00;
+    background-color: #97cadb;
     border-radius: 10px;
     padding: 2px 12px;
   }

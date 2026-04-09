@@ -31,7 +31,7 @@ export default function HeroStrip() {
             {/* CTA pill */}
             <div className="flex flex-wrap items-center py-6 gap-3 md:pr-10">
               <motion.a
-                href="#cta"
+                href="/#cta"
                 className="font-body font-bold text-sm bg-[#2020CC] text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-widest whitespace-nowrap hover:bg-[#1818a8] transition-colors"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.15 }}
@@ -39,7 +39,7 @@ export default function HeroStrip() {
                 Get Started
               </motion.a>
               <motion.a
-                href="#tour"
+                href="/#tour"
                 className="font-body font-bold text-sm border border-[#E2E2DA] text-[#0A0A0A] px-6 sm:px-7 py-3.5 sm:py-4 rounded-full tracking-widest whitespace-nowrap hover:bg-[#F5F5F0] transition-colors hidden lg:flex items-center gap-2"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.15 }}
