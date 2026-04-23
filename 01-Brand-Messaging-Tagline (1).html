@@ -1,0 +1,450 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>01 Brand Messaging Tagline</title>
+    <style>
+      :root {
+        --brand-blue: #01457b;
+        --rule: #d3e7f4;
+        --table-line: #9fc6df;
+        --table-head: #e4f1fa;
+        --watermark: rgba(1, 69, 123, 0.12);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      @page {
+        size: 841.89pt 595.28pt;
+        margin: 0;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: #ffffff;
+        font-family: Arial, Helvetica, sans-serif;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .page-footer {
+        border-top: 2px solid #d2e6f3;
+        margin-top: 7mm;
+        padding-top: 4mm;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .page-footer-logo {
+        height: 12mm;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .module-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4.5mm;
+      }
+
+      .page {
+        width: 841.89pt;
+        height: 595.28pt;
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        page-break-after: always;
+        break-after: page;
+        background: #ffffff;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+        break-after: auto;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        left: 50%;
+        top: 52%;
+        transform: translate(-50%, -50%) rotate(24deg);
+        font-size: 52pt;
+        font-weight: 800;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--watermark);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 0;
+      }
+
+      .layer {
+        position: relative;
+        z-index: 1;
+      }
+
+      .header {
+        padding: 7pt 31pt 0;
+      }
+
+      .header--cover {
+        display: flex;
+        justify-content: space-between;
+        grid-template-columns: 1fr 1fr 1fr;
+        align-items: center;
+      }
+
+      .header--inner {
+        display: flex;
+        align-items: start;
+        justify-content: space-between;
+      }
+
+      .logo {
+        width: auto;
+        display: block;
+      }
+
+      .logo--liztek-lg {
+        height: 41.1pt;
+        justify-self: start;
+      }
+
+      .logo--compliverse-lg {
+        height: 34.7pt;
+        justify-self: center;
+      }
+
+      .logo--sm {
+        height: 18.4pt;
+      }
+
+      .eyebrow {
+        font-size: 7.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--brand-700);
+        font-weight: 700;
+      }
+
+      .rule {
+        margin: 10pt 31pt 0;
+        border: 0;
+        border-top: 1pt solid var(--rule);
+      }
+
+      .content {
+        padding: 16pt 37pt 0;
+        color: #000000;
+      }
+
+      .tagline {
+        margin: 12pt 0 18pt;
+        text-align: center;
+        font-size: 14pt;
+        font-weight: 700;
+      }
+
+      h2 {
+        margin: 0 0 12pt;
+        font-size: 14pt;
+        font-weight: 700;
+      }
+
+      h3 {
+        margin: 12pt 0 6pt;
+        font-size: 12pt;
+        font-weight: 700;
+      }
+
+      p {
+        margin: 0 0 12pt;
+        font-size: 10.2pt;
+        line-height: 1.35;
+      }
+
+      .quote {
+        margin-bottom: 20pt;
+      }
+
+      .pillars h3 {
+        margin-top: 14pt;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 10pt 0 16pt;
+        font-size: 10.2pt;
+        line-height: 1.3;
+      }
+
+      th,
+      td {
+        border: 1pt solid var(--table-line);
+        padding: 6pt;
+        vertical-align: top;
+      }
+
+      th {
+        background: var(--table-head);
+        font-weight: 400;
+        text-align: left;
+      }
+
+      .contact p {
+        margin: 0 0 4pt;
+      }
+
+      .contact strong {
+        font-weight: 700;
+      }
+
+      @media print {
+        body {
+          margin: 0;
+        }
+
+        .page {
+          margin: 0;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Page 1 -->
+    <section class="page" aria-label="01 Brand Messaging Tagline - Page 1">
+      <div class="layer">
+        <header class="header header--cover">
+          <img
+            class="logo logo--liztek-lg"
+            src="./liztek-logo.png"
+            alt="Liztek"
+          />
+          <div style="text-align: center">
+            <img
+              alt="CompliVerse AI"
+              class="brand-center-logo"
+              style="height: 13mm"
+              src="compliwerseLogo.png"
+            />
+            <div
+              class="eyebrow"
+              style="margin-left: 100px; position: absolute; top: 65px"
+            >
+              Executive Product Brief | 2026
+            </div>
+          </div>
+        </header>
+        <hr class="rule" />
+
+        <div class="content">
+          <div class="tagline">
+            Governance. Risk. Compliance. Unified by Intelligence
+          </div>
+
+          <h2>About CompliVerse</h2>
+          <p class="quote" style="margin-top: 20px">
+            CompliVerse AI is the first truly unified governance, risk, and compliance platform purpose-built for the modern enterprise. By
+            combining deep audit management, enterprise risk management,
+            regulatory compliance tracking, vulnerability management, IT asset
+            governance, and AI-powered control mapping into a single
+            multi-tenant platform, CompliVerse AI eliminates fragmentation, manual overhead, and blind spots that define legacy GRC tooling.
+            Where competitors offer modules stitched together through
+            acquisitions, CompliVerse AI delivers a natively integrated
+            experience—with artificial intelligence woven into every workflow—enabling organizations to move from reactive compliance to
+            proactive assurance.
+          </p>
+
+          <h2>Value Proposition</h2>
+          <p class="quote" style="margin-top: 24px">
+            CompliVerse AI gives you a single pane of glass across compliance,
+            risk, audit, and vulnerability management, with AI that surfaces
+            what matters before it becomes a finding for the CISO/CRO
+          </p>
+
+          <h3>For the Head of Internal Audit</h3>
+          <p class="quote" style="margin-top: 20px">
+            "Plan engagements, manage fieldwork, track findings with prior audit cross-referencing, and generate workpapers—all in one platform.
+            AI-powered sampling and risk scoring eliminate the spreadsheet
+            shuffle."
+          </p>
+
+          <h3>For the Compliance Officer</h3>
+          <p class="quote" style="margin-top: 20px">
+            "Automatically map controls across frameworks. Identify gaps before
+            regulators do. Track evidence, certifications, and remediation
+            timelines in real time."
+          </p>
+
+          <h3>For the IT / Security Director</h3>
+          <p class="quote" style="margin-top: 20px">
+            "Manage your entire IT asset inventory with CIA ratings,
+            vulnerability tracking with SLA compliance, and information security
+            project management, integrated into the GRC workflows that depend on them."
+          </p>
+
+          <h3>For the CFO / CEO</h3>
+          <p class="quote" style="margin-top: 20px">
+            "Reduce GRC tool sprawl, cut audit preparation time by up to 60%, and gain board-ready risk dashboards—all at a fraction of the cost of legacy platforms."
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 2 -->
+    <section class="page" aria-label="01 Brand Messaging Tagline - Page 2">
+      <div class="layer">
+        <header class="header header--inner">
+          <img class="logo logo--sm" src="./liztek-logo." alt="" />
+          <img
+            class="logo logo--sm"
+            src="./compliwerseLogo.png"
+            alt="CompliVerse AI"
+          />
+        </header>
+        <hr class="rule" />
+
+        <div class="content pillars">
+          <h2 style="margin-bottom: 30px">Core Messaging Pillars</h2>
+
+          <h3>Truly Unified</h3>
+          <p class="quote" style="margin-top: 20px">
+            Unlike competitors that bolt together acquired modules, CompliVerse
+            AI was architected as one platform from the ground up. Every module,
+            audit, compliance, ERM, vulnerability management, asset governance,
+            and evidence management, shares the same data model, the same user
+            experience, and the same AI engine.
+          </p>
+
+          <h3>AI-Native, Not Bolted-On AI</h3>
+          <p class="quote" style="margin-top: 20px">
+            Artificial intelligence is not a feature add-on. It powers control
+            mapping across frameworks, auto-generates risk assessments, identifies recurring audit findings, calculates statistical samples, and surfaces compliance gaps—all without leaving the platform.
+          </p>
+
+          <h3>Enterprise-Grade, SMB-Friendly</h3>
+          <p class="quote" style="margin-top: 20px">
+            Multi-tenant architecture with role-based access control, tenant
+            isolation, and department-level permissions. Sophisticated enough
+            for Fortune 500 programs, intuitive enough for a 200-person fintech.
+          </p>
+
+          <h3>Evidence-Centric</h3>
+          <p class="quote" style="margin-top: 20px">
+            Every control, finding, risk, and compliance obligation links
+            directly to evidence. The unified evidence vault supports version
+            control, review workflows, and automated evidence mapping, ensuring
+            audit-readiness is continuous, not seasonal.
+          </p>
+
+          <h3>Actionable Intelligence</h3>
+          <p class="quote" style="margin-top: 20px">
+            Dashboards are not vanity metrics. Every visualization, from the
+            risk heat map to the compliance coverage matrix to the vulnerability
+            aging analysis, is designed to drive decisions, not just display
+            data.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Page 3 -->
+    <section class="page" aria-label="01 Brand Messaging Tagline - Page 3">
+      <div class="layer">
+        <header class="header header--inner">
+          <img class="logo logo--sm" src="./liztek-logo." alt="" />
+          <img
+            class="logo logo--sm"
+            src="./compliwerseLogo.png"
+            alt="CompliVerse AI"
+          />
+        </header>
+        <hr class="rule" />
+
+        <div class="content">
+          <h2 style="margin-bottom: 30px">Competitive Differentiators</h2>
+          <table aria-label="Competitive Differentiators">
+            <thead>
+              <tr>
+                <th scope="col">Differentiator</th>
+                <th scope="col">CompliVerse AI</th>
+                <th scope="col">Typical Competitor</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Architecture</td>
+                <td>Natively unified, single codebase</td>
+                <td>Acquired modules, multiple databases</td>
+              </tr>
+              <tr>
+                <td>AI Integration</td>
+                <td>Embedded in every workflow</td>
+                <td>Separate AI add-on or limited to one module</td>
+              </tr>
+              <tr>
+                <td>Control Mapping</td>
+                <td>
+                  Automated cross-framework mapping with similarity<br />analysis
+                </td>
+                <td>Manual mapping or single-framework only</td>
+              </tr>
+              <tr>
+                <td>Prior Audit Intelligence</td>
+                <td>
+                  AI-powered recurring finding detection across<br />engagements
+                </td>
+                <td>Manual cross-referencing</td>
+              </tr>
+              <tr>
+                <td>Time to Value</td>
+                <td>Days to configure, not months</td>
+                <td>6–18 month implementation typical</td>
+              </tr>
+              <tr>
+                <td>Pricing</td>
+                <td>Transparent SaaS tiers</td>
+                <td>Custom quotes, hidden professional services fees</td>
+              </tr>
+              <tr>
+                <td>Evidence Management</td>
+                <td>Unified vault with automated control linkage</td>
+                <td>Separate tool or basic file uploads</td>
+              </tr>
+              <tr>
+                <td>Vulnerability Integration</td>
+                <td>Native vulnerability register with SLA tracking</td>
+                <td>Requires third-party integration</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <h3>Why CompliVerse</h3>
+          <p class="quote" style="margin-top: 20px; text-align: justify">
+            Enterprise GRC has long been fragmented and inefficient. Organizations typically rely on separate tools for audit management, compliance tracking, risk assessment, vulnerability management, and IT asset governance, often spending months reconciling data across these disconnected systems.
+<br/>
+CompliVerse AI addresses this challenge with an AI-native platform that unifies the entire GRC lifecycle. From audit planning and fieldwork execution to cross-framework control mapping, evidence management, and real-time risk dashboards, CompliVerse delivers a fully integrated experience. Its AI capabilities go beyond report generation, identifying recurring findings across audit engagements, optimizing sample sizes, automatically mapping controls across regulatory frameworks, and proactively surfacing compliance gaps before they escalate into regulatory actions.
+
+
+          </p>
+
+          <div class="contact">
+            <p><strong>Schedule Your Demo:</strong> https://compliverse.ai</p>
+            <p><strong>Contact:</strong> Liztek@liztek.ca</p>
+          </div>
+        </div>
+      </div>
+      <div class="page-footer">
+        <img alt="LIZTEK" class="page-footer-logo" src="liztek-logo.png" />
+      </div>
+    </section>
+  </body>
+</html>

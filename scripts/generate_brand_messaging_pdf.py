@@ -10,7 +10,7 @@ from reportlab.lib.styles import ParagraphStyle, getSampleStyleSheet
 from reportlab.lib.units import mm
 from reportlab.lib.utils import ImageReader
 from reportlab.pdfbase import pdfmetrics
-from reportlab.platypus import ListFlowable, ListItem, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
+from reportlab.platypus import KeepTogether, ListFlowable, ListItem, Paragraph, SimpleDocTemplate, Spacer, Table, TableStyle
 
 
 def to_inline_html(node: Tag) -> str:
@@ -27,26 +27,23 @@ def main() -> None:
     src = workspace / '01-Brand-Messaging-Tagline.html'
     dst = workspace / '01-Brand-Messaging-Tagline.pdf'
     logo = workspace / 'liztek-logo.png'
+    right_logo = workspace / 'public' / 'compliwerseLogo.png'
 
     html = src.read_text(encoding='utf-8')
     soup = BeautifulSoup(html, 'html.parser')
 
-    title_node = soup.select_one('h1.title')
-    title = title_node.get_text(' ', strip=True) if title_node else src.stem
     content = soup.select_one('.doc-content') or soup.body
 
     styles = getSampleStyleSheet()
     styles.add(ParagraphStyle(name='BodyCV', parent=styles['BodyText'], fontName='Helvetica', fontSize=10.2, leading=14, textColor=colors.black))
     styles.add(ParagraphStyle(name='H1CV', parent=styles['Heading1'], fontName='Helvetica-Bold', fontSize=18, leading=22, textColor=colors.black, spaceBefore=10, spaceAfter=6))
-    styles.add(ParagraphStyle(name='H2CV', parent=styles['Heading2'], fontName='Helvetica-Bold', fontSize=14, leading=18, textColor=colors.black, spaceBefore=8, spaceAfter=5))
+    styles.add(ParagraphStyle(name='H2CV', parent=styles['Heading2'], fontName='Helvetica-Bold', fontSize=14, leading=18, textColor=colors.black, spaceBefore=8, spaceAfter=5, keepWithNext=1))
     styles.add(ParagraphStyle(name='H3CV', parent=styles['Heading3'], fontName='Helvetica-Bold', fontSize=12, leading=16, textColor=colors.black, spaceBefore=6, spaceAfter=4))
     styles.add(ParagraphStyle(name='TaglineCV', parent=styles['Heading2'], fontName='Helvetica-Bold', fontSize=14, leading=18, alignment=1, textColor=colors.black, spaceBefore=0, spaceAfter=6))
 
     story = [
         Spacer(1, 6 * mm),
-        Paragraph('Brand Messaging & Tagline Foundation', styles['TaglineCV']),
-        Spacer(1, 2 * mm),
-        Paragraph(title, styles['H1CV']),
+        Paragraph('Governance. Risk. Compliance. Unified by Intelligence', styles['TaglineCV']),
         Spacer(1, 4 * mm),
     ]
 
@@ -64,7 +61,9 @@ def main() -> None:
         if tag == 'h1':
             story.append(Paragraph(plain_text(child), styles['H1CV']))
         elif tag == 'h2':
-            story.append(Paragraph(plain_text(child), styles['H2CV']))
+            heading_text = plain_text(child)
+            if heading_text != 'Competitive Differentiators':
+                story.append(Paragraph(heading_text, styles['H2CV']))
         elif tag in {'h3', 'h4'}:
             story.append(Paragraph(plain_text(child), styles['H3CV']))
         elif tag == 'p':
@@ -99,14 +98,23 @@ def main() -> None:
                     ('TOPPADDING', (0, 0), (-1, -1), 3),
                     ('BOTTOMPADDING', (0, 0), (-1, -1), 3),
                 ]))
-                story.append(tbl)
+                story.append(KeepTogether([
+                    Paragraph('Competitive Differentiators', styles['H2CV']),
+                    Spacer(1, 1.8 * mm),
+                    tbl,
+                ]))
+                story.append(Spacer(1, 2.2 * mm))
+                continue
 
         story.append(Spacer(1, 2.2 * mm))
 
     logo_img = ImageReader(str(logo)) if logo.exists() else None
     logo_w_px, logo_h_px = logo_img.getSize() if logo_img else (480, 134)
+    right_logo_img = ImageReader(str(right_logo)) if right_logo.exists() else None
+    right_logo_w_px, right_logo_h_px = right_logo_img.getSize() if right_logo_img else (480, 134)
     small_logo_h = 6.5 * mm
     small_logo_w = small_logo_h * (logo_w_px / logo_h_px)
+    right_small_logo_w = small_logo_h * (right_logo_w_px / right_logo_h_px)
     big_logo_h = 14.5 * mm
     big_logo_w = big_logo_h * (logo_w_px / logo_h_px)
 
@@ -137,6 +145,14 @@ def main() -> None:
             font_name = 'Helvetica-Bold'
             font_size = 8.5
             right_text = 'EXECUTIVE PRODUCT BRIEF | 2026'
+            right_text_width = pdfmetrics.stringWidth(right_text, font_name, font_size)
+            center_logo_h = 12.25 * mm
+            center_logo_w = center_logo_h * (right_logo_w_px / right_logo_h_px)
+            center_left = left + big_logo_w
+            center_right = right - right_text_width
+            center_logo_x = ((center_left + center_right) / 2.0) - (center_logo_w / 2.0)
+            center_logo_y = logo_y + ((big_logo_h - center_logo_h) / 2.0)
+
             center_y = logo_y + (big_logo_h / 2.0)
             ascent = pdfmetrics.getAscent(font_name, font_size)
             descent = pdfmetrics.getDescent(font_name, font_size)
@@ -146,9 +162,8 @@ def main() -> None:
             canv.setFillColor(colors.black)
             canv.drawRightString(right, baseline, right_text)
 
-            canv.setFont('Helvetica-Bold', 12)
-            canv.setFillColor(colors.black)
-            canv.drawCentredString(w / 2.0, baseline, 'CompliVerse AI')
+            if right_logo_img:
+                canv.drawImage(right_logo_img, center_logo_x, center_logo_y, width=center_logo_w, height=center_logo_h, preserveAspectRatio=True, mask='auto')
 
             line_y = logo_y - (1.6 * mm)
         else:
@@ -167,7 +182,10 @@ def main() -> None:
         right = w - (11 * mm)
         canv.saveState()
         if logo_img:
-            canv.drawImage(logo_img, left, h - (2.5 * mm) - small_logo_h, width=small_logo_w, height=small_logo_h, preserveAspectRatio=True, mask='auto')
+            header_y = h - (2.5 * mm) - small_logo_h
+            canv.drawImage(logo_img, left, header_y, width=small_logo_w, height=small_logo_h, preserveAspectRatio=True, mask='auto')
+            if right_logo_img:
+                canv.drawImage(right_logo_img, right - right_small_logo_w, header_y, width=right_small_logo_w, height=small_logo_h, preserveAspectRatio=True, mask='auto')
         canv.setStrokeColor(HexColor('#d3e7f4'))
         canv.setLineWidth(1)
         canv.line(left, h - (10.5 * mm), right, h - (10.5 * mm))

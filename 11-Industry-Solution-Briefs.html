@@ -74,31 +74,6 @@
         padding-bottom: 6mm;
         margin-bottom: 6mm;
       }
-      .brand-row {
-        display: grid;
-        grid-template-columns: auto 1fr auto;
-        align-items: center;
-        gap: 12mm;
-        border-bottom: 2px solid #d3e7f4;
-        padding-bottom: 6mm;
-        margin-bottom: 6mm;
-      }
-      .brand-row img {
-        height: 20mm;
-        width: auto;
-      }
-      .brand-row-center {
-        justify-self: center;
-        font-family: Poppins, Inter, Arial, sans-serif;
-        font-size: 18px;
-        line-height: 1.15;
-        font-weight: 800;
-        color: #000000;
-        white-space: nowrap;
-      }
-      .brand-row-right {
-        justify-self: end;
-      }
 
       .brand-row img {
         height: 20mm;
@@ -151,7 +126,7 @@
       .doc-content li {
         font-size: 14.6px;
         line-height: 1.58;
-        color: #000000;
+        color: var(--text-700);
       }
 
       .doc-content ul,
@@ -175,7 +150,7 @@
         padding: 2.2mm;
         vertical-align: top;
         font-size: 13.8px;
-        color: #000000;
+        color: var(--text-700);
       }
 
       .doc-content .doc-table th,
@@ -197,13 +172,12 @@
     <section class="page">
       <div class="brand-row">
         <img src="./liztek-logo.png" alt="LIZTEK" />
-        <div class="brand-row-center">CompliVerse AI</div>
-        <div class="eyebrow brand-row-right">
-          Executive Product Brief | 2026
-        </div>
+        <div class="eyebrow">Executive Product Brief | 2026</div>
       </div>
-      <h1 class="title">Industry Solution Briefs</h1>
       <div class="doc-content">
+        <h2 class="doc-heading" style="text-align: center">
+          Governance. Risk. Compliance. Unified by Intelligence.
+        </h2>
         <h2 class="doc-heading">
           SOLUTION BRIEF 1: Financial Services &amp; Banking
         </h2>
@@ -773,19 +747,9 @@
           </tr>
         </table>
         <p class="doc-paragraph">
-          <strong>Schedule Your Demo:</strong>
-          <a href="https://compliverse.ai">https://compliverse.ai</a>
+          <strong>Schedule Your Demo:</strong> https://compliverse.ai
         </p>
-        <p class="doc-paragraph">
-          <strong>Contact:</strong>
-          <a href="mailto:Liztek@liztek.ca">Liztek@liztek.ca</a>
-        </p>
-        <p class="doc-paragraph">
-          <em
-            >CompliVerse AI — Governance. Risk. Compliance. Unified by
-            Intelligence.</em
-          >
-        </p>
+        <p class="doc-paragraph"><strong>Contact:</strong> Liztek@liztek.ca</p>
       </div>
     </section>
   </body>

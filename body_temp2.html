@@ -1,0 +1,1302 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>CompliVerse - AI-Powered GRC Platform</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
+<style>
+      :root {
+        --color-bg-mint: #97cadb;
+        --color-green-dark: #021a48;
+        --color-green: #01457b;
+        --color-teal: #008abe;
+        --color-green-50: #eef7ff;
+        --color-green-100: #d8ebfa;
+        --color-green-200: #c2def2;
+        --color-green-400: #4f9ed2;
+        --color-green-600: #008abe;
+        --color-green-900: #021a48;
+        --brand-900: var(--color-green-dark);
+        --brand-700: var(--color-green);
+        --brand-500: var(--color-teal);
+        --brand-200: var(--color-bg-mint);
+        --text-900: #0d2d52;
+        --text-700: #1f4d78;
+        --text-600: #456988;
+        --line: #9fc6df;
+        --surface: #ffffff;
+        --bg: #d8ebfa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text-900);
+        background: #ffffff;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 297mm;
+        min-height: 210mm;
+        margin: 10mm auto;
+        background: var(--surface);
+        padding: 11mm;
+        box-shadow: 0 10px 34px rgba(2, 26, 72, 0.16);
+        page-break-after: always;
+        border: 1px solid #b9d5e8;
+        position: relative;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(1, 69, 123, 0.12);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 7mm;
+      }
+
+      .brand-row {
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+      }
+
+      .brand-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+      }
+
+      .brand-row img {
+        height: 20mm;
+        width: auto;
+      }
+
+      .brand-center-logo {
+        justify-self: center;
+        height: 18mm;
+      }
+
+      .eyebrow {
+        font-size: 10.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--brand-700);
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Poppins, Inter, Arial, sans-serif;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 31px;
+        line-height: 1.15;
+        color: var(--brand-900);
+      }
+
+      .subtitle {
+        margin: 5mm 0 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-700);
+        max-width: 160mm;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 6mm;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--brand-700);
+        border-radius: 10px;
+        padding: 5mm;
+        background: linear-gradient(180deg, #f8fcff 0%, #e9f5fd 100%);
+      }
+
+      .panel h2 {
+        margin: 0 0 2.5mm;
+        color: var(--brand-900);
+        font-size: 17px;
+      }
+
+      .panel p {
+        margin: 0;
+        font-size: 14.8px;
+        color: var(--text-700);
+        line-height: 1.6;
+      }
+
+      .module-summary {
+        margin-top: 4mm;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .module-card {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 4mm;
+        background: linear-gradient(180deg, #f6fbff 0%, #e0effb 100%);
+      }
+
+      .module-card h3 {
+        margin: 0 0 1.5mm;
+        font-size: 13.8px;
+        color: var(--brand-900);
+      }
+
+      .module-card p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.52;
+        color: var(--text-700);
+      }
+
+      .footer-note {
+        border-top: 1px solid var(--line);
+        padding-top: 4mm;
+        font-size: 12.2px;
+        color: var(--text-600);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: end;
+        gap: 8mm;
+        margin-bottom: 6mm;
+        border-bottom: 2px solid #d2e6f3;
+        padding-bottom: 3.5mm;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 22px;
+        color: var(--brand-900);
+        justify-self: center;
+        text-align: center;
+      }
+
+      .section-header .meta {
+        display: none;
+      }
+
+      .section-logo {
+        display: block;
+        height: 11mm;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .section-logo-left {
+        justify-self: start;
+      }
+
+      .section-logo-right {
+        justify-self: end;
+      }
+
+      .module-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4.5mm;
+      }
+
+      .feature {
+        border: 1px solid #a9cce4;
+        border-left: 5px solid var(--brand-700);
+        border-radius: 12px;
+        padding: 5.3mm;
+        background: linear-gradient(180deg, #e7f4fd 0%, #d3e8f7 100%);
+        break-inside: avoid;
+        box-shadow: 0 6px 16px rgba(1, 69, 123, 0.14);
+      }
+
+      .feature h3 {
+        margin: 0 0 3.8mm;
+        font-size: 14.4px;
+        color: var(--brand-900);
+        line-height: 1.35;
+        border-bottom: 1px solid #b6d3e7;
+        padding-bottom: 2.2mm;
+      }
+
+      .label {
+        margin: 0;
+        font-size: 10.1px;
+        font-weight: 700;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff;
+        text-shadow: 0 1px 0 rgba(2, 26, 72, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.85mm 2.2mm;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #015f95 0%, #01457b 100%);
+        border: 1px solid #014b78;
+      }
+
+      .feature > .label + p,
+      .feature > .label + ul {
+        margin-top: 1.7mm;
+      }
+
+      .feature > p + .label,
+      .feature > ul + .label {
+        margin-top: 3.2mm;
+      }
+
+      .feature p {
+        margin: 0;
+        color: #1d4a74;
+      }
+
+      .feature p:not(.label) {
+        font-size: 14.3px;
+        line-height: 1.6;
+        background: #f8fcff;
+        border: 1px solid #c6e0f1;
+        border-radius: 8px;
+        padding: 2.4mm 2.6mm;
+      }
+
+      .feature ul {
+        margin: 0;
+        padding: 2.5mm 2.6mm 2.5mm 6.3mm;
+        background: #f8fcff;
+        border: 1px solid #c6e0f1;
+        border-radius: 8px;
+      }
+
+      .feature li {
+        margin: 0 0 1.2mm;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #1d4a74;
+      }
+
+      .feature li:last-child {
+        margin-bottom: 0;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .page {
+          width: auto;
+          margin: 8mm;
+        }
+
+        .module-features {
+          grid-template-columns: 1fr;
+        }
+
+        .intro-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .module-summary {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @page {
+        size: 297mm 210mm;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #ffffff;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .print-watermark {
+          display: block;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-24deg);
+          font-family: Poppins, Inter, Arial, sans-serif;
+          font-size: 64px;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(1, 69, 123, 0.14);
+          -webkit-text-stroke: 1px rgba(1, 69, 123, 0.2);
+          text-shadow: 0 0 1px rgba(1, 69, 123, 0.18);
+          white-space: nowrap;
+          pointer-events: none;
+          z-index: 9999;
+        }
+
+        .page::after {
+          content: none;
+        }
+
+        .page {
+          margin: 0;
+          width: 297mm;
+          min-height: 210mm;
+          padding: 9mm;
+          background: #ffffff;
+          box-shadow: none;
+          box-decoration-break: clone;
+          -webkit-box-decoration-break: clone;
+          position: relative;
+          z-index: 1;
+          page-break-after: always;
+          break-after: page;
+        }
+
+        .cover {
+          gap: 5mm;
+        }
+
+        .cover .panel {
+          padding: 4mm;
+        }
+
+        .module-features {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 4mm;
+        }
+
+        .module-features .feature {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .module-features .feature:nth-child(4n) {
+          break-after: page;
+          page-break-after: always;
+        }
+
+        .module-features .feature:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+
+        .page:last-child {
+          page-break-after: auto;
+          break-after: auto;
+        }
+      }
+
+      .print-watermark {
+        display: none;
+      }
+    </style>
+<style>
+body.pdf-export .page {
+  padding-top: 19mm !important;
+}
+body.pdf-export .section-header img {
+  display: none !important;
+}
+body.pdf-export .fixed-header {
+  position: fixed;
+  top: 11mm;
+  left: 11mm;
+  right: 11mm;
+  height: 6.5mm;
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 9999;
+  pointer-events: none;
+}
+body.pdf-export .fixed-header img {
+  height: 6.5mm;
+  width: auto;
+}
+.fixed-header { display: none; }
+</style></head>
+<body class="pdf-export"><div class="fixed-header"><img alt="LIZTEK" src="liztek-logo.png"/><img alt="CompliVerse AI" src="compliwerseLogo.png"/></div>
+<div class="print-watermark">CONFIDENTIAL</div>
+
+<section class="page">
+<div class="section-header">
+<img alt="LIZTEK" class="section-logo section-logo-left" src="liztek-logo.png"/>
+<h2>Module 1 - AI Governance</h2>
+<img alt="CompliVerse AI" class="section-logo section-logo-right" src="compliwerseLogo.png"/>
+</div>
+<div class="module-features">
+<article class="feature">
+<h3>01. AI Policy Drafting and Generation</h3>
+<p class="label">1. Overview</p>
+<p>
+            Creates complete framework-aligned policy drafts in minutes,
+            replacing manual first-pass authoring.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Generates policy, procedure, and standard formats with correct
+              structure.
+            </li>
+<li>Maps language to selected regulatory controls and scope.</li>
+<li>
+              Produces metadata and estimated review effort for governance
+              teams.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A bank launching PCI-DSS can generate priority policies in one day
+            and move directly to review and approval.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Shortens document drafting cycles by up to 80%.</li>
+<li>
+              Reduces consulting dependence and improves policy consistency.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>02. AI Policy Suggestion Engine</h3>
+<p class="label">1. Overview</p>
+<p>
+            Identifies which policy documents are required by each framework and
+            ranks them by urgency.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Builds a prioritized policy roadmap with high, medium, and low
+              tiers.
+            </li>
+<li>
+              Links each suggested document to relevant control references.
+            </li>
+<li>Recommends key sections needed for audit readiness.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A newly regulated fintech receives a complete list of required
+            governance documents within minutes.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Prevents missing-policy findings during audits.</li>
+<li>Accelerates initial compliance program setup.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>03. AI Policy Gap Analysis</h3>
+<p class="label">1. Overview</p>
+<p>
+            Compares existing policies against target regulations to quantify
+            compliance gaps and remediation priorities.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Classifies requirements as compliant, partial, missing, or not
+              applicable.
+            </li>
+<li>Extracts evidence quotes directly from source policy text.</li>
+<li>
+              Assigns severity ratings with recommended corrective actions.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            An investment bank migrating from ISO controls to DORA gets a
+            prioritized remediation list in a single review session.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Compresses multi-week assessments into hours.</li>
+<li>
+              Improves board-level visibility of true compliance exposure.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>04. AI Regulatory Change Impact Assessment</h3>
+<p class="label">1. Overview</p>
+<p>
+            Evaluates how new circulars or standards affect existing policies,
+            controls, and compliance posture.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Detects impacted documents, controls, and frameworks.</li>
+<li>Categorizes change type and urgency for rapid triage.</li>
+<li>Highlights missing clauses caused by updated requirements.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            When outsourcing guidance changes, the team immediately sees
+            impacted third-party and cloud governance policies.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Reduces regulatory response time from weeks to days.</li>
+<li>
+              Minimizes risk of non-compliance caused by delayed interpretation.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>05. AI Governance Dashboard and Executive Insights</h3>
+<p class="label">1. Overview</p>
+<p>
+            Converts governance signals into concise executive insights for
+            committee and board reporting.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Tracks acknowledgment rates, exception trends, and overdue
+              actions.
+            </li>
+<li>
+              Flags anomalies and emerging governance issues automatically.
+            </li>
+<li>
+              Summarizes accepted risk and remediation progress in plain
+              language.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Before quarterly committee review, leaders open one dashboard
+            instead of requesting reports from multiple teams.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>
+              Enables proactive intervention before audit findings escalate.
+            </li>
+<li>
+              Improves decision quality with a current, unified governance view.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>06. AI Document Parsing and Statement Extraction</h3>
+<p class="label">1. Overview</p>
+<p>
+            Parses uploaded governance documents and converts them into
+            structured, traceable policy statements.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Uses OCR and NLP to extract and classify policy requirements.
+            </li>
+<li>
+              Differentiates mandatory obligations from recommended guidance.
+            </li>
+<li>Detects duplicates and preserves version snapshots.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            During post-merger integration, policy libraries from two
+            institutions are consolidated into one normalized inventory.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Cuts policy inventory and harmonization effort by months.</li>
+<li>Improves traceability for internal and external audits.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>07. AI-Powered Attestation and Acknowledgment Management</h3>
+<p class="label">1. Overview</p>
+<p>
+            Runs policy attestation campaigns with completion analytics,
+            reminders, and documented evidence trails.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Monitors status by user, team, and branch in real time.</li>
+<li>Detects unusual completion patterns that may indicate risk.</li>
+<li>Captures timestamped acknowledgments for audit evidence.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A compliance team achieves near-full completion for an AML policy
+            update while targeting low-performing locations.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Eliminates manual follow-up overhead.</li>
+<li>
+              Provides regulator-ready proof of policy communication and
+              acceptance.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>08. AI-Enhanced Policy Exception Management</h3>
+<p class="label">1. Overview</p>
+<p>
+            Formalizes policy deviations through risk-scored workflows with
+            approvals, compensating controls, and expiry governance.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Applies structured draft-to-approval exception workflows.</li>
+<li>Tracks compensating controls, comments, and ownership.</li>
+<li>Automates expiry alerts and revocation timelines.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A temporary control bypass is approved with conditions and revoked
+            automatically once migration activities conclude.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Prevents undocumented exceptions and control drift.</li>
+<li>
+              Strengthens audit defensibility for risk acceptance decisions.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>09. AI Committee and Board Governance Oversight</h3>
+<p class="label">1. Overview</p>
+<p>
+            Supports committee operations by converting meeting outputs into
+            tracked actions and accountable follow-through.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Summarizes minutes and extracts action items automatically.</li>
+<li>Assigns owners and deadlines with progress states.</li>
+<li>Tracks attendance, charters, agendas, and escalations.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            An audit committee tracks action closure between meetings and
+            escalates overdue items before the next session.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves execution discipline for board decisions.</li>
+<li>Creates a transparent governance accountability record.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>10. AI Compliance-by-Framework Reporting</h3>
+<p class="label">1. Overview</p>
+<p>
+            Provides cross-framework posture reporting with prioritized
+            remediation guidance for management and boards.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Aggregates scores, open gaps, and accepted risk by framework.
+            </li>
+<li>
+              Prioritizes remediation based on severity and regulatory pressure.
+            </li>
+<li>Produces executive-ready exports for oversight forums.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A CISO compares SAMA, PCI-DSS, and ISO posture in one view and sets
+            remediation order for the next quarter.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Focuses budget and effort on highest-impact gaps.</li>
+<li>
+              Delivers clear, credible reporting to boards and regulators.
+            </li>
+</ul>
+</article>
+</div>
+</section>
+<section class="page">
+<div class="section-header">
+<img alt="LIZTEK" class="section-logo section-logo-left" src="liztek-logo.png"/>
+<h2>Module 2 - AI Risk Management</h2>
+<img alt="CompliVerse AI" class="section-logo section-logo-right" src="compliwerseLogo.png"/>
+</div>
+<div class="module-features">
+<article class="feature">
+<h3>01. AI Risk Suggestion Engine</h3>
+<p class="label">1. Overview</p>
+<p>
+            Generates complete risk records from short risk statements, enabling
+            consistent capture across teams.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Suggests category, impact, likelihood, and treatment path.</li>
+<li>
+              Produces structured risk narratives and control recommendations.
+            </li>
+<li>Standardizes risk language regardless of analyst seniority.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Analysts document third-party control weaknesses in minutes with
+            full scoring and recommended treatment.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Accelerates risk identification-to-register cycle.</li>
+<li>Improves quality and consistency of risk records.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>02. AI Risk Treatment Plan Generation</h3>
+<p class="label">1. Overview</p>
+<p>
+            Converts identified risks into practical treatment options with
+            implementation guidance.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Produces multiple treatment paths per risk scenario.</li>
+<li>
+              Outlines timelines, control options, and expected effectiveness.
+            </li>
+<li>Supports avoid, mitigate, transfer, and accept decisions.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Risk owners compare three treatment strategies for governance
+            non-compliance and select the best fit.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Turns broad risk findings into executable plans.</li>
+<li>Improves treatment speed and owner accountability.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>03. AI-Powered Risk Assessment Scoring</h3>
+<p class="label">1. Overview</p>
+<p>
+            Pre-populates assessment outcomes to reduce manual scoring effort
+            and improve scoring integrity.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Suggests inherent and residual scoring with rationale.</li>
+<li>Rates control effectiveness and treatment status.</li>
+<li>Supports high-volume annual and quarterly assessments.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A 150-risk annual assessment is completed in days rather than weeks
+            using AI-assisted pre-scoring.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Cuts assessment cycle time by up to 75%.</li>
+<li>Improves comparability of scores across business units.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>04. AI Risk Appetite and KRI Threshold Suggestions</h3>
+<p class="label">1. Overview</p>
+<p>
+            Recommends defensible appetite statements and threshold levels based
+            on organizational context.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Suggests benchmarked limits for major risk categories.</li>
+<li>Defines early-warning and breach thresholds for KRIs.</li>
+<li>Supports board calibration with documented rationale.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A tier-2 bank establishes first-year appetite and KRI thresholds
+            with data-backed starting points.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Reduces arbitrary threshold setting.</li>
+<li>
+              Strengthens governance credibility with regulators and boards.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>05. AI RCSA Evidence Recommendations</h3>
+<p class="label">1. Overview</p>
+<p>
+            Advises which evidence artifacts should be attached to each RCSA
+            question for better control assurance.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Generates question-specific evidence checklists.</li>
+<li>Provides sample file naming and document types.</li>
+<li>Flags likely evidence gaps before review submission.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Treasury teams receive targeted evidence requests and complete
+            quarterly self-assessment with fewer rework cycles.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves assessment completeness and audit quality.</li>
+<li>Reduces review delays caused by weak documentation.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>06. AI-Powered Bow-Tie Analysis</h3>
+<p class="label">1. Overview</p>
+<p>
+            Builds clear cause-event-consequence chains so leaders can
+            understand preventive and recovery control coverage.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Maps threats, vulnerabilities, central event, and outcomes.</li>
+<li>Associates preventive and recovery controls to each stage.</li>
+<li>Highlights weak or missing controls in the chain.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Cyber leadership models ransomware impact and quickly prioritizes
+            control upgrades for high-risk failure points.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves risk communication with non-technical executives.</li>
+<li>Supports smarter investment in control strengthening.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>07. AI Scenario Analysis and What-If Modeling</h3>
+<p class="label">1. Overview</p>
+<p>
+            Tests alternative risk scenarios and translates impact into plain
+            business language for executive decisions.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Runs parameter-based impact simulations.</li>
+<li>Compares before-and-after outcomes by scenario.</li>
+<li>
+              Summarizes operational, financial, and regulatory implications.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Leadership evaluates the loss of a critical correspondent banking
+            relationship and prepares contingency actions.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Supports data-driven risk committee discussions.</li>
+<li>Improves readiness for low-frequency high-impact events.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>08. AI Mitigation Action Generation</h3>
+<p class="label">1. Overview</p>
+<p>
+            Generates costed mitigation options that can be prioritized and
+            assigned immediately.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Provides multiple action paths with expected risk reduction.
+            </li>
+<li>Suggests implementation windows and ownership model.</li>
+<li>Supports downstream tracking of execution status.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Fraud risk owners compare low-cost and high-impact options before
+            finalizing a phased mitigation program.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Links risk decisions directly to practical execution plans.</li>
+<li>Improves return on risk mitigation spend.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>09. Excel Risk Register Upload with AI Mapping</h3>
+<p class="label">1. Overview</p>
+<p>
+            Imports legacy risk registers in bulk with smart field mapping and
+            score preservation.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Detects column structure automatically from spreadsheets.</li>
+<li>Maps likelihood, impact, owners, and status fields.</li>
+<li>Creates linked records for ongoing assessment workflows.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Post-merger integration teams migrate hundreds of historical risks
+            without manual re-entry.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>
+              Protects institutional risk history during system transitions.
+            </li>
+<li>Saves significant analyst effort and migration time.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>10. Accepted Risk to Risk Register Integration</h3>
+<p class="label">1. Overview</p>
+<p>
+            Converts accepted compliance gaps into structured risk records with
+            full traceability.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Automatically generates risk entries from accepted findings.
+            </li>
+<li>Maps severity into scoring and treatment suggestions.</li>
+<li>
+              Maintains bi-directional links between gap and risk records.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Compliance teams accept a non-critical control gap and hand it to
+            risk with preserved evidence and ownership.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>
+              Prevents handoff failures between compliance and risk functions.
+            </li>
+<li>
+              Strengthens traceability for internal and external assurance
+              reviews.
+            </li>
+</ul>
+</article>
+</div>
+</section>
+<section class="page">
+<div class="section-header">
+<img alt="LIZTEK" class="section-logo section-logo-left" src="liztek-logo.png"/>
+<h2>Module 3 - AI Compliance</h2>
+<img alt="CompliVerse AI" class="section-logo section-logo-right" src="compliwerseLogo.png"/>
+</div>
+<div class="module-features">
+<article class="feature">
+<h3>01. AI Framework Document Ingestion (3-Pass Extraction)</h3>
+<p class="label">1. Overview</p>
+<p>
+            Ingests regulatory documents and converts them into structured
+            controls ready for assessment and reporting.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Runs structure detection, control extraction, and validation
+              passes.
+            </li>
+<li>Preserves original control IDs and hierarchy.</li>
+<li>Detects duplicates and overlapping requirements.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A newly issued 180-page standard is transformed into actionable
+            controls in one operating day.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Reduces framework onboarding from weeks to hours.</li>
+<li>Improves consistency of downstream control mapping.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>
+            02. AI Cross-Framework Control Mapping and Similarity Analysis
+          </h3>
+<p class="label">1. Overview</p>
+<p>
+            Identifies equivalent controls across frameworks to support
+            implement-once, comply-many operations.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Calculates semantic similarity between controls.</li>
+<li>Builds normalized controls linked to multiple obligations.</li>
+<li>Supports harmonized evidence strategy across standards.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A regulated bank maps SAMA, PCI-DSS, ISO, and SWIFT controls and
+            cuts duplicate compliance activity.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Reduces repetitive compliance workload by 40-60%.</li>
+<li>
+              Lowers audit preparation effort across concurrent frameworks.
+            </li>
+</ul>
+</article>
+<article class="feature">
+<h3>03. AI Compliance Assessment Parsing</h3>
+<p class="label">1. Overview</p>
+<p>
+            Imports external checklists and assessment files while preserving
+            status and structure.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Auto-detects worksheet format and column mapping.</li>
+<li>
+              Maintains assessor notes, evidence links, and status fields.
+            </li>
+<li>Connects imported rows to framework control libraries.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            An auditor checklist with hundreds of items is imported in one step
+            and tracked inside the platform.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Eliminates duplicate data entry between tools.</li>
+<li>Accelerates remediation mobilization after assessments.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>04. AI Evidence Assessment and Matching</h3>
+<p class="label">1. Overview</p>
+<p>
+            Evaluates uploaded evidence quality and maps artifacts to relevant
+            controls across frameworks.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Scores explicit, implicit, and inferred evidence fit.</li>
+<li>
+              Assigns quality ratings and highlights missing proof points.
+            </li>
+<li>Detects where one artifact satisfies multiple obligations.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A penetration test report is matched to PCI, ISO, and SAMA
+            requirements with identified evidence gaps.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves first-pass evidence acceptance rate.</li>
+<li>Reduces duplicate evidence collection across audits.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>05. AI Evidence Requirements Generation</h3>
+<p class="label">1. Overview</p>
+<p>
+            Provides exact evidence requirements for each control so teams know
+            what to collect before audits.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Defines expected artifact types and content requirements.</li>
+<li>Suggests sample filenames and submission standards.</li>
+<li>Supports reviewer-ready packaging workflows.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Control owners receive control-specific evidence checklists for PCI
+            logging controls before QSA review.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Prevents late-stage evidence surprises.</li>
+<li>Improves audit readiness and review cycle speed.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>06. AI Compliance Gap Prioritization</h3>
+<p class="label">1. Overview</p>
+<p>
+            Ranks compliance gaps by impact, urgency, and remediation complexity
+            so teams focus on what matters first.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Prioritizes by severity, deadlines, and penalty exposure.</li>
+<li>Estimates remediation effort for planning decisions.</li>
+<li>Generates ordered action queues for leadership governance.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            After assessment, critical controls due before regulatory
+            examinations are elevated above lower-risk documentation gaps.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves allocation of limited remediation capacity.</li>
+<li>Reduces probability of high-impact regulatory findings.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>07. Multi-Tier Evidence Approval Workflow</h3>
+<p class="label">1. Overview</p>
+<p>
+            Enforces structured reviewer chains for evidence approval with
+            complete decision history.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Supports sequential approvals and change requests.</li>
+<li>Tracks timestamps, reviewers, and comments by step.</li>
+<li>Displays pending queues for operational control.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Evidence for critical controls moves from technical review to
+            compliance sign-off before external submission.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Raises evidence quality through structured governance.</li>
+<li>Creates strong audit trail for assurance teams.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>08. Compliance Calendar and Deadline Management</h3>
+<p class="label">1. Overview</p>
+<p>
+            Centralizes compliance deadlines, recurring tasks, and submission
+            windows across all frameworks.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>Tracks recurring and one-time regulatory milestones.</li>
+<li>Supports filters by framework, owner, and event type.</li>
+<li>Triggers overdue alerts and escalation workflows.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Compliance leadership manages quarterly scans, annual reports, and
+            committee deadlines in one operational calendar.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Prevents missed deadlines and associated penalties.</li>
+<li>Shifts execution from reactive to proactive planning.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>
+            09. Comprehensive Compliance Reporting (24 Reports plus Excel
+            Export)
+          </h3>
+<p class="label">1. Overview</p>
+<p>
+            Delivers standardized multi-module reporting for executive updates
+            and regulator submissions.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Provides pre-built reports across governance, risk, and compliance
+              domains.
+            </li>
+<li>Supports one-click export for formal external reporting.</li>
+<li>Aggregates posture, gaps, evidence, and remediation status.</li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            A regulator request is answered in the same day using generated
+            framework and remediation reports.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Reduces reporting lead time from days to minutes.</li>
+<li>Improves consistency and defensibility of submitted data.</li>
+</ul>
+</article>
+<article class="feature">
+<h3>10. Enriched Executive Dashboard (10 Tabs)</h3>
+<p class="label">1. Overview</p>
+<p>
+            Provides an executive command center with AI-prioritized insights
+            across the full GRC lifecycle.
+          </p>
+<p class="label">2. Key Capabilities</p>
+<ul>
+<li>
+              Surfaces trends across governance, risk, compliance, and treatment
+              execution.
+            </li>
+<li>Highlights anomalies and emerging risk concentration areas.</li>
+<li>
+              Supports leadership views tailored for committee and C-suite use.
+            </li>
+</ul>
+<p class="label">3. Use Case</p>
+<p>
+            Before executive committee meetings, leaders review one dashboard
+            for status, exceptions, and urgent remediation decisions.
+          </p>
+<p class="label">4. Business Value</p>
+<ul>
+<li>Improves speed and quality of executive decision-making.</li>
+<li>Creates shared operating picture across control functions.</li>
+</ul>
+</article>
+</div>
+</section>
+</body>
+</html>

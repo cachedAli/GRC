@@ -1,0 +1,510 @@
+﻿<!doctype html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>CompliVerse - AI-Powered GRC Platform</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&amp;family=Poppins:wght@600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --color-bg-mint: #97cadb;
+        --color-green-dark: #021a48;
+        --color-green: #01457b;
+        --color-teal: #008abe;
+        --color-green-50: #eef7ff;
+        --color-green-100: #d8ebfa;
+        --color-green-200: #c2def2;
+        --color-green-400: #4f9ed2;
+        --color-green-600: #008abe;
+        --color-green-900: #021a48;
+        --brand-900: var(--color-green-dark);
+        --brand-700: var(--color-green);
+        --brand-500: var(--color-teal);
+        --brand-200: var(--color-bg-mint);
+        --text-900: #0d2d52;
+        --text-700: #1f4d78;
+        --text-600: #456988;
+        --line: #9fc6df;
+        --surface: #ffffff;
+        --bg: #d8ebfa;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: Inter, Arial, sans-serif;
+        color: var(--text-900);
+        background: #ffffff;
+        line-height: 1.55;
+      }
+
+      .page {
+        width: 297mm;
+        min-height: 210mm;
+        margin: 10mm auto;
+        background: var(--surface);
+        padding: 11mm;
+        box-shadow: 0 10px 34px rgba(2, 26, 72, 0.16);
+        page-break-after: always;
+        border: 1px solid #b9d5e8;
+        position: relative;
+      }
+
+      .page::after {
+        content: "CONFIDENTIAL";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(-24deg);
+        font-family: Poppins, Inter, Arial, sans-serif;
+        font-size: 56px;
+        font-weight: 800;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(1, 69, 123, 0.12);
+        white-space: nowrap;
+        pointer-events: none;
+        z-index: 3;
+      }
+
+      .page > * {
+        position: relative;
+        z-index: 1;
+      }
+
+      .page:last-child {
+        page-break-after: auto;
+      }
+
+      .cover {
+        display: grid;
+        grid-template-rows: auto auto 1fr auto;
+        gap: 7mm;
+      }
+
+      .brand-row {
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+      }
+
+      .brand-row {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: center;
+      }
+
+      .brand-row img {
+        height: 20mm;
+        width: auto;
+      }
+
+      .brand-row .brand-center-logo {
+        justify-self: center;
+        height: 12.6mm;
+      }
+
+      .eyebrow {
+        font-size: 10.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--brand-700);
+        font-weight: 700;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: Poppins, Inter, Arial, sans-serif;
+      }
+
+      h1 {
+        margin: 0;
+        font-size: 31px;
+        line-height: 1.15;
+        color: var(--brand-900);
+      }
+
+      .subtitle {
+        margin: 5mm 0 0;
+        font-size: 15px;
+        line-height: 1.6;
+        color: var(--text-700);
+        max-width: 160mm;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 6mm;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--brand-700);
+        border-radius: 10px;
+        padding: 5mm;
+        background: linear-gradient(180deg, #f8fcff 0%, #e9f5fd 100%);
+      }
+
+      .panel h2 {
+        margin: 0 0 2.5mm;
+        color: var(--brand-900);
+        font-size: 17px;
+      }
+
+      .panel p {
+        margin: 0;
+        font-size: 14.8px;
+        color: var(--text-700);
+        line-height: 1.6;
+      }
+
+      .module-summary {
+        margin-top: 4mm;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 4mm;
+      }
+
+      .module-card {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 4mm;
+        background: linear-gradient(180deg, #f6fbff 0%, #e0effb 100%);
+      }
+
+      .module-card h3 {
+        margin: 0 0 1.5mm;
+        font-size: 13.8px;
+        color: var(--brand-900);
+      }
+
+      .module-card p {
+        margin: 0;
+        font-size: 14px;
+        line-height: 1.52;
+        color: var(--text-700);
+      }
+
+      .footer-note {
+        border-top: 1px solid var(--line);
+        padding-top: 4mm;
+        font-size: 12.2px;
+        color: var(--text-600);
+      }
+
+      .section-header {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        align-items: end;
+        gap: 8mm;
+        margin-bottom: 6mm;
+        border-bottom: 2px solid #d2e6f3;
+        padding-bottom: 3.5mm;
+      }
+
+      .section-header h2 {
+        margin: 0;
+        font-size: 22px;
+        color: var(--brand-900);
+        justify-self: center;
+        text-align: center;
+      }
+
+      .section-header .meta {
+        display: none;
+      }
+
+      .section-logo {
+        display: block;
+        height: 11mm;
+        width: auto;
+        object-fit: contain;
+      }
+
+      .section-logo-left {
+        justify-self: start;
+      }
+
+      .section-logo-right {
+        justify-self: end;
+      }
+
+      .module-features {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 4.5mm;
+      }
+
+      .feature {
+        border: 1px solid #a9cce4;
+        border-left: 5px solid var(--brand-700);
+        border-radius: 12px;
+        padding: 5.3mm;
+        background: linear-gradient(180deg, #e7f4fd 0%, #d3e8f7 100%);
+        break-inside: avoid;
+        box-shadow: 0 6px 16px rgba(1, 69, 123, 0.14);
+      }
+
+      .feature h3 {
+        margin: 0 0 3.8mm;
+        font-size: 14.4px;
+        color: var(--brand-900);
+        line-height: 1.35;
+        border-bottom: 1px solid #b6d3e7;
+        padding-bottom: 2.2mm;
+      }
+
+      .label {
+        margin: 0;
+        font-size: 10.1px;
+        font-weight: 700;
+        color: #ffffff !important;
+        -webkit-text-fill-color: #ffffff;
+        text-shadow: 0 1px 0 rgba(2, 26, 72, 0.2);
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+        display: inline-flex;
+        align-items: center;
+        padding: 0.85mm 2.2mm;
+        border-radius: 999px;
+        background: linear-gradient(180deg, #015f95 0%, #01457b 100%);
+        border: 1px solid #014b78;
+      }
+
+      .feature > .label + p,
+      .feature > .label + ul {
+        margin-top: 1.7mm;
+      }
+
+      .feature > p + .label,
+      .feature > ul + .label {
+        margin-top: 3.2mm;
+      }
+
+      .feature p {
+        margin: 0;
+        color: #1d4a74;
+      }
+
+      .feature p:not(.label) {
+        font-size: 14.3px;
+        line-height: 1.6;
+        background: #f8fcff;
+        border: 1px solid #c6e0f1;
+        border-radius: 8px;
+        padding: 2.4mm 2.6mm;
+      }
+
+      .feature ul {
+        margin: 0;
+        padding: 2.5mm 2.6mm 2.5mm 6.3mm;
+        background: #f8fcff;
+        border: 1px solid #c6e0f1;
+        border-radius: 8px;
+      }
+
+      .feature li {
+        margin: 0 0 1.2mm;
+        font-size: 14px;
+        line-height: 1.5;
+        color: #1d4a74;
+      }
+
+      .feature li:last-child {
+        margin-bottom: 0;
+      }
+
+      @media screen and (max-width: 1200px) {
+        .page {
+          width: auto;
+          margin: 8mm;
+        }
+
+        .module-features {
+          grid-template-columns: 1fr;
+        }
+
+        .intro-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .module-summary {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @page {
+        size: 297mm 210mm;
+        margin: 0;
+      }
+
+      @media print {
+        html,
+        body {
+          margin: 0 !important;
+          padding: 0 !important;
+          background: #ffffff;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+        }
+
+        .print-watermark {
+          display: block;
+          position: fixed;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%) rotate(-24deg);
+          font-family: Poppins, Inter, Arial, sans-serif;
+          font-size: 64px;
+          font-weight: 800;
+          letter-spacing: 0.18em;
+          text-transform: uppercase;
+          color: rgba(1, 69, 123, 0.14);
+          -webkit-text-stroke: 1px rgba(1, 69, 123, 0.2);
+          text-shadow: 0 0 1px rgba(1, 69, 123, 0.18);
+          white-space: nowrap;
+          pointer-events: none;
+          z-index: 9999;
+        }
+
+        .page::after {
+          content: none;
+        }
+
+        .page {
+          margin: 0;
+          width: 297mm;
+          min-height: 210mm;
+          padding: 9mm;
+          background: #ffffff;
+          box-shadow: none;
+          box-decoration-break: clone;
+          -webkit-box-decoration-break: clone;
+          position: relative;
+          z-index: 1;
+          page-break-after: always;
+          break-after: page;
+        }
+
+        .cover {
+          gap: 5mm;
+        }
+
+        .cover .panel {
+          padding: 4mm;
+        }
+
+        .module-features {
+          grid-template-columns: 1fr 1fr !important;
+          gap: 4mm;
+        }
+
+        .module-features .feature {
+          break-inside: avoid;
+          page-break-inside: avoid;
+        }
+
+        .module-features .feature:nth-child(4n) {
+          break-after: page;
+          page-break-after: always;
+        }
+
+        .module-features .feature:last-child {
+          break-after: auto;
+          page-break-after: auto;
+        }
+
+        .page:last-child {
+          page-break-after: auto;
+          break-after: auto;
+        }
+      }
+
+      .print-watermark {
+        display: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="print-watermark">CONFIDENTIAL</div>
+    <section class="page cover">
+      <div class="brand-row">
+        <img alt="LIZTEK" src="liztek-logo.png" />
+        <img
+          alt="CompliVerse AI"
+          class="brand-center-logo"
+          src="compliwerseLogo.png"
+        />
+        <div class="eyebrow">Executive Product Brief | 2026</div>
+      </div>
+      <div>
+        <h1>CompliVerse - AI-Powered GRC Platform</h1>
+        <p class="subtitle">
+          CompliVerse helps enterprises design governance, manage risk, and
+          execute compliance at scale through AI-assisted workflows, structured
+          controls, and executive-ready reporting.
+        </p>
+      </div>
+      <div class="intro-grid">
+        <div class="panel">
+          <h2>Platform Introduction</h2>
+          <p>
+            The platform replaces fragmented GRC operations with one integrated
+            operating model. Policy design, risk assessment, evidence
+            collection, remediation planning, and board reporting are connected
+            in a single system to reduce cycle time, improve audit readiness,
+            and increase management visibility.
+          </p>
+        </div>
+        <div class="panel">
+          <h2>Who This Serves</h2>
+          <p>
+            Built for executive leadership, compliance officers, and control
+            owners who need fast decision support, clear accountability, and
+            provable regulatory outcomes across multiple frameworks.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div class="eyebrow" style="margin-bottom: 2.5mm">Module Summary</div>
+        <div class="module-summary">
+          <article class="module-card">
+            <h3>Governance Module</h3>
+            <p>
+              Policy lifecycle management, attestations, exceptions, and board
+              oversight across 10 enterprise governance capabilities.
+            </p>
+          </article>
+          <article class="module-card">
+            <h3>Risk Management Module</h3>
+            <p>
+              AI-supported risk identification, scoring, treatment, scenarios,
+              and integration workflows across 10 operational risk capabilities.
+            </p>
+          </article>
+          <article class="module-card">
+            <h3>Compliance Module</h3>
+            <p>
+              Framework ingestion, control mapping, evidence orchestration, and
+              regulator-ready reporting across 10 compliance capabilities.
+            </p>
+          </article>
+        </div>
+      </div>
+      <!-- <div class="footer-note">
+        This document is structured for PDF distribution and executive review.
+        Content is intentionally non-interactive and formatted for rapid scanning.
+      </div> -->
+    </section>
+  </body>
+</html>

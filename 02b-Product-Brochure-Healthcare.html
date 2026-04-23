@@ -3,19 +3,19 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Product Brochure Healthcare</title>
+    <title>02b Product Brochure Healthcare</title>
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Poppins:wght@600;700;800&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --color-green-dark: #000000;
-        --color-green: #000000;
+        --color-green-dark: #021a48;
+        --color-green: #01457b;
         --line: #9fc6df;
         --surface: #ffffff;
-        --text-900: #000000;
-        --text-700: #000000;
+        --text-900: #0d2d52;
+        --text-700: #1f4d78;
       }
 
       * {
@@ -54,7 +54,7 @@
         font-weight: 800;
         letter-spacing: 0.18em;
         text-transform: uppercase;
-        color: rgba(0, 0, 0, 0.12);
+        color: rgba(1, 69, 123, 0.12);
         white-space: nowrap;
         pointer-events: none;
         z-index: 0;
@@ -66,25 +66,32 @@
       }
 
       .brand-row {
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+      }
+
+      .brand-row {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        gap: 12mm;
-        border-bottom: 2px solid #d3e7f4;
-        padding-bottom: 6mm;
-        margin-bottom: 6mm;
+        align-items: center;
       }
 
       .brand-row img {
-        height: 20mm;
+        height: 12mm;
         width: auto;
       }
 
+      .brand-center-logo {
+        justify-self: center;
+        height: 18mm;
+      }
+
       .eyebrow {
-        font-size: 10.8px;
+        font-size: 7.8px;
         letter-spacing: 0.14em;
         text-transform: uppercase;
-        color: var(--color-green);
+        color: var(--brand-700);
         font-weight: 700;
       }
 
@@ -171,13 +178,25 @@
   <body>
     <section class="page">
       <div class="brand-row">
-        <img src="./liztek-logo.png" alt="LIZTEK" />
-        <div class="eyebrow">Executive Product Brief | 2026</div>
+        <img alt="LIZTEK" src="liztek-logo.png" />
+        <div style="text-align: center">
+          <img
+            alt="CompliVerse AI"
+            class="brand-center-logo"
+            src="compliwerseLogo.png"
+          />
+          <div
+            class="eyebrow"
+            style="margin-left: 75px; position: absolute; top: 60px"
+          >
+            Executive Product Brief | 2026
+          </div>
+        </div>
       </div>
-      <h1 class="title">Product Brochure Healthcare</h1>
+
       <div class="doc-content">
         <h2 class="doc-heading" style="text-align: center">
-          Healthcare &amp; Life Sciences
+          Governance. Risk. Compliance. Unified by Intelligence
         </h2>
         <h2 class="doc-heading">The Healthcare GRC Challenge</h2>
         <p class="doc-paragraph">
@@ -197,7 +216,7 @@
         </p>
         <h2 class="doc-heading">Platform Overview</h2>
         <p class="doc-paragraph">
-          CompliVerse AI is an enterprise-grade, AI-native GRC platform that
+          ComplyVerse AI is an enterprise-grade, AI-native GRC platform that
           unifies audit management, compliance tracking, enterprise risk
           management, vulnerability management, IT asset governance, and
           evidence management into a single, multi-tenant platform.
@@ -208,7 +227,7 @@
         <h2 class="doc-heading">Healthcare-Specific Capabilities</h2>
         <h3 class="doc-heading">HIPAA-JCI Unified Control Mapping</h3>
         <p class="doc-paragraph">
-          Upload HIPAA safeguards and JCI accreditation standards. CompliVerse
+          Upload HIPAA safeguards and JCI accreditation standards. ComplyVerse
           AI's AI engine automatically identifies overlapping requirements
           across both frameworks, creating unified control groups. One evidence
           artifact satisfies both HIPAA and JCI requirements simultaneously,
@@ -274,7 +293,7 @@
         <p class="doc-paragraph">
           Healthcare compliance requires coordination across clinical
           departments, IT, human resources, facilities, legal, and
-          administration. CompliVerse AI's role-based access and
+          administration. ComplyVerse AI's role-based access and
           department-level assignment ensure the right people see the right
           obligations and evidence requirements.
         </p>
@@ -461,12 +480,6 @@
           <strong>Schedule Your Demo:</strong> https://compliverse.ai
         </p>
         <p class="doc-paragraph"><strong>Contact:</strong> Liztek@liztek.ca</p>
-        <p class="doc-paragraph">
-          <em
-            >CompliVerse AI — Governance. Risk. Compliance. Unified by
-            Intelligence</em
-          >
-        </p>
       </div>
     </section>
   </body>

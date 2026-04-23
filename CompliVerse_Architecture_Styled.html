@@ -1,0 +1,1259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CompliVerse AI — Detailed System Architecture</title>
+<style>
+/* ═══════════════════════════════════════════════════════
+   COLOR TOKENS — matching whitepaper & agentic AI platform
+═══════════════════════════════════════════════════════ */
+:root {
+  --navy: #021a48;
+  --navy-mid: #01457b;
+  --teal: #008abe;
+  --teal-light: #4f9ed2;
+  --blue-card: #021a48;
+  --blue-card-mid: #01457b;
+  --blue-card-alt: #015f95;
+  --accent: #008abe;
+  --accent-light: #7dd3fc;
+  --bg-soft: #eef7ff;
+  --bg-card-pale: #d8ebfa;
+  --border: #9fc6df;
+  --border-light: #b9d5e8;
+  --text-dark: #021a48;
+  --text-mid: #1f4d78;
+  --text-muted: #456988;
+  --rule: #d3e7f4;
+  --watermark: rgba(0, 0, 0, 0.12);
+  --table-line: #9fc6df;
+  --table-head: #e4f1fa;
+
+  /* layer tokens – repainted in the CompliVerse palette */
+  --l1-p: #01457b; --l1-a: #008abe; --l1-d: #021a48; --l1-pr: 1,69,123;
+  --l1-s: linear-gradient(135deg, #eef7ff 0%, #d8ebfa 100%);
+
+  --l2-p: #015f95; --l2-a: #4f9ed2; --l2-d: #021a48; --l2-pr: 1,95,149;
+  --l2-s: linear-gradient(135deg, #e6f4fc 0%, #cce8f5 100%);
+
+  --l3-p: #047857; --l3-a: #10B981; --l3-d: #064E3B; --l3-pr: 4,120,87;
+  --l3-s: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+
+  --l4-p: #C2410C; --l4-a: #F97316; --l4-d: #7C2D12; --l4-pr: 194,65,12;
+  --l4-s: linear-gradient(135deg, #FFF7ED 0%, #FFEDD5 100%);
+
+  --l5-p: #0F766E; --l5-a: #14B8A6; --l5-d: #134E4A; --l5-pr: 15,118,110;
+  --l5-s: linear-gradient(135deg, #F0FDFA 0%, #CCFBF1 100%);
+
+  --l6-p: #334155; --l6-a: #64748B; --l6-d: #0F172A; --l6-pr: 51,65,85;
+  --l6-s: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);
+
+  --l7-p: #B91C1C; --l7-a: #EF4444; --l7-d: #7F1D1D; --l7-pr: 185,28,28;
+  --l7-s: linear-gradient(135deg, #FEF2F2 0%, #FEE2E2 100%);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+@page { size: 841.89pt 595.28pt; margin: 0; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: #fff;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000;
+  line-height: 1.45;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+
+/* ── PAGE SHELL ── */
+.page {
+  width: 841.89pt;
+  min-height: 595.28pt;
+  margin: 0 auto;
+  background: #fff;
+  padding: 16pt 28pt 16pt 28pt;
+  position: relative;
+  overflow: hidden;
+  page-break-after: always;
+  break-after: page;
+}
+.page:last-child { page-break-after: auto; break-after: auto; }
+
+/* CONFIDENTIAL watermark */
+.page::after {
+  content: "CONFIDENTIAL";
+  position: absolute;
+  left: 50%; top: 52%;
+  transform: translate(-50%, -50%) rotate(24deg);
+  font-size: 52pt; font-weight: 800;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--watermark);
+  white-space: nowrap; pointer-events: none; z-index: 3;
+}
+.page > * { position: relative; z-index: 1; }
+
+/* ── HEADER ── */
+ .brand-row {
+        border-bottom: 2px solid #d3e7f4;
+        padding-bottom: 6mm;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      .brand-row img {
+        height: 12mm;
+        width: auto;
+      }
+
+      .brand-center-logo {
+        justify-self: center;
+        height: 18mm;
+      }
+
+      .eyebrow {
+        font-size: 7.8px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #000000;
+        font-weight: 700;
+      }
+
+/* ── PAGE FOOTER ── */
+.page-footer {
+  border-top: 2px solid #d2e6f3;
+  margin-top: 14pt; padding-top: 4pt;
+  display: flex; align-items: center; justify-content: center;
+}
+.page-footer-logo { height: 10mm; width: auto; object-fit: contain; }
+
+/* ═════════════════════════════════════════════
+   COVER PAGE HERO  (2-col grid)
+═════════════════════════════════════════════ */
+.hero-grid {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 0;
+  background: var(--navy);
+  border-radius: 10pt;
+  border: 1px solid var(--border-light);
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(1,69,123,0.14);
+  margin-bottom: 10pt;
+}
+.hero-left {
+  padding: 28pt 30pt;
+  background: var(--navy);
+  border-right: 1px solid rgba(255,255,255,0.12);
+}
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 6pt;
+  background: rgba(255,255,255,0.15); color: #fff;
+  font-size: 7.5px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 3pt 10pt; border-radius: 20pt; margin-bottom: 16pt;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+.hero-eyebrow::before { content: "•"; font-size: 12px; }
+.hero-title {
+  font-size: 26pt; font-weight: 900; color: #fff;
+  line-height: 1.1; margin-bottom: 4pt;
+}
+.hero-title-italic {
+  font-size: 22pt; font-style: italic; font-weight: 400;
+  color: #97cadb; display: block; line-height: 1.15; margin-bottom: 16pt;
+}
+.hero-desc {
+  font-size: 9pt; color: rgba(255,255,255,0.82);
+  line-height: 1.6; margin-bottom: 20pt; max-width: 280pt;
+}
+.hero-stats { display: flex; gap: 20pt; }
+.stat-item .stat-num {
+  font-weight: 900; font-size: 18pt; color: #fff;
+  line-height: 1; margin-bottom: 2pt;
+}
+.stat-item .stat-label {
+  font-size: 7.5pt; color: rgba(255,255,255,0.65); line-height: 1.3;
+}
+.hero-right {
+  padding: 24pt 26pt;
+  background: linear-gradient(180deg, #e7f4fd 0%, #d3e8f7 100%);
+}
+.hero-right-title {
+  font-size: 9pt; font-weight: 700; color: var(--navy);
+  text-transform: uppercase; letter-spacing: 0.12em;
+  margin-bottom: 10pt;
+}
+.layer-badge-list { display: flex; flex-direction: column; gap: 6pt; }
+.layer-badge {
+  display: flex; align-items: center; gap: 8pt;
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 6pt; padding: 5pt 10pt;
+  box-shadow: 0 1px 3px rgba(1,69,123,0.07);
+}
+.layer-badge .lnum {
+  width: 20pt; height: 20pt;
+  border-radius: 50%;
+  display: grid; place-items: center;
+  font-size: 10pt; font-weight: 800; color: #fff;
+  flex-shrink: 0;
+}
+.layer-badge .lname { font-size: 8pt; font-weight: 700; color: var(--navy); }
+.layer-badge .lsub  { font-size: 7pt; color: var(--text-muted); }
+
+/* ═════════════════════════════════════════════
+   SECTION LABELS
+═════════════════════════════════════════════ */
+.section-eyebrow {
+  font-size: 7.5px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--teal); margin-bottom: 3pt;
+}
+.section-title {
+  font-size: 14pt; font-weight: 700; color: var(--navy);
+  margin-bottom: 3pt; line-height: 1.2;
+}
+.section-title em { font-style: italic; color: var(--teal); }
+.section-subtitle {
+  font-size: 8.5pt; color: var(--text-mid);
+  margin-bottom: 8pt; line-height: 1.5;
+}
+.section-label-right {
+  font-size: 7px; font-weight: 700; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--text-muted);
+  float: right; margin-top: 3pt;
+}
+
+/* ═════════════════════════════════════════════
+   LAYER CONTAINERS
+═════════════════════════════════════════════ */
+.layer {
+  background: var(--ls);
+  border: 1px solid var(--border-light);
+  border-radius: 10pt; overflow: hidden;
+  box-shadow: 0 1px 2px rgba(1,69,123,0.04), 0 4px 12px rgba(1,69,123,0.06);
+  margin-bottom: 8pt;
+}
+.l-frontend { --lp: var(--l1-p); --la: var(--l1-a); --ltd: var(--l1-d); --lp-rgb: var(--l1-pr); --ls: var(--l1-s); }
+.l-api       { --lp: var(--l2-p); --la: var(--l2-a); --ltd: var(--l2-d); --lp-rgb: var(--l2-pr); --ls: var(--l2-s); }
+.l-business  { --lp: var(--l3-p); --la: var(--l3-a); --ltd: var(--l3-d); --lp-rgb: var(--l3-pr); --ls: var(--l3-s); }
+.l-ai        { --lp: var(--l4-p); --la: var(--l4-a); --ltd: var(--l4-d); --lp-rgb: var(--l4-pr); --ls: var(--l4-s); }
+.l-backend   { --lp: var(--l5-p); --la: var(--l5-a); --ltd: var(--l5-d); --lp-rgb: var(--l5-pr); --ls: var(--l5-s); }
+.l-data      { --lp: var(--l6-p); --la: var(--l6-a); --ltd: var(--l6-d); --lp-rgb: var(--l6-pr); --ls: var(--l6-s); }
+.l-external  { --lp: var(--l7-p); --la: var(--l7-a); --ltd: var(--l7-d); --lp-rgb: var(--l7-pr); --ls: var(--l7-s); }
+
+/* layer banner */
+.lbanner {
+  position: relative;
+  height: 52pt;
+  display: grid;
+  grid-template-columns: auto auto 1fr auto;
+  align-items: center; gap: 14pt;
+  padding: 0 18pt 0 18pt;
+  background: linear-gradient(90deg,
+    rgba(var(--lp-rgb),0.18) 0%,
+    rgba(var(--lp-rgb),0.06) 50%,
+    transparent 100%);
+}
+.lbanner::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 4pt; background: var(--lp);
+}
+.lbanner__num {
+  width: 34pt; height: 34pt; border-radius: 50%;
+  background: var(--lp); color: #fff;
+  font-size: 17pt; font-weight: 700;
+  display: grid; place-items: center;
+  box-shadow: 0 4pt 10pt rgba(var(--lp-rgb),0.30);
+  flex-shrink: 0;
+}
+.lbanner__title {
+  font-size: 14pt; font-weight: 700; color: #021a48;
+  margin: 0; line-height: 1.15;
+}
+.lbanner__sub {
+  font-size: 7pt; font-weight: 700; color: var(--lp);
+  letter-spacing: 0.16em; text-transform: uppercase; margin: 3pt 0 0;
+}
+.lbanner__chips { display: flex; flex-wrap: wrap; gap: 4pt; justify-content: flex-end; }
+.lbanner__chip {
+  background: #fff; border: 1px solid var(--la);
+  border-radius: 999pt; padding: 3pt 8pt;
+  font-size: 7.5pt; font-weight: 500; color: var(--ltd);
+  white-space: nowrap;
+}
+
+.lbody { padding: 10pt 14pt 14pt; }
+
+/* ═════════════════════════════════════════════
+   COMPONENT CARDS
+═════════════════════════════════════════════ */
+.grid { display: grid; gap: 8pt; align-items: stretch; }
+.grid.cols-2 { grid-template-columns: repeat(2,minmax(0,1fr)); }
+.grid.cols-3 { grid-template-columns: repeat(3,minmax(0,1fr)); }
+.grid.cols-4 { grid-template-columns: repeat(4,minmax(0,1fr)); }
+.grid.cols-5 { grid-template-columns: repeat(5,minmax(0,1fr)); }
+.grid + .grid { margin-top: 8pt; }
+
+.card {
+  position: relative;
+  display: flex; flex-direction: column;
+  background: #fff;
+  border: 1px solid var(--border);
+  border-radius: 7pt;
+  padding: 9pt 12pt 9pt 14pt;
+  box-shadow: 0 1px 2px rgba(1,69,123,0.04), 0 3px 8px rgba(1,69,123,0.06);
+  overflow: hidden;
+}
+.card::before {
+  content: ""; position: absolute;
+  top: 0; bottom: 0; left: 0; width: 3pt;
+  background: var(--lp);
+}
+.card.full { grid-column: 1 / -1; }
+.card.is-db { border-left: none; }
+.card.is-db::before { width: 5pt; }
+
+.card__icon {
+  position: absolute; top: 9pt; right: 9pt;
+  width: 18pt; height: 18pt;
+  display: grid; place-items: center;
+  background: rgba(var(--lp-rgb),0.10);
+  color: var(--lp); border-radius: 4pt; flex-shrink: 0;
+}
+.card__icon svg { width: 11pt; height: 11pt; display: block; }
+.card__title {
+  font-size: 8.5pt; font-weight: 700; color: #021a48;
+  margin: 0 0 3pt; padding-right: 22pt; line-height: 1.3;
+}
+.card__body {
+  font-size: 7.5pt; color: #1f4d78; line-height: 1.5; flex: 1; margin-top: 2px;
+}
+.card__body code {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 7pt; background: #eef7ff;
+  padding: 1px 4px; border-radius: 3pt; color: #021a48;
+}
+.card__path {
+  display: inline-block; margin-top: 5pt;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 7pt; color: var(--navy-mid);
+  background: #eef7ff; border: 1px solid #b9d5e8;
+  padding: 2pt 6pt; border-radius: 4pt;
+  align-self: flex-start; word-break: break-word;
+}
+.card__tags { display: flex; flex-wrap: wrap; gap: 3pt; margin-top: 6pt; }
+.card__tag {
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 6.5pt; padding: 1pt 5pt; border-radius: 3pt;
+  background: rgba(var(--lp-rgb),0.06); color: var(--ltd); font-weight: 500;
+}
+
+/* ═════════════════════════════════════════════
+   FLOW CONNECTORS
+═════════════════════════════════════════════ */
+.flow {
+  position: relative; display: grid; place-items: center;
+  height: 36pt; margin: 2pt 0;
+}
+.flow__svg { display: block; pointer-events: none; }
+.flow__pill {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  display: inline-flex; align-items: center; gap: 7pt;
+  background: #fff; padding: 4pt 10pt; border-radius: 999pt;
+  font-size: 7.5pt; font-weight: 700; letter-spacing: 0.04em; color: #021a48;
+  box-shadow: 0 1px 2px rgba(1,69,123,0.06), 0 3pt 8pt rgba(1,69,123,0.06);
+  white-space: nowrap;
+}
+.flow--sync  .flow__pill { border: 1.5px solid #021a48; }
+.flow--async .flow__pill { border: 1.5px solid var(--teal); color: var(--navy-mid); }
+.flow__kind {
+  text-transform: uppercase; font-size: 6.5pt; font-weight: 800;
+  letter-spacing: 0.12em; padding: 2pt 5pt; border-radius: 3pt;
+  background: #021a48; color: #fff;
+}
+.flow--async .flow__kind { background: var(--teal); }
+
+/* ═════════════════════════════════════════════
+   HUMAN-IN-THE-LOOP GATES
+═════════════════════════════════════════════ */
+.gates {
+  position: relative;
+  background:
+    repeating-linear-gradient(45deg,
+      #FFFBEB 0, #FFFBEB 10px,
+      #FEF3C7 10px, #FEF3C7 20px), #FFFEF5;
+  border: 2px dashed #D97706;
+  border-radius: 10pt; overflow: hidden;
+  box-shadow: 0 2pt 8pt rgba(217,119,6,0.10);
+  margin-bottom: 8pt;
+}
+.gates__ribbon {
+  background: #D97706; color: #fff;
+  font-size: 8pt; font-weight: 800;
+  text-transform: uppercase; letter-spacing: 0.18em;
+  padding: 7pt 14pt; text-align: center;
+  display: flex; align-items: center; justify-content: center; gap: 8pt;
+}
+.gates__ribbon .warn {
+  display: inline-grid; place-items: center;
+  width: 14pt; height: 14pt; background: #fff;
+  color: #D97706; border-radius: 50%;
+  font-size: 10pt; font-weight: 800;
+}
+.gates__body { padding: 10pt 14pt 14pt; }
+.gates__sub {
+  font-size: 7.5pt; color: #78350F; margin: 0 0 8pt;
+  text-align: center; font-weight: 500;
+}
+.gate {
+  background: #fff; border: 1.5px dashed #D97706;
+  border-radius: 7pt; padding: 9pt 11pt;
+  display: flex; flex-direction: column;
+  box-shadow: 0 1pt 2pt rgba(217,119,6,0.05);
+}
+.gate__title {
+  font-size: 8pt; font-weight: 700; color: #78350F;
+  margin: 0 0 4pt; line-height: 1.3;
+}
+.gate__body { font-size: 7pt; color: #57534E; line-height: 1.5; flex: 1; }
+.gate__path {
+  display: inline-block; margin-top: 6pt;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 6.5pt; background: #FFFBEB; color: #92400E;
+  padding: 2pt 5pt; border-radius: 3pt; border: 1px solid #FDE68A;
+  align-self: flex-start;
+}
+
+/* ═════════════════════════════════════════════
+   ABOUT PANEL
+═════════════════════════════════════════════ */
+.about {
+  background: #fff; border: 1px solid var(--border);
+  border-radius: 9pt; padding: 14pt 18pt;
+  display: grid; grid-template-columns: 1fr 220pt; gap: 20pt;
+  margin: 8pt 0 6pt;
+  box-shadow: 0 1pt 2pt rgba(1,69,123,0.04), 0 4pt 12pt rgba(1,69,123,0.06);
+}
+.about__h {
+  font-size: 8pt; font-weight: 700; letter-spacing: 0.16em;
+  text-transform: uppercase; color: var(--teal); margin: 0 0 8pt;
+}
+.about__prose { font-size: 7.5pt; color: var(--text-mid); line-height: 1.6; }
+.about__prose p { margin: 0 0 7pt; }
+.about__prose p:last-child { margin: 0; }
+.about__prose strong { color: #021a48; }
+.about__quote {
+  border-left: 3px solid var(--teal);
+  background: var(--bg-soft);
+  border-radius: 0 6pt 6pt 0;
+  padding: 12pt 14pt;
+  font-size: 8pt; color: var(--navy-mid);
+  line-height: 1.65; align-self: start;
+}
+.about__quote .qmark {
+  display: block; font-size: 22pt; font-weight: 700;
+  color: var(--teal); line-height: 0.6; margin-bottom: 4pt;
+}
+.about__quote em { font-style: italic; font-weight: 500; }
+.about__quote cite {
+  display: block; margin-top: 8pt;
+  font-size: 7pt; font-style: normal; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.1em; color: var(--teal);
+}
+
+/* ═════════════════════════════════════════════
+   LEGEND
+═════════════════════════════════════════════ */
+.legend {
+  background: var(--bg-soft); border: 1px solid var(--border);
+  border-radius: 9pt; padding: 12pt 16pt;
+  display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 24pt;
+  margin: 0 0 10pt;
+}
+.legend__h {
+  font-size: 7.5pt; font-weight: 700; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--text-muted);
+  margin: 0 0 8pt; padding-bottom: 5pt; border-bottom: 1px solid var(--border);
+}
+.legend__row {
+  display: flex; align-items: center; gap: 8pt;
+  padding: 3pt 0; font-size: 8pt; color: #021a48;
+}
+.legend__sw {
+  width: 20pt; height: 13pt; border-radius: 3pt;
+  border: 1px solid; flex-shrink: 0;
+}
+.legend__svg { width: 42pt; height: 11pt; flex-shrink: 0; display: block; }
+.legend__chip {
+  width: 20pt; height: 13pt; border-radius: 3pt;
+  flex-shrink: 0; display: inline-block;
+}
+.legend__chip.db {
+  background: #F8FAFC; border: 1px solid #BDBDBD; border-left: 4px solid #334155;
+}
+.legend__chip.human {
+  background: repeating-linear-gradient(45deg,#FFFBEB 0,#FFFBEB 4px,#FEF3C7 4px,#FEF3C7 8px);
+  border: 1.5px dashed #D97706;
+}
+.legend__chip.ext {
+  background: linear-gradient(135deg,#FEF2F2,#FEE2E2);
+  border: 1px solid #EF4444;
+}
+
+/* ═════════════════════════════════════════════
+   NAV PILLS (cover page only)
+═════════════════════════════════════════════ */
+.nav-pills {
+  display: flex; flex-wrap: wrap; gap: 5pt; margin-bottom: 8pt;
+}
+.nav-pill {
+  display: inline-flex; align-items: center; gap: 5pt;
+  padding: 4pt 10pt 4pt 6pt;
+  border-radius: 999pt; background: #fff;
+  border: 1px solid var(--border);
+  color: var(--navy); text-decoration: none;
+  font-size: 7.5pt; font-weight: 700;
+  box-shadow: 0 1pt 2pt rgba(1,69,123,0.04);
+}
+.nav-pill .npnum {
+  width: 16pt; height: 16pt;
+  display: inline-grid; place-items: center;
+  border-radius: 50%; font-size: 8pt; font-weight: 700; color: #fff;
+  flex-shrink: 0;
+}
+.npnum-1 { background: #01457b; }
+.npnum-2 { background: #015f95; }
+.npnum-3 { background: #047857; }
+.npnum-h { background: #D97706; }
+.npnum-4 { background: #C2410C; }
+.npnum-5 { background: #0F766E; }
+.npnum-6 { background: #334155; }
+.npnum-7 { background: #B91C1C; }
+.npnum-L { background: var(--teal); }
+
+/* ── PRINT ── */
+@media print {
+  body { margin: 0; background: #fff; }
+  .page { margin: 0; }
+}
+</style>
+</head>
+<body>
+
+<section class="page">
+     <div class="brand-row">
+        <img alt="LIZTEK" src="liztek-logo.png" />
+        <div style="text-align: center">
+          <img
+            alt="CompliVerse AI"
+            class="brand-center-logo"
+            src="compliwerseLogo.png"
+          />
+          <div
+            class="eyebrow"
+            style="margin-left: 75px; position: absolute; top: 59px"
+          >
+            Executive Product Brief | 2026
+          </div>
+        </div>
+      </div>
+
+  <div class="hero-grid">
+    <div class="hero-left">
+      <div class="hero-eyebrow">Engineering Architecture · v3.0</div>
+      <div class="hero-title">CompliVerse AI</div>
+      <span class="hero-title-italic">Detailed System Architecture</span>
+      <p class="hero-desc">
+        A complete layer-by-layer view of the CompliVerse AI platform from the browser client
+        through API gateway, business logic, AI automation, backend services, data layer, and
+        external integrations. Every component maps directly to the real codebase.
+      </p>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <div class="stat-num">7</div>
+          <div class="stat-label">Architecture<br>Layers</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">5</div>
+          <div class="stat-label">Human-in-the-Loop<br>Approval Gates</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">40+</div>
+          <div class="stat-label">Component<br>Cards</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100%</div>
+          <div class="stat-label">Codebase-Backed<br>Documentation</div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-right-title">Architecture Layers</div>
+      <div class="layer-badge-list">
+        <div class="layer-badge">
+          <span class="lnum" style="background:#01457b">1</span>
+          <div><div class="lname">Frontend / Client Layer</div><div class="lsub">Next.js 14 · React 18 · TypeScript · Port 5000</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#015f95">2</span>
+          <div><div class="lname">API Gateway &amp; Communication</div><div class="lsub">FastAPI · Middleware Pipeline · Per-Tenant Routing</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#047857">3</span>
+          <div><div class="lname">Application / Business Logic</div><div class="lsub">FastAPI Routers · Domain Modules · Workflow Orchestration</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#D97706">!</span>
+          <div><div class="lname">Human-in-the-Loop Approval Gates</div><div class="lsub">Manual Review · 5 Explicit Approval Checkpoints</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#C2410C">4</span>
+          <div><div class="lname">AI / Automation Layer</div><div class="lsub">OpenAI GPT · Prompt-Templated Agents · Output Validators</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#0F766E">5</span>
+          <div><div class="lname">Backend Services Layer</div><div class="lsub">SMTP · Resend · Timer Service · Document &amp; Scanner Ingestion</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#334155">6</span>
+          <div><div class="lname">Data Layer</div><div class="lsub">PostgreSQL · Schema-per-Tenant · File Storage</div></div>
+        </div>
+        <div class="layer-badge">
+          <span class="lnum" style="background:#B91C1C">7</span>
+          <div><div class="lname">External Systems</div><div class="lsub">Third-Party APIs · Transactional Email · Vulnerability Scanners</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-pills">
+    <span class="nav-pill"><span class="npnum npnum-1">1</span>Frontend / Client</span>
+    <span class="nav-pill"><span class="npnum npnum-2">2</span>API Gateway</span>
+    <span class="nav-pill"><span class="npnum npnum-3">3</span>Business Logic</span>
+    <span class="nav-pill"><span class="npnum npnum-h">!</span>Manual Approval</span>
+    <span class="nav-pill"><span class="npnum npnum-4">4</span>AI / Automation</span>
+    <span class="nav-pill"><span class="npnum npnum-5">5</span>Backend Services</span>
+    <span class="nav-pill"><span class="npnum npnum-6">6</span>Data Layer</span>
+    <span class="nav-pill"><span class="npnum npnum-7">7</span>External Systems</span>
+    <span class="nav-pill"><span class="npnum npnum-L">L</span>Legend</span>
+  </div>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="section-label-right">Architecture Layer 1</div>
+  <div class="section-eyebrow">User-Facing Presentation Tier</div>
+  <div class="section-title">Frontend / <em>Client Layer</em></div>
+
+  <section class="layer l-frontend">
+    <header class="lbanner">
+      <div class="lbanner__num">1</div>
+      <div>
+        <h2 class="lbanner__title">Frontend / Client Layer</h2>
+        <p class="lbanner__sub">User-Facing Presentation Tier</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">Next.js 14</span>
+        <span class="lbanner__chip">React 18</span>
+        <span class="lbanner__chip">TypeScript</span>
+        <span class="lbanner__chip">Port 5000</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-4">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2" width="13" height="9" rx="1.5"/><path d="M5.5 14h5M8 11v3"/></svg></span>
+          <h3 class="card__title">Web Browser Client</h3>
+          <p class="card__body">Tenant-specific subdomain entry point (e.g. <code>acme.complyverse.app</code>). Tenant identity is derived from the host name; users see only their own tenant's data.</p>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="1.5" width="9" height="13" rx="1.5"/><path d="M7 12.5h2"/></svg></span>
+          <h3 class="card__title">Mobile / Tablet Client</h3>
+          <p class="card__body">Same Next.js application served as a responsive Progressive Web App. Every page is mobile-first; no separate native build is required.</p>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="1.5" y="2" width="13" height="12" rx="1.5"/><path d="M1.5 6h13M5 6v8"/></svg></span>
+          <h3 class="card__title">Authenticated App Layout</h3>
+          <p class="card__body">App-router shell that wraps every authenticated page. The sidebar is RBAC-aware and conditionally hides menu items the signed-in user is not authorised to access.</p>
+          <span class="card__path">grc-frontend/src/app/(dashboard)/layout.tsx</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v2M8 12.5v2M1.5 8h2M12.5 8h2"/></svg></span>
+          <h3 class="card__title">Data-Fetching Layer (React Query)</h3>
+          <p class="card__body">Per-page hooks (<code>useDashboard</code>, <code>useRisks</code>, <code>useEvidence</code>, …) wrap the API client and centralise caching, retry policy and error toasts.</p>
+        </article>
+      </div>
+      <div class="grid" style="margin-top:8pt">
+        <article class="card full">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h12"/></svg></span>
+          <h3 class="card__title">Application Route Pages (App Router)</h3>
+          <p class="card__body">
+            <code>/dashboard</code> · <code>/governance</code> · <code>/erm</code> · <code>/risks</code> · <code>/compliance</code> · <code>/controls</code> · <code>/control-library</code> ·
+            <code>/vulnerabilities</code> · <code>/assets</code> · <code>/audit</code> · <code>/auditor-portal</code> · <code>/complychat</code> · <code>/workflow-engine</code> ·
+            <code>/framework-upload</code> · <code>/integrations</code> · <code>/is-projects</code> · <code>/evidence</code> · <code>/evidence-requirements</code> ·
+            <code>/tasks</code> · <code>/users</code> · <code>/admin</code> · <code>/cis-benchmark</code> · <code>/documents</code> · <code>/frameworks</code>
+          </p>
+          <span class="card__path">grc-frontend/src/app/(dashboard)/&lt;route&gt;/page.tsx</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow flow--sync">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#021a48" stroke-width="2" fill="none"/><polygon points="80,35 74,26 86,26" fill="#021a48"/></svg>
+    <span class="flow__pill"><span class="flow__kind">REST API</span>HTTPS · JSON · Bearer JWT</span>
+  </div>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <section class="layer l-api">
+    <header class="lbanner">
+      <div class="lbanner__num">2</div>
+      <div>
+        <h2 class="lbanner__title">API Gateway &amp; Communication</h2>
+        <p class="lbanner__sub">Entry · Authentication · Tenant Routing · Transport Security</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">FastAPI</span>
+        <span class="lbanner__chip">Middleware Pipeline</span>
+        <span class="lbanner__chip">Per-Tenant Routing</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-4">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 7l5-3 5 3-5 3-5-3z"/><path d="M3 10l5 3 5-3"/></svg></span>
+          <h3 class="card__title">API Client (Axios HTTP Interceptor)</h3>
+          <p class="card__body">Single HTTP client used by every page. Injects <code>Authorization: Bearer &lt;jwt&gt;</code> and <code>X-Tenant-Slug</code> from local storage on every outbound call.</p>
+          <span class="card__path">grc-frontend/src/lib/api.ts</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.5l5.5 2v4.5c0 3-2.5 5.5-5.5 6.5C5 13.5 2.5 11 2.5 8V3.5L8 1.5z"/></svg></span>
+          <h3 class="card__title">CORS Policy Middleware</h3>
+          <p class="card__body">First middleware in the FastAPI pipeline. Configured permissively for development; production tightens to the tenant-domain allow-list.</p>
+          <span class="card__path">backend/grc/main.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 12V4l5.5 3 5.5-3v8"/><circle cx="8" cy="9.5" r="2"/></svg></span>
+          <h3 class="card__title">Tenant Resolution Middleware</h3>
+          <p class="card__body">Resolves the request's tenant from <code>X-Tenant-Slug</code> or subdomain, loads the <code>schema_name</code>, attaches it to <code>request.state</code>.</p>
+          <span class="card__path">backend/grc/middleware/subdomain.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="11" height="11" rx="1.5"/><path d="M5 6h6M5 8.5h6M5 11h4"/></svg></span>
+          <h3 class="card__title">Audit Logging Middleware</h3>
+          <p class="card__body">Intercepts every inbound HTTP request. Captures actor, route, status and payload metadata and persists a <code>grc_audit_logs</code> record.</p>
+          <span class="card__path">backend/grc/main.py · backend/grc/audit_logger.py</span>
+        </article>
+      </div>
+      <div class="grid cols-3" style="margin-top:8pt">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="6" cy="6" r="2.5"/><path d="M6 8.5v3M5 11h2M9 11h4M9 9h3"/></svg></span>
+          <h3 class="card__title">JWT Authentication Dependency</h3>
+          <p class="card__body">FastAPI <code>Depends(get_current_user)</code> decodes and verifies the bearer token signature and expiry, then loads the corresponding user record.</p>
+          <span class="card__path">backend/grc/routers/auth_router.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="5" r="2.5"/><path d="M3 13c0-2.5 2.2-4.5 5-4.5s5 2 5 4.5"/></svg></span>
+          <h3 class="card__title">Role-Based Access Control (RBAC)</h3>
+          <p class="card__body">Per-route <code>require_permission("module:submodule:action")</code> dependency, checked against the tenant-scoped <code>role_permissions</code> table.</p>
+          <span class="card__path">backend/grc/permissions.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="8" cy="3.5" rx="5" ry="1.5"/><path d="M3 3.5v9c0 .8 2.2 1.5 5 1.5s5-.7 5-1.5v-9"/><path d="M3 8c0 .8 2.2 1.5 5 1.5S13 8.8 13 8"/></svg></span>
+          <h3 class="card__title">Tenant Session Helper</h3>
+          <p class="card__body">Per-request SQLAlchemy session that issues <code>SET search_path TO "tenant_&lt;slug&gt;", public</code> before any query, ensuring tenant isolation.</p>
+          <span class="card__path">backend/grc/tenant_manager.py</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="section-label-right">Architecture Layer 3</div>
+  <div class="section-eyebrow">Domain Services · Orchestration · Governance Enforcement</div>
+  <div class="section-title">Application / <em>Business Logic</em></div>
+
+  <div class="flow flow--sync" style="margin-bottom:6pt">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#021a48" stroke-width="2" fill="none"/><polygon points="80,35 74,26 86,26" fill="#021a48"/></svg>
+    <span class="flow__pill"><span class="flow__kind">SERVICE CALL</span>Authenticated Request · Tenant-Scoped</span>
+  </div>
+
+  <section class="layer l-business">
+    <header class="lbanner">
+      <div class="lbanner__num">3</div>
+      <div>
+        <h2 class="lbanner__title">Application / Business Logic</h2>
+        <p class="lbanner__sub">Domain Services · Orchestration · Governance Enforcement</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">FastAPI Routers</span>
+        <span class="lbanner__chip">Domain Modules</span>
+        <span class="lbanner__chip">Workflow Orchestration</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-2">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 4l5 3 5-3v8l-5 3-5-3V4z"/><path d="M3 4l5 3 5-3M8 7v8"/></svg></span>
+          <h3 class="card__title">HTTP Routers (mounted in <code>main.py</code>)</h3>
+          <p class="card__body">Authentication · Administration · Tenants · Dashboard · Enriched Dashboard · Frameworks · Controls · Evidence · Risks · Governance · Documents · Assets · Certification · Advanced ERM · Compliance Assessments · IS Projects · Critical Tasks.</p>
+          <span class="card__path">backend/grc/routers/</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2.5" width="5" height="5" rx="1"/><rect x="9" y="2.5" width="5" height="5" rx="1"/><rect x="2" y="9" width="5" height="5" rx="1"/><rect x="9" y="9" width="5" height="5" rx="1"/></svg></span>
+          <h3 class="card__title">Domain Modules</h3>
+          <p class="card__body">Enterprise Risk Management · Governance · Framework Upload · Compliance · Evidence · Control Library · Vulnerability Management · ComplyChat · Audit Management · Workflow Orchestration · Integrations · CIS Benchmark.</p>
+          <span class="card__path">backend/grc/modules/</span>
+        </article>
+      </div>
+      <div class="grid cols-3" style="margin-top:8pt">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6"/><path d="M8 4v4l3 2"/></svg></span>
+          <h3 class="card__title">Workflow Orchestration Engine</h3>
+          <p class="card__body">State machine, condition evaluator, action handlers, trigger dispatcher and timer service. Drives risk-treatment, exception, audit and CAPA approval workflows end-to-end.</p>
+          <span class="card__path">backend/grc/modules/workflow_engine/services/runtime.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 2l5 2v4c0 3-2.5 5-5 6-2.5-1-5-3-5-6V4l5-2z"/><path d="M6 8l1.5 1.5L10 7"/></svg></span>
+          <h3 class="card__title">Tenant Provisioning Service</h3>
+          <p class="card__body">End-to-end provisioning of a new tenant: schema creation, permission-matrix seeding, administrator user and role bootstrap, and organisation-profile initialisation.</p>
+          <span class="card__path">backend/grc/tenant_manager.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2" width="11" height="12" rx="1.5"/><path d="M5 5h6M5 8h6M5 11h4"/></svg></span>
+          <h3 class="card__title">Business Audit Logger</h3>
+          <p class="card__body">Library used by both routers and modules to write structured business-event audit records (separate from the HTTP-level audit captured by middleware).</p>
+          <span class="card__path">backend/grc/audit_logger.py</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <section class="gates">
+    <div class="gates__ribbon">
+      <span class="warn">!</span>
+      <span>Manual Review Required · Human-in-the-Loop Approval Gates</span>
+      <span class="warn">!</span>
+    </div>
+    <div class="gates__body">
+      <p class="gates__sub">The following workflow stages explicitly hand off to a human reviewer before automated processing may continue.</p>
+      <div class="grid cols-5">
+        <div class="gate">
+          <h4 class="gate__title">Framework Publication Review</h4>
+          <p class="gate__body">A compliance reviewer approves staged controls before they are promoted from the parsed-staging tables to the production framework catalog.</p>
+          <span class="gate__path">backend/grc/modules/framework_upload</span>
+        </div>
+        <div class="gate">
+          <h4 class="gate__title">Evidence Assessment Review</h4>
+          <p class="gate__body">A reviewer confirms or overrides the AI evidence-assessment verdict before the underlying control is marked as satisfied.</p>
+          <span class="gate__path">backend/grc/modules/evidence</span>
+        </div>
+        <div class="gate">
+          <h4 class="gate__title">Risk Treatment Approval</h4>
+          <p class="gate__body">Owner → Chief Risk Officer → committee approval chain orchestrated by the Workflow Orchestration Engine before a treatment plan is committed.</p>
+          <span class="gate__path">backend/grc/modules/workflow_engine</span>
+        </div>
+        <div class="gate">
+          <h4 class="gate__title">Audit Findings Sign-Off</h4>
+          <p class="gate__body">Both auditor and auditee must explicitly confirm each finding and its corrective action plan (CAPA) before the engagement is closed.</p>
+          <span class="gate__path">backend/grc/modules/audit_management</span>
+        </div>
+        <div class="gate">
+          <h4 class="gate__title">ComplyChat Prompt Authoring</h4>
+          <p class="gate__body">The end user composes the natural-language question. The generated SQL is validated against an allow-list before any database execution occurs.</p>
+          <span class="gate__path">backend/grc/modules/chatbot</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="flow flow--async" style="margin-bottom:4pt">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#008abe" stroke-width="2" fill="none" stroke-dasharray="5 3"/><polygon points="80,35 74,26 86,26" fill="#008abe"/></svg>
+    <span class="flow__pill"><span class="flow__kind">ASYNC</span>AI Inference Request · Prompt + Context</span>
+  </div>
+
+  <section class="layer l-ai">
+    <header class="lbanner">
+      <div class="lbanner__num">4</div>
+      <div>
+        <h2 class="lbanner__title">AI / Automation Layer</h2>
+        <p class="lbanner__sub">Large-Language-Model Agents · Automated Assessment</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">OpenAI GPT</span>
+        <span class="lbanner__chip">Prompt-Templated Agents</span>
+        <span class="lbanner__chip">Output Validators</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-3">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 4h11v6h-7l-3 3V4z"/></svg></span>
+          <h3 class="card__title">ComplyChat — Conversational AI Module</h3>
+          <p class="card__body">Natural-language question-and-answer interface over the platform's GRC data. Routes user questions to the SQL agent and returns a result table together with a plain-language summary.</p>
+          <span class="card__path">backend/grc/modules/chatbot/router.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4"/><path d="M10 10l3.5 3.5"/></svg></span>
+          <h3 class="card__title">Natural-Language-to-SQL Agent</h3>
+          <p class="card__body">Resolves the user's tenant scope, builds a schema-aware prompt with <code>tenant_id IN (…)</code> baked in, requests SQL from the LLM, and runs <code>validate_sql()</code> before executing.</p>
+          <span class="card__path">backend/grc/modules/chatbot/complychat/grc_sql_agent.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.5l1.5 4.5L14 8l-4.5 2L8 14.5 6.5 10 2 8l4.5-2z"/></svg></span>
+          <h3 class="card__title">AI Evidence Assessment Service</h3>
+          <p class="card__body">For each uploaded document, evaluates whether the evidence satisfies the linked control(s) and persists an explainable verdict for the human reviewer to confirm or override.</p>
+          <span class="card__path">backend/grc/modules/evidence/routers/ai_assessment.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 2h7l3 3v9H3V2z"/><path d="M10 2v3h3M5 8h6M5 11h6"/></svg></span>
+          <h3 class="card__title">AI Policy Drafting Service</h3>
+          <p class="card__body">Generates first-draft policies and procedures from a framework-control prompt template, ready for the reviewer to refine in the Governance workspace.</p>
+          <span class="card__path">backend/grc/modules/governance/</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 6a3 3 0 1 1 3 3M11 10a3 3 0 1 1-3-3"/></svg></span>
+          <h3 class="card__title">AI Control Mapping Service</h3>
+          <p class="card__body">During framework upload, suggests links between newly parsed controls and the existing <code>grc_normalized_controls</code> common-control library, accelerating reviewer work.</p>
+          <span class="card__path">backend/grc/modules/framework_upload/</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6"/><path d="M5 8h6M8 5v6"/></svg></span>
+          <h3 class="card__title">OpenAI Inference Client</h3>
+          <p class="card__body">Single shared call site used by the chatbot, evidence and framework-upload AI services. Model identifier, API key and timeouts are sourced from environment configuration.</p>
+          <span class="card__path">shared OpenAI client wrapper</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow flow--async">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#008abe" stroke-width="2" fill="none" stroke-dasharray="5 3"/><polygon points="80,35 74,26 86,26" fill="#008abe"/></svg>
+    <span class="flow__pill"><span class="flow__kind">EVENT BUS</span>Async Event Trigger · Scheduled Jobs</span>
+  </div>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <section class="layer l-backend">
+    <header class="lbanner">
+      <div class="lbanner__num">5</div>
+      <div>
+        <h2 class="lbanner__title">Backend Services Layer</h2>
+        <p class="lbanner__sub">Background Workers · Notifications · Scheduling · Ingestion</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">SMTP</span>
+        <span class="lbanner__chip">Resend</span>
+        <span class="lbanner__chip">Timer Service</span>
+        <span class="lbanner__chip">Document &amp; Scanner Ingestion</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-3">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg></span>
+          <h3 class="card__title">SMTP Email Notification Service</h3>
+          <p class="card__body">Tenant-configured outbound mail used for workflow notifications, exception alerts and reviewer reminders.</p>
+          <span class="card__path">backend/grc/modules/workflow_engine/services/email_service.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.5l5.5 3v4c0 3.5-2.5 5.5-5.5 6-3-.5-5.5-2.5-5.5-6v-4l5.5-3z"/><path d="M8 6v3M8 11v.5"/></svg></span>
+          <h3 class="card__title">Resend Transactional Email Service</h3>
+          <p class="card__body">Critical-task escalations are sent through Resend with a separate sender and template, ensuring they are not lost in the workflow SMTP queue.</p>
+          <span class="card__path">backend/grc/routers/critical_tasks_router.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="9" r="5"/><path d="M8 6v3l2 1.5M6 1h4"/></svg></span>
+          <h3 class="card__title">Scheduled Trigger Service</h3>
+          <p class="card__body">Schedules and fires SLA / due-date events for risks, vulnerabilities and audit findings, feeding the workflow engine's event dispatcher.</p>
+          <span class="card__path">backend/grc/modules/workflow_engine/services/timer_service.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="4" cy="8" r="2"/><circle cx="12" cy="4" r="2"/><circle cx="12" cy="12" r="2"/><path d="M5.5 7l5-2.5M5.5 9l5 2.5"/></svg></span>
+          <h3 class="card__title">Event Dispatcher &amp; Queue</h3>
+          <p class="card__body">In-process event hub that fans business events (control failed, finding overdue, evidence rejected, …) out to action handlers and notification jobs.</p>
+          <span class="card__path">backend/grc/modules/workflow_engine/services/trigger_dispatcher.py</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 2h7l3 3v9H3V2z"/><path d="M10 2v3h3M5.5 8h5M5.5 11h5"/></svg></span>
+          <h3 class="card__title">Document Ingestion &amp; OCR Service</h3>
+          <p class="card__body">Parses uploaded evidence (PDF, DOCX, image), extracts text for the AI evidence assessor and persists the binary on disk under <code>backend/uploads/</code>.</p>
+          <span class="card__path">backend/grc/modules/evidence/</span>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6"/><path d="M8 4.5v3.5l2.5 1.5"/></svg></span>
+          <h3 class="card__title">Vulnerability Scanner Integration Adapters</h3>
+          <p class="card__body">Pulls findings from Nessus, Qualys and Rapid7, normalises them and deduplicates by <code>asset + CVE + plugin id</code> into <code>grc_vulnerabilities</code>.</p>
+          <span class="card__path">backend/grc/modules/integrations/ · backend/grc/modules/vuln_management/</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="flow flow--sync" style="margin-bottom:4pt">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#021a48" stroke-width="2" fill="none"/><polygon points="80,35 74,26 86,26" fill="#021a48"/></svg>
+    <span class="flow__pill"><span class="flow__kind">DATA ACCESS</span>SQLAlchemy ORM · search_path · File I/O</span>
+  </div>
+
+  <section class="layer l-data">
+    <header class="lbanner">
+      <div class="lbanner__num">6</div>
+      <div>
+        <h2 class="lbanner__title">Data Layer</h2>
+        <p class="lbanner__sub">Persistent Stores · Schema-per-Tenant Isolation · File Storage</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">PostgreSQL</span>
+        <span class="lbanner__chip">Schema-per-Tenant</span>
+        <span class="lbanner__chip">File Storage</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-2">
+        <article class="card is-db">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="8" cy="3.5" rx="5" ry="1.5"/><path d="M3 3.5v9c0 .8 2.2 1.5 5 1.5s5-.7 5-1.5v-9"/><path d="M3 8c0 .8 2.2 1.5 5 1.5S13 8.8 13 8"/></svg></span>
+          <h3 class="card__title">Control-Plane PostgreSQL Database (<code>public</code> schema)</h3>
+          <p class="card__body">Cross-tenant control-plane data: tenants, users, roles, the global framework / control library, and the audit-log spine.</p>
+          <div class="card__tags">
+            <span class="card__tag">grc_tenants</span><span class="card__tag">grc_users</span><span class="card__tag">grc_roles</span>
+            <span class="card__tag">grc_permissions</span><span class="card__tag">grc_user_roles</span><span class="card__tag">grc_business_units</span>
+            <span class="card__tag">grc_audit_logs</span><span class="card__tag">grc_frameworks</span><span class="card__tag">grc_normalized_controls</span>
+            <span class="card__tag">grc_risks</span><span class="card__tag">grc_evidence</span><span class="card__tag">grc_documents</span>
+            <span class="card__tag">grc_it_assets</span><span class="card__tag">grc_compliance_assessments</span><span class="card__tag">grc_vulnerabilities</span>
+          </div>
+        </article>
+        <article class="card is-db">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><ellipse cx="8" cy="3.5" rx="5" ry="1.5"/><path d="M3 3.5v9c0 .8 2.2 1.5 5 1.5s5-.7 5-1.5v-9"/><path d="M3 8c0 .8 2.2 1.5 5 1.5S13 8.8 13 8"/></svg></span>
+          <h3 class="card__title">Per-Tenant PostgreSQL Schemas (<code>tenant_&lt;slug&gt;</code>)</h3>
+          <p class="card__body">One PostgreSQL schema per tenant, pinned per request via <code>search_path</code>. Holds the data that must never leak across tenants.</p>
+          <div class="card__tags">
+            <span class="card__tag">users</span><span class="card__tag">roles</span><span class="card__tag">permissions</span>
+            <span class="card__tag">role_permissions</span><span class="card__tag">user_roles</span>
+            <span class="card__tag">organization_profile</span><span class="card__tag">audit_logs</span>
+          </div>
+        </article>
+      </div>
+      <div class="grid cols-3" style="margin-top:8pt">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2.5 4h4l1.5 1.5h5.5V13h-11V4z"/></svg></span>
+          <h3 class="card__title">File / Object Storage</h3>
+          <p class="card__body">Binary evidence and framework PDFs stored on the local filesystem under <code>backend/uploads/</code>; the row in <code>grc_documents</code> holds metadata and the on-disk path.</p>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4h12M2 8h12M2 12h12"/><circle cx="4" cy="4" r="0.5" fill="currentColor"/><circle cx="4" cy="8" r="0.5" fill="currentColor"/><circle cx="4" cy="12" r="0.5" fill="currentColor"/></svg></span>
+          <h3 class="card__title">Audit Log Streams</h3>
+          <p class="card__body">Two complementary append-only streams HTTP audit (captured by middleware) and business audit (captured by services). Both are queryable from the audit dashboard.</p>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M5 8.5l3-3 3 3M8 14V6"/></svg></span>
+          <h3 class="card__title">Cache / Vector Store (Reserved)</h3>
+          <p class="card__body">Not currently in use. Search is SQL-driven and AI calls are stateless. A <code>pgvector</code> store is planned next for retrieval-augmented evidence search.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="flow flow--async">
+    <svg class="flow__svg" width="160" height="36" viewBox="0 0 160 36"><path d="M80 2 C80 10, 80 26, 80 32" stroke="#008abe" stroke-width="2" fill="none" stroke-dasharray="5 3"/><polygon points="80,35 74,26 86,26" fill="#008abe"/></svg>
+    <span class="flow__pill"><span class="flow__kind">OUTBOUND</span>HTTPS · API Keys · Vendor Adapters</span>
+  </div>
+
+  <section class="layer l-external">
+    <header class="lbanner">
+      <div class="lbanner__num">7</div>
+      <div>
+        <h2 class="lbanner__title">External Systems</h2>
+        <p class="lbanner__sub">Third-Party APIs · Transactional Email · Vulnerability Scanners</p>
+      </div>
+      <div></div>
+      <div class="lbanner__chips">
+        <span class="lbanner__chip">Third-Party APIs</span>
+        <span class="lbanner__chip">Transactional Email</span>
+        <span class="lbanner__chip">Scanners</span>
+      </div>
+    </header>
+    <div class="lbody">
+      <div class="grid cols-4">
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6"/><path d="M5 8c0 1.5.5 3 1.5 4.5M11 8c0-1.5-.5-3-1.5-4.5M2.5 8h11M8 2v12"/></svg></span>
+          <h3 class="card__title">OpenAI GPT — LLM Provider</h3>
+          <p class="card__body" style="">Single LLM provider used by the ComplyChat SQL agent, AI Evidence Assessment, AI Policy Drafting and AI Control Mapping services.</p>
+          <div class="card__tags"><span class="card__tag">api.openai.com</span></div>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="3.5" width="12" height="9" rx="1.5"/><path d="M2 4l6 5 6-5"/></svg></span>
+          <h3 class="card__title">Tenant-Configured SMTP Servers</h3>
+          <p class="card__body">Each tenant configures its own outbound SMTP host, used by the workflow email channel for in-application notifications.</p>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 4l6 5 6-5"/><rect x="2" y="3.5" width="12" height="9" rx="1.5"/></svg></span>
+          <h3 class="card__title">Resend Transactional Email API</h3>
+          <p class="card__body">Transactional email provider used specifically for critical-task escalations from the platform.</p>
+          <div class="card__tags"><span class="card__tag">api.resend.com</span></div>
+        </article>
+        <article class="card">
+          <span class="card__icon"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="7" cy="7" r="4"/><path d="M10 10l3.5 3.5"/><path d="M5 7h4M7 5v4"/></svg></span>
+          <h3 class="card__title">Third-Party Vulnerability Scanners</h3>
+          <p class="card__body">Outbound API calls to <strong>Nessus</strong>, <strong>Qualys</strong> and <strong>Rapid7</strong>; normalised findings are landed in <code>grc_vulnerabilities</code>.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <div class="page-footer">
+  </div>
+</section>
+
+<section class="page">
+  <div class="brand-row">
+    <div class="eyebrow-center"></div>
+    <img alt="CompliVerse AI" src="compliwerseLogo.png" style="height:34px" />
+  </div>
+
+  <div class="section-label-right">Reference</div>
+  <div class="section-eyebrow">Architecture Documentation</div>
+  <div class="section-title">About this <em>Diagram</em></div>
+
+  <div class="about">
+    <div>
+      <h3 class="about__h">About this Diagram</h3>
+      <div class="about__prose">
+        <p>This diagram describes the CompliVerse AI platform <strong>as currently implemented</strong>. Every component card cites the real router, module, middleware or third-party service it represents in the codebase, with the source path included so engineering reviewers can trace the diagram back to the implementation.</p>
+        <p>The seven layers are laid out top-to-bottom in the order a typical request traverses the system: a request enters at the <strong>Frontend</strong>, is authenticated and tenant-scoped at the <strong>API Gateway</strong>, executes <strong>Business Logic</strong>, optionally invokes the <strong>AI / Automation</strong> tier, triggers <strong>Backend Services</strong>, reads or writes the <strong>Data</strong> tier, and where applicable reaches out to <strong>External Systems</strong>.</p>
+        <p>Manual approval steps are highlighted as <strong>Human-in-the-Loop Approval Gates</strong> — these are the points at which automated processing explicitly hands off to a person before the workflow advances. They are visually distinct (hatched amber background, dashed border, ribbon header) so reviewers can immediately spot every place where a human decision is required.</p>
+      </div>
+    </div>
+    <aside class="about__quote">
+      <span class="qmark">"</span>
+      <em>Every box on this page is the real codebase — every module, router, middleware and third-party endpoint. Nothing is aspirational.</em>
+      <cite>Engineering Review · v3.0</cite>
+    </aside>
+  </div>
+
+  <div class="section-eyebrow" style="margin-top:8pt">Visual Reference</div>
+  <div class="section-title" style="margin-bottom:6pt">Legend &amp; <em>Colour Key</em></div>
+  <section class="legend">
+    <div>
+      <h4 class="legend__h">Layer Colour Key</h4>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#eef7ff,#d8ebfa);border-color:#01457b"></span>1 · Frontend / Client</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#e6f4fc,#cce8f5);border-color:#015f95"></span>2 · API Gateway</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#ECFDF5,#D1FAE5);border-color:#10B981"></span>3 · Business Logic</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#FFF7ED,#FFEDD5);border-color:#F97316"></span>4 · AI / Automation</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#F0FDFA,#CCFBF1);border-color:#14B8A6"></span>5 · Backend Services</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#F8FAFC,#E2E8F0);border-color:#64748B"></span>6 · Data Layer</div>
+      <div class="legend__row"><span class="legend__sw" style="background:linear-gradient(135deg,#FEF2F2,#FEE2E2);border-color:#EF4444"></span>7 · External Systems</div>
+    </div>
+    <div>
+      <h4 class="legend__h">Connector Styles</h4>
+      <div class="legend__row">
+        <svg class="legend__svg" viewBox="0 0 56 14"><line x1="2" y1="7" x2="46" y2="7" stroke="#021a48" stroke-width="2"/><polygon points="54,7 44,2 44,12" fill="#021a48"/></svg>
+        Synchronous · REST / Service Call
+      </div>
+      <div class="legend__row">
+        <svg class="legend__svg" viewBox="0 0 56 14"><line x1="2" y1="7" x2="46" y2="7" stroke="#008abe" stroke-width="2" stroke-dasharray="5 3"/><polygon points="54,7 44,2 44,12" fill="#008abe"/></svg>
+        Asynchronous · Events / AI / External
+      </div>
+      <div class="legend__row" style="margin-top:4pt;color:#456988;font-size:7.5pt">Pill labels show wire format and trust boundary.</div>
+    </div>
+    <div>
+      <h4 class="legend__h">Special Indicators</h4>
+      <div class="legend__row"><span class="legend__chip db"></span>Persistent data store</div>
+      <div class="legend__row"><span class="legend__chip human"></span><strong style="color:#8A5A00">Manual Review Required</strong></div>
+      <div class="legend__row"><span class="legend__chip ext"></span>Outbound to external system</div>
+    </div>
+  </section>
+
+  <div style="margin-top:10pt; font-size:8.5pt; color:var(--text-dark)">
+    <p><strong>Schedule Your Demo:</strong> https://compliverse.ai</p>
+    <p><strong>Contact:</strong> Liztek@liztek.ca</p>
+  </div>
+
+  <div class="page-footer">
+    <img alt="LIZTEK" class="page-footer-logo" src="liztek-logo.png" />
+  </div>
+</section>
+
+</body>
+</html>
