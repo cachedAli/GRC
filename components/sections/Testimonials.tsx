@@ -90,7 +90,7 @@ export default function Testimonials() {
         {/* Header row */}
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12">
           <div>
-            <p className="font-mono text-xs text-[#2020CC] font-semibold uppercase tracking-wide mb-4">
+            <p className="font-mono text-xs text-[#0057ff] font-semibold uppercase tracking-wide mb-4">
               What People Say
             </p>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] leading-tight">
@@ -103,14 +103,14 @@ export default function Testimonials() {
               onClick={() => scroll("left")}
               aria-label="Scroll left"
               className="w-11 h-11 rounded-full flex items-center justify-center transition-colors"
-              style={{ background: "#2020CC" }}
+              style={{ background: "#0057ff" }}
               onMouseEnter={(e) =>
                 ((e.currentTarget as HTMLButtonElement).style.background =
                   "#1414A0")
               }
               onMouseLeave={(e) =>
                 ((e.currentTarget as HTMLButtonElement).style.background =
-                  "#2020CC")
+                  "#0057ff")
               }
             >
               <ChevronLeft size={18} className="text-white" />
@@ -119,14 +119,14 @@ export default function Testimonials() {
               onClick={() => scroll("right")}
               aria-label="Scroll right"
               className="w-11 h-11 rounded-full flex items-center justify-center transition-colors"
-              style={{ background: "#2020CC" }}
+              style={{ background: "#0057ff" }}
               onMouseEnter={(e) =>
                 ((e.currentTarget as HTMLButtonElement).style.background =
                   "#1414A0")
               }
               onMouseLeave={(e) =>
                 ((e.currentTarget as HTMLButtonElement).style.background =
-                  "#2020CC")
+                  "#0057ff")
               }
             >
               <ChevronRight size={18} className="text-white" />
@@ -153,7 +153,7 @@ export default function Testimonials() {
               style={{ background: "#EEF0FF" }}
             >
               {/* Company label */}
-              <p className="font-mono text-xs font-semibold text-[#2020CC] uppercase tracking-widest mb-5">
+              <p className="font-mono text-xs font-semibold text-[#0057ff] uppercase tracking-widest mb-5">
                 {t.company}
               </p>
 

@@ -97,15 +97,9 @@ export default function Footer() {
             <div className="space-y-1 mb-6">
               <a
                 href="mailto:Liztek@liztek.ca"
-                className="block font-body text-base text-[#021a48] hover:underline"
+                className="block font-body text-base text-[#000414] hover:underline"
               >
                 Liztek@liztek.ca
-              </a>
-              <a
-                href="tel:+12896358816"
-                className="block font-body text-base text-[#021a48] hover:underline"
-              >
-                +1 (289) 635-8816
               </a>
             </div>
 
@@ -222,15 +216,9 @@ export default function Footer() {
             <div className="space-y-1 mb-6">
               <a
                 href="mailto:Liztek@liztek.ca"
-                className="block font-body text-base sm:text-lg text-[#021a48] hover:underline"
+                className="block font-body text-base sm:text-lg text-[#000414] hover:underline"
               >
                 Liztek@liztek.ca
-              </a>
-              <a
-                href="tel:+12896358816"
-                className="block font-body text-base sm:text-lg text-[#021a48] hover:underline"
-              >
-                +1 (289) 635-8816
               </a>
             </div>
 

@@ -38,7 +38,7 @@ const stats = [
 
 export default function Stats() {
   return (
-    <section className="relative overflow-hidden my-2 rounded-xl bg-[#2020CC] py-20 md:py-24 px-4 sm:px-6">
+    <section className="relative overflow-hidden my-2 rounded-xl bg-[#000414] py-20 md:py-24 px-4 sm:px-6">
       {/* Pink blob — top left */}
       <div
         className="absolute -top-24 -left-24 w-72 h-72 rounded-full bg-[#BAE6FD] opacity-50 pointer-events-none"
@@ -108,7 +108,7 @@ export default function Stats() {
             <p className="font-body text-xs text-[#6B7280] uppercase tracking-widest mb-3 leading-relaxed">
               {stat.label}
             </p>
-            <div className="font-body font-extrabold text-[#2020CC] text-4xl md:text-5xl mb-5">
+            <div className="font-body font-extrabold text-[#0057ff] text-4xl md:text-5xl mb-5">
               <AnimatedCounter target={stat.value} suffix={stat.suffix} />
             </div>
             <div className="space-y-2">

@@ -170,26 +170,26 @@ const domainMeta: Record<
 > = {
   finance: {
     label: "Finance & Controls",
-    color: "#021a48",
-    border: "rgba(2,26,72,0.22)",
-    glow: "rgba(2,26,72,0.30)",
+    color: "#000414",
+    border: "rgba(18,216,255,0.24)",
+    glow: "rgba(0,87,255,0.28)",
     icon: Banknote,
     summary:
       "Track financial controls, evidence, and owners for audit readiness.",
   },
   risk: {
     label: "Technology Risk",
-    color: "#01457b",
-    border: "rgba(1,69,123,0.25)",
-    glow: "rgba(1,69,123,0.34)",
+    color: "#0057ff",
+    border: "rgba(0,87,255,0.28)",
+    glow: "rgba(0,87,255,0.36)",
     icon: Activity,
     summary: "See tech-risk gaps, remediation, and ownership before they slip.",
   },
   sustainability: {
     label: "Trust & Resilience",
-    color: "#008abe",
-    border: "rgba(0,138,190,0.25)",
-    glow: "rgba(0,138,190,0.35)",
+    color: "#12d8ff",
+    border: "rgba(18,216,255,0.28)",
+    glow: "rgba(18,216,255,0.36)",
     icon: ShieldCheck,
     summary:
       "Keep privacy, resilience, and cyber obligations traceable from one screen.",
@@ -385,10 +385,11 @@ export default function Frameworks() {
       id="frameworks"
       className="relative overflow-hidden py-22 md:py-28"
     >
-      <div className="absolute inset-0 bg-bg" />
-      <div className="absolute inset-0 bg-linear-to-b from-green/6 via-teal/8 to-bg-mint/70" />
-      <div className="absolute -left-16 top-18 h-64 w-64 rounded-full bg-teal/14 blur-3xl" />
-      <div className="absolute -right-16 bottom-8 h-72 w-72 rounded-full bg-green/14 blur-3xl" />
+      <div className="absolute inset-0 bg-linear-to-br from-green-dark via-green to-teal" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(18,216,255,0.18),transparent_32%),radial-gradient(circle_at_78%_78%,rgba(0,87,255,0.2),transparent_34%)]" />
+      <div className="absolute inset-0 bg-black/18" />
+      <div className="absolute -left-16 top-18 h-64 w-64 rounded-full bg-teal/16 blur-3xl" />
+      <div className="absolute -right-16 bottom-8 h-72 w-72 rounded-full bg-blue-accent/18 blur-3xl" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
         <motion.div
@@ -401,26 +402,26 @@ export default function Frameworks() {
           {/* <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
             Framework Coverage
           </p> */}
-          <h2 className="text-4xl font-semibold text-gray-900 font-poppins mt-3 leading-tight">
+          <h2 className="text-4xl font-semibold text-white font-poppins mt-3 leading-tight">
             What each framework needs
             <br className="hidden sm:block" />
             from your team
           </h2>
-          <p className="text-lg font-medium max-w-2xl mx-auto text-gray-600 mt-4">
+          <p className="text-lg font-medium max-w-2xl mx-auto text-white/78 mt-4">
             Select a domain or framework to see the controls, evidence, owners,
             and gaps.
           </p>
 
           <motion.div
             aria-hidden="true"
-            className="mx-auto mt-7 h-1.5 w-60 overflow-hidden rounded-full bg-teal-900/10"
+            className="mx-auto mt-7 h-1.5 w-60 overflow-hidden rounded-full bg-white/20"
           >
             <motion.div
               className="h-full rounded-full"
               style={{
                 scaleX: progressFill,
                 transformOrigin: "0% 50%",
-                background: "linear-gradient(90deg, #97cadb, #008abe, #021a48)",
+                background: "linear-gradient(90deg, #12d8ff, #ffffff, #0057ff)",
               }}
             />
           </motion.div>
@@ -436,7 +437,7 @@ export default function Frameworks() {
           <FilterChip
             label={`All (${frameworks.length})`}
             active={focusDomain === "all"}
-            color="#021a48"
+            color="#000414"
             onClick={() => setFocusDomain("all")}
           />
           {(Object.keys(domainMeta) as Domain[]).map((domain) => (
@@ -444,7 +445,7 @@ export default function Frameworks() {
               key={domain}
               label={`${domainMeta[domain].label} (${groups[domain].length})`}
               active={focusDomain === domain}
-              color="#021a48"
+              color="#000414"
               activeColor={domainMeta[domain].color}
               onClick={() => setFocusDomain(domain)}
             />
@@ -464,7 +465,7 @@ export default function Frameworks() {
               style={{
                 background: selectedMeta
                   ? `linear-gradient(180deg, ${selectedMeta.glow}, transparent)`
-                  : "linear-gradient(180deg, rgba(2,26,72,0.25), transparent)",
+                  : "linear-gradient(180deg, rgba(0,87,255,0.25), transparent)",
               }}
             />
             <div className="relative z-10">
@@ -503,7 +504,7 @@ export default function Frameworks() {
                 )}
               </div>
 
-              <h3 className="mt-4 font-poppins text-lg font-semibold leading-tight text-[#021a48]">
+              <h3 className="mt-4 font-poppins text-lg font-semibold leading-tight text-[#000414]">
                 {selectedFramework
                   ? selectedFramework.full
                   : "Select a framework to see controls, evidence, owners, and gaps"}
@@ -576,7 +577,7 @@ export default function Frameworks() {
                   rotate: ringRotate,
                   opacity: ringOpacity,
                   background:
-                    "conic-gradient(from -90deg, rgba(1,69,123,0.45) 0deg 120deg, rgba(0,138,190,0.4) 120deg 240deg, rgba(2,26,72,0.38) 240deg 360deg)",
+                    "conic-gradient(from -90deg, rgba(0,87,255,0.48) 0deg 120deg, rgba(18,216,255,0.42) 120deg 240deg, rgba(0,4,20,0.46) 240deg 360deg)",
                   maskImage:
                     "radial-gradient(circle, transparent 43%, black 44%, black 68%, transparent 69%)",
                   WebkitMaskImage:
@@ -605,7 +606,7 @@ export default function Frameworks() {
                   className="absolute left-1/2 top-1/2 z-20 h-0.5 origin-left rounded-full"
                   style={{
                     transform: `translateY(-50%) rotate(${connector.angle}deg)`,
-                    background: `linear-gradient(90deg, ${selectedMeta?.color ?? "#021a48"}, transparent)`,
+                    background: `linear-gradient(90deg, ${selectedMeta?.color ?? "#000414"}, transparent)`,
                   }}
                 />
               )}
@@ -616,7 +617,7 @@ export default function Frameworks() {
                   style={{
                     background: selectedMeta
                       ? `radial-gradient(circle at 0% 0%, ${selectedMeta.glow}, transparent 62%)`
-                      : "radial-gradient(circle at 0% 0%, rgba(2,26,72,0.28), transparent 62%)",
+                      : "radial-gradient(circle at 0% 0%, rgba(0,87,255,0.28), transparent 62%)",
                   }}
                 />
 
@@ -653,7 +654,7 @@ export default function Frameworks() {
                       </p>
                     </div>
 
-                    <h3 className="mt-4 font-poppins text-xl font-semibold leading-tight text-[#021a48] sm:text-2xl">
+                    <h3 className="mt-4 font-poppins text-xl font-semibold leading-tight text-[#000414] sm:text-2xl">
                       {selectedFramework
                         ? selectedFramework.full
                         : "Select a framework to see controls, evidence, owners, and gaps"}
@@ -664,7 +665,7 @@ export default function Frameworks() {
                         : "Start with a domain, then tap a framework to see the requirement."}
                     </p>
 
-                    <div className="mt-auto rounded-2xl border border-green-100 bg-bg-mint/90 p-3">
+                    <div className="mt-auto rounded-2xl border border-green-100 bg-[#eef7ff] p-3">
                       {selectedFramework ? (
                         <p className="text-xs font-medium text-slate-600">
                           Tap the same framework again to clear it.

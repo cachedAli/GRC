@@ -1,11 +1,3 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/compliance/page": "app/compliance/page.js",
-  "/features/page": "app/features/page.js",
-  "/governance/page": "app/governance/page.js",
-  "/page": "app/page.js",
-  "/request-demo/page": "app/request-demo/page.js",
-  "/risk/page": "app/risk/page.js",
-  "/roi/page": "app/roi/page.js",
-  "/terms/page": "app/terms/page.js"
+  "/page": "app/page.js"
 }

@@ -142,11 +142,11 @@ function CellValue({
       <span className="inline-flex items-center gap-1.5">
         <CheckCircle2
           size={15}
-          className={isCV ? "text-[#2020CC]" : "text-[#22C55E]"}
+          className={isCV ? "text-[#0057ff]" : "text-[#22C55E]"}
           strokeWidth={2}
         />
         <span
-          className={`font-body font-semibold text-sm ${isCV ? "text-[#2020CC]" : "text-[#374151]"}`}
+          className={`font-body font-semibold text-sm ${isCV ? "text-[#0057ff]" : "text-[#374151]"}`}
         >
           {val.value}
         </span>
@@ -202,8 +202,8 @@ export default function CompareTable() {
           className="text-center mb-12"
         >
           <div className="inline-flex items-center gap-2 bg-white border border-[#E2E2DA] rounded-full px-4 py-1.5 mb-5 shadow-sm">
-            <Sparkles size={13} className="text-[#2020CC]" />
-            <span className="font-mono text-xs text-[#2020CC] font-semibold uppercase tracking-widest">
+            <Sparkles size={13} className="text-[#0057ff]" />
+            <span className="font-mono text-xs text-[#0057ff] font-semibold uppercase tracking-widest">
               Compare
             </span>
           </div>
@@ -218,7 +218,7 @@ export default function CompareTable() {
 
         {/* Toggle controls */}
         <div className="flex gap-2 justify-center flex-wrap mb-8">
-          <div className="inline-flex items-center gap-2 font-body text-sm font-bold px-5 py-2.5 rounded-full bg-[#2020CC] text-white cursor-default select-none shadow-md shadow-[#2020CC]/30">
+          <div className="inline-flex items-center gap-2 font-body text-sm font-bold px-5 py-2.5 rounded-full bg-[#0057ff] text-white cursor-default select-none shadow-md shadow-[#0057ff]/30">
             <span className="w-2 h-2 rounded-full bg-white/60" />
             ComplyWerse
           </div>
@@ -261,7 +261,7 @@ export default function CompareTable() {
                     className="px-4 sm:px-6 py-4 sm:py-5 text-left whitespace-nowrap font-body font-bold text-sm w-[140px]"
                     style={{
                       background:
-                        "linear-gradient(135deg, #2020CC 0%, #5046D6 100%)",
+                        "linear-gradient(135deg, #0057ff 0%, #12d8ff 100%)",
                       color: "white",
                     }}
                   >

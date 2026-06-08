@@ -46,9 +46,9 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 w-[calc(100%_-_1rem)] md:w-[90%] mx-auto text-black mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
+        className={`fixed top-0 left-0 right-0 w-[calc(100%_-_1rem)] md:w-[90%] mx-auto text-white mt-3 md:mt-4 rounded-lg z-50 transition-all duration-500 delay-100 ${
           showFullLogo
-            ? "bg-linear-to-r from-white via-teal-50 to-bg-mint backdrop-blur-md shadow-sm border border-[#E2E2DA]"
+            ? "bg-[#000414]/88 backdrop-blur-md shadow-[0_18px_48px_-28px_rgba(18,216,255,0.55)] border border-[#12d8ff]/22"
             : "bg-transparent border-transparent"
         }`}
       >
@@ -103,7 +103,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="font-body text-sm px-4 py-2 rounded-full transition-colors duration-200"
+                  className="font-body text-sm px-4 py-2 rounded-full text-white/78 hover:text-[#12d8ff] transition-colors duration-200"
                 >
                   {link.label}
                 </Link>
@@ -111,7 +111,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                 <a
                   key={link.label}
                   href={link.href}
-                  className="font-body text-sm px-4 py-2 rounded-full transition-colors duration-200"
+                  className="font-body text-sm px-4 py-2 rounded-full text-white/78 hover:text-[#12d8ff] transition-colors duration-200"
                 >
                   {link.label}
                 </a>
@@ -132,7 +132,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
           >
             <motion.a
               href="/request-demo"
-              className="text-sm font-noto-serif font-semibold bg-[#01457b] text-white px-6 py-2.5 rounded-full hover:bg-[#008abe] transition-colors focus-visible:outline-none "
+              className="text-sm font-noto-serif font-semibold bg-[#0057ff] text-white px-6 py-2.5 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none "
               whileHover={{ scale: 1.03 }}
               transition={{ duration: 0.15 }}
             >
@@ -140,7 +140,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             </motion.a>
             {/* <a
               href="#"
-              className={`text-sm font-semibold bg-transparent text-[#01457b] border border-[#01457b] px-6 py-2.5 rounded-full hover:bg-[#008abe] hover:text-white transition-colors focus-visible:outline-none cursor-pointer `}
+              className={`text-sm font-semibold bg-transparent text-white border border-[#12d8ff]/70 px-6 py-2.5 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none cursor-pointer `}
             >
               Login
             </a> */}
@@ -151,7 +151,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             key={`mobile-toggle-${pathname}`}
             initial={{ opacity: 0 }}
             animate={{ opacity: showFullLogo ? 1 : 0 }}
-            className="md:hidden p-2 rounded transition-colors text-[#0A0A0A]"
+            className="md:hidden p-2 rounded transition-colors text-white hover:text-[#12d8ff]"
             onClick={() => setMenuOpen(!menuOpen)}
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
@@ -164,7 +164,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            className="fixed inset-0 z-40 bg-white flex flex-col items-center justify-center gap-8 md:hidden"
+            className="fixed inset-0 z-40 bg-[#000414] flex flex-col items-center justify-center gap-8 md:hidden"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
@@ -176,7 +176,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-body text-2xl font-bold text-[#0A0A0A] hover:text-[#2020CC] transition-colors"
+                  className="font-body text-2xl font-bold text-white hover:text-[#12d8ff] transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -185,7 +185,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
                   key={link.label}
                   href={link.href}
                   onClick={() => setMenuOpen(false)}
-                  className="font-body text-2xl font-bold text-[#0A0A0A] hover:text-[#2020CC] transition-colors"
+                  className="font-body text-2xl font-bold text-white hover:text-[#12d8ff] transition-colors"
                 >
                   {link.label}
                 </a>
@@ -194,7 +194,7 @@ export default function Navbar({ moveLogo }: { moveLogo: boolean }) {
             <a
               href="/#cta"
               onClick={() => setMenuOpen(false)}
-              className="font-body text-base font-semibold bg-[#2020CC] text-white px-8 py-3.5 rounded-full mt-4"
+              className="font-body text-base font-semibold bg-[#0057ff] text-white px-8 py-3.5 rounded-full mt-4 hover:bg-[#12d8ff] hover:text-[#000414] transition-colors"
             >
               Get Started
             </a>

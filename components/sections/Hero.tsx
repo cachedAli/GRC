@@ -10,7 +10,7 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
   const [email, setEmail] = useState("");
 
   return (
-    <section className="relative min-h-screen h-auto bg-[#eef7ff]   overflow-hidden flex-col flex items-center justify-center max-md:px-6  pt-14 sm:pt-16">
+    <section className="relative min-h-screen h-auto bg-[#000414] text-white overflow-hidden flex-col flex items-center justify-center max-md:px-6 pt-14 sm:pt-16">
       {!moveLogo && (
         <motion.div
           layout
@@ -33,14 +33,14 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
         initial={{ y: -500, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-        className="w-full border px-4 py-8   border-gray-300 bg-linear-to-b from-[#01457b] via-[#008abe]/80 to-[#eef7ff] h-full absolute top-0 left-0 rounded-b-[70px]"
+        className="w-full border px-4 py-8 border-white/10 bg-[radial-gradient(circle_at_50%_18%,rgba(0,87,255,0.36),transparent_34%),radial-gradient(circle_at_80%_72%,rgba(18,216,255,0.14),transparent_30%),linear-gradient(180deg,#000414_0%,#020824_56%,#03113b_100%)] h-full absolute top-0 left-0 rounded-b-[70px]"
       ></motion.div>
 
       <motion.div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {[...Array(25)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute bg-white/20 rounded-full "
+            className="absolute bg-[#12d8ff]/30 rounded-full "
             style={{
               width: `${Math.random() * 10 + 20}px`,
               height: `${Math.random() * 3 + 2}px`,
@@ -113,7 +113,7 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
                 ease: [0.25, 0.1, 0.25, 1],
               }}
               className={`inline-block ${
-                word === "chaos" ? "text-[#021a48] font-exo italic" : ""
+                word === "chaos" ? "text-[#12d8ff] font-exo italic" : ""
               }`}
             >
               {word}
@@ -132,7 +132,7 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
           ease: [0.25, 0.1, 0.25, 1],
         }}
       >
-        <p className="text-xl font-medium max-w-96">
+        <p className="text-xl font-medium max-w-96 text-white/82">
           Keep your teams aligned, your policies on track, and your risks in
           check.
         </p>
@@ -140,12 +140,12 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
         <div className="flex items-center gap-2 font-noto-serif">
           <Link
             href="/request-demo"
-            className="text-lg font-semibold bg-[#01457b] text-white px-6 py-4 rounded-full hover:bg-[#008abe] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap"
+            className="text-lg font-semibold bg-[#0057ff] text-white px-6 py-4 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap"
           >
             Request a Demo
           </Link>
 
-          <button className="text-lg font-semibold bg-transparent text-[#01457b] border border-[#01457b] px-6 py-4 rounded-full hover:bg-[#008abe] hover:text-white transition-colors focus-visible:outline-none cursor-pointer whitespace-nowrap">
+          <button className="text-lg font-semibold bg-transparent text-white border border-[#12d8ff]/70 px-6 py-4 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none cursor-pointer whitespace-nowrap">
             Watch Tour
           </button>
         </div>

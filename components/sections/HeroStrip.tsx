@@ -32,7 +32,7 @@ export default function HeroStrip() {
             <div className="flex flex-wrap items-center py-6 gap-3 md:pr-10">
               <motion.a
                 href="/#cta"
-                className="font-body font-bold text-sm bg-[#2020CC] text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-widest whitespace-nowrap hover:bg-[#1818a8] transition-colors"
+                className="font-body font-bold text-sm bg-[#0057ff] text-white px-6 sm:px-7 py-3.5 sm:py-4 rounded-full uppercase tracking-widest whitespace-nowrap hover:bg-[#12d8ff] hover:text-[#000414] transition-colors"
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.15 }}
               >
@@ -52,7 +52,7 @@ export default function HeroStrip() {
                 key={f.title}
                 className="px-0 md:px-8 py-6 flex gap-4 items-start"
               >
-                <div className="w-10 h-10 rounded-xl border border-[#E2E2DA] flex items-center justify-center text-[#2020CC] shrink-0">
+                <div className="w-10 h-10 rounded-xl border border-[#E2E2DA] flex items-center justify-center text-[#0057ff] shrink-0">
                   {f.icon}
                 </div>
                 <div>

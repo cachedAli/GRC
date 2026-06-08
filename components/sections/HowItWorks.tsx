@@ -47,7 +47,7 @@ export default function HowItWorks() {
       ref={sectionRef}
       id="how-it-works"
       className="py-20 md:py-28 px-4 sm:px-6 relative overflow-hidden rounded-xl"
-      style={{ backgroundColor: "#2020CC" }}
+      style={{ backgroundColor: "#000414" }}
     >
       {/* Dot grid */}
       <div
@@ -129,7 +129,7 @@ export default function HowItWorks() {
                   className="w-11 h-11 rounded-full bg-white flex items-center justify-center mb-6 z-10"
                   style={{ boxShadow: "0 0 0 6px rgba(255,255,255,0.12)" }}
                 >
-                  <span className="font-mono text-sm font-bold text-[#2020CC]">
+                  <span className="font-mono text-sm font-bold text-[#0057ff]">
                     {step.number}
                   </span>
                 </motion.div>

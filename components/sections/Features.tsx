@@ -183,7 +183,7 @@ export default function Features() {
             <div className="mt-10 px-6 w-full flex justify-end">
               <Link
                 href="/features"
-                className="text-lg font-semibold bg-transparent text-[#01457b] border border-[#01457b] px-6 py-4 rounded-full hover:bg-[#008abe]  hover:text-white transition-colors focus-visible:outline-none cursor-pointer "
+                className="text-lg font-semibold bg-transparent text-[#0057ff] border border-[#0057ff] px-6 py-4 rounded-full hover:bg-[#0057ff] hover:text-white transition-colors focus-visible:outline-none cursor-pointer "
               >
                 View All Features
               </Link>
