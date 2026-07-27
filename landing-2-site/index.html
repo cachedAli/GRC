@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ComplyVerse AI — Inside the Twin</title>
+  <meta name="description" content="Inside the Twin: a cinematic scroll film through ComplyVerse AI. Live product screens dock into a 3D Digital Risk Twin — Executive Dashboard, Auditor Portal, ComplyChat, EPSS-ranked vulnerabilities — GCC-first, global-ready." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23041510'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%233ee0c2' stroke-width='2.5'/%3E%3Ccircle cx='16' cy='16' r='3' fill='%23ff6b4a'/%3E%3C/svg%3E" />
+  <link rel="stylesheet" href="/styles.css?v=20260720-overlayfix" />
+</head>
+<body data-page="home">
+  <canvas id="world-canvas" aria-label="Interactive 3D Digital Risk Twin"></canvas>
+  <div id="depth-veil" aria-hidden="true"></div>
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <header class="nav">
+    <div class="nav-shell">
+      <a class="logo logo-image" href="/" aria-label="ComplyVerse home"><img src="/compliwerseLogo.png" alt="ComplyVerse" /></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/platform">Platform</a>
+        <a href="/ai">AI</a>
+        <a href="/comparison">Compare</a>
+        <a href="/experience">Experience</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-login interactive" href="#">Login</a>
+        <a class="btn btn-primary interactive" href="mailto:hello@complyverse.com">Request Demo</a>
+        <button class="nav-toggle interactive" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="journey-hud">
+    <div class="journey-meta" id="journey-label">Chapter 01</div>
+    <div class="journey-track" aria-hidden="true"><span id="journey-progress"></span></div>
+    <div class="journey-actions">
+      <button type="button" class="btn btn-ghost interactive journey-chip" id="chapter-dots" aria-label="Jump chapter" hidden></button>
+      <button type="button" class="btn btn-ghost interactive" id="skip-journey" style="padding:8px 14px;font-size:0.78rem">Skip to end</button>
+    </div>
+  </div>
+
+  <!-- Depth-aware feature overlay (synced to 3D station clicks) -->
+  <aside class="feature-overlay" id="feature-overlay" hidden aria-live="polite">
+    <button type="button" class="overlay-close interactive" id="overlay-close" aria-label="Close">✕</button>
+    <div class="overlay-num" id="overlay-num"></div>
+    <p class="kicker" id="overlay-mission"></p>
+    <h3 id="overlay-title"></h3>
+    <p class="overlay-tag" id="overlay-tag"></p>
+    <ul id="overlay-features"></ul>
+    <div class="atlas-meta" id="overlay-meta"></div>
+  </aside>
+
+  <!-- v6: floating product screens (crisp HTML panels docked to 3D anchors) -->
+  <div id="screen-layer"></div>
+
+  <main class="site-ui" id="story-track">
+    <!-- Ch 1 Brand -->
+    <section class="story-chapter chapter-center is-active" id="chapter-birth">
+      <div class="chapter-panel">
+        <h1 data-title>Your organization. Understood as one.</h1>
+        <p data-body>Scroll through an enterprise intelligence environment—architecture, luminous rails, and a living risk twin where every major feature is a chapter.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#chapter-twin">Enter the twin</a>
+          <a class="btn btn-ghost" data-cta hidden href="#"></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 2 Fragment -->
+    <section class="story-chapter" id="chapter-fragment">
+      <div class="chapter-panel">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <a class="btn btn-primary" data-cta hidden href="#"></a>
+      </div>
+    </section>
+
+    <!-- Ch 3 Twin -->
+    <section class="story-chapter chapter-right" id="chapter-twin">
+      <div class="chapter-panel">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <p class="region-accent">
+          <span data-region-gcc>GCC-first: NCA ECC controls, SAMA CSF cycles and PDPL records live on the same graph.</span>
+          <span data-region-global>Global programs: ISO 27001, SOC 2 and PCI DSS share one control spine and one evidence pool.</span>
+        </p>
+        <p class="hint-line">Move the cursor — parallax layers respond · Auditor Portal sits on the twin graph</p>
+        <a class="btn btn-primary" data-cta hidden href="#"></a>
+      </div>
+    </section>
+
+    <!-- Ch 4 Platform Atlas (3D stations + overlay panel) -->
+    <section class="story-chapter chapter-wide" id="chapter-atlas">
+      <div class="chapter-panel chapter-panel-wide">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <p class="hint-line">Click glowing stations on the living org twin, or browse the atlas list below.</p>
+        <div class="cta-row"><a class="btn btn-coral" data-cta href="#atlas-stage"></a></div>
+        <div id="atlas-stage" class="story-embed">
+          <div class="mission-filters" id="mission-filters"></div>
+          <div class="atlas-constellation" id="atlas-grid"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 5 Secure -->
+    <section class="story-chapter chapter-right" id="chapter-secure">
+      <div class="chapter-panel">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <p class="region-accent">
+          <span data-region-gcc>A Saudi bank's payment switch: an EPSS 0.91 finding on a criticality-H asset beats 41 higher-CVSS results to the queue.</span>
+          <span data-region-global>A multi-cloud retailer: EPSS × CIA puts the cardholder edge ahead of 41 higher-CVSS findings.</span>
+        </p>
+        <a class="btn btn-primary" data-cta hidden href="#"></a>
+      </div>
+    </section>
+
+    <!-- Ch 6 AI / Orchestrate -->
+    <section class="story-chapter chapter-wide" id="chapter-ai">
+      <div class="chapter-panel chapter-panel-wide">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <div class="cta-row"><a class="btn btn-primary" data-cta href="#ai-stage"></a></div>
+        <div id="ai-stage" class="story-embed">
+          <div class="ai-tabs" id="ai-tabs"></div>
+          <div class="ai-stage" id="ai-stage-inner"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 7 Industry -->
+    <section class="story-chapter chapter-wide" id="chapter-industry">
+      <div class="chapter-panel chapter-panel-wide">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <div class="story-embed">
+          <div class="industry-tabs" id="industry-tabs"></div>
+          <div class="industry-panel" id="industry-panel"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 8 Compare -->
+    <section class="story-chapter chapter-wide" id="chapter-compare">
+      <div class="chapter-panel chapter-panel-wide">
+        <div id="compare-stage" class="story-embed compare-stage-block">
+          <div class="compare-hero compact">
+            <div class="compare-copy">
+              <div class="compare-kicker">Capability signal</div>
+              <h3>Where the platform <span>pulls ahead.</span></h3>
+              <p>A directional capability evaluation across thirty rows and seven anonymized categories, including legacy suites, point tools, regional GRC, deduplication, EPSS prioritization, agentic AI, and the Auditor Portal.</p>
+            </div>
+            <div class="compare-region-switch" id="compare-region-switch">
+              <button type="button" data-region="gcc">GCC</button>
+              <button type="button" data-region="global">Global</button>
+            </div>
+          </div>
+          <div class="compare-toolbar">
+            <div class="filters" id="filters"></div>
+            <div class="compare-legend" aria-label="Legend">
+              <span><span class="mark yes">✓</span> full</span>
+              <span><span class="mark partial">◐</span> partial</span>
+              <span><span class="mark limited">○</span> limited</span>
+              <span><span class="mark absent">✕</span> absent</span>
+            </div>
+          </div>
+          <div class="compare-shell">
+            <div class="comparison-plane">
+              <table class="comparison-table">
+                <thead id="compareHead"></thead>
+                <tbody id="compareBody"></tbody>
+              </table>
+            </div>
+          </div>
+          <p class="compare-disclaimer">Competitors anonymized by category: legacy suites, point tools, and regional GRC. Directional evaluation for orientation; validate against current releases.</p>
+          <div class="compare-closing compact">
+            <h3>See the difference on your own frameworks.</h3>
+            <a class="btn btn-primary" href="mailto:hello@complyverse.com">Request a tailored demonstration</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 9 Experience -->
+    <section class="story-chapter chapter-wide" id="chapter-experience">
+      <div class="chapter-panel chapter-panel-wide">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title id="exp-title">Touch the screens inside the twin.</h2>
+        <p data-body></p>
+        <p class="status-dot" id="live-status">Illustrated · app offline</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-cta href="#exp-stage"></a>
+          <button type="button" class="btn btn-ghost" id="toggle-live">Try live app</button>
+        </div>
+        <div id="exp-stage" class="story-embed">
+          <div class="exp-layout">
+            <aside class="route-list" id="route-list"></aside>
+            <div class="exp-frame-wrap">
+              <iframe id="exp-frame" title="ComplyVerse product" sandbox="allow-same-origin allow-scripts allow-forms"></iframe>
+              <div class="exp-fallback" id="exp-fallback">
+                <div class="illus-ui" id="illus-panel">
+                  <div class="illus-chrome">
+                    <span class="illus-dots" aria-hidden="true"></span>
+                    <span class="illus-path" id="illus-path">/dashboard</span>
+                  </div>
+                  <div class="bar"></div>
+                  <p class="illus-title" id="illus-label">Dashboard</p>
+                  <p class="illus-blurb" id="illus-blurb">Start grc-frontend on port 3000, then “Try live app”. Or open experience.html.</p>
+                  <div class="illus-kpis" id="illus-kpis" aria-hidden="true"></div>
+                  <div class="illus-rows" id="illus-rows" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                  <ul class="illus-spots" id="illus-spots"></ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ch 10 Arrive -->
+    <section class="story-chapter chapter-center" id="chapter-arrive">
+      <div class="chapter-panel">
+        <p class="kicker" data-kicker></p>
+        <h2 data-title></h2>
+        <p data-body></p>
+        <p class="region-accent">
+          <span data-region-gcc>Demonstrations map to your NCA ECC, SAMA CSF and PDPL scope.</span>
+          <span data-region-global>Demonstrations map to your ISO 27001, SOC 2, PCI DSS and DORA scope.</span>
+        </p>
+        <div class="cta-row">
+          <a class="btn btn-primary" data-cta href="mailto:hello@complyverse.com"></a>
+          <a class="btn btn-ghost" href="#chapter-atlas">Revisit Atlas</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="framework-marquee" aria-label="Supported frameworks">
+    <div class="framework-track" id="framework-track"></div>
+  </div>
+
+  <footer>
+    <div>ComplyVerse AI · Inside the Twin · 19 capabilities · Auditor Portal elevated · GCC ⇄ Global</div>
+    <div>Three.js · GSAP ScrollTrigger · docked product screens · prefers-reduced-motion</div>
+  </footer>
+
+  <!-- v6: auto-play cinematic intro (skippable; removed under reduced motion) -->
+  <div id="intro-overlay">
+    <div class="intro-veil" aria-hidden="true"></div>
+    <div class="intro-core" aria-hidden="true">
+      <p class="intro-kicker">A scroll-driven film</p>
+      <p class="intro-lockup"><span>Comply</span><span>Verse</span> <em>AI</em></p>
+      <p class="intro-line">Inside the Twin — regulation to board, one continuous shot.</p>
+      <span class="intro-ring"></span>
+    </div>
+    <button type="button" class="btn btn-ghost intro-skip" id="intro-skip" aria-label="Skip intro">Skip intro</button>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="/data.js?v=20260721-comparelabels"></script>
+  <script src="/region.js"></script>
+  <script src="/three-world.js"></script>
+  <script src="/scroll-story.js?v=20260720-overlayfix"></script>
+  <script src="/product-screens.js"></script>
+  <script src="/screen-dock.js"></script>
+  <script src="/app.js"></script>
+  <script src="/intro.js"></script>
+</body>
+</html>

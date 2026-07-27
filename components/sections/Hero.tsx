@@ -1,55 +1,33 @@
 "use client";
 
-import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Zap, BarChart3 } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-export default function Hero({ moveLogo }: { moveLogo: boolean }) {
-  const [email, setEmail] = useState("");
-
+export default function Hero() {
   return (
-    <section className="relative min-h-screen h-auto bg-[#000414] text-white overflow-hidden flex-col flex items-center justify-center max-md:px-6 pt-14 sm:pt-16">
-      {!moveLogo && (
-        <motion.div
-          layout
-          layoutId="logo"
-          initial={{ rotate: 90, scale: 0.8 }}
-          animate={{ rotate: 0, scale: 1 }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        >
-          <Image
-            src="/compliwerseIcon.png"
-            alt="Compliwerse"
-            width={45}
-            height={40}
-            priority
-          />
-        </motion.div>
-      )}
-
+    <section className="relative min-h-screen overflow-hidden rounded-b-[34px] bg-[#000414] text-white md:rounded-b-[54px]">
       <motion.div
         initial={{ y: -500, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.8, duration: 0.6, ease: "easeInOut" }}
-        className="w-full border px-4 py-8 border-white/10 bg-[radial-gradient(circle_at_50%_18%,rgba(0,87,255,0.36),transparent_34%),radial-gradient(circle_at_80%_72%,rgba(18,216,255,0.14),transparent_30%),linear-gradient(180deg,#000414_0%,#020824_56%,#03113b_100%)] h-full absolute top-0 left-0 rounded-b-[70px]"
-      ></motion.div>
+        transition={{ delay: 0.15, duration: 0.7, ease: "easeInOut" }}
+        className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(0,87,255,0.36),transparent_34%),radial-gradient(circle_at_80%_72%,rgba(18,216,255,0.14),transparent_30%),linear-gradient(180deg,#000414_0%,#020824_50%,#0057ff_78%,#b9c9ff_100%)]"
+      />
 
       <motion.div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
         {[...Array(25)].map((_, i) => (
           <motion.div
             key={i}
-            className="absolute bg-[#12d8ff]/30 rounded-full "
+            className="absolute rounded-full bg-[#12d8ff]/30"
             style={{
               width: `${Math.random() * 10 + 20}px`,
               height: `${Math.random() * 3 + 2}px`,
               top: `${Math.random() * 100}%`,
-              left: `-${Math.random() * 20 + 5}%`, // start slightly offscreen left
+              left: `-${Math.random() * 20 + 5}%`,
             }}
             animate={{
-              x: [`0`, `120vw`], // move across the screen to the right
-              y: [`0`, `${Math.random() * 40 - 20}px`], // slight vertical drift
+              x: [`0`, `120vw`],
+              y: [`0`, `${Math.random() * 40 - 20}px`],
             }}
             transition={{
               repeat: Infinity,
@@ -62,94 +40,53 @@ export default function Hero({ moveLogo }: { moveLogo: boolean }) {
         ))}
       </motion.div>
 
-      <motion.div
-        initial={{
-          opacity: 0,
-          y: 30,
-          scale: 0.95,
-          height: 0,
-          overflow: "hidden",
-        }}
-        animate={{ opacity: 1, y: 0, scale: 1, height: "auto" }}
-        transition={{ delay: 1.8, duration: 0.6, ease: "easeOut" }}
-        className="z-10"
-      >
-        <Image
-          src="/screenshots/slide_01.png"
-          alt="hero"
-          width={580}
-          height={130}
-          className="object-cover select-none rounded-lg mt-16"
+      <div className="pointer-events-none absolute inset-x-0 top-[22%] z-0 h-[270px] mask-fade-edges md:top-[24%]">
+        <motion.div
+          className="absolute left-1/2 top-1/2 h-36 w-[44rem] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#0057ff]/20 blur-3xl"
+          initial={{ opacity: 0, scale: 0.85 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ delay: 0.55, duration: 0.9, ease: "easeOut" }}
         />
-      </motion.div>
-
-      <div className="flex flex-col gap-2 z-10 font-poppins items-center justify-center mt-6 text-center px-4">
-        <h1 className="text-4xl md:text-5xl font-semibold flex flex-wrap justify-center gap-[0.25em]">
-          {["Manage", "governance"].map((word, index) => (
-            <motion.span
-              key={`l1-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 2.1 + index * 0.15,
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              className="inline-block"
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
-        <h1 className="text-4xl md:text-5xl font-semibold flex flex-wrap justify-center gap-[0.25em]">
-          {["without", "the", "chaos"].map((word, index) => (
-            <motion.span
-              key={`l2-${index}`}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.7,
-                delay: 2.1 + (2 + index) * 0.15, // Continue delay where the first line left off
-                ease: [0.25, 0.1, 0.25, 1],
-              }}
-              className={`inline-block ${
-                word === "chaos" ? "text-[#12d8ff] font-exo italic" : ""
-              }`}
-            >
-              {word}
-            </motion.span>
-          ))}
-        </h1>
       </div>
 
-      <motion.div
-        className="w-full px-4 md:px-19.5 py-12 flex flex-col md:flex-row items-center justify-between z-10 gap-6 text-center md:text-left"
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{
-          duration: 0.7,
-          delay: 3.1, // Wait for the headline words to finish
-          ease: [0.25, 0.1, 0.25, 1],
-        }}
-      >
-        <p className="text-xl font-medium max-w-96 text-white/82">
-          Keep your teams aligned, your policies on track, and your risks in
-          check.
-        </p>
-
-        <div className="flex items-center gap-2 font-noto-serif">
-          <Link
-            href="/request-demo"
-            className="text-lg font-semibold bg-[#0057ff] text-white px-6 py-4 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none cursor-pointer font-noto-serif whitespace-nowrap"
+      <div className="relative z-10 mx-auto flex min-h-screen max-w-6xl flex-col items-center justify-end px-6 pb-20 pt-40 text-center sm:pb-24 md:px-8 lg:pb-28">
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.85, duration: 0.7, ease: "easeOut" }}
+          className="max-w-4xl"
+        >
+          <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-[0.32em] text-[#c8f3ff]">
+            Governance without drift
+          </p>
+          <h1
+            id="hero-headline"
+            className="font-display text-4xl font-semibold tracking-[-0.055em] text-white sm:text-5xl md:text-7xl"
           >
-            Request a Demo
-          </Link>
+            Manage governance without the chaos
+          </h1>
+          <p className="mx-auto mt-5 max-w-2xl text-base font-medium leading-7 text-white/78 sm:text-lg md:text-xl">
+            Keep teams aligned, policies on track, and risks in check with one
+            control plane for modern GRC operations.
+          </p>
 
-          <button className="text-lg font-semibold bg-transparent text-white border border-[#12d8ff]/70 px-6 py-4 rounded-full hover:bg-[#12d8ff] hover:text-[#000414] transition-colors focus-visible:outline-none cursor-pointer whitespace-nowrap">
-            Watch Tour
-          </button>
-        </div>
-      </motion.div>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Link
+              href="/request-demo"
+              className="group inline-flex items-center justify-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-bold text-[#000414] shadow-[0_18px_42px_-22px_rgba(255,255,255,0.9)] transition hover:bg-[#dff7ff] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80"
+            >
+              Request Demo
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </Link>
+            <Link
+              href="/#tour"
+              className="inline-flex items-center justify-center rounded-full px-6 py-3.5 text-sm font-bold text-white/82 transition hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/55"
+            >
+              Watch Tour
+            </Link>
+          </div>
+        </motion.div>
+      </div>
     </section>
   );
 }

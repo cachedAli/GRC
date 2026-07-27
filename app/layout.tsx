@@ -1,31 +1,29 @@
 import type { Metadata } from "next";
 import {
-  Poppins,
   Inter,
-  JetBrains_Mono,
-  Exo,
-  Noto_Serif,
+  Montserrat,
+  Source_Serif_4,
 } from "next/font/google";
 import "./globals.css";
 import ConditionalNavbar from "@/components/layout/ConditionalNavbar";
 import Footer from "@/components/layout/Footer";
 
-const poppins = Poppins({
+const montserrat = Montserrat({
   subsets: ["latin"],
   weight: ["400", "500", "600", "700", "800"],
   variable: "--font-display",
 });
 
-const notoSerif = Noto_Serif({
+const inter = Inter({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-noto-serif",
+  weight: ["400", "500", "600", "700", "800"],
+  variable: "--font-body",
 });
 
-const exo = Exo({
+const sourceSerif = Source_Serif_4({
   subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-exo",
+  weight: ["400", "600", "700"],
+  variable: "--font-noto-serif",
 });
 
 export const metadata: Metadata = {
@@ -45,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${notoSerif.variable} ${exo.variable} font-noto-serif bg-[#fbfdfc] text-[#0A0A0A] antialiased`}
+        className={`${montserrat.variable} ${inter.variable} ${sourceSerif.variable} font-body bg-[#fbfdfc] text-[#0A0A0A] antialiased`}
       >
         <ConditionalNavbar />
         <main>{children}</main>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Experience — ComplyVerse AI</title>
+  <meta name="description" content="Illustrated product stages for ComplyVerse AI in a standalone deployable landing experience." />
+  <link rel="stylesheet" href="/styles.css?v=20260720-navfix" />
+</head>
+<body data-page="experience">
+  <div class="film-grain" aria-hidden="true"></div>
+  <div class="ambient-field" aria-hidden="true"></div>
+
+  <header class="nav scrolled">
+    <div class="nav-shell">
+      <a class="logo logo-image logo-lockup" href="/" aria-label="ComplyVerse home"><img src="/compliwerseIcon.png" alt="" /><span>CompliVerse AI</span></a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="/platform">Platform</a>
+        <a href="/ai">AI</a>
+        <a href="/comparison">Compare</a>
+        <a href="/experience" aria-current="page">Experience</a>
+      </nav>
+      <div class="nav-actions">
+        <a class="nav-login interactive" href="#">Login</a>
+        <a class="btn btn-primary interactive" href="mailto:hello@complyverse.com">Request Demo</a>
+        <button class="nav-toggle interactive" type="button" aria-label="Menu" aria-expanded="false">☰</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="deep-page">
+    <section class="deep-hero">
+      <p class="kicker">Product planes · Hybrid mode</p>
+      <h1>Touch the screens<br />inside the twin.</h1>
+      <p class="lead">Illustrated UI shells are the default in this standalone site. The live product iframe mode stays available only for local preview on <code class="inline-code">localhost:3000</code>.</p>
+      <p class="status-dot" id="live-status">Illustrated · standalone landing experience</p>
+      <div class="cta-row">
+        <button type="button" class="btn btn-primary" id="toggle-live">Illustrated UI only</button>
+        <a class="btn btn-ghost" href="/platform">Platform Atlas</a>
+      </div>
+    </section>
+
+    <section class="deep-section" id="exp-stage">
+      <div class="section-inner section-inner-wide">
+        <div class="exp-layout">
+          <aside class="route-list" id="route-list" aria-label="Product modules"></aside>
+          <div class="exp-frame-wrap">
+            <iframe id="exp-frame" title="ComplyVerse product" sandbox="allow-same-origin allow-scripts allow-forms allow-popups"></iframe>
+            <div class="exp-fallback" id="exp-fallback">
+              <div class="illus-ui" id="illus-panel">
+                <div class="illus-chrome">
+                  <span class="illus-dots" aria-hidden="true"></span>
+                  <span class="illus-path" id="illus-path">/dashboard</span>
+                </div>
+                <div class="bar"></div>
+                <p class="illus-title" id="illus-label">Dashboard</p>
+                <p class="illus-blurb" id="illus-blurb">Executive posture across risk, compliance, and cyber signals.</p>
+                <div class="illus-kpis" id="illus-kpis" aria-hidden="true"></div>
+                <div class="illus-rows" id="illus-rows" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
+                <ul class="illus-spots" id="illus-spots"></ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <p class="note" style="margin-top:18px">Local preview mode can load <code class="inline-code">http://localhost:3000</code> routes when you open this copy on your machine. The hosted Vercel version stays in illustrated mode.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>ComplyVerse AI · Illustrated default · optional local preview</div>
+    <div><a href="/ai">AI roles</a> · <a href="/comparison">Compare</a></div>
+  </footer>
+
+  <script src="/data.js"></script>
+  <script src="/motion.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>

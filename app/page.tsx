@@ -13,18 +13,12 @@ import Stats from "@/components/sections/Stats";
 import Testimonials from "@/components/sections/Testimonials";
 import CTA from "@/components/sections/CTA";
 import SectionDivider from "@/components/ui/SectionDivider";
-import { useEffect, useState, useRef } from "react";
+import { useRef } from "react";
 import Navbar from "@/components/layout/Navbar";
-import { LayoutGroup } from "framer-motion";
 import Solutions from "@/components/sections/Solutions";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
-import { usePathname } from "next/navigation";
 
 export default function Home() {
-  const pathname = usePathname();
-  const [moveLogo, setMoveLogo] = useState(false);
-  const [homeAnimationKey, setHomeAnimationKey] = useState(0);
-
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -49,23 +43,10 @@ export default function Home() {
     ["40px", "0px", "0px", "40px"],
   );
 
-  useEffect(() => {
-    setHomeAnimationKey((current) => current + 1);
-    setMoveLogo(false);
-
-    const timer = setTimeout(() => {
-      setMoveLogo(true);
-    }, 1000);
-
-    return () => clearTimeout(timer);
-  }, [pathname]);
-
   return (
     <>
-      <LayoutGroup key={homeAnimationKey}>
-        <Navbar key={`home-navbar-${homeAnimationKey}`} moveLogo={moveLogo} />
-        <Hero key={`home-hero-${homeAnimationKey}`} moveLogo={moveLogo} />
-      </LayoutGroup>
+      <Navbar />
+      <Hero />
       {/* <HeroStrip /> */}
       {/* <LogoBar /> */}
 

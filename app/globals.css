@@ -1,10 +1,10 @@
 @import "tailwindcss";
 
 @theme {
-  --font-display: "Poppins", sans-serif;
+  --font-display: "Montserrat", sans-serif;
   --font-body: "Inter", sans-serif;
   --font-mono: "JetBrains Mono", monospace;
-  --font-noto-serif: "Noto Serif", serif;
+  --font-noto-serif: "Source Serif 4", serif;
   --font-exo: "Exo", sans-serif;
 
   --color-bg-mint: #0057ff;
@@ -53,6 +53,7 @@
   body {
     background-color: var(--color-bg);
     color: #0a0a0a;
+    font-family: var(--font-body), sans-serif;
   }
 
   h1,
@@ -62,6 +63,10 @@
   h5,
   h6 {
     font-family: var(--font-display), sans-serif;
+  }
+
+  p {
+    font-family: var(--font-noto-serif), serif !important;
   }
 }
 
