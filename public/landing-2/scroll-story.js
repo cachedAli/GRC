@@ -153,6 +153,7 @@
       const vh = window.innerHeight;
       let best = 0;
       let bestScore = -1;
+      let bestRect = null;
       chapters.forEach((ch, i) => {
         const r = ch.getBoundingClientRect();
         const mid = r.top + r.height * 0.32;
@@ -163,9 +164,17 @@
         if (score > bestScore) {
           bestScore = score;
           best = i;
+          bestRect = r;
         }
       });
       targetActive = best;
+      if (world && world.setChapterState && bestRect) {
+        const localProgress = Math.max(
+          0,
+          Math.min(1, (vh * 0.6 - bestRect.top) / Math.max(bestRect.height * 0.8, 1))
+        );
+        world.setChapterState(chapters[best].id, localProgress);
+      }
       return best;
     }
 
@@ -200,6 +209,24 @@
     }
 
     function updateChapterPanels() {
+      const readableEmbeds = {
+        'chapter-atlas': document.getElementById('atlas-stage'),
+        'chapter-ai': document.getElementById('ai-stage'),
+        'chapter-industry': document.querySelector('#chapter-industry .story-embed'),
+        'chapter-compare': document.getElementById('compare-stage'),
+        'chapter-experience': document.getElementById('exp-stage')
+      };
+      const pinnedReadableChapters = new Set([
+        'chapter-fragment',
+        'chapter-twin',
+        'chapter-secure'
+      ]);
+
+      function embedReadable(el) {
+        const rect = el ? el.getBoundingClientRect() : null;
+        return rect && rect.top < window.innerHeight * 0.88 && rect.bottom > window.innerHeight * 0.24;
+      }
+
       chapters.forEach((ch, i) => {
         const w = chapterWeights[i] || 0;
         const panel = ch.querySelector('.chapter-panel');
@@ -207,9 +234,24 @@
         ch.classList.toggle('is-active', on);
         if (panel && !reduced) {
           // Soft CSS custom props driven by continuous weight (no binary opacity pop)
-          const opacity = 0.42 + w * 0.58;
-          const blur = Math.max(0, (1 - w) * 1.4);
-          const ty = (1 - w) * 18;
+          let opacity = 0.42 + w * 0.58;
+          let blur = Math.max(0, (1 - w) * 1.4);
+          let ty = (1 - w) * 18;
+
+          if (pinnedReadableChapters.has(ch.id)) {
+            opacity = 1;
+            blur = 0;
+            ty = 0;
+          }
+
+          // Interactive chapters should keep their framing copy readable
+          // while the live UI below is still meaningfully on screen.
+          if (!pinnedReadableChapters.has(ch.id) && embedReadable(readableEmbeds[ch.id])) {
+            opacity = Math.max(opacity, 0.96);
+            blur = Math.min(blur, 0.08);
+            ty = Math.min(ty, 1.5);
+          }
+
           panel.style.setProperty('--panel-opacity', opacity.toFixed(3));
           panel.style.setProperty('--panel-blur', blur.toFixed(2) + 'px');
           panel.style.setProperty('--panel-ty', ty.toFixed(2) + 'px');

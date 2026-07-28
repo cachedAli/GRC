@@ -7,6 +7,31 @@
     return Array.from((root || document).querySelectorAll(sel));
   }
 
+  function getFrameworkList() {
+    if (!window.CV || !Array.isArray(CV.FRAMEWORKS)) return [];
+    return CV.FRAMEWORKS.map((item, index) => {
+      if (typeof item === 'string') {
+        const compact = item.replace(/[^A-Za-z0-9]+/g, ' ').trim();
+        const acronym = compact.split(' ').map((part) => part[0]).join('').slice(0, 4).toUpperCase() || 'CV';
+        return {
+          id: compact.toLowerCase().replace(/\s+/g, '-'),
+          name: item,
+          subtitle: 'Framework coverage',
+          acronym,
+          accent: index % 2 ? '#12d8ff' : '#0057ff'
+        };
+      }
+      return item;
+    });
+  }
+
+  function frameworkBadgeHTML(f, cls) {
+    if (f.logo) {
+      return `<img src="${f.logo}" alt="${f.name}" class="${cls} framework-logo-image" loading="eager" decoding="async" />`;
+    }
+    return `<span class="${cls}">${f.acronym || f.name.slice(0, 4)}</span>`;
+  }
+
   function isDeepPage() {
     const p = document.body.dataset.page;
     return p && p !== 'home';
@@ -102,9 +127,95 @@
         ? CV.REGION.frameworks[CVRegion.get()] || CV.FRAMEWORKS
         : CV.FRAMEWORKS;
     const copies = list.length <= 8 ? 4 : 2; /* even copies keep the -50% loop seamless */
+    const normalized = list.map((f, index) => {
+      if (typeof f === 'string') return getFrameworkList()[index] || { name: f };
+      return f;
+    });
     let items = [];
-    for (let i = 0; i < copies; i++) items = items.concat(list);
-    track.innerHTML = items.map((f) => `<span>${f}</span>`).join('');
+    for (let i = 0; i < copies; i++) items = items.concat(normalized);
+    track.innerHTML = items.map((f) => `<span>${f.name}</span>`).join('');
+  }
+
+  function renderFrameworkShowcase() {
+    const orbit = qs('#framework-orbit');
+    const rail = qs('#framework-rail');
+    const grid = qs('#framework-grid');
+    if (!orbit && !rail && !grid) return;
+    const list = getFrameworkList();
+    if (!list.length) return;
+
+    if (orbit) {
+      const innerRing = list.filter((f) => f.ring === 'inner');
+      const outerRing = list.filter((f) => f.ring !== 'inner');
+
+      function orbitItem(f, index, count, radius, ring) {
+        const angle = (360 / count) * index;
+        return `<button type="button" class="framework-orbit-item" data-ring="${ring}" data-id="${f.id}" style="--angle:${angle}deg;--radius:${radius}px;--accent:${f.accent || '#0057ff'}" aria-label="${f.name}: ${f.subtitle}">
+          ${frameworkBadgeHTML(f, 'framework-orbit-badge')}
+          <span class="framework-orbit-pill-copy"><strong>${f.name}</strong><small>${f.subtitle || 'Framework coverage'}</small></span>
+        </button>`;
+      }
+
+      const items =
+        innerRing.map((f, i) => orbitItem(f, i, innerRing.length, 220, 'inner')).join('') +
+        outerRing.map((f, i) => orbitItem(f, i, outerRing.length, 340, 'outer')).join('');
+
+      orbit.innerHTML = `
+        <div class="framework-orbit-ring framework-orbit-ring-outer"></div>
+        <div class="framework-orbit-ring framework-orbit-ring-inner"></div>
+        <div class="framework-orbit-core">
+          <span class="framework-orbit-core-kicker">compliverse</span>
+          <strong>Framework Intelligence</strong>
+          <div class="framework-orbit-core-stats">
+            <span>${list.length} frameworks</span><span>GCC + Global</span><span>Mapped to controls</span>
+          </div>
+        </div>${items}`;
+
+      qsa('.framework-orbit-item', orbit).forEach((btn) => {
+        const activate = () => {
+          orbit.classList.add('has-active');
+          qsa('.framework-orbit-item', orbit).forEach((b) => b.classList.toggle('is-active', b === btn));
+        };
+        const deactivate = () => {
+          btn.classList.remove('is-active');
+          orbit.classList.remove('has-active');
+        };
+        btn.addEventListener('pointerenter', activate);
+        btn.addEventListener('pointerleave', deactivate);
+        btn.addEventListener('focus', activate);
+        btn.addEventListener('blur', deactivate);
+      });
+      orbit.addEventListener('pointerleave', () => {
+        orbit.classList.remove('has-active');
+        qsa('.framework-orbit-item', orbit).forEach((b) => b.classList.remove('is-active'));
+      });
+    }
+
+    if (rail) {
+      const copies = list.length <= 8 ? 3 : 2;
+      let items = [];
+      for (let i = 0; i < copies; i++) items = items.concat(list);
+      rail.innerHTML = items
+        .map(
+          (f) => `<article class="framework-card" style="--accent:${f.accent || '#0057ff'}"><div class="framework-card-mark-wrap">${frameworkBadgeHTML(f, 'framework-card-mark')}</div><div class="framework-card-copy"><strong>${f.name}</strong><span>${f.subtitle || 'Framework coverage'}</span></div></article>`
+        )
+        .join('');
+    }
+
+    if (grid) {
+      grid.innerHTML = list
+        .map(
+          (f) => `<article class="framework-grid-card reveal" style="--accent:${f.accent || '#0057ff'}" aria-label="${f.name}: ${f.fullName || f.subtitle || 'Framework coverage'}">
+            ${frameworkBadgeHTML(f, 'framework-grid-mark')}
+            <div class="framework-grid-content">
+              <div class="framework-grid-eyebrow"><span>${f.name}</span><span>${f.region || 'Global'}</span></div>
+              <h3>${f.fullName || f.name}</h3>
+              <div class="framework-grid-meta"><span>${f.category || 'Security'}</span><span>Control-ready</span></div>
+            </div>
+          </article>`
+        )
+        .join('');
+    }
   }
 
   function openCapabilityDeep(id) {
@@ -324,11 +435,16 @@
       return;
     }
 
+    const isHome = document.body.dataset.page === 'home';
+    const homeHeading = isHome ? '#f5fbff' : '#000414';
+    const homeBody = isHome ? '#d7deea' : 'var(--muted)';
+    const important = isHome ? ' !important' : '';
+
     stage.innerHTML = `
       <div>
         <div class="kicker">${s.kicker}</div>
-        <h3 style="font-size:1.45rem;margin-bottom:10px">${s.title}</h3>
-        <p style="color:var(--muted);margin:0">${s.text}</p>
+        <h3 style="font-size:1.45rem;margin-bottom:10px;color:${homeHeading}${important}">${s.title}</h3>
+        <p style="color:${homeBody}${important};margin:0">${s.text}</p>
         <p class="hint-line" style="margin-top:12px">${
           isDeepPage()
             ? 'Interactive stepper · path lights on the Digital Risk Twin graph'
@@ -399,17 +515,20 @@
 
     function paint(key) {
       const ind = CV.INDUSTRIES[key];
+      const isHome = document.body.dataset.page === 'home';
+      const bodyTone = isHome ? '#d7deea' : 'var(--muted)';
+      const important = isHome ? ' !important' : '';
       qsa('button', tabs).forEach((b) => b.classList.toggle('active', b.dataset.key === key));
       panel.innerHTML = `
         <div>
           <div class="kicker">${ind.label}</div>
           <h3 style="font-size:1.45rem;margin-bottom:10px">${ind.title}</h3>
-          <p style="color:var(--muted);margin:0">${ind.scenario}</p>
+          <p style="color:${bodyTone}${important};margin:0">${ind.scenario}</p>
           <div class="outcome-box">${ind.result}</div>
         </div>
         <div>
           <div class="kicker">Signal journey</div>
-          <ol class="flow-list">${ind.flow.map((s) => `<li>${s}</li>`).join('')}</ol>
+          <ol class="flow-list">${ind.flow.map((s) => `<li style="color:${bodyTone}${important}">${s}</li>`).join('')}</ol>
         </div>`;
     }
 
@@ -687,6 +806,7 @@
   document.addEventListener('DOMContentLoaded', () => {
     bindPlatformModal();
     renderFrameworkStrip();
+    renderFrameworkShowcase();
     renderAtlas();
     renderAI();
     renderIndustry();

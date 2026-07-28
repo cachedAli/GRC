@@ -83,10 +83,19 @@
       this._camLook = new THREE.Vector3();
       this._tmpV = new THREE.Vector3();
       this.chapterBlend = 0;
+      this.activeChapter = 'chapter-birth';
+      this.activeChapterProgress = 0;
       this.fogDensity = 0.022;
       this.lightVolumes = [];
       this.gridPlanes = [];
       this.rails = [];
+      this.fragmentParts = [];
+      this.fragmentLines = [];
+      this.fragmentPulses = [];
+      this.fragmentGroup = null;
+      this._fragmentTarget = new THREE.Vector3();
+      this._fragmentForward = new THREE.Vector3();
+      this._fragmentRight = new THREE.Vector3();
 
       this.init();
       this.bind();
@@ -126,6 +135,7 @@
       this.buildArchitecture();
       this.buildVolumetricAtmosphere();
       this.buildDataDust();
+      this.buildFragmentedSignals();
       this.buildTwin();
       this.buildAtlasStations();
       this.buildHoloScreens();
@@ -399,6 +409,239 @@
       );
       this.root.add(this.dataDust);
       this.parallaxGroups.push({ obj: this.dataDust, factor: 0.14 });
+    }
+
+    /** Chapter 2 visual: two internally connected towers with a broken cross-silo signal. */
+    buildFragmentedSignals() {
+      this.fragmentGroup = new THREE.Group();
+      this.fragmentGroup.position.set(-2, 0.25, 4);
+      this.fragmentGroup.scale.setScalar(0.68);
+      this.root.add(this.fragmentGroup);
+
+      const material = (color, wireframe = false) =>
+        new THREE.MeshStandardMaterial({
+          color,
+          emissive: color,
+          emissiveIntensity: 0.62,
+          metalness: 0.62,
+          roughness: 0.3,
+          wireframe,
+          transparent: true,
+          opacity: 0,
+          depthTest: false,
+          depthWrite: false
+        });
+
+      const register = (object, detail = false) => {
+        object.userData.fragmentDetail = detail;
+        this.fragmentParts.push(object);
+        return object;
+      };
+
+      const text = (label, color, width = 1.25, small = false) => {
+        const canvas = document.createElement('canvas');
+        canvas.width = 1024;
+        canvas.height = 128;
+        const ctx = canvas.getContext('2d');
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.font = `${small ? 500 : 700} ${small ? 42 : 54}px "JetBrains Mono", monospace`;
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.fillText(label, 512, 80);
+        const texture = new THREE.CanvasTexture(canvas);
+        texture.colorSpace = THREE.SRGBColorSpace;
+        const sprite = new THREE.Sprite(
+          new THREE.SpriteMaterial({
+            map: texture,
+            transparent: true,
+            opacity: 0,
+            depthTest: false,
+            depthWrite: false
+          })
+        );
+        sprite.scale.set(width, small ? 0.16 : 0.22, 1);
+        sprite.userData.fragmentLabel = true;
+        this.fragmentParts.push(sprite);
+        return sprite;
+      };
+
+      const edges = (mesh, color) => {
+        const outline = new THREE.LineSegments(
+          new THREE.EdgesGeometry(mesh.geometry),
+          new THREE.LineBasicMaterial({
+            color,
+            transparent: true,
+            opacity: 0,
+            depthTest: false,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+          })
+        );
+        mesh.add(outline);
+        outline.userData.fragmentFrame = true;
+        this.fragmentParts.push(outline);
+      };
+
+      const beam = (parent, a, b, color, radius = 0.025) => {
+        const direction = b.clone().sub(a);
+        const midpoint = a.clone().add(b).multiplyScalar(0.5);
+        const mesh = new THREE.Mesh(
+          new THREE.CylinderGeometry(radius, radius, direction.length(), 8),
+          new THREE.MeshBasicMaterial({
+            color,
+            transparent: true,
+            opacity: 0,
+            depthTest: false,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+          })
+        );
+        mesh.position.copy(midpoint);
+        mesh.quaternion.setFromUnitVectors(new THREE.Vector3(0, 1, 0), direction.normalize());
+        parent.add(mesh);
+        this.fragmentLines.push(mesh);
+        return mesh;
+      };
+
+      const compliance = new THREE.Group();
+      compliance.position.set(-1.18, 0, 0);
+      compliance.userData = { base: compliance.position.clone(), phase: 0.4 };
+      this.fragmentGroup.add(compliance);
+      this.fragmentParts.push(compliance);
+
+      for (let i = 0; i < 3; i++) {
+        const page = register(
+          new THREE.Mesh(new THREE.BoxGeometry(1.05, 0.62, 0.055), material(0x12d8ff)),
+          true
+        );
+        page.position.set(-0.04 + i * 0.05, 0.96 + i * 0.045, -i * 0.07);
+        page.rotation.set(-0.08, 0.16, -0.08);
+        compliance.add(page);
+        if (i === 0) edges(page, 0x8af0ff);
+      }
+      const policyLabel = text('POLICY / NCA ECC', '#8af0ff', 1.28, true);
+      policyLabel.position.set(0, 1.4, 0.1);
+      compliance.add(policyLabel);
+
+      const control = register(new THREE.Mesh(new THREE.BoxGeometry(0.52, 0.52, 0.52), material(0x0057ff)));
+      control.position.set(0, 0.05, 0);
+      control.rotation.set(0.48, 0.58, 0.14);
+      compliance.add(control);
+      edges(control, 0x65a4ff);
+      const controlLabel = text('CONTROL / 74%', '#65a4ff', 1.05, true);
+      controlLabel.position.set(0, 0.46, 0.1);
+      compliance.add(controlLabel);
+
+      const folder = register(new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.52, 0.16), material(0x0057ff)), true);
+      folder.position.set(0, -0.9, 0);
+      folder.rotation.set(-0.08, -0.18, 0.06);
+      compliance.add(folder);
+      edges(folder, 0x65a4ff);
+      const tab = register(new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.14, 0.17), material(0x12d8ff)), true);
+      tab.position.set(-0.25, 0.3, 0);
+      folder.add(tab);
+      const evidenceLabel = text('EVIDENCE / UNLINKED', '#ffb36f', 1.42, true);
+      evidenceLabel.position.set(0, -1.34, 0.1);
+      compliance.add(evidenceLabel);
+      const complianceTitle = text('COMPLIANCE SILO', '#12d8ff', 1.52);
+      complianceTitle.position.set(0, -1.7, 0.1);
+      compliance.add(complianceTitle);
+      beam(compliance, new THREE.Vector3(0, 0.7, 0), new THREE.Vector3(0, 0.34, 0), 0x12d8ff);
+      beam(compliance, new THREE.Vector3(0, -0.24, 0), new THREE.Vector3(0, -0.62, 0), 0x0057ff);
+
+      const security = new THREE.Group();
+      security.position.set(1.18, 0, -0.12);
+      security.userData = { base: security.position.clone(), phase: 2.1 };
+      this.fragmentGroup.add(security);
+      this.fragmentParts.push(security);
+
+      const server = register(new THREE.Mesh(new THREE.BoxGeometry(1.0, 0.72, 0.36), material(0xe8a030)), true);
+      server.position.set(0, 0.98, 0);
+      server.rotation.set(-0.06, -0.2, 0.05);
+      security.add(server);
+      edges(server, 0xffc36f);
+      for (let i = 0; i < 3; i++) {
+        const slot = register(new THREE.Mesh(new THREE.BoxGeometry(0.72, 0.035, 0.02), material(0xffc36f)), true);
+        slot.position.set(0, 0.18 - i * 0.17, 0.2);
+        server.add(slot);
+      }
+      const assetLabel = text('ASSET / PAYMENTS API', '#ffc36f', 1.42, true);
+      assetLabel.position.set(0, 1.42, 0.1);
+      security.add(assetLabel);
+
+      const vuln = register(new THREE.Mesh(new THREE.OctahedronGeometry(0.38, 0), material(0xe8a030)));
+      vuln.position.set(0, 0.02, 0);
+      vuln.rotation.set(0.3, 0.5, 0.2);
+      security.add(vuln);
+      edges(vuln, 0xffb36f);
+      const vulnLabel = text('VULNERABILITY / EPSS .91', '#ffb36f', 1.62, true);
+      vulnLabel.position.set(0, 0.47, 0.1);
+      security.add(vulnLabel);
+
+      const risk = register(new THREE.Mesh(new THREE.OctahedronGeometry(0.48, 0), material(0xe87930, true)));
+      risk.position.set(0, -0.9, 0);
+      risk.rotation.set(0.2, 0.5, 0.2);
+      security.add(risk);
+      const riskLabel = text('RISK / CONTEXT MISSING', '#ff9a64', 1.5, true);
+      riskLabel.position.set(0, -1.36, 0.1);
+      security.add(riskLabel);
+      const securityTitle = text('SECURITY SILO', '#e8a030', 1.42);
+      securityTitle.position.set(0, -1.7, 0.1);
+      security.add(securityTitle);
+      beam(security, new THREE.Vector3(0, 0.68, 0), new THREE.Vector3(0, 0.34, 0), 0xe8a030);
+      beam(security, new THREE.Vector3(0, -0.34, 0), new THREE.Vector3(0, -0.58, 0), 0xe87930);
+
+      const leftBreak = new THREE.Vector3(-0.2, 0.02, 0.12);
+      const rightBreak = new THREE.Vector3(0.2, 0.02, 0.12);
+      beam(this.fragmentGroup, new THREE.Vector3(-0.92, 0.02, 0.12), leftBreak, 0x12d8ff, 0.035);
+      beam(this.fragmentGroup, rightBreak, new THREE.Vector3(0.92, 0.02, 0.12), 0xe8a030, 0.035);
+      beam(this.fragmentGroup, new THREE.Vector3(-0.11, 0.14, 0.14), new THREE.Vector3(0.11, -0.1, 0.14), 0xe8a030, 0.02);
+      beam(this.fragmentGroup, new THREE.Vector3(-0.11, -0.1, 0.14), new THREE.Vector3(0.11, 0.14, 0.14), 0xe8a030, 0.02);
+
+      const lostLabel = text('SIGNAL LOST', '#ffb36f', 0.94);
+      lostLabel.position.set(0, -0.28, 0.16);
+      this.fragmentGroup.add(lostLabel);
+
+      const board = register(new THREE.Mesh(new THREE.IcosahedronGeometry(0.22, 1), material(0x64748b, true)));
+      board.position.set(0, 1.62, -0.18);
+      this.fragmentGroup.add(board);
+      const boardLabel = text('BOARD / NO SIGNAL', '#94a3b8', 1.18, true);
+      boardLabel.position.set(0, 1.96, 0.1);
+      this.fragmentGroup.add(boardLabel);
+
+      const makePulse = (from, to, color, phase) => {
+        const pulse = new THREE.Mesh(
+          new THREE.SphereGeometry(0.07, 10, 10),
+          new THREE.MeshBasicMaterial({
+            color,
+            transparent: true,
+            opacity: 0,
+            depthTest: false,
+            depthWrite: false,
+            blending: THREE.AdditiveBlending
+          })
+        );
+        pulse.userData = { from, to, phase };
+        this.fragmentGroup.add(pulse);
+        this.fragmentPulses.push(pulse);
+      };
+      makePulse(new THREE.Vector3(-0.9, 0.02, 0.16), leftBreak, 0x12d8ff, 0);
+      makePulse(new THREE.Vector3(0.9, 0.02, 0.16), rightBreak, 0xe8a030, 0.5);
+
+      this.fragmentWarning = new THREE.Mesh(
+        new THREE.TorusGeometry(0.28, 0.025, 8, 24),
+        new THREE.MeshBasicMaterial({
+          color: 0xe8a030,
+          transparent: true,
+          opacity: 0,
+          depthTest: false,
+          depthWrite: false,
+          blending: THREE.AdditiveBlending
+        })
+      );
+      this.fragmentWarning.position.set(0, 0.02, 0.12);
+      this.fragmentGroup.add(this.fragmentWarning);
+      this.fragmentGroup.renderOrder = 8;
     }
 
     nodePosition(i, total) {
@@ -865,6 +1108,11 @@
       if (reduced) this.progress = this.targetProgress;
     }
 
+    setChapterState(id, progress) {
+      this.activeChapter = id || '';
+      this.activeChapterProgress = Math.max(0, Math.min(1, progress || 0));
+    }
+
     /** Immediate camera place (deep links / reduced motion) */
     snapCameraToProgress(t) {
       this.progress = Math.max(0, Math.min(1, t));
@@ -1029,6 +1277,53 @@
 
     updateTwinState(dt, t) {
       const p = this.progress;
+      const fragmentOn = this.activeChapter === 'chapter-fragment' ? 1 : 0;
+      const fragmentZoom = smoothstep(this.activeChapterProgress);
+      const fragmentSeparation = fragmentZoom;
+      if (this.fragmentGroup) {
+        // Camera-relative placement guarantees the visual stays in frame even when
+        // a slow device takes several frames to catch up with scroll progress.
+        this.camera.getWorldDirection(this._fragmentForward);
+        this._fragmentRight.crossVectors(this._fragmentForward, this.camera.up).normalize();
+        this._fragmentTarget
+          .copy(this.camera.position)
+          .addScaledVector(this._fragmentForward, lerp(6.3, 4.9, fragmentZoom))
+          .addScaledVector(this._fragmentRight, lerp(-2.25, -1.9, fragmentZoom));
+        this._fragmentTarget.y += 0.15;
+        dampVec3(this.fragmentGroup.position, this._fragmentTarget, 12, dt);
+        this.fragmentGroup.lookAt(this.camera.position);
+        const fragmentScale = damp(this.fragmentGroup.scale.x, lerp(0.72, 1.04, fragmentZoom), 9, dt);
+        this.fragmentGroup.scale.setScalar(fragmentScale);
+
+        this.fragmentParts.forEach((part) => {
+          const base = part.userData.base;
+          const phase = part.userData.phase || 0;
+          const isLabel = part.userData.fragmentLabel;
+          const target = fragmentOn * (isLabel ? 0.96 : part.userData.fragmentFrame ? 0.52 : part.userData.fragmentDetail ? 0.86 : 0.92);
+          if (part.material) this.softOpacity(part.material, target, dt, 7);
+          if (!reduced && base) {
+            const drift = Math.sin(t * 0.55 + phase) * 0.045;
+            const side = base.x > 0 ? fragmentSeparation * 0.1 : -fragmentSeparation * 0.1;
+            part.position.x = base.x + side;
+            part.position.y = base.y + drift;
+          }
+        });
+        this.fragmentLines.forEach((line, i) => {
+          this.softOpacity(line.material, fragmentOn * (0.28 + (i % 2) * 0.08), dt, 7);
+        });
+        this.fragmentPulses.forEach((pulse) => {
+          const travel = (t * 0.34 + pulse.userData.phase) % 1;
+          pulse.position.lerpVectors(pulse.userData.from, pulse.userData.to, travel);
+          const dieAtGap = 1 - smoothstep((travel - 0.62) / 0.34);
+          this.softOpacity(pulse.material, fragmentOn * dieAtGap * 0.95, dt, 12);
+          pulse.scale.setScalar(0.85 + Math.sin(t * 5 + pulse.userData.phase) * 0.18);
+        });
+        if (this.fragmentWarning) {
+          this.softOpacity(this.fragmentWarning.material, fragmentOn * (0.3 + Math.abs(Math.sin(t * 2.2)) * 0.18), dt, 7);
+          this.fragmentWarning.rotation.z = t * 0.25;
+          this.fragmentWarning.scale.setScalar(0.9 + Math.sin(t * 2.2) * 0.08);
+        }
+      }
       const edgeOn = smoothstep((p - 0.1) / 0.26);
       const lateLabelFade = 1 - smoothstep((p - 0.72) / 0.12);
 

@@ -91,29 +91,44 @@
         trx = 3.5;
         tryy = -8;
       } else {
-        proj.v.copy(anchors[id].v).project(world.camera);
-        const behind = proj.v.z > 1;
-        tx = (proj.v.x * 0.5 + 0.5) * vw;
-        ty = (-proj.v.y * 0.5 + 0.5) * vh;
+        const chapter = document.getElementById(dock.chapter);
+        const chapterActive = !chapter || chapter.classList.contains('is-active');
+        if (Number.isFinite(dock.screenX)) {
+          // Chapter-owned screens use a stable composition instead of drifting
+          // with a global progress window that may not match variable chapter heights.
+          tx = vw * dock.screenX;
+          ty = vh * (dock.screenY || 0.48);
+          ts = clamp(vw / 1440, 0.78, 1.04);
+          ta = chapterActive ? 1 : 0;
+          tryy = 5 + mx * -2;
+          trx = -1 + my * 1.5;
+          tx += mx * 8;
+          ty += my * -5;
+        } else {
+          proj.v.copy(anchors[id].v).project(world.camera);
+          const behind = proj.v.z > 1;
+          tx = (proj.v.x * 0.5 + 0.5) * vw;
+          ty = (-proj.v.y * 0.5 + 0.5) * vh;
 
-        /* Chapter window fade (feathered both ends) */
-        const f = 0.03;
-        const w = dock.window;
-        ta = behind ? 0 : smooth((p - w[0]) / f) * smooth((w[1] - p) / f);
+          /* Chapter window fade (feathered both ends) */
+          const f = 0.03;
+          const w = dock.window;
+          ta = behind || !chapterActive ? 0 : smooth((p - w[0]) / f) * smooth((w[1] - p) / f);
 
-        /* Gentle keep-in-frame clamp so a docked panel never hides under nav/HUD */
-        tx = clamp(tx, vw * 0.16, vw * 0.84);
-        ty = clamp(ty, vh * 0.2, vh * 0.72);
+          /* Gentle keep-in-frame clamp so a docked panel never hides under nav/HUD */
+          tx = clamp(tx, vw * 0.16, vw * 0.84);
+          ty = clamp(ty, vh * 0.2, vh * 0.72);
 
-        /* Perspective scale from true camera distance */
-        const dist = world.camera.position.distanceTo(anchors[id].v);
-        ts = clamp(anchors[id].refDist / Math.max(dist, 0.01), 0.6, 1.12);
+          /* Perspective scale from true camera distance */
+          const dist = world.camera.position.distanceTo(anchors[id].v);
+          ts = clamp(anchors[id].refDist / Math.max(dist, 0.01), 0.6, 1.12);
 
-        /* Tilt: face slightly toward screen center + cursor drift */
-        tryy = ((tx - vw / 2) / vw) * -16 + mx * -3.2;
-        trx = ((ty - vh / 2) / vh) * 10 + my * 2.6;
-        tx += mx * 12;
-        ty += my * -8;
+          /* Tilt: face slightly toward screen center + cursor drift */
+          tryy = ((tx - vw / 2) / vw) * -16 + mx * -3.2;
+          trx = ((ty - vh / 2) / vh) * 10 + my * 2.6;
+          tx += mx * 12;
+          ty += my * -8;
+        }
       }
 
       /* Damp everything — bridges intro release and scroll spikes smoothly */

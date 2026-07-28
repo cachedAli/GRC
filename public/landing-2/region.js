@@ -35,7 +35,7 @@
     const copies = list.length <= 8 ? 4 : 2;
     let items = [];
     for (let i = 0; i < copies; i++) items = items.concat(list);
-    return items.map((f) => `<span>${f}</span>`).join('');
+    return items.map((f) => `<span>${typeof f === 'string' ? f : f.name}</span>`).join('');
   }
 
   function paintMarquee(region, animate) {

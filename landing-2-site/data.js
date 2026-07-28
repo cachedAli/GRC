@@ -6,7 +6,7 @@ CV.STORY = [
     id: 'birth',
     kicker: 'Chapter 01 · Begin',
     title: 'Your organization. Understood as one.',
-    body: 'Scroll the camera through a Digital Risk Twin atrium—volumetric light, architectural depth, and holograms as every platform capability unfolds in one continuous story.',
+    body: 'Complyverse unifies regulations, policies, controls, evidence, assets, vulnerabilities, and risk into one connected operating system for compliance and assurance.',
     cta: null
   },
   {
@@ -26,9 +26,9 @@ CV.STORY = [
   {
     id: 'atlas',
     kicker: 'Chapter 04 · Platform Atlas',
-    title: 'Nineteen stations. One operating model.',
-    body: 'Fly through the living org twin—Govern, Assure, Risk, Secure, Orchestrate. Click a station for depth. Auditor Portal is elevated for certification journey review.',
-    cta: { href: '#atlas-stage', label: 'Explore stations' }
+    title: 'Nineteen modules. One operating model.',
+    body: 'Fly through the living org twin—Govern, Assure, Risk, Secure, Orchestrate. Click a module for depth. Auditor Portal is elevated for certification journey review.',
+    cta: { href: '#atlas-stage', label: 'Explore modules' }
   },
   {
     id: 'secure',
@@ -131,7 +131,26 @@ CV.INDUSTRIES = {
   retail: { label: 'Retail & e-commerce', title: 'Protect transactions across the chain.', scenario: 'A POS vendor has overdue remediation on cardholder controls.', flow: ['Vendor event raises', 'PCI controls identified', 'Exception workflow runs', 'Appetite and SLA review', 'Readiness updates'], result: 'Commercial risk and payment security aligned.' }
 };
 
-CV.FRAMEWORKS = ['NCA ECC', 'SAMA CSF', 'PDPL', 'ISO 27001', 'NIST CSF', 'PCI DSS', 'SOC 2', 'GDPR', 'DORA', 'CIS Benchmarks', 'HIPAA', 'Aramco CCC'];
+CV.FRAMEWORKS = [
+  { id: 'nca-ecc', name: 'NCA ECC', subtitle: 'Essential cyber controls', acronym: 'NCA', accent: '#0057ff', region: 'GCC', category: 'Security', ring: 'outer', note: 'KSA essential controls mapped straight into the control library.' },
+  { id: 'sama-csf', name: 'SAMA CSF', subtitle: 'Saudi financial security', acronym: 'SAMA', accent: '#12d8ff', logo: '/frameworks/sama.gov.sa.png', region: 'GCC', category: 'Financial', ring: 'outer', note: 'Saudi banking cyber posture, kept evidence-ready.' },
+  { id: 'pdpl', name: 'PDPL', subtitle: 'Privacy obligations', acronym: 'PDPL', accent: '#14b8a6', region: 'GCC', category: 'Privacy', ring: 'outer', note: 'Saudi privacy obligations turned into evidence tasks.' },
+  { id: 'iso-27001', name: 'ISO 27001', subtitle: 'ISMS certification', acronym: 'ISO', accent: '#0057ff', logo: '/frameworks/iso.org.png', region: 'Global', category: 'Certification', ring: 'inner', note: 'The ISMS spine — one control set reused across every journey.' },
+  { id: 'iso-22301', name: 'ISO 22301', subtitle: 'Business continuity', acronym: 'ISO', accent: '#0ea5e9', logo: '/frameworks/iso.org.png', region: 'Global', category: 'Resilience', ring: 'outer', note: 'Continuity controls wired into ERM and incident workflows.' },
+  { id: 'iso-27701', name: 'ISO 27701', subtitle: 'Privacy management', acronym: 'ISO', accent: '#14b8a6', logo: '/frameworks/iso.org.png', region: 'Global', category: 'Privacy', ring: 'outer', note: 'Privacy extension managed beside the ISMS, not in a spreadsheet.' },
+  { id: 'nist-csf', name: 'NIST CSF', subtitle: 'Cybersecurity functions', acronym: 'NIST', accent: '#8b5cf6', logo: '/frameworks/nist.gov.png', region: 'Global', category: 'Security', ring: 'inner', note: 'Function-level posture from Identify to Recover.' },
+  { id: 'nis2', name: 'NIS2', subtitle: 'EU cyber directive', acronym: 'NIS2', accent: '#4f46e5', logo: '/frameworks/enisa.europa.eu.png', region: 'EU', category: 'Security', ring: 'outer', note: 'EU directive obligations with clause-level control mapping.' },
+  { id: 'pci-dss', name: 'PCI DSS', subtitle: 'Cardholder security', acronym: 'PCI', accent: '#f59e0b', logo: '/frameworks/pcisecuritystandards.org.png', region: 'Global', category: 'Financial', ring: 'inner', note: 'Cardholder scope linked to vendors, assets, and evidence.' },
+  { id: 'soc-2', name: 'SOC 2', subtitle: 'Trust services criteria', acronym: 'SOC', accent: '#0f766e', logo: '/frameworks/aicpa.org.png', region: 'Global', category: 'Certification', ring: 'inner', note: 'Trust services criteria powered by shared, reusable evidence.' },
+  { id: 'gdpr', name: 'GDPR', subtitle: 'EU privacy regulation', acronym: 'GDPR', accent: '#2563eb', logo: '/frameworks/gdpr.eu.png', region: 'EU', category: 'Privacy', ring: 'inner', note: 'Data protection duties tracked to controls and assets.' },
+  { id: 'dora', name: 'DORA', subtitle: 'Operational resilience', acronym: 'DORA', accent: '#7c3aed', logo: '/frameworks/esma.europa.eu.png', region: 'EU', category: 'Resilience', ring: 'outer', note: 'Resilience obligations with incident and testing workflows.' },
+  { id: 'cis-controls', name: 'CIS Controls', subtitle: 'Security baselines', acronym: 'CIS', accent: '#0891b2', logo: '/frameworks/cisecurity.org.png', region: 'Global', category: 'Security', ring: 'outer', note: 'Baselines tied directly to assets and vulnerabilities.' },
+  { id: 'cobit', name: 'COBIT', subtitle: 'IT governance', acronym: 'COBIT', accent: '#0f766e', logo: '/frameworks/isaca.org.png', region: 'Global', category: 'Governance', ring: 'outer', note: 'Governance objectives mapped to live policy lifecycles.' },
+  { id: 'sox', name: 'SOX', subtitle: 'Financial reporting', acronym: 'SOX', accent: '#64748b', logo: '/frameworks/sec.gov.png', region: 'US', category: 'Financial', ring: 'outer', note: 'ITGC evidence packaged for financial audit review.' },
+  { id: 'hipaa', name: 'HIPAA', subtitle: 'Healthcare safeguards', acronym: 'HIPAA', accent: '#059669', logo: '/frameworks/hhs.gov.png', region: 'US', category: 'Healthcare', ring: 'outer', note: 'Health data safeguards with access review campaigns.' },
+  { id: 'hitrust', name: 'HITRUST', subtitle: 'Health trust', acronym: 'HIT', accent: '#16a34a', logo: '/frameworks/hitrustalliance.net.png', region: 'Global', category: 'Healthcare', ring: 'outer', note: 'Health trust program built on top of shared controls.' },
+  { id: 'aramco-ccc', name: 'Aramco CCC', subtitle: 'Industrial cyber controls', acronym: 'CCC', accent: '#16a34a', region: 'GCC', category: 'Sector', ring: 'outer', note: 'Industrial cyber requirements for vendor and plant scope.' }
+];
 
 CV.TWIN_NODES = [
   { id: 'reg', label: 'Regulation', color: '#0057ff' },

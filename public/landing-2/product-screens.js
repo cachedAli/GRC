@@ -16,7 +16,7 @@
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const DOCK = {
-    dashboard: { pc: 0.24, window: [0.115, 0.305], lateral: -1.45, vertical: 0.12, dist: 4.3, chapter: 'chapter-twin' },
+    dashboard: { pc: 0.24, window: [0.115, 0.305], lateral: 1.55, vertical: 0.12, dist: 4.3, chapter: 'chapter-twin', screenX: 0.73, screenY: 0.49 },
     auditor: { pc: 0.35, window: [0.302, 0.418], lateral: 1.5, vertical: 0.1, dist: 4.4, chapter: 'chapter-atlas' },
     vulns: { pc: 0.46, window: [0.42, 0.522], lateral: -1.45, vertical: 0.1, dist: 4.3, chapter: 'chapter-secure' },
     chat: { pc: 0.575, window: [0.527, 0.648], lateral: 1.5, vertical: 0.12, dist: 4.4, chapter: 'chapter-ai' }
