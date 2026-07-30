@@ -7,10 +7,7 @@ import Link from "next/link";
 export default function Hero() {
   return (
     <section className="relative min-h-screen overflow-hidden rounded-b-[34px] bg-[#000414] text-white md:rounded-b-[54px]">
-      <motion.div
-        initial={{ y: -500, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.15, duration: 0.7, ease: "easeInOut" }}
+      <div
         className="absolute inset-0 bg-[radial-gradient(circle_at_50%_18%,rgba(0,87,255,0.36),transparent_34%),radial-gradient(circle_at_80%_72%,rgba(18,216,255,0.14),transparent_30%),linear-gradient(180deg,#000414_0%,#020824_50%,#0057ff_78%,#b9c9ff_100%)]"
       />
 
