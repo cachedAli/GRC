@@ -1254,3 +1254,48 @@
   }
 
 }
+
+@keyframes framework-home-orbit {
+  from {
+    transform: translate(-50%, -50%) rotate(var(--framework-angle))
+      translateX(var(--framework-radius))
+      rotate(calc(var(--framework-angle) * -1));
+  }
+
+  to {
+    transform: translate(-50%, -50%)
+      rotate(calc(var(--framework-angle) + 360deg))
+      translateX(var(--framework-radius))
+      rotate(calc((var(--framework-angle) + 360deg) * -1));
+  }
+}
+
+.framework-home-orbit-node {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 10;
+  animation: framework-home-orbit 30s linear infinite;
+}
+
+.framework-home-orbit-node--outer {
+  animation-duration: 48s;
+  animation-direction: reverse;
+}
+
+.framework-home-orbit-node[data-active="true"] {
+  z-index: 30;
+}
+
+.framework-home-orbit-node[data-paused="true"] {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .framework-home-orbit-node {
+    animation: none;
+    transform: translate(-50%, -50%) rotate(var(--framework-angle))
+      translateX(var(--framework-radius))
+      rotate(calc(var(--framework-angle) * -1));
+  }
+}

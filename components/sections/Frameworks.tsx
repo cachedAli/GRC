@@ -1,791 +1,179 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import {
-  AnimatePresence,
-  motion,
-  useScroll,
-  useSpring,
-  useTransform,
-} from "framer-motion";
-import {
-  Activity,
-  Banknote,
-  ShieldCheck,
-  Waypoints,
-  type LucideIcon,
-} from "lucide-react";
+import Image from "next/image";
+import { type CSSProperties, useState } from "react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Network } from "lucide-react";
 
-type Domain = "finance" | "risk" | "sustainability";
-
-interface Framework {
-  short: string;
-  full: string;
-  domain: Domain;
-}
-
-interface PositionedFramework extends Framework {
-  x: number;
-  y: number;
-}
+type Framework = {
+  id: string;
+  name: string;
+  subtitle: string;
+  fullName: string;
+  acronym: string;
+  logo?: string;
+  region: string;
+  ring: "inner" | "outer";
+};
 
 const frameworks: Framework[] = [
-  {
-    short: "SWIFT CSCF",
-    full: "SWIFT Customer Security Controls Framework",
-    domain: "finance",
-  },
-  {
-    short: "ARAMCO CCC",
-    full: "ARAMCO Cybersecurity Compliance",
-    domain: "risk",
-  },
-  {
-    short: "ISO 27001",
-    full: "ISO/IEC 27001:2022",
-    domain: "sustainability",
-  },
-  {
-    short: "PCI DSS",
-    full: "PCI Data Security Standard",
-    domain: "finance",
-  },
-  {
-    short: "SBP Cloud",
-    full: "SBP Cloud Outsourcing Framework",
-    domain: "finance",
-  },
-  {
-    short: "SBP Banking",
-    full: "SBP Internet Banking Framework",
-    domain: "finance",
-  },
-  {
-    short: "Tech Risk (FS)",
-    full: "Technology Risk Instructions for Financial Services Operators",
-    domain: "risk",
-  },
-  {
-    short: "CBUAE Art. 13",
-    full: "Article (13) Technology Risk and Information Security _ CBUAE Rulebook-1",
-    domain: "risk",
-  },
-  {
-    short: "SBP ETGRMF",
-    full: "SBP ETGRMF",
-    domain: "risk",
-  },
-  {
-    short: "Tech Risks Banks",
-    full: "Technology Risks Regulation Banks",
-    domain: "risk",
-  },
-  {
-    short: "Cloud Computing",
-    full: "Cloud Computing Regulation",
-    domain: "risk",
-  },
-  {
-    short: "SOX ITGC",
-    full: "SOX IT General Controls",
-    domain: "finance",
-  },
-  {
-    short: "SOC 2",
-    full: "SOC 2 Type II",
-    domain: "finance",
-  },
-  {
-    short: "Sri Lanka BSS",
-    full: "Sri Lanka Baseline Security Standard (BSS)",
-    domain: "sustainability",
-  },
-  {
-    short: "SAMA CSF",
-    full: "SAMA Cyber Security Framework",
-    domain: "risk",
-  },
-  {
-    short: "SABIC Cyber",
-    full: "SABIC CyberTrust Guidelines",
-    domain: "sustainability",
-  },
-  {
-    short: "NIST CSF",
-    full: "NIST Cybersecurity Framework",
-    domain: "sustainability",
-  },
-  {
-    short: "NIST 800-53",
-    full: "NIST SP 800-53 Rev 5",
-    domain: "sustainability",
-  },
-  {
-    short: "NIS2",
-    full: "NIS2 Directive",
-    domain: "sustainability",
-  },
-  {
-    short: "MAS TRM",
-    full: "MAS Technology Risk Management Guidelines",
-    domain: "risk",
-  },
-  {
-    short: "ISO 22301",
-    full: "ISO 22301:2019 Business Continuity Management System",
-    domain: "finance",
-  },
-  {
-    short: "HIPAA",
-    full: "HIPAA Security & Privacy Rule",
-    domain: "sustainability",
-  },
-  {
-    short: "GDPR",
-    full: "General Data Protection Regulation",
-    domain: "sustainability",
-  },
-  {
-    short: "DORA",
-    full: "Digital Operational Resilience Act (DORA)",
-    domain: "risk",
-  },
-  {
-    short: "COBIT 2019",
-    full: "COBIT 2019",
-    domain: "finance",
-  },
+  { id: "nca-ecc", name: "NCA ECC", subtitle: "Essential cyber controls", fullName: "NCA Essential Cybersecurity Controls", acronym: "NCA", region: "GCC", ring: "outer" },
+  { id: "sama-csf", name: "SAMA CSF", subtitle: "Saudi financial security", fullName: "SAMA Cyber Security Framework", acronym: "SAMA", logo: "/frameworks/sama.gov.sa.png", region: "GCC", ring: "outer" },
+  { id: "pdpl", name: "PDPL", subtitle: "Privacy obligations", fullName: "Saudi Personal Data Protection Law", acronym: "PDPL", region: "GCC", ring: "outer" },
+  { id: "iso-27001", name: "ISO 27001", subtitle: "ISMS certification", fullName: "ISO/IEC 27001 Information Security Management", acronym: "ISO", logo: "/frameworks/iso.org.png", region: "Global", ring: "inner" },
+  { id: "iso-22301", name: "ISO 22301", subtitle: "Business continuity", fullName: "ISO 22301 Business Continuity Management", acronym: "ISO", logo: "/frameworks/iso.org.png", region: "Global", ring: "outer" },
+  { id: "iso-27701", name: "ISO 27701", subtitle: "Privacy management", fullName: "ISO/IEC 27701 Privacy Information Management", acronym: "ISO", logo: "/frameworks/iso.org.png", region: "Global", ring: "outer" },
+  { id: "nist-csf", name: "NIST CSF", subtitle: "Cybersecurity functions", fullName: "NIST Cybersecurity Framework", acronym: "NIST", logo: "/frameworks/nist.gov.png", region: "Global", ring: "inner" },
+  { id: "nis2", name: "NIS2", subtitle: "EU cyber directive", fullName: "Network and Information Security Directive 2", acronym: "NIS2", logo: "/frameworks/enisa.europa.eu.png", region: "EU", ring: "outer" },
+  { id: "pci-dss", name: "PCI DSS", subtitle: "Cardholder security", fullName: "Payment Card Industry Data Security Standard", acronym: "PCI", logo: "/frameworks/pcisecuritystandards.org.png", region: "Global", ring: "inner" },
+  { id: "soc-2", name: "SOC 2", subtitle: "Trust services criteria", fullName: "SOC 2 Trust Services Criteria", acronym: "SOC", logo: "/frameworks/aicpa.org.png", region: "Global", ring: "inner" },
+  { id: "gdpr", name: "GDPR", subtitle: "EU privacy regulation", fullName: "General Data Protection Regulation", acronym: "GDPR", logo: "/frameworks/gdpr.eu.png", region: "EU", ring: "inner" },
+  { id: "dora", name: "DORA", subtitle: "Operational resilience", fullName: "Digital Operational Resilience Act", acronym: "DORA", logo: "/frameworks/esma.europa.eu.png", region: "EU", ring: "outer" },
+  { id: "cis-controls", name: "CIS Controls", subtitle: "Security baselines", fullName: "CIS Critical Security Controls", acronym: "CIS", logo: "/frameworks/cisecurity.org.png", region: "Global", ring: "outer" },
+  { id: "cobit", name: "COBIT", subtitle: "IT governance", fullName: "COBIT 2019 Governance Framework", acronym: "COBIT", logo: "/frameworks/isaca.org.png", region: "Global", ring: "outer" },
+  { id: "sox", name: "SOX", subtitle: "Financial reporting", fullName: "Sarbanes-Oxley IT General Controls", acronym: "SOX", logo: "/frameworks/sec.gov.png", region: "US", ring: "outer" },
+  { id: "hipaa", name: "HIPAA", subtitle: "Healthcare safeguards", fullName: "HIPAA Security and Privacy Rule", acronym: "HIPAA", logo: "/frameworks/hhs.gov.png", region: "US", ring: "outer" },
+  { id: "hitrust", name: "HITRUST", subtitle: "Health trust", fullName: "HITRUST Common Security Framework", acronym: "HIT", logo: "/frameworks/hitrustalliance.net.png", region: "Global", ring: "outer" },
+  { id: "aramco-ccc", name: "Aramco CCC", subtitle: "Industrial cyber controls", fullName: "Aramco Cybersecurity Compliance Controls", acronym: "CCC", region: "GCC", ring: "outer" },
 ];
 
-const domainMeta: Record<
-  Domain,
-  {
-    label: string;
-    color: string;
-    border: string;
-    glow: string;
-    icon: LucideIcon;
-    summary: string;
-  }
-> = {
-  finance: {
-    label: "Finance & Controls",
-    color: "#000414",
-    border: "rgba(18,216,255,0.24)",
-    glow: "rgba(0,87,255,0.28)",
-    icon: Banknote,
-    summary:
-      "Track financial controls, evidence, and owners for audit readiness.",
-  },
-  risk: {
-    label: "Technology Risk",
-    color: "#0057ff",
-    border: "rgba(0,87,255,0.28)",
-    glow: "rgba(0,87,255,0.36)",
-    icon: Activity,
-    summary: "See tech-risk gaps, remediation, and ownership before they slip.",
-  },
-  sustainability: {
-    label: "Trust & Resilience",
-    color: "#12d8ff",
-    border: "rgba(18,216,255,0.28)",
-    glow: "rgba(18,216,255,0.36)",
-    icon: ShieldCheck,
-    summary:
-      "Keep privacy, resilience, and cyber obligations traceable from one screen.",
-  },
-};
+const frameworkCount = 30;
 
-const sectorAngles: Record<Domain, { start: number; end: number }> = {
-  risk: { start: -92, end: 28 },
-  sustainability: { start: 28, end: 148 },
-  finance: { start: 148, end: 268 },
-};
-
-const domainOrder: Domain[] = ["risk", "sustainability", "finance"];
-const DESKTOP_MIN_DIAMETER = 640;
-
-export default function Frameworks() {
-  const sectionRef = useRef<HTMLElement>(null);
-  const stageRef = useRef<HTMLDivElement>(null);
-
-  const [diameter, setDiameter] = useState(760);
-  const [focusDomain, setFocusDomain] = useState<Domain | "all">("all");
-  const [hoveredShort, setHoveredShort] = useState<string | null>(null);
-  const [pinnedShort, setPinnedShort] = useState<string | null>(null);
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
-
-  const scrollSmooth = useSpring(scrollYProgress, {
-    stiffness: 62,
-    damping: 24,
-    mass: 0.7,
-  });
-
-  const ringRotate = useTransform(scrollSmooth, [0, 1], [-56, 56]);
-  const ringOpacity = useTransform(
-    scrollSmooth,
-    [0, 0.18, 0.86, 1],
-    [0.26, 0.62, 0.62, 0.32],
-  );
-  const progressFill = useTransform(scrollSmooth, [0, 1], [0.05, 1]);
-
-  const groups = useMemo(
-    () => ({
-      finance: frameworks.filter((item) => item.domain === "finance"),
-      risk: frameworks.filter((item) => item.domain === "risk"),
-      sustainability: frameworks.filter(
-        (item) => item.domain === "sustainability",
-      ),
-    }),
-    [],
-  );
-
-  useEffect(() => {
-    const stage = stageRef.current;
-    if (!stage) {
-      return;
-    }
-
-    const update = () => {
-      const width = stage.clientWidth;
-      if (width > 0) {
-        setDiameter(Math.max(width, DESKTOP_MIN_DIAMETER));
-      }
-    };
-
-    update();
-
-    if (typeof ResizeObserver === "undefined") {
-      window.addEventListener("resize", update);
-      return () => window.removeEventListener("resize", update);
-    }
-
-    const observer = new ResizeObserver((entries) => {
-      const entry = entries[0];
-      if (entry && entry.contentRect.width > 0) {
-        setDiameter(Math.max(entry.contentRect.width, DESKTOP_MIN_DIAMETER));
-      }
-    });
-
-    observer.observe(stage);
-    return () => observer.disconnect();
-  }, []);
-
-  const visiblePool = useMemo(
-    () =>
-      focusDomain === "all"
-        ? frameworks
-        : frameworks.filter((item) => item.domain === focusDomain),
-    [focusDomain],
-  );
-
-  useEffect(() => {
-    if (
-      pinnedShort &&
-      !visiblePool.some((item) => item.short === pinnedShort)
-    ) {
-      setPinnedShort(null);
-    }
-
-    if (
-      hoveredShort &&
-      !visiblePool.some((item) => item.short === hoveredShort)
-    ) {
-      setHoveredShort(null);
-    }
-  }, [visiblePool, pinnedShort, hoveredShort]);
-
-  const selectedShort = pinnedShort;
-  const selectedFramework = selectedShort
-    ? (frameworks.find((item) => item.short === selectedShort) ?? null)
-    : null;
-
-  const selectedMeta = selectedFramework
-    ? domainMeta[selectedFramework.domain]
-    : null;
-
-  const positionedNodes = useMemo(() => {
-    const center = diameter / 2;
-    const radii = [
-      diameter * 0.45,
-      diameter * 0.4,
-      diameter * 0.35,
-      diameter * 0.3,
-    ];
-    const lanePattern = [0, 2, 1, 3];
-    const result: PositionedFramework[] = [];
-
-    domainOrder.forEach((domain) => {
-      const items = groups[domain];
-      const { start, end } = sectorAngles[domain];
-
-      // Keep nodes away from sector boundaries and alternate lanes for spacing.
-      const sweep = end - start - 24;
-      const offset = start + 12;
-
-      items.forEach((item, index) => {
-        const ratio = items.length === 1 ? 0.5 : index / (items.length - 1);
-        const lane = lanePattern[index % lanePattern.length];
-        const laneCycle = Math.floor(index / lanePattern.length);
-        const radius = radii[(lane + laneCycle) % radii.length];
-        const jitter = (index % 2 === 0 ? -1 : 1) * 1.5;
-        const angle = offset + ratio * sweep + jitter;
-        const radians = (angle * Math.PI) / 180;
-
-        const node = {
-          ...item,
-          x: center + Math.cos(radians) * radius,
-          y: center + Math.sin(radians) * radius,
-        };
-
-        // Keep desktop pills clear from the bottom map badge area.
-        if (
-          node.y > diameter * 0.79 &&
-          Math.abs(node.x - center) < diameter * 0.22
-        ) {
-          const direction = node.x >= center ? 1 : -1;
-          node.x += direction * diameter * 0.07;
-          node.y -= diameter * 0.035;
-        }
-
-        result.push(node);
-      });
-    });
-
-    return result;
-  }, [diameter, groups]);
-
-  const center = diameter / 2;
-  const selectedNode = positionedNodes.find(
-    (node) => node.short === selectedShort,
-  );
-
-  const connector = useMemo(() => {
-    if (!selectedNode) {
-      return null;
-    }
-
-    const dx = selectedNode.x - center;
-    const dy = selectedNode.y - center;
-    const angle = (Math.atan2(dy, dx) * 180) / Math.PI;
-    const length = Math.max(Math.sqrt(dx * dx + dy * dy) - diameter * 0.205, 0);
-
-    return { angle, length };
-  }, [selectedNode, center, diameter]);
-
-  const compact = diameter < 560;
+function OrbitNode({
+  framework,
+  index,
+  count,
+  activeId,
+  setActiveId,
+  reduceMotion,
+}: {
+  framework: Framework;
+  index: number;
+  count: number;
+  activeId: string | null;
+  setActiveId: (id: string | null) => void;
+  reduceMotion: boolean;
+}) {
+  const active = activeId === framework.id;
+  const dimmed = activeId !== null && !active;
+  const radius = framework.ring === "inner" ? 220 : 340;
+  const angle = (360 / count) * index;
+  const outer = framework.ring === "outer";
 
   return (
-    <section
-      ref={sectionRef}
-      id="frameworks"
-      className="relative overflow-hidden py-22 md:py-28"
+    <div
+      className={`framework-home-orbit-node ${outer ? "framework-home-orbit-node--outer" : ""}`}
+      data-active={active}
+      data-paused={activeId !== null || reduceMotion}
+      style={{
+        "--framework-angle": `${angle}deg`,
+        "--framework-radius": `${radius}px`,
+      } as CSSProperties}
     >
-      <div className="absolute inset-0 bg-linear-to-br from-green-dark via-green to-teal" />
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_18%,rgba(18,216,255,0.18),transparent_32%),radial-gradient(circle_at_78%_78%,rgba(0,87,255,0.2),transparent_34%)]" />
-      <div className="absolute inset-0 bg-black/18" />
-      <div className="absolute -left-16 top-18 h-64 w-64 rounded-full bg-teal/16 blur-3xl" />
-      <div className="absolute -right-16 bottom-8 h-72 w-72 rounded-full bg-blue-accent/18 blur-3xl" />
-
-      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6">
-        <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-120px" }}
-          transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
-          className="mx-auto max-w-3xl text-center"
-        >
-          {/* <p className="font-body text-xs font-semibold uppercase tracking-[0.18em] text-green-dark">
-            Framework Coverage
-          </p> */}
-          <h2 className="text-4xl font-semibold text-white font-poppins mt-3 leading-tight">
-            What each framework needs
-            <br className="hidden sm:block" />
-            from your team
-          </h2>
-          <p className="text-lg font-medium max-w-2xl mx-auto text-white/78 mt-4">
-            Select a domain or framework to see the controls, evidence, owners,
-            and gaps.
-          </p>
-
-          <motion.div
-            aria-hidden="true"
-            className="mx-auto mt-7 h-1.5 w-60 overflow-hidden rounded-full bg-white/20"
-          >
-            <motion.div
-              className="h-full rounded-full"
-              style={{
-                scaleX: progressFill,
-                transformOrigin: "0% 50%",
-                background: "linear-gradient(90deg, #12d8ff, #ffffff, #0057ff)",
-              }}
+      <motion.button
+        type="button"
+        aria-label={`${framework.name}: ${framework.subtitle}`}
+        aria-pressed={active}
+        onMouseEnter={() => setActiveId(framework.id)}
+        onMouseLeave={() => setActiveId(null)}
+        onFocus={() => setActiveId(framework.id)}
+        onBlur={() => setActiveId(null)}
+        onClick={() => setActiveId(framework.id)}
+        className={`flex -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center overflow-hidden border bg-white/90 p-2 text-left outline-none transition-[width,border-radius,opacity,background-color,border-color,box-shadow] duration-300 focus-visible:ring-2 focus-visible:ring-[#12d8ff] focus-visible:ring-offset-4 ${
+          outer ? "h-[74px]" : "h-[86px]"
+        } ${
+          active ? (outer ? "w-[236px] rounded-full" : "w-[264px] rounded-full") : (outer ? "w-[74px] rounded-full" : "w-[86px] rounded-full")
+        } ${
+          dimmed ? "opacity-30" : "opacity-100"
+        } ${
+          active ? "border-[#0057ff]/55 bg-white shadow-[0_24px_50px_-22px_rgba(0,87,255,0.52),0_0_0_6px_rgba(18,216,255,0.15)]" : "border-[#0057ff]/18 shadow-[0_18px_34px_-22px_rgba(2,8,36,0.3)]"
+        }`}
+      >
+        <span className={`relative grid shrink-0 place-items-center overflow-hidden rounded-full border border-[#0057ff]/14 bg-[radial-gradient(circle_at_30%_30%,#fff,#eef7ff_62%,#d8ebfa)] font-mono font-bold uppercase tracking-[-0.07em] text-[#0057ff] transition-transform duration-300 ${outer ? "h-[50px] w-[50px] text-[0.52rem]" : "h-[58px] w-[58px] text-[0.58rem]"} ${active ? "scale-110" : "scale-100"}`}>
+          {framework.logo ? (
+            <Image
+              src={framework.logo}
+              alt=""
+              width={58}
+              height={58}
+              className="h-full w-full object-contain p-1.5"
             />
-          </motion.div>
-        </motion.div>
-
-        <motion.div
-          className="mt-8 flex gap-3 overflow-x-auto pb-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:flex-wrap md:items-center md:justify-center md:overflow-visible md:pb-0"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: 0.08 }}
-        >
-          <FilterChip
-            label={`All (${frameworks.length})`}
-            active={focusDomain === "all"}
-            color="#000414"
-            onClick={() => setFocusDomain("all")}
-          />
-          {(Object.keys(domainMeta) as Domain[]).map((domain) => (
-            <FilterChip
-              key={domain}
-              label={`${domainMeta[domain].label} (${groups[domain].length})`}
-              active={focusDomain === domain}
-              color="#000414"
-              activeColor={domainMeta[domain].color}
-              onClick={() => setFocusDomain(domain)}
-            />
-          ))}
-        </motion.div>
-
-        <motion.div
-          className="mt-8 md:hidden"
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="relative overflow-hidden rounded-[28px] border border-white/80 bg-white/88 p-4 shadow-[0_16px_40px_-24px_rgba(2,26,72,0.35)]">
-            <div
-              className="absolute inset-x-0 top-0 h-24"
-              style={{
-                background: selectedMeta
-                  ? `linear-gradient(180deg, ${selectedMeta.glow}, transparent)`
-                  : "linear-gradient(180deg, rgba(0,87,255,0.25), transparent)",
-              }}
-            />
-            <div className="relative z-10">
-              <div className="flex items-start justify-between gap-2">
-                {selectedFramework && selectedMeta ? (
-                  <div
-                    className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em]"
-                    style={{
-                      color: selectedMeta.color,
-                      borderColor: selectedMeta.border,
-                      backgroundColor: "rgba(255,255,255,0.85)",
-                    }}
-                  >
-                    <selectedMeta.icon className="h-3.5 w-3.5" />
-                    <span>{selectedMeta.label}</span>
-                  </div>
-                ) : (
-                  <div className="inline-flex items-center gap-1.5 rounded-full border border-green-900/20 bg-white/85 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-green-dark">
-                    <Waypoints className="h-3.5 w-3.5" />
-                    <span>All Frameworks</span>
-                  </div>
-                )}
-
-                {selectedFramework ? (
-                  <button
-                    type="button"
-                    onClick={() => setPinnedShort(null)}
-                    className="rounded-full border border-green-900/20 bg-white/85 px-2.5 py-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-600"
-                  >
-                    Clear
-                  </button>
-                ) : (
-                  <p className="pt-1 text-[10px] font-semibold uppercase tracking-[0.08em] text-slate-500">
-                    Overview
-                  </p>
-                )}
-              </div>
-
-              <h3 className="mt-4 font-poppins text-lg font-semibold leading-tight text-[#000414]">
-                {selectedFramework
-                  ? selectedFramework.full
-                  : "Select a framework to see controls, evidence, owners, and gaps"}
-              </h3>
-              <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                {selectedFramework && selectedMeta
-                  ? selectedMeta.summary
-                  : "Start with a domain, then tap a framework to see the requirement."}
-              </p>
-            </div>
-          </div>
-
-          <div className="mt-4 rounded-3xl border border-white/80 bg-white/75 p-3 shadow-[0_14px_34px_-24px_rgba(2,26,72,0.32)]">
-            <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-500">
-              Tap to inspect frameworks
-            </p>
-            <div className="mt-3 grid grid-cols-2 gap-2">
-              {visiblePool.map((item) => {
-                const meta = domainMeta[item.domain];
-                const active = item.short === pinnedShort;
-
-                return (
-                  <button
-                    key={item.short}
-                    type="button"
-                    onClick={() => {
-                      setPinnedShort((current) =>
-                        current === item.short ? null : item.short,
-                      );
-                    }}
-                    className="rounded-2xl border bg-white/95 px-2.5 py-2 text-left shadow-[0_8px_16px_-14px_rgba(2,26,72,0.35)] transition-all"
-                    style={{
-                      borderColor: active
-                        ? meta.color
-                        : "rgba(107,114,128,0.24)",
-                      boxShadow: active
-                        ? `0 12px 22px -16px ${meta.glow}`
-                        : "0 8px 16px -14px rgba(2,26,72,0.3)",
-                    }}
-                  >
-                    <span className="inline-flex items-center gap-1.5">
-                      <span
-                        className="h-2 w-2 shrink-0 rounded-full"
-                        style={{ backgroundColor: meta.color }}
-                      />
-                      <span className="font-body text-[11px] font-semibold text-slate-700">
-                        {item.short}
-                      </span>
-                    </span>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
-        </motion.div>
-
-        <motion.div
-          className="mt-14 hidden md:block"
-          initial={{ opacity: 0, y: 32 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-60px" }}
-          transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        >
-          <div className="mx-auto w-full max-w-215">
-            <div ref={stageRef} className="relative aspect-square w-full">
-              <motion.div
-                aria-hidden="true"
-                className="absolute inset-[7.5%] rounded-full opacity-60"
-                style={{
-                  rotate: ringRotate,
-                  opacity: ringOpacity,
-                  background:
-                    "conic-gradient(from -90deg, rgba(0,87,255,0.48) 0deg 120deg, rgba(18,216,255,0.42) 120deg 240deg, rgba(0,4,20,0.46) 240deg 360deg)",
-                  maskImage:
-                    "radial-gradient(circle, transparent 43%, black 44%, black 68%, transparent 69%)",
-                  WebkitMaskImage:
-                    "radial-gradient(circle, transparent 43%, black 44%, black 68%, transparent 69%)",
-                }}
-              />
-
-              <div
-                aria-hidden="true"
-                className="absolute inset-[7.5%] rounded-full border border-white/35"
-              />
-
-              <div className="absolute inset-[14%] rounded-full border border-white/80 bg-white/65 shadow-[0_12px_40px_-28px_rgba(2,26,72,0.45)] backdrop-blur-sm" />
-
-              {/* Visible Orbital Tracks matching radii (45%, 37%, 29%) */}
-              <div className="absolute inset-[5%] rounded-full border-2 border-teal-900/4 pointer-events-none" />
-              <div className="absolute inset-[13%] rounded-full border-2 border-teal-900/6 pointer-events-none" />
-              <div className="absolute inset-[21%] rounded-full border-2 border-teal-900/8 pointer-events-none" />
-
-              {connector && (
-                <motion.div
-                  key={selectedShort}
-                  initial={{ width: 0, opacity: 0.2 }}
-                  animate={{ width: connector.length, opacity: 0.95 }}
-                  transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-                  className="absolute left-1/2 top-1/2 z-20 h-0.5 origin-left rounded-full"
-                  style={{
-                    transform: `translateY(-50%) rotate(${connector.angle}deg)`,
-                    background: `linear-gradient(90deg, ${selectedMeta?.color ?? "#000414"}, transparent)`,
-                  }}
-                />
-              )}
-
-              <div className="absolute left-1/2 top-1/2 z-30 h-[44%] w-[44%] min-h-55 min-w-55 max-h-82 max-w-82 -translate-x-1/2 -translate-y-1/2 overflow-hidden rounded-4xl border border-white/90 bg-white/88 p-5 shadow-[0_24px_75px_-34px_rgba(2,26,72,0.45)] sm:p-6">
-                <div
-                  className="absolute inset-0"
-                  style={{
-                    background: selectedMeta
-                      ? `radial-gradient(circle at 0% 0%, ${selectedMeta.glow}, transparent 62%)`
-                      : "radial-gradient(circle at 0% 0%, rgba(0,87,255,0.28), transparent 62%)",
-                  }}
-                />
-
-                <AnimatePresence mode="wait">
-                  <motion.div
-                    key={selectedShort ?? "overview"}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.2 }}
-                    className="relative z-10 flex h-full flex-col"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      {selectedFramework && selectedMeta ? (
-                        <div
-                          className="inline-flex items-center gap-1.5 rounded-full border px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em]"
-                          style={{
-                            color: selectedMeta.color,
-                            borderColor: selectedMeta.border,
-                            backgroundColor: "rgba(255,255,255,0.85)",
-                          }}
-                        >
-                          <selectedMeta.icon className="h-3.5 w-3.5" />
-                          <span>{selectedMeta.label}</span>
-                        </div>
-                      ) : (
-                        <div className="inline-flex items-center gap-1.5 rounded-full border border-green-900/20 bg-white/85 px-3 py-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-green-dark">
-                          <Waypoints className="h-3.5 w-3.5" />
-                          <span>All Frameworks</span>
-                        </div>
-                      )}
-                      <p className="pt-1 text-[11px] font-medium text-slate-500">
-                        {pinnedShort ? "Pinned" : "Overview"}
-                      </p>
-                    </div>
-
-                    <h3 className="mt-4 font-poppins text-xl font-semibold leading-tight text-[#000414] sm:text-2xl">
-                      {selectedFramework
-                        ? selectedFramework.full
-                        : "Select a framework to see controls, evidence, owners, and gaps"}
-                    </h3>
-                    <p className="mt-3 text-sm font-medium leading-relaxed text-slate-600">
-                      {selectedFramework && selectedMeta
-                        ? selectedMeta.summary
-                        : "Start with a domain, then tap a framework to see the requirement."}
-                    </p>
-
-                    <div className="mt-auto rounded-2xl border border-green-100 bg-[#eef7ff] p-3">
-                      {selectedFramework ? (
-                        <p className="text-xs font-medium text-slate-600">
-                          Tap the same framework again to clear it.
-                        </p>
-                      ) : (
-                        <p className="text-xs font-medium text-slate-600">
-                          {`Finance (${groups.finance.length}) | Technology Risk (${groups.risk.length}) | Trust & Resilience (${groups.sustainability.length})`}
-                        </p>
-                      )}
-                    </div>
-                  </motion.div>
-                </AnimatePresence>
-              </div>
-
-              {positionedNodes.map((node) => {
-                const meta = domainMeta[node.domain];
-                const active =
-                  node.short === pinnedShort || node.short === hoveredShort;
-                const muted =
-                  focusDomain !== "all" && node.domain !== focusDomain;
-
-                return (
-                  <motion.button
-                    key={node.short}
-                    type="button"
-                    onMouseEnter={() => {
-                      setHoveredShort(node.short);
-                    }}
-                    onMouseLeave={() => setHoveredShort(null)}
-                    onFocus={() => {
-                      setHoveredShort(node.short);
-                    }}
-                    onBlur={() => setHoveredShort(null)}
-                    onClick={() => {
-                      setPinnedShort((current) =>
-                        current === node.short ? null : node.short,
-                      );
-                    }}
-                    initial={{ opacity: 0, scale: 0.92 }}
-                    whileInView={{
-                      opacity: muted ? 0.23 : 1,
-                      scale: active ? 1.05 : 1,
-                    }}
-                    viewport={{ once: true, amount: 0.45 }}
-                    whileHover={muted ? {} : { y: -2, scale: 1.06 }}
-                    animate={{
-                      opacity: muted ? 0.23 : 1,
-                      scale: active ? 1.05 : 1,
-                    }}
-                    transition={{ duration: 0.2 }}
-                    className="absolute z-40 whitespace-nowrap -translate-x-1/2 -translate-y-1/2 rounded-full border bg-white/96 px-2.5 py-1.5 text-left shadow-[0_8px_20px_-14px_rgba(2,26,72,0.35)] backdrop-blur-sm transition-all focus-visible:outline-2 focus-visible:outline-offset-2 sm:px-3.5 sm:py-2"
-                    style={{
-                      left: node.x,
-                      top: node.y,
-                      borderColor: active
-                        ? meta.color
-                        : "rgba(107,114,128,0.25)",
-                      boxShadow: active
-                        ? `0 12px 28px -16px ${meta.glow}`
-                        : "0 8px 18px -14px rgba(2,26,72,0.32)",
-                    }}
-                  >
-                    <span className="inline-flex items-center gap-1.5">
-                      <span
-                        className="h-2 w-2 shrink-0 rounded-full"
-                        style={{ backgroundColor: meta.color }}
-                      />
-                      <span
-                        className={`font-body font-semibold tracking-[0.01em] text-slate-700 ${
-                          compact ? "text-[9px]" : "text-[11px] sm:text-xs"
-                        }`}
-                      >
-                        {node.short}
-                      </span>
-                    </span>
-                  </motion.button>
-                );
-              })}
-
-              <div className="pointer-events-none absolute bottom-[3.8%] left-1/2 z-20 -translate-x-1/2 rounded-full border border-green-200/80 bg-white/85 px-4 py-2 text-center shadow-sm backdrop-blur-sm">
-                <p className="inline-flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.08em] text-green-dark sm:text-xs">
-                  <Waypoints className="h-3.5 w-3.5" />
-                  Framework map
-                </p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
-    </section>
+          ) : framework.acronym}
+        </span>
+        <span className={`min-w-0 overflow-hidden whitespace-normal text-left transition-[max-width,opacity,transform,margin] duration-300 ${active ? (outer ? "ml-3 max-w-[132px] translate-x-0 opacity-100" : "ml-3 max-w-[156px] translate-x-0 opacity-100") : "ml-0 max-w-0 translate-x-2 opacity-0"}`}>
+          <strong className="block font-body text-sm font-semibold leading-[1.05] text-[#000414]">{framework.name}</strong>
+          <small className="mt-0.5 block font-body text-xs leading-snug text-[#020824]/60">{framework.subtitle}</small>
+        </span>
+      </motion.button>
+    </div>
   );
 }
 
-function FilterChip({
-  label,
-  active,
-  onClick,
-  color,
-  activeColor,
-}: {
-  label: string;
-  active: boolean;
-  onClick: () => void;
-  color: string;
-  activeColor?: string;
-}) {
-  const selectedColor = activeColor ?? color;
+export default function Frameworks() {
+  const [activeId, setActiveId] = useState<string | null>(null);
+  const reduceMotion = useReducedMotion();
+  const innerRing = frameworks.filter((framework) => framework.ring === "inner");
+  const outerRing = frameworks.filter((framework) => framework.ring === "outer");
+  const activeFramework = frameworks.find((framework) => framework.id === activeId);
 
   return (
-    <button
-      type="button"
-      onClick={onClick}
-      className="shrink-0 rounded-full border px-4 py-2 text-sm font-semibold font-body transition-all md:px-5"
-      style={{
-        color: active ? "#ffffff" : color,
-        borderColor: active ? selectedColor : "rgba(107,114,128,0.3)",
-        backgroundColor: active ? selectedColor : "rgba(255,255,255,0.82)",
-      }}
-    >
-      {label}
-    </button>
+    <section id="frameworks" className="bg-[#fbfdfc] px-3 py-5 sm:px-6 md:px-8">
+      <div className="relative isolate mx-auto max-w-[1480px] overflow-hidden rounded-[2.5rem] border border-[#d8ebfa] bg-[#eef7ff] px-4 py-20 sm:px-6 md:py-28">
+        <div aria-hidden="true" className="absolute inset-0 opacity-65 [background-image:linear-gradient(rgba(0,87,255,0.055)_1px,transparent_1px),linear-gradient(90deg,rgba(0,87,255,0.055)_1px,transparent_1px)] [background-size:72px_72px]" />
+        <div aria-hidden="true" className="absolute left-[7%] top-[14%] h-[280px] w-[280px] rounded-full bg-[#12d8ff]/18 blur-[28px]" />
+        <div aria-hidden="true" className="absolute bottom-[10%] right-[6%] h-[320px] w-[320px] rounded-full bg-[#0057ff]/14 blur-[30px]" />
+
+        <div className="relative mx-auto max-w-7xl">
+          <motion.header
+            initial={reduceMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+            className="mx-auto max-w-[800px] text-center"
+          >
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#0057ff]">Framework intelligence</p>
+            <h2 className="mt-3 font-display text-[2.25rem] font-semibold leading-[1.15] text-[#000414]">One connected system for every framework you run.</h2>
+            <p className="mx-auto mt-4 max-w-[650px] font-body text-base leading-relaxed text-[#020824]/68">From GCC mandates to global certifications, ComplyVerse turns every framework into a connected control, evidence, and assurance program.</p>
+          </motion.header>
+
+          <motion.div
+            initial={reduceMotion ? false : { opacity: 0, y: 22 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+            onMouseLeave={() => setActiveId(null)}
+            className="relative mx-auto mt-12 hidden min-h-[880px] max-w-[1060px] overflow-hidden rounded-[2.5rem] border border-[#0057ff]/14 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,0.96),rgba(231,244,255,0.92)_46%,rgba(216,235,250,0.86)_100%)] shadow-[0_30px_90px_-50px_rgba(0,87,255,0.35)] md:block"
+          >
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[690px] w-[690px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-[#0057ff]/22 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.44)]" />
+            <div aria-hidden="true" className="absolute left-1/2 top-1/2 h-[430px] w-[430px] -translate-x-1/2 -translate-y-1/2 rounded-full border border-dashed border-[#12d8ff]/50 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.44)]" />
+
+            {innerRing.map((framework, index) => <OrbitNode key={framework.id} framework={framework} index={index} count={innerRing.length} activeId={activeId} setActiveId={setActiveId} reduceMotion={Boolean(reduceMotion)} />)}
+            {outerRing.map((framework, index) => <OrbitNode key={framework.id} framework={framework} index={index} count={outerRing.length} activeId={activeId} setActiveId={setActiveId} reduceMotion={Boolean(reduceMotion)} />)}
+
+            <div className="absolute left-1/2 top-1/2 z-20 w-[300px] -translate-x-1/2 -translate-y-1/2 rounded-[28px] border border-[#0057ff]/22 bg-[linear-gradient(180deg,rgba(255,255,255,0.98),rgba(238,247,255,0.94))] px-7 py-8 text-center shadow-[0_24px_65px_-30px_rgba(0,87,255,0.28)]">
+              <div aria-hidden="true" className="pointer-events-none absolute -inset-2 rounded-[36px] border border-[#12d8ff]/35" />
+              <div className="relative">
+                <div className="mx-auto grid h-10 w-10 place-items-center rounded-full bg-[#0057ff] text-white"><Network size={20} strokeWidth={1.7} /></div>
+                <span className="mt-4 block font-mono text-[0.72rem] font-semibold uppercase tracking-[0.14em] text-[#0057ff]">ComplyVerse</span>
+                <strong className="mt-2 block font-display text-[2rem] font-semibold leading-[1.02] text-[#000414]">Framework<br />intelligence</strong>
+                <div className="mt-5 grid gap-1.5">
+                  <span className="border border-[#0057ff]/14 bg-white/80 px-2 py-1.5 font-mono text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#0057ff]">{frameworkCount} frameworks</span>
+                  <span className="border border-[#0057ff]/14 bg-white/80 px-2 py-1.5 font-mono text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#0057ff]">GCC + global</span>
+                  <span className="border border-[#0057ff]/14 bg-white/80 px-2 py-1.5 font-mono text-[0.62rem] font-bold uppercase tracking-[0.08em] text-[#0057ff]">Mapped to controls</span>
+                </div>
+              </div>
+            </div>
+
+            {activeFramework && <motion.p initial={reduceMotion ? false : { opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="absolute bottom-9 left-1/2 z-30 w-[min(85%,560px)] -translate-x-1/2 border border-[#0057ff]/16 bg-white/94 px-5 py-3 text-center font-body text-sm text-[#020824]/72 shadow-[0_18px_44px_-28px_rgba(0,87,255,0.34)]"><strong className="font-semibold text-[#000414]">{activeFramework.fullName}</strong> · {activeFramework.region}</motion.p>}
+          </motion.div>
+
+          <div className="mt-10 grid gap-2 md:hidden">
+            <div className="border border-[#0057ff]/18 bg-white p-5"><p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.14em] text-[#0057ff]">Framework intelligence</p><h3 className="mt-2 font-display text-2xl font-semibold leading-tight text-[#000414]">{frameworkCount} frameworks mapped to one control layer.</h3></div>
+            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3">{frameworks.map((framework) => <button key={framework.id} type="button" aria-pressed={activeId === framework.id} onClick={() => setActiveId(activeId === framework.id ? null : framework.id)} className={`min-h-14 cursor-pointer border px-3 py-2 text-left font-mono text-[0.62rem] font-semibold uppercase tracking-[0.06em] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#12d8ff] ${activeId === framework.id ? "border-[#0057ff] bg-[#0057ff] text-white" : "border-[#0057ff]/18 bg-white text-[#000414]"}`}>{framework.name}</button>)}</div>
+            {activeFramework && <p className="border-l-2 border-[#12d8ff] bg-white px-4 py-3 font-body text-sm leading-relaxed text-[#020824]/72"><strong className="font-semibold text-[#000414]">{activeFramework.fullName}</strong> · {activeFramework.region}</p>}
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
