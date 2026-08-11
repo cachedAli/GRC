@@ -658,7 +658,868 @@
   }
 }
 
-/* Scroll-driven platform story */
+/* Interactive assurance processing table */
+.assurance-bridge {
+  background: #fbfdfc;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(0.75rem, 2vw, 1.5rem);
+}
+
+.assurance-bridge-panel {
+  position: relative;
+  isolation: isolate;
+  max-width: 1480px;
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgb(0 87 255 / 12%);
+  border-radius: 2.5rem;
+  background: linear-gradient(145deg, #eef7ff 0%, #d9edfa 100%);
+}
+
+.assurance-bridge-grid {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  opacity: 0.68;
+  background-image: linear-gradient(rgb(0 87 255 / 5%) 1px, transparent 1px), linear-gradient(90deg, rgb(0 87 255 / 5%) 1px, transparent 1px);
+  background-size: 76px 76px;
+}
+
+.assurance-bridge-glow {
+  position: absolute;
+  z-index: -1;
+  top: 50%;
+  left: 52%;
+  width: min(58vw, 780px);
+  aspect-ratio: 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: rgb(18 216 255 / 16%);
+  filter: blur(74px);
+}
+
+.assurance-bridge-intro {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: clamp(4.5rem, 7vw, 6.5rem) 1.5rem 2.25rem;
+  text-align: center;
+}
+
+.assurance-bridge-intro > p,
+.assurance-source-bay > p {
+  margin: 0;
+  color: #0057ff;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.67rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+.assurance-bridge-intro h2 {
+  margin: 0.8rem auto 0;
+  color: #000414;
+  font-family: var(--font-display), sans-serif;
+  font-size: clamp(2.2rem, 4.2vw, 4.2rem);
+  font-weight: 600;
+  letter-spacing: -0.055em;
+  line-height: 1.03;
+}
+
+.assurance-bridge-intro > div {
+  max-width: 720px;
+  margin: 1.35rem auto 0;
+  color: rgb(2 8 36 / 66%);
+  font-family: var(--font-body), sans-serif;
+  font-size: clamp(1rem, 1.55vw, 1.15rem);
+  font-weight: 500;
+  line-height: 1.62;
+}
+
+.assurance-flow-shell {
+  margin: 0 clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
+  overflow: hidden;
+  border: 1px solid rgb(0 87 255 / 10%);
+  border-radius: 1.75rem;
+  background: rgb(255 255 255 / 28%);
+}
+
+.assurance-flow-controller {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  min-height: 54px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgb(0 87 255 / 10%);
+  background: rgb(249 253 255 / 72%);
+  padding: 0.55rem 0.7rem 0.55rem 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.assurance-flow-controller > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #53657f;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.assurance-live-dot {
+  width: 0.45rem;
+  height: 0.45rem;
+  border-radius: 50%;
+  background: #16ad7b;
+  box-shadow: 0 0 0 4px rgb(22 173 123 / 12%), 0 0 16px rgb(22 173 123 / 40%);
+}
+
+.assurance-flow-controller > strong {
+  color: #0c1d38;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.61rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.assurance-flow-controller > button {
+  display: inline-flex;
+  min-width: 78px;
+  min-height: 40px;
+  align-items: center;
+  justify-self: end;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid rgb(0 87 255 / 14%);
+  border-radius: 999px;
+  background: #075fe4;
+  padding: 0.45rem 0.75rem;
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.69rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.assurance-flow-canvas {
+  position: relative;
+  width: 100%;
+  min-height: 600px;
+  overflow: hidden;
+}
+
+.assurance-flow-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.assurance-route-ghost,
+.assurance-route {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.assurance-route-ghost {
+  stroke: rgb(18 216 255 / 21%);
+  stroke-width: 11;
+  opacity: 0.55;
+  filter: blur(5px);
+}
+
+.assurance-route {
+  stroke: rgb(0 87 255 / 19%);
+  stroke-width: 1.1;
+  stroke-dasharray: 3 8;
+  transition: stroke 260ms ease, stroke-width 260ms ease, opacity 260ms ease;
+}
+
+.assurance-route.is-traversed {
+  stroke: rgb(0 87 255 / 62%);
+  stroke-width: 1.5;
+}
+
+.assurance-route.is-current {
+  stroke: #12cdef;
+  stroke-width: 2.35;
+  stroke-dasharray: 9 8;
+  filter: drop-shadow(0 0 5px rgb(18 216 255 / 70%));
+  animation: assurance-route-travel 650ms linear infinite;
+}
+
+.assurance-route.is-risk.is-traversed,
+.assurance-route.is-risk.is-current {
+  stroke: #ff6b4a;
+}
+
+.assurance-route-loop {
+  stroke-dasharray: 2 10;
+}
+
+.assurance-source-bay,
+.assurance-station,
+.assurance-connect-wrap,
+.assurance-outcome,
+.assurance-monitor {
+  position: absolute;
+  z-index: 4;
+}
+
+.assurance-source-bay {
+  width: 190px;
+  height: 240px;
+  transform: translate(-50%, -50%);
+}
+
+.assurance-source-stack {
+  position: relative;
+  height: 160px;
+  margin-top: 0.75rem;
+  perspective: 700px;
+}
+
+.assurance-source-sheet {
+  position: absolute;
+  inset: 0 auto auto 0;
+  display: grid;
+  width: 182px;
+  min-height: 91px;
+  grid-template-columns: 1fr auto;
+  grid-template-rows: auto auto auto;
+  gap: 0.18rem 0.5rem;
+  overflow: hidden;
+  border: 1px solid rgb(0 87 255 / 16%);
+  border-radius: 0.85rem;
+  background: linear-gradient(145deg, rgb(255 255 255 / 98%), rgb(236 247 255 / 97%));
+  padding: 0.75rem 0.8rem;
+  box-shadow: 0 16px 36px -24px rgb(0 48 140 / 55%);
+  color: #07142c;
+  text-align: left;
+  cursor: pointer;
+  touch-action: pan-y;
+}
+
+.assurance-source-sheet::after {
+  position: absolute;
+  right: -18px;
+  bottom: -20px;
+  width: 54px;
+  height: 54px;
+  border: 1px solid rgb(18 216 255 / 28%);
+  border-radius: 50%;
+  content: "";
+}
+
+.assurance-source-sheet.is-top {
+  border-color: rgb(0 87 255 / 34%);
+  box-shadow: 0 22px 48px -25px rgb(0 67 185 / 70%);
+}
+
+.assurance-source-sheet > span {
+  color: #0057ff;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.55rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.assurance-source-sheet > svg { color: #12a9d9; }
+.assurance-source-sheet > strong { grid-column: 1 / -1; font-family: var(--font-display), sans-serif; font-size: 0.9rem; letter-spacing: -0.025em; }
+.assurance-source-sheet > small { grid-column: 1 / -1; color: #61728b; font-family: var(--font-body), sans-serif; font-size: 0.62rem; line-height: 1.3; }
+.assurance-source-hint { color: #6b7f99; font-family: var(--font-mono), monospace; font-size: 0.51rem; letter-spacing: 0.04em; }
+
+.assurance-station,
+.assurance-connect-wrap {
+  width: 190px;
+  transform: translate(-50%, 28px);
+}
+
+.assurance-connect-magnet { position: relative; width: 100%; }
+
+.assurance-station::before,
+.assurance-connect-wrap::before {
+  position: absolute;
+  top: -33px;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  transform: translateX(-50%);
+  border: 2px solid rgb(255 255 255 / 92%);
+  border-radius: 50%;
+  background: #8eb5e8;
+  box-shadow: 0 0 0 5px rgb(0 87 255 / 7%);
+  content: "";
+  transition: background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.assurance-station.is-active::before,
+.assurance-connect-wrap.is-active::before {
+  transform: translateX(-50%) scale(1.25);
+  background: #12d8ff;
+  box-shadow: 0 0 0 7px rgb(18 216 255 / 13%), 0 0 20px rgb(18 216 255 / 55%);
+}
+
+.assurance-station.is-complete::before,
+.assurance-connect-wrap.is-complete::before { background: #075fe4; }
+
+.assurance-station-select {
+  display: grid;
+  width: 100%;
+  min-height: 44px;
+  grid-template-columns: auto auto 1fr;
+  align-items: center;
+  gap: 0.45rem;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  color: #07142c;
+  text-align: left;
+  cursor: pointer;
+}
+
+.assurance-station-index { color: #0057ff; font-family: var(--font-mono), monospace; font-size: 0.56rem; font-weight: 800; }
+.assurance-station-icon { display: grid; width: 31px; height: 31px; place-items: center; border: 1px solid rgb(0 87 255 / 15%); border-radius: 9px; background: rgb(255 255 255 / 68%); color: #075fe4; }
+.assurance-station-select > strong { font-family: var(--font-display), sans-serif; font-size: 0.95rem; letter-spacing: -0.035em; }
+
+.assurance-raw-copy {
+  display: -webkit-box;
+  margin: 0.5rem 0 0;
+  overflow: hidden;
+  color: rgb(5 17 39 / 51%);
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.63rem;
+  font-style: italic;
+  line-height: 1.42;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.decrypted-text { display: block; }
+.assurance-structured-copy { margin-top: 0.55rem; color: #10233e; font-family: var(--font-mono), monospace; font-size: 0.58rem; font-weight: 750; line-height: 1.42; }
+.assurance-structured-copy.is-encrypted { color: #12a7d7; opacity: 0.68; }
+
+.assurance-control-orbit {
+  position: relative;
+  min-height: 108px;
+  margin-top: 0.45rem;
+  border: 1px dashed rgb(0 87 255 / 20%);
+  border-radius: 50%;
+}
+
+.assurance-orbit-line { position: absolute; top: 50%; left: 15%; width: 70%; border-top: 1px solid rgb(0 87 255 / 21%); }
+.assurance-control-node { position: absolute; top: 10px; left: 9px; display: inline-flex; max-width: 122px; align-items: center; gap: 0.3rem; border: 1px solid rgb(0 87 255 / 15%); border-radius: 999px; background: rgb(255 255 255 / 84%); padding: 0.3rem 0.45rem; color: #173052; font-family: var(--font-mono), monospace; font-size: 0.48rem; font-weight: 750; }
+.assurance-control-orbit > small { position: absolute; right: 5px; bottom: 7px; max-width: 105px; color: #526b88; font-family: var(--font-mono), monospace; font-size: 0.45rem; line-height: 1.25; text-align: right; }
+
+.assurance-evidence-folder {
+  position: absolute;
+  top: 37px;
+  left: 78px;
+  width: 58px;
+  height: 43px;
+  border: 0;
+  border-radius: 3px 7px 7px 7px;
+  background: #0b68e8;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.assurance-evidence-folder::before { position: absolute; bottom: 97%; left: 0; width: 22px; height: 7px; border-radius: 4px 4px 0 0; background: #0b68e8; content: ""; }
+.assurance-evidence-folder i { position: absolute; bottom: 7px; left: 50%; width: 45px; height: 30px; transform: translateX(-50%); border: 1px solid rgb(0 87 255 / 15%); border-radius: 4px; background: #fff; transition: transform 320ms cubic-bezier(0.22, 1, 0.36, 1); }
+.assurance-evidence-folder i:nth-child(2) { width: 40px; background: #edf7ff; }
+.assurance-evidence-folder i:nth-child(3) { width: 34px; background: #dcefff; }
+.assurance-evidence-folder.is-open i:nth-child(1) { transform: translate(-80%, -24px) rotate(-12deg); }
+.assurance-evidence-folder.is-open i:nth-child(2) { transform: translate(-20%, -27px) rotate(10deg); }
+.assurance-evidence-folder.is-open i:nth-child(3) { transform: translate(-50%, -34px) rotate(2deg); }
+.assurance-evidence-folder b { position: absolute; z-index: 3; inset: auto 0 5px; display: flex; align-items: center; justify-content: center; gap: 0.2rem; font-family: var(--font-mono), monospace; font-size: 0.43rem; letter-spacing: 0.04em; text-transform: uppercase; }
+
+.assurance-decision > p { margin: 0.45rem 0 0; color: #536984; font-family: var(--font-body), sans-serif; font-size: 0.62rem; line-height: 1.4; }
+.assurance-decision > p strong { color: #142d4d; }
+.click-spark { position: relative; }
+.click-spark > canvas { position: absolute; inset: 0; z-index: 3; pointer-events: none; }
+.assurance-decision-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.42rem; margin-top: 0.65rem; }
+.assurance-decision-actions button { position: relative; z-index: 4; display: inline-flex; min-height: 44px; align-items: center; justify-content: center; gap: 0.28rem; border: 1px solid rgb(0 87 255 / 15%); border-radius: 0.65rem; background: rgb(255 255 255 / 68%); color: #18314f; font-family: var(--font-body), sans-serif; font-size: 0.58rem; font-weight: 750; cursor: pointer; transition: transform 180ms ease, border-color 180ms ease, background 180ms ease; }
+.assurance-decision-actions button:hover { transform: translateY(-2px); }
+.assurance-decision-actions .is-approve:hover,
+.assurance-decision-actions .is-approve[aria-pressed="true"] { border-color: rgb(22 173 123 / 45%); background: rgb(227 252 244 / 88%); color: #087354; }
+.assurance-decision-actions .is-action:hover,
+.assurance-decision-actions .is-action[aria-pressed="true"] { border-color: rgb(255 107 74 / 45%); background: rgb(255 239 234 / 90%); color: #b13e25; }
+
+.assurance-outcome {
+  display: flex;
+  width: 178px;
+  min-height: 68px;
+  transform: translate(-50%, 24px);
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgb(0 87 255 / 13%);
+  border-radius: 1rem;
+  background: rgb(255 255 255 / 66%);
+  padding: 0.7rem;
+  color: #16304f;
+  text-align: left;
+  cursor: pointer;
+  backdrop-filter: blur(9px);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.assurance-outcome:hover { transform: translate(-50%, 20px); }
+.assurance-outcome > svg { flex: 0 0 auto; }
+.assurance-outcome > span { display: grid; gap: 0.15rem; }
+.assurance-outcome small,
+.assurance-monitor small { color: #637a95; font-family: var(--font-mono), monospace; font-size: 0.45rem; font-weight: 750; letter-spacing: 0.07em; text-transform: uppercase; }
+.assurance-outcome strong,
+.assurance-monitor strong { color: #102641; font-family: var(--font-display), sans-serif; font-size: 0.78rem; letter-spacing: -0.025em; }
+.assurance-outcome em { color: #6a7e95; font-family: var(--font-body), sans-serif; font-size: 0.51rem; font-style: normal; line-height: 1.25; }
+.assurance-outcome-approved > svg { color: #16ad7b; }
+.assurance-outcome-action > svg { color: #ff6b4a; }
+.assurance-outcome-approved.is-active { border-color: rgb(22 173 123 / 48%); box-shadow: 0 18px 38px -25px rgb(22 173 123 / 68%), 0 0 0 5px rgb(22 173 123 / 8%); }
+.assurance-outcome-action.is-active { border-color: rgb(255 107 74 / 48%); box-shadow: 0 18px 38px -25px rgb(255 107 74 / 68%), 0 0 0 5px rgb(255 107 74 / 8%); }
+
+.assurance-monitor {
+  display: grid;
+  width: 216px;
+  min-height: 58px;
+  transform: translate(-50%, -50%);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.55rem;
+  border: 1px solid rgb(0 87 255 / 14%);
+  border-radius: 999px;
+  background: rgb(248 252 255 / 72%);
+  padding: 0.58rem 0.75rem;
+  color: #075fe4;
+  text-align: left;
+  cursor: pointer;
+}
+.assurance-monitor > span { display: grid; gap: 0.15rem; }
+.assurance-monitor.is-active { border-color: rgb(18 216 255 / 60%); box-shadow: 0 0 0 6px rgb(18 216 255 / 9%), 0 18px 40px -28px rgb(0 87 255 / 70%); }
+
+.tilted-surface { position: relative; width: 100%; perspective: 900px; }
+.tilted-surface-plane { position: relative; width: 100%; height: 100%; will-change: transform; }
+.tilted-surface-light { position: absolute; inset: 0; z-index: 1; border-radius: inherit; pointer-events: none; transition: opacity 220ms ease; }
+.tilted-surface-content { position: relative; z-index: 2; transform: translateZ(24px); }
+
+.assurance-passport {
+  position: absolute;
+  z-index: 12;
+  width: 104px;
+  transform: translate(-50%, -118%);
+  pointer-events: auto;
+}
+.assurance-passport-surface,
+.assurance-passport-surface .tilted-surface-plane { border-radius: 0.8rem; }
+.assurance-passport-surface .tilted-surface-plane { overflow: hidden; border: 1px solid rgb(0 87 255 / 38%); background: linear-gradient(145deg, #ffffff, #e9f6ff); box-shadow: 0 16px 34px -16px rgb(0 67 185 / 60%), 0 0 0 4px rgb(18 216 255 / 8%); }
+.assurance-passport-surface .tilted-surface-content { min-height: 61px; padding: 0.48rem 0.55rem; }
+.assurance-passport-top { display: flex; align-items: center; justify-content: space-between; color: #0057ff; font-family: var(--font-mono), monospace; font-size: 0.43rem; font-weight: 900; letter-spacing: 0.12em; }
+.assurance-passport-top i { width: 6px; height: 6px; border-radius: 50%; background: #12d8ff; box-shadow: 0 0 8px #12d8ff; }
+.assurance-passport strong { display: block; margin-top: 0.35rem; color: #07142c; font-family: var(--font-mono), monospace; font-size: 0.53rem; letter-spacing: 0.08em; }
+.assurance-passport small { display: block; margin-top: 0.16rem; color: #60738d; font-family: var(--font-mono), monospace; font-size: 0.42rem; }
+.assurance-passport.is-action .assurance-passport-top i { background: #ff6b4a; box-shadow: 0 0 8px #ff6b4a; }
+
+.assurance-audit-rail {
+  position: absolute;
+  right: 3%;
+  bottom: 2.6%;
+  left: 3%;
+  z-index: 6;
+  border-top: 1px solid rgb(0 87 255 / 15%);
+  padding-top: 0.65rem;
+}
+.assurance-audit-heading { display: flex; align-items: center; justify-content: space-between; color: #607790; font-family: var(--font-mono), monospace; font-size: 0.48rem; font-weight: 750; letter-spacing: 0.06em; text-transform: uppercase; }
+.assurance-audit-heading strong { color: #0057ff; }
+.assurance-audit-rail ol { display: grid; grid-template-columns: repeat(6, 1fr); gap: 0.35rem; margin: 0.55rem 0 0; padding: 0; list-style: none; }
+.assurance-audit-rail li { display: grid; grid-template-columns: auto 1fr; align-items: center; gap: 0.35rem; min-width: 0; color: #8b9aab; opacity: 0.55; }
+.assurance-audit-rail li > span { display: grid; width: 18px; height: 18px; place-items: center; border: 1px solid rgb(0 87 255 / 16%); border-radius: 50%; font-family: var(--font-mono), monospace; font-size: 0.43rem; }
+.assurance-audit-rail li > small { overflow: hidden; font-family: var(--font-mono), monospace; font-size: 0.46rem; text-overflow: ellipsis; white-space: nowrap; }
+.assurance-audit-rail li.is-recorded { color: #36516f; opacity: 1; }
+.assurance-audit-rail li.is-recorded > span { border-color: rgb(0 87 255 / 35%); background: #075fe4; color: #fff; }
+.assurance-audit-rail li.is-current > span { background: #12bde1; box-shadow: 0 0 0 4px rgb(18 216 255 / 10%); }
+.assurance-screenreader-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+.assurance-flow-controller button:focus-visible,
+.assurance-source-sheet:focus-visible,
+.assurance-station-select:focus-visible,
+.assurance-evidence-folder:focus-visible,
+.assurance-decision-actions button:focus-visible,
+.assurance-outcome:focus-visible,
+.assurance-monitor:focus-visible {
+  outline: 3px solid rgb(18 216 255 / 58%);
+  outline-offset: 3px;
+}
+
+/* Simplified connected-assurance topology */
+.assurance-map-shell {
+  margin: 0 clamp(0.75rem, 2vw, 1.5rem) clamp(1rem, 2vw, 1.5rem);
+  overflow: hidden;
+  border: 1px solid rgb(0 87 255 / 10%);
+  border-radius: 1.75rem;
+  background: rgb(255 255 255 / 27%);
+}
+
+.assurance-map-toolbar {
+  position: relative;
+  z-index: 20;
+  display: grid;
+  min-height: 54px;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid rgb(0 87 255 / 10%);
+  background: rgb(249 253 255 / 75%);
+  padding: 0.55rem 0.7rem 0.55rem 1rem;
+  backdrop-filter: blur(16px);
+}
+
+.assurance-map-toolbar > div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #53657f;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.58rem;
+  font-weight: 750;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.assurance-map-toolbar > strong {
+  color: #0c1d38;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.61rem;
+  letter-spacing: 0.075em;
+  text-transform: uppercase;
+}
+
+.assurance-map-toolbar > button {
+  display: inline-flex;
+  min-width: 84px;
+  min-height: 40px;
+  align-items: center;
+  justify-self: end;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid rgb(0 87 255 / 14%);
+  border-radius: 999px;
+  background: #075fe4;
+  padding: 0.45rem 0.75rem;
+  color: #fff;
+  font-family: var(--font-body), sans-serif;
+  font-size: 0.68rem;
+  font-weight: 750;
+  cursor: pointer;
+}
+
+.assurance-map {
+  position: relative;
+  width: 100%;
+  min-height: 570px;
+  overflow: hidden;
+}
+
+.assurance-map::before {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgb(255 255 255 / 44%), transparent 46%);
+  content: "";
+  pointer-events: none;
+}
+
+.assurance-map-label {
+  position: absolute;
+  z-index: 3;
+  color: #0057ff;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.52rem;
+  font-weight: 800;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.assurance-map-label-sources { top: 3.7%; left: 3%; }
+.assurance-map-label-outcomes { top: 3.7%; right: 3%; }
+
+.assurance-map-lines {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.assurance-map-path,
+.assurance-map-path-blur {
+  fill: none;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.assurance-map-path-blur {
+  stroke: rgb(18 216 255 / 17%);
+  stroke-width: 10;
+  opacity: 0.48;
+  filter: blur(5px);
+}
+
+.assurance-map-path {
+  stroke: rgb(0 87 255 / 20%);
+  stroke-width: 1.1;
+  stroke-dasharray: 3 8;
+  transition: stroke 240ms ease, stroke-width 240ms ease, opacity 240ms ease;
+}
+
+.assurance-map-path.is-traversed {
+  stroke: rgb(0 87 255 / 65%);
+  stroke-width: 1.55;
+}
+
+.assurance-map-path.is-current {
+  stroke: #12cdef;
+  stroke-width: 2.3;
+  stroke-dasharray: 9 8;
+  filter: drop-shadow(0 0 5px rgb(18 216 255 / 68%));
+  animation: assurance-route-travel 650ms linear infinite;
+}
+
+.assurance-map-source,
+.assurance-map-core,
+.assurance-map-outcome,
+.assurance-map-audit,
+.assurance-map-packet {
+  position: absolute;
+}
+
+.assurance-map-source {
+  z-index: 5;
+  width: 190px;
+  transform: translate(-50%, -50%);
+}
+
+.assurance-map-source-magnet { width: 100%; }
+
+.assurance-map-source button {
+  display: flex;
+  width: 100%;
+  min-height: 62px;
+  align-items: center;
+  gap: 0.65rem;
+  border: 1px solid rgb(0 87 255 / 13%);
+  border-radius: 0.9rem;
+  background: rgb(249 253 255 / 70%);
+  padding: 0.68rem 0.75rem;
+  box-shadow: 0 15px 36px -28px rgb(0 48 140 / 55%);
+  color: #15304f;
+  text-align: left;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+  transition: border-color 200ms ease, background 200ms ease, box-shadow 200ms ease;
+}
+
+.assurance-map-source button > svg { flex: 0 0 auto; color: #075fe4; }
+.assurance-map-source button > span { display: grid; min-width: 0; gap: 0.18rem; }
+.assurance-map-source button strong { overflow: hidden; color: #0a1b33; font-family: var(--font-display), sans-serif; font-size: 0.82rem; letter-spacing: -0.025em; text-overflow: ellipsis; white-space: nowrap; }
+.assurance-map-source button small { overflow: hidden; color: #657b95; font-family: var(--font-body), sans-serif; font-size: 0.55rem; text-overflow: ellipsis; white-space: nowrap; }
+
+.assurance-map-source.is-selected button {
+  border-color: rgb(0 87 255 / 42%);
+  background: rgb(255 255 255 / 92%);
+  box-shadow: 0 20px 44px -27px rgb(0 67 185 / 72%), 0 0 0 4px rgb(18 216 255 / 7%);
+}
+
+.assurance-map-core {
+  z-index: 7;
+  width: 254px;
+  transform: translate(-50%, -50%);
+}
+
+.assurance-map-core-surface,
+.assurance-map-core-surface .tilted-surface-plane { border-radius: 1.25rem; }
+
+.assurance-map-core-surface .tilted-surface-plane {
+  overflow: hidden;
+  border: 1px solid rgb(0 87 255 / 30%);
+  background: linear-gradient(145deg, rgb(255 255 255 / 98%), rgb(232 246 255 / 97%));
+  box-shadow: 0 28px 64px -34px rgb(0 54 170 / 72%), inset 0 1px 0 #fff;
+  transition: box-shadow 240ms ease, border-color 240ms ease;
+}
+
+.assurance-map-core.is-active .tilted-surface-plane {
+  border-color: rgb(18 216 255 / 62%);
+  box-shadow: 0 30px 70px -30px rgb(0 87 255 / 76%), 0 0 0 7px rgb(18 216 255 / 9%), inset 0 1px 0 #fff;
+}
+
+.assurance-map-core-surface .tilted-surface-content { min-height: 178px; padding: 1.2rem 1.25rem; }
+.assurance-map-core-head { display: flex; align-items: center; justify-content: space-between; color: #0057ff; font-family: var(--font-mono), monospace; font-size: 0.55rem; font-weight: 850; letter-spacing: 0.16em; text-transform: uppercase; }
+.assurance-map-core-head i { width: 8px; height: 8px; border-radius: 50%; background: #16ad7b; box-shadow: 0 0 0 4px rgb(22 173 123 / 11%), 0 0 14px rgb(22 173 123 / 40%); }
+.assurance-map-core-surface .tilted-surface-content > strong { display: block; margin-top: 1rem; color: #000414; font-family: var(--font-display), sans-serif; font-size: 1.42rem; font-weight: 620; letter-spacing: -0.055em; line-height: 1; }
+.assurance-map-core-surface .tilted-surface-content > p { margin: 0.65rem 0 0; color: #075fe4; font-family: var(--font-mono), monospace; font-size: 0.57rem; font-weight: 750; }
+.assurance-map-core-surface .tilted-surface-content > div:last-child { display: flex; flex-wrap: wrap; gap: 0.35rem; margin-top: 1rem; }
+.assurance-map-core-surface .tilted-surface-content > div:last-child span { border: 1px solid rgb(0 87 255 / 11%); border-radius: 999px; background: rgb(255 255 255 / 63%); padding: 0.28rem 0.4rem; color: #61758e; font-family: var(--font-mono), monospace; font-size: 0.42rem; }
+
+.assurance-map-outcome {
+  z-index: 5;
+  display: flex;
+  width: 184px;
+  min-height: 67px;
+  transform: translate(-50%, -50%);
+  align-items: center;
+  gap: 0.62rem;
+  border: 1px solid rgb(0 87 255 / 13%);
+  border-radius: 0.9rem;
+  background: rgb(249 253 255 / 70%);
+  padding: 0.7rem 0.75rem;
+  color: #15304f;
+  backdrop-filter: blur(10px);
+  transition: border-color 220ms ease, background 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+}
+
+.assurance-map-outcome > svg { flex: 0 0 auto; color: #55708f; }
+.assurance-map-outcome > span { display: grid; gap: 0.18rem; }
+.assurance-map-outcome strong { color: #0b1d35; font-family: var(--font-display), sans-serif; font-size: 0.83rem; letter-spacing: -0.025em; }
+.assurance-map-outcome small { color: #6b7f96; font-family: var(--font-body), sans-serif; font-size: 0.54rem; line-height: 1.25; }
+.assurance-map-outcome.is-selected { transform: translate(-50%, -50%) scale(1.035); border-color: rgb(22 173 123 / 44%); background: rgb(250 255 253 / 91%); box-shadow: 0 20px 42px -28px rgb(22 173 123 / 70%), 0 0 0 5px rgb(22 173 123 / 7%); }
+.assurance-map-outcome.is-selected > svg { color: #16ad7b; }
+
+.assurance-map-audit {
+  z-index: 5;
+  display: grid;
+  width: 420px;
+  min-height: 58px;
+  transform: translate(-50%, -50%);
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 0.7rem;
+  border: 1px solid rgb(0 87 255 / 13%);
+  border-radius: 999px;
+  background: rgb(249 253 255 / 66%);
+  padding: 0.58rem 0.85rem;
+  color: #075fe4;
+  backdrop-filter: blur(10px);
+}
+
+.assurance-map-audit > span { display: grid; gap: 0.12rem; }
+.assurance-map-audit small { color: #0057ff; font-family: var(--font-mono), monospace; font-size: 0.47rem; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; }
+.assurance-map-audit strong { color: #526b86; font-family: var(--font-body), sans-serif; font-size: 0.57rem; font-weight: 650; }
+.assurance-map-audit em { border: 1px solid rgb(0 87 255 / 12%); border-radius: 999px; padding: 0.3rem 0.45rem; color: #526b86; font-family: var(--font-mono), monospace; font-size: 0.48rem; font-style: normal; }
+.assurance-map-audit.is-active { border-color: rgb(18 216 255 / 52%); background: rgb(252 255 255 / 88%); box-shadow: 0 0 0 6px rgb(18 216 255 / 7%), 0 18px 40px -30px rgb(0 87 255 / 72%); }
+
+.assurance-map-packet {
+  z-index: 12;
+  display: grid;
+  min-width: 68px;
+  min-height: 34px;
+  transform: translate(-50%, -145%);
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0.35rem;
+  border: 1px solid rgb(255 255 255 / 88%);
+  border-radius: 0.55rem;
+  background: #075fe4;
+  padding: 0.35rem 0.45rem;
+  box-shadow: 0 12px 25px -13px rgb(0 51 160 / 80%), 0 0 0 4px rgb(18 216 255 / 9%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.assurance-map-packet span { display: grid; width: 20px; height: 20px; place-items: center; border-radius: 0.35rem; background: #12cdef; color: #06316d; font-family: var(--font-mono), monospace; font-size: 0.44rem; font-weight: 900; }
+.assurance-map-packet strong { font-family: var(--font-mono), monospace; font-size: 0.47rem; letter-spacing: 0.04em; white-space: nowrap; }
+
+.assurance-map-toolbar button:focus-visible,
+.assurance-map-source button:focus-visible {
+  outline: 3px solid rgb(18 216 255 / 58%);
+  outline-offset: 3px;
+}
+
+.framework-reuse-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(0.5rem, 1.3vw, 1.25rem);
+  max-width: 1060px;
+  margin: 1rem auto 0;
+  padding: 1rem 1.25rem;
+  border: 1px solid rgb(0 87 255 / 14%);
+  background: rgb(255 255 255 / 56%);
+  color: #0057ff;
+  font-family: var(--font-mono), monospace;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.framework-reuse-strip i {
+  color: #12a8dc;
+  font-family: inherit;
+  font-style: normal;
+}
+
+@keyframes assurance-route-travel {
+  to { stroke-dashoffset: -17; }
+}
+
+@media (max-width: 1100px) and (min-width: 961px) {
+  .assurance-map-source { width: 160px; }
+  .assurance-map-outcome { width: 158px; }
+  .assurance-map-core { width: 230px; }
+}
+
+@media (max-width: 960px) {
+  .assurance-bridge-intro { padding-bottom: 2.75rem; }
+  .assurance-map-shell { max-width: 560px; margin-inline: auto; }
+  .assurance-map-toolbar { grid-template-columns: 1fr auto; gap: 0.35rem 0.75rem; padding: 0.65rem 0.7rem; }
+  .assurance-map-toolbar > strong { grid-column: 1 / -1; grid-row: 2; text-align: center; }
+  .assurance-map-toolbar > button { grid-column: 2; grid-row: 1; }
+  .assurance-map { height: 880px; min-height: 0; aspect-ratio: auto !important; }
+  .assurance-map-label-sources { top: 2.2%; }
+  .assurance-map-label-outcomes { top: 56%; }
+  .assurance-map-path-blur { stroke-width: 8; opacity: 0.42; }
+  .assurance-map-source { width: min(102px, 28vw); }
+  .assurance-map-source button { min-height: 60px; justify-content: center; padding: 0.52rem 0.45rem; text-align: center; }
+  .assurance-map-source button > svg { display: none; }
+  .assurance-map-source button > span { width: 100%; }
+  .assurance-map-source button strong { font-size: 0.68rem; white-space: normal; }
+  .assurance-map-source button small { display: none; }
+  .assurance-map-core { width: min(254px, 72vw); }
+  .assurance-map-outcome { width: min(105px, 29vw); min-height: 88px; flex-direction: column; justify-content: center; gap: 0.4rem; padding: 0.55rem 0.4rem; text-align: center; }
+  .assurance-map-outcome strong { font-size: 0.7rem; }
+  .assurance-map-outcome small { display: none; }
+  .assurance-map-audit { width: min(310px, 84vw); }
+  .assurance-map-audit strong { font-size: 0.52rem; }
+  .assurance-map-packet { transform: translate(-50%, -130%) scale(0.9); }
+  .framework-reuse-strip { flex-wrap: wrap; max-width: 640px; margin-top: 2rem; line-height: 1.6; }
+}
+
+@media (max-width: 640px) {
+  .assurance-bridge { padding-inline: 0.45rem; }
+  .assurance-bridge-panel { border-radius: 1.75rem; }
+  .assurance-bridge-intro { padding: 4rem 1.15rem 2.5rem; }
+  .assurance-bridge-intro h2 { font-size: clamp(2.15rem, 12vw, 3.3rem); }
+  .assurance-map-shell { margin-inline: 0.35rem; border-radius: 1.25rem; }
+  .assurance-map-toolbar > div { font-size: 0.5rem; }
+  .assurance-map-toolbar > strong { font-size: 0.52rem; }
+  .assurance-map-audit > svg { display: none; }
+  .assurance-map-audit { grid-template-columns: 1fr auto; }
+  .framework-reuse-strip { display: grid; grid-template-columns: 1fr; gap: 0.4rem; }
+  .framework-reuse-strip i { transform: rotate(90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .assurance-map-path.is-current,
+  .assurance-map-source button,
+  .assurance-map-outcome {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
 .feature-story-section {
   position: relative;
   isolation: isolate;
@@ -1270,29 +2131,31 @@
   }
 }
 
-.framework-home-orbit-node {
+.framework-home-orbit-anchor {
   position: absolute;
   left: 50%;
   top: 50%;
+  width: 0;
+  height: 0;
   z-index: 10;
   animation: framework-home-orbit 30s linear infinite;
 }
 
-.framework-home-orbit-node--outer {
+.framework-home-orbit-anchor--outer {
   animation-duration: 48s;
   animation-direction: reverse;
 }
 
-.framework-home-orbit-node[data-active="true"] {
+.framework-home-orbit-anchor[data-active="true"] {
   z-index: 30;
 }
 
-.framework-home-orbit-node[data-paused="true"] {
+.framework-home-orbit-anchor[data-paused="true"] {
   animation-play-state: paused;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .framework-home-orbit-node {
+  .framework-home-orbit-anchor {
     animation: none;
     transform: translate(-50%, -50%) rotate(var(--framework-angle))
       translateX(var(--framework-radius))
