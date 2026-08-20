@@ -13,7 +13,7 @@ export default function ConditionalNavbar() {
 
   return (
     <>
-      <Navbar key={pathname} />
+      <Navbar key={pathname} moveLogo={true} />
       <div className="h-20 md:h-24" aria-hidden="true" />
     </>
   );

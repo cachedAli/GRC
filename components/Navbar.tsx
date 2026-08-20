@@ -32,7 +32,7 @@ export default function Navbar() {
             >
               Compliance
             </Link>
-          </li> 
+          </li>
           <li>
             <Link href="/roi" className="hover:text-[#12d8ff] transition">
               ROI

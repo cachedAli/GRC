@@ -1,333 +1,497 @@
 "use client";
 
-import { useState } from "react";
-import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
+import { useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 import {
-  ArrowUpRight,
-  BadgeCheck,
-  BrainCircuit,
-  FileSearch,
-  MessageSquare,
-  Route,
+  LayoutDashboard,
+  AlertTriangle,
   ShieldCheck,
-  Workflow,
+  BookOpen,
+  ClipboardList,
+  Sparkles,
+  Layers,
+  BarChart3,
+  Map as MapIcon,
+  Zap,
+  Target,
+  PieChart,
+  TrendingUp,
+  Navigation,
+  ClipboardCheck,
+  ArrowLeftRight,
+  FileText,
+  Users,
+  Scale,
+  Globe,
+  RefreshCw,
+  UserCheck,
+  Brain,
+  Tag,
+  Package,
+  Link2,
+  ScanSearch,
+  GitBranch,
   type LucideIcon,
 } from "lucide-react";
 
-type AgentRoute = {
-  id: "regulatory" | "evidence" | "risk" | "workflow" | "chat";
+interface TourFeature {
+  Icon: LucideIcon;
+  title: string;
+  desc: string;
+  bg: string;
+  fg: string;
+}
+
+interface TourSlide {
   tab: string;
-  label: string;
+  TabIcon: LucideIcon;
   title: string;
   description: string;
-  output: string;
-  steps: Array<[string, string]>;
-  Icon: LucideIcon;
-};
+  screenshot: string;
+  features: TourFeature[];
+}
 
-const agentRoutes: AgentRoute[] = [
+const tourSlides: TourSlide[] = [
   {
-    id: "regulatory",
-    tab: "Regulatory analyst",
-    label: "Regulatory intelligence",
-    title: "From circular to approved tasks.",
+    tab: "Dashboard",
+    TabIcon: LayoutDashboard,
+    title: "Executive Dashboard",
     description:
-      "AI interprets regulatory obligations, connects them to the affected controls, and prepares a change plan for the accountable owner.",
-    output: "A review-ready impact assessment and owner-approved task plan.",
-    steps: [
-      ["Ingest", "Regulation"],
-      ["Extract", "Obligations"],
-      ["Connect", "Controls"],
-      ["Recommend", "Gaps"],
-      ["Approve", "Human"],
+      "A single pane of glass for your entire GRC program. Real-time compliance scores, risk heatmaps, and control effectiveness — visible in seconds, not hours.",
+    screenshot: "/screenshots/slide_01.png",
+    features: [
+      {
+        Icon: BarChart3,
+        title: "10+ Dashboard Tabs",
+        desc: "Overview, Risk, Compliance, Governance, Incidents, Control Testing, and more",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: MapIcon,
+        title: "Interactive Heatmaps",
+        desc: "Click-through risk visualization with drill-down to individual entries",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
+      {
+        Icon: Zap,
+        title: "Real-Time Data",
+        desc: "No more quarterly snapshots — live metrics that update as your program evolves",
+        bg: "#eef7ff",
+        fg: "#12d8ff",
+      },
     ],
-    Icon: Route,
   },
   {
-    id: "evidence",
-    tab: "Evidence inspector",
-    label: "Evidence intelligence",
-    title: "From upload to cross-framework assurance.",
+    tab: "Risk",
+    TabIcon: AlertTriangle,
+    title: "Enterprise Risk Management",
     description:
-      "AI reads evidence, evaluates its quality and freshness, then suggests where it can be reused across the control library.",
-    output: "A source-linked evidence assessment, ready for owner review.",
-    steps: [
-      ["Read", "OCR"],
-      ["Assess", "Match"],
-      ["Score", "Quality"],
-      ["Reuse", "Controls"],
-      ["Review", "Owner"],
+      "The deepest ERM module on the market. From risk identification to bow-tie analysis — everything connected, everything measurable.",
+    screenshot: "/screenshots/slide_33.png",
+    features: [
+      {
+        Icon: Target,
+        title: "Risk Register & Scoring",
+        desc: "Inherent/residual scoring, treatment plans, owner assignment, closure workflows",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: PieChart,
+        title: "Advanced Analytics",
+        desc: "Bow-tie diagrams, scenario modeling, risk aggregation, and AI narratives",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
+      {
+        Icon: TrendingUp,
+        title: "KRI Monitoring",
+        desc: "Configurable thresholds, trend analysis, automated alerts when indicators breach tolerance",
+        bg: "#d8ebfa",
+        fg: "#0057ff",
+      },
     ],
-    Icon: FileSearch,
   },
   {
-    id: "risk",
-    tab: "Risk advisor",
-    label: "Risk intelligence",
-    title: "From signals to explainable decisions.",
+    tab: "Compliance",
+    TabIcon: ShieldCheck,
+    title: "Compliance Management",
     description:
-      "Control failures, KRIs, and risk signals are analyzed together to make treatment options easier to understand and act on.",
-    output: "A traceable treatment recommendation for the risk owner.",
-    steps: [
-      ["Monitor", "Signals"],
-      ["Detect", "Breaches"],
-      ["Model", "Scenario"],
-      ["Advise", "Treatment"],
-      ["Decide", "Owner"],
+      "From framework selection to certification — a guided journey that tells you exactly what's needed, what's done, and what's next.",
+    screenshot: "/screenshots/slide_37.png",
+    features: [
+      {
+        Icon: Navigation,
+        title: "Certification Journeys",
+        desc: "Step-by-step roadmaps with milestones, task tracking, and completion status",
+        bg: "#eef7ff",
+        fg: "#12d8ff",
+      },
+      {
+        Icon: ClipboardCheck,
+        title: "Assessment Workflows",
+        desc: "Control-level testing with evidence upload, scoring, and multi-tier approvals",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: ArrowLeftRight,
+        title: "Cross-Framework Mapping",
+        desc: "Implement once, satisfy multiple regulators. AI finds control overlaps automatically",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
     ],
-    Icon: ShieldCheck,
   },
   {
-    id: "workflow",
-    tab: "Workflow architect",
-    label: "Governed automation",
-    title: "From intent to governed automation.",
+    tab: "Governance",
+    TabIcon: BookOpen,
+    title: "Governance & Policy",
     description:
-      "A natural-language request becomes a controlled workflow draft with permissions, approvals, and monitoring built into its path.",
-    output: "A versioned workflow draft, ready to validate and publish.",
-    steps: [
-      ["Describe", "Rule"],
-      ["Generate", "Draft"],
-      ["Validate", "Permissions"],
-      ["Publish", "Version"],
-      ["Monitor", "Runs"],
+      "Full policy lifecycle management — from draft to publication to expiry — with approval workflows, committee tracking, and regulatory intelligence.",
+    screenshot: "/screenshots/slide_09.png",
+    features: [
+      {
+        Icon: FileText,
+        title: "Document Lifecycle",
+        desc: "Draft → Review → Approve → Publish → Expire with version control and audit trail",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: Users,
+        title: "Committee Management",
+        desc: "Board meetings, agendas, actions, attestation campaigns, regulatory feeds",
+        bg: "#d8ebfa",
+        fg: "#0057ff",
+      },
+      {
+        Icon: Scale,
+        title: "Exception Management",
+        desc: "Policy exception workflow with risk assessment, compensating controls, and approvals",
+        bg: "#eef7ff",
+        fg: "#12d8ff",
+      },
     ],
-    Icon: Workflow,
   },
   {
-    id: "chat",
-    tab: "ComplyChat",
-    label: "Grounded answers",
-    title: "From question to source-linked facts.",
+    tab: "Audit",
+    TabIcon: ClipboardList,
+    title: "Audit Management",
     description:
-      "ComplyChat respects user permissions, queries authorized GRC data, and explains its answer with the underlying operational sources.",
-    output: "A role-aware answer with the sources needed to verify it.",
-    steps: [
-      ["Ask", "Language"],
-      ["Authorize", "Role"],
-      ["Query", "Data"],
-      ["Explain", "Context"],
-      ["Open", "Sources"],
+      "End-to-end internal audit — universe, planning, engagement, fieldwork, findings, and continuous controls monitoring — all connected.",
+    screenshot: "/screenshots/slide_60.png",
+    features: [
+      {
+        Icon: Globe,
+        title: "Audit Universe & Planning",
+        desc: "Define auditable entities, create risk-based audit plans, allocate resources",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: RefreshCw,
+        title: "Continuous Monitoring",
+        desc: "Automated control tests with real-time alerting and CCM dashboards",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
+      {
+        Icon: UserCheck,
+        title: "Skills & Capacity",
+        desc: "Auditor competency tracking, certification management, and workload planning",
+        bg: "#eef7ff",
+        fg: "#12d8ff",
+      },
     ],
-    Icon: MessageSquare,
+  },
+  {
+    tab: "Evidence AI",
+    TabIcon: Sparkles,
+    title: "AI Evidence Assessment",
+    description:
+      "Upload a document. AI reads it, scores relevance and adequacy, maps it to framework clauses, and produces auditor-defensible output — in seconds.",
+    screenshot: "/screenshots/slide_47.png",
+    features: [
+      {
+        Icon: Brain,
+        title: "Intelligent Scoring",
+        desc: "Relevance, adequacy, confidence, and audit readiness — scored automatically",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
+      {
+        Icon: Tag,
+        title: "Clause-Level Mapping",
+        desc: "Matched text snippets, rationale, coverage types — defensible in audit",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: Package,
+        title: "Audit Packages",
+        desc: "Bundle, finalize, export evidence with retention policies and legal hold",
+        bg: "#eef7ff",
+        fg: "#12d8ff",
+      },
+    ],
+  },
+  {
+    tab: "Controls",
+    TabIcon: Layers,
+    title: "Unified Control Library",
+    description:
+      "Map controls across every framework. AI detects similarities, identifies gaps, and recommends evidence — so you implement once and satisfy many.",
+    screenshot: "/screenshots/slide_52.png",
+    features: [
+      {
+        Icon: Link2,
+        title: "Cross-Framework Mapping",
+        desc: "AI-driven similarity detection with confidence scores and reasoning",
+        bg: "#eef7ff",
+        fg: "#000414",
+      },
+      {
+        Icon: ScanSearch,
+        title: "Gap Analysis",
+        desc: "Identify coverage gaps with priority recommendations and coverage visualization",
+        bg: "#d8ebfa",
+        fg: "#0057ff",
+      },
+      {
+        Icon: GitBranch,
+        title: "Control Inheritance",
+        desc: "Parent-child relationships with coverage percentages and conditional logic",
+        bg: "#eef7ff",
+        fg: "#0057ff",
+      },
+    ],
   },
 ];
 
 export default function ProductTour() {
-  const [activeId, setActiveId] = useState<AgentRoute["id"]>("regulatory");
-  const reduceMotion = useReducedMotion();
-  const activeRoute = agentRoutes.find((route) => route.id === activeId)!;
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [direction, setDirection] = useState(0);
+  const prevIdxRef = useRef(0);
+  const activeSlide = tourSlides[activeIdx];
+
+  const goTo = (i: number) => {
+    setDirection(i > prevIdxRef.current ? 1 : -1);
+    prevIdxRef.current = i;
+    setActiveIdx(i);
+  };
+
+  const slideVariants = {
+    enter: (dir: number) => ({ opacity: 0, x: dir * 40 }),
+    center: { opacity: 1, x: 0 },
+    exit: (dir: number) => ({ opacity: 0, x: dir * -40 }),
+  };
 
   return (
     <section
-      id="ai"
-      className="bg-[#fbfdfc] px-3 py-5 sm:px-6 md:px-8"
-      aria-labelledby="ai-heading"
+      id="tour"
+      className="relative rounded-xl py-20 md:py-28 px-4 sm:px-6 bg-white overflow-hidden"
     >
+      {/* Background: subtle gradient */}
+      <div className="absolute inset-0 bg-linear-to-b from-white via-white to-white pointer-events-none" />
+      {/* Grid pattern */}
       <div
-        className="relative isolate mx-auto max-w-[1480px] overflow-hidden rounded-[2.5rem] px-4 py-20 text-white sm:px-6 md:py-28"
+        className="absolute inset-0 opacity-[0.035] pointer-events-none"
         style={{
-          background:
-            "linear-gradient(180deg, #0a356f 0%, #0e3d7e 48%, #0e3d7e 90%, #174d98 100%)",
+          backgroundImage:
+            "linear-gradient(#000414 1px, transparent 1px), linear-gradient(90deg, #000414 1px, transparent 1px)",
+          backgroundSize: "40px 40px",
         }}
-      >
-        <div
-          aria-hidden="true"
-          className="absolute inset-0 opacity-40"
-          style={{
-            backgroundImage:
-              "linear-gradient(rgba(216,235,250,0.09) 1px, transparent 1px), linear-gradient(90deg, rgba(216,235,250,0.09) 1px, transparent 1px)",
-            backgroundSize: "76px 76px",
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 28 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.6,
+            ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
           }}
-        />
-        <div aria-hidden="true" className="absolute -right-48 top-32 h-[34rem] w-[34rem] rounded-full bg-[#0057ff]/20 blur-[160px]" />
-
-        <div className="relative mx-auto max-w-7xl">
-        <header className="mx-auto max-w-[800px] text-center">
-          <p className="font-mono text-xs font-semibold uppercase tracking-[0.2em] text-[#12d8ff]">
-            Orchestrate with AI
-          </p>
-          <h2 id="ai-heading" className="mt-3 font-display text-[2.25rem] font-semibold leading-[1.15] text-white">
-            AI recommends.<br />Humans approve.
-          </h2>
-          <p className="mx-auto mt-4 max-w-[640px] font-body text-base leading-relaxed text-[#eef7ff]/90">
-            Built for regulated teams that need speed without surrendering
-            accountability. AI does the analysis; people retain authority to
-            decide, publish, and act.
-          </p>
-        </header>
-
-        <div
-          role="tablist"
-          aria-label="ComplyVerse AI routes"
-          className="mt-12 flex gap-2 overflow-x-auto border-y border-[#d8ebfa]/16 py-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+          className="text-center mb-12"
         >
-          {agentRoutes.map((route) => {
-            const Icon = route.Icon;
-            const active = route.id === activeId;
+          <div className="inline-flex items-center gap-2 bg-[#eef7ff] border border-[#12d8ff]/35 rounded-full px-4 py-1.5 mb-5">
+            <span className="w-1.5 h-1.5 rounded-full bg-[#0057ff] animate-pulse" />
+            <span className="font-mono text-xs text-[#000414] font-semibold uppercase tracking-widest">
+              Platform Tour
+            </span>
+          </div>
+          <h2 className="font-display text-3xl sm:text-4xl md:text-5xl text-[#0A0A0A] font-bold leading-tight mb-4">
+            See the platform in action.
+          </h2>
+          <p className="font-body text-base text-[#6B7280] max-w-lg mx-auto leading-relaxed">
+            Every module connected. Everything measurable. One unified GRC
+            platform built for modern enterprises.
+          </p>
+        </motion.div>
+
+        {/* Tab navigation */}
+        <div className="flex gap-1 justify-center flex-wrap mb-10 md:mb-12 p-1.5 bg-[#F1F5F9] rounded-2xl max-w-3xl mx-auto">
+          {tourSlides.map((slide, i) => {
+            const TabIcon = slide.TabIcon;
             return (
               <button
-                key={route.id}
-                type="button"
-                role="tab"
-                aria-selected={active}
-                aria-controls="ai-route-panel"
-                onClick={() => setActiveId(route.id)}
-                className={`relative inline-flex min-h-11 shrink-0 cursor-pointer items-center gap-2 border px-4 font-mono text-[0.65rem] font-semibold uppercase tracking-[0.09em] transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-3 focus-visible:outline-[#12d8ff] ${
-                  active
-                    ? "border-[#719dff] bg-[#5d89ef] text-[#000414]"
-                    : "border-[#d8ebfa]/32 bg-[#0b3976]/42 text-[#eef7ff]/88 hover:border-[#d8ebfa]/60 hover:bg-[#0b3976]/70 hover:text-white"
+                key={slide.tab}
+                onClick={() => goTo(i)}
+                className={`relative flex items-center gap-1.5 font-body text-xs sm:text-sm font-medium px-3 sm:px-4 py-2 rounded-xl transition-all duration-300 ${
+                  activeIdx === i
+                    ? "bg-white text-[#0A0A0A] shadow-sm shadow-black/10"
+                    : "text-[#6B7280] hover:text-[#0A0A0A]"
                 }`}
               >
-                <Icon size={14} strokeWidth={1.7} aria-hidden="true" />
-                {route.tab}
+                <TabIcon
+                  size={14}
+                  className={
+                    activeIdx === i ? "text-[#0057ff]" : "text-[#9CA3AF]"
+                  }
+                />
+                {slide.tab}
               </button>
             );
           })}
         </div>
 
-        <div className="mt-12 grid gap-10 lg:grid-cols-[0.7fr_1.3fr] lg:items-center lg:gap-16">
-          <AnimatePresence mode="wait" initial={false}>
-            <motion.article
-              id="ai-route-panel"
-              key={activeRoute.id}
-              role="tabpanel"
-              initial={reduceMotion ? false : { opacity: 0, x: -18 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={reduceMotion ? undefined : { opacity: 0, x: 12 }}
-              transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-              className="max-w-lg"
-            >
-              <p className="font-mono text-[0.68rem] font-semibold uppercase tracking-[0.15em] text-[#12d8ff]">
-                [{activeRoute.label}]
-              </p>
-              <h3 className="mt-5 font-display text-[1.85rem] font-semibold leading-[1.1] text-white sm:text-[2rem]">
-                {activeRoute.title}
+        {/* Content area */}
+        <AnimatePresence mode="wait" custom={direction}>
+          <motion.div
+            key={activeIdx}
+            custom={direction}
+            variants={slideVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              duration: 0.4,
+              ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
+            }}
+            className="grid lg:grid-cols-[5fr_7fr] gap-8 md:gap-10 xl:gap-16 items-start"
+          >
+            {/* Left: text */}
+            <div className="flex flex-col">
+              {/* Slide number / label */}
+              <div className="flex items-center gap-3 mb-5">
+                <span className="font-mono text-xs text-[#9CA3AF] tabular-nums">
+                  {String(activeIdx + 1).padStart(2, "0")} /{" "}
+                  {String(tourSlides.length).padStart(2, "0")}
+                </span>
+                <span className="flex-1 h-px bg-[#E2E2DA]" />
+              </div>
+
+              <h3 className="font-display text-2xl md:text-3xl font-bold text-[#0A0A0A] leading-tight mb-4">
+                {activeSlide.title}
               </h3>
-              <p className="mt-6 font-body text-base leading-relaxed text-[#eef7ff]/88 md:text-lg">
-                {activeRoute.description}
+              <p className="font-body text-[15px] text-[#6B7280] leading-relaxed mb-8">
+                {activeSlide.description}
               </p>
-              <div className="mt-8 border-l border-[#12d8ff] pl-5">
-                <p className="font-mono text-[0.64rem] font-semibold uppercase tracking-[0.14em] text-[#12d8ff]">
-                  Output
-                </p>
-                <p className="mt-2 font-body text-sm leading-relaxed text-[#eef7ff]/92">
-                  {activeRoute.output}
-                </p>
-              </div>
-            </motion.article>
-          </AnimatePresence>
 
-          <div className="relative min-w-0">
-            <div aria-hidden="true" className="absolute -inset-4 bg-[#0057ff]/18 blur-3xl" />
-            <div className="relative overflow-hidden border border-[#d8ebfa]/34 bg-[#0d4389]/88 shadow-[0_36px_92px_-48px_rgba(0,87,255,0.9)]">
-              <div className="flex items-center justify-between border-b border-[#d8ebfa]/14 px-5 py-4">
-                <div className="flex items-center gap-2 font-mono text-[0.62rem] font-semibold uppercase tracking-[0.13em] text-[#eef7ff]/78">
-                  <BrainCircuit size={15} className="text-[#12d8ff]" aria-hidden="true" />
-                  Agent route / active
-                </div>
-                <div className="flex items-center gap-2 font-mono text-[0.6rem] font-semibold uppercase tracking-[0.12em] text-[#12d8ff]">
-                  <span className="h-1.5 w-1.5 rounded-full bg-[#12d8ff]" />
-                  Traceable
-                </div>
-              </div>
-
-              <AnimatePresence mode="wait" initial={false}>
-                <motion.div
-                  key={activeRoute.id}
-                  initial={reduceMotion ? false : { opacity: 0, scale: 1.015 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={reduceMotion ? undefined : { opacity: 0, scale: 0.985 }}
-                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
-                  className="relative p-5 sm:p-7"
-                >
-                  <div
-                    aria-hidden="true"
-                    className="absolute inset-0 opacity-45"
-                    style={{
-                      backgroundImage:
-                        "linear-gradient(rgba(216,235,250,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(216,235,250,0.07) 1px, transparent 1px)",
-                      backgroundSize: "36px 36px",
-                    }}
-                  />
-                  <div className="relative">
-                    <div className="mb-5 flex items-center justify-between">
-                      <p className="font-mono text-[0.62rem] font-semibold uppercase tracking-[0.15em] text-[#eef7ff]/72">
-                        Execution trace
-                      </p>
-                      <p className="font-mono text-[0.62rem] font-semibold text-[#eef7ff]/72">
-                        05 STEPS
-                      </p>
-                    </div>
-
-                    <div className="grid gap-2 sm:grid-cols-5 sm:gap-0">
-                      {activeRoute.steps.map(([verb, object], index) => {
-                        const humanGate = index === activeRoute.steps.length - 1 && activeRoute.id !== "chat";
-                        return (
-                          <div key={`${verb}-${object}`} className="relative flex min-w-0 items-center sm:block">
-                            <motion.div
-                              initial={reduceMotion ? false : { opacity: 0, y: 10 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              transition={{ delay: 0.06 + index * 0.07, duration: 0.25 }}
-                              className={`relative z-10 w-full border px-3 py-3 sm:min-h-27 ${
-                                humanGate
-                                  ? "border-[#12d8ff] bg-[#0057ff] text-white shadow-[0_0_26px_rgba(18,216,255,0.34)]"
-                                  : "border-[#d8ebfa]/34 bg-[#0b3976] text-[#eef7ff]"
-                              }`}
-                            >
-                              <span className={`font-mono text-[0.55rem] font-semibold uppercase tracking-[0.12em] ${humanGate ? "text-white/68" : "text-[#12d8ff]"}`}>
-                                {String(index + 1).padStart(2, "0")}
-                              </span>
-                              <strong className="mt-3 block font-body text-sm font-semibold leading-tight">
-                                {verb}
-                              </strong>
-                              <span className={`mt-1 block font-body text-xs leading-tight ${humanGate ? "text-white/84" : "text-[#eef7ff]/78"}`}>
-                                {object}
-                              </span>
-                            </motion.div>
-                            {index < activeRoute.steps.length - 1 ? (
-                              <div className="relative z-0 hidden h-px flex-1 bg-[#d8ebfa]/20 sm:block">
-                                <motion.span
-                                  className="absolute inset-y-0 left-0 w-5 bg-[#12d8ff]"
-                                  initial={false}
-                                  animate={reduceMotion ? undefined : { x: [0, 36, 0] }}
-                                  transition={reduceMotion ? undefined : { duration: 0.8, delay: index * 0.08, repeat: Infinity, ease: "linear" }}
-                                />
-                              </div>
-                            ) : null}
-                          </div>
-                        );
-                      })}
-                    </div>
-
-                    <div className="mt-6 flex items-start gap-3 border border-[#12d8ff]/38 bg-[#1957a8] px-4 py-4">
-                      <BadgeCheck size={19} strokeWidth={1.7} className="mt-0.5 shrink-0 text-[#12d8ff]" aria-hidden="true" />
+              {/* Features list */}
+              <div className="flex flex-col divide-y divide-[#F1F5F9]">
+                {activeSlide.features.map((feat, i) => {
+                  const FeatIcon = feat.Icon;
+                  return (
+                    <motion.div
+                      key={feat.title}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{
+                        duration: 0.4,
+                        delay: i * 0.1 + 0.15,
+                        ease: [0.22, 1, 0.36, 1] as [
+                          number,
+                          number,
+                          number,
+                          number,
+                        ],
+                      }}
+                      className="flex items-start gap-4 py-4 group"
+                    >
+                      <div
+                        className="w-9 h-9 rounded-xl flex items-center justify-center shrink-0 mt-0.5 transition-transform duration-300 group-hover:scale-110"
+                        style={{ backgroundColor: feat.bg, color: feat.fg }}
+                      >
+                        <FeatIcon size={17} strokeWidth={1.8} />
+                      </div>
                       <div>
-                        <p className="font-body text-sm font-semibold text-white">Human approval stays in the loop.</p>
-                        <p className="mt-1 font-body text-xs leading-relaxed text-[#eef7ff]/82">
-                          AI suggestions remain tenant-scoped, source-linked, and attributable. No governed action publishes without the required owner decision.
+                        <p className="font-body font-semibold text-sm text-[#0A0A0A] mb-1">
+                          {feat.title}
+                        </p>
+                        <p className="font-body text-[13px] text-[#9CA3AF] leading-relaxed">
+                          {feat.desc}
                         </p>
                       </div>
-                    </div>
-                  </div>
-                </motion.div>
-              </AnimatePresence>
+                    </motion.div>
+                  );
+                })}
+              </div>
             </div>
-          </div>
-        </div>
 
-        <div className="mt-10 flex flex-col gap-4 border-t border-[#d8ebfa]/16 pt-7 sm:flex-row sm:items-center sm:justify-between">
-          <p className="font-body text-sm text-[#eef7ff]/82">
-            Faster analysis. Clearer accountability. No black-box decisions.
-          </p>
-          <a
-            href="/landing-2/ai.html"
-            className="group inline-flex min-h-11 items-center gap-3 self-start font-body text-sm font-semibold text-white transition-colors hover:text-[#12d8ff] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#12d8ff]"
-          >
-            Explore ComplyVerse AI
-            <ArrowUpRight size={18} className="transition-transform duration-200 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden="true" />
-          </a>
-        </div>
+            {/* Right: screenshot */}
+            <div className="relative">
+              {/* Glow effect behind frame */}
+              <div
+                className="absolute -inset-3 rounded-3xl opacity-25 blur-2xl pointer-events-none"
+                style={{
+                  background:
+                    "radial-gradient(ellipse at 50% 60%, #0057ff 0%, transparent 70%)",
+                }}
+              />
+              {/* Browser frame */}
+              <div className="relative rounded-2xl overflow-hidden shadow-[0_20px_60px_-12px_rgba(0,87,255,0.22)] border border-[#E2E2DA] bg-white">
+                {/* Browser chrome */}
+                <div className="flex items-center gap-2 px-4 py-3 bg-[#F8FAFC] border-b border-[#E8EAEF]">
+                  <div className="flex gap-1.5">
+                    <div className="w-3 h-3 rounded-full bg-[#FF5F57]" />
+                    <div className="w-3 h-3 rounded-full bg-[#FEBC2E]" />
+                    <div className="w-3 h-3 rounded-full bg-[#28C840]" />
+                  </div>
+                  <div className="flex-1 mx-3 bg-white border border-[#E8EAEF] rounded-md px-3 py-1.5 font-body text-[11px] text-[#9CA3AF] truncate">
+                    app.complyverse.io /{" "}
+                    {activeSlide.tab.toLowerCase().replace(/ /g, "-")}
+                  </div>
+                </div>
+                <Image
+                  src={activeSlide.screenshot}
+                  alt={activeSlide.title}
+                  width={960}
+                  height={600}
+                  className="w-full h-auto block"
+                  priority={activeIdx === 0}
+                />
+              </div>
+            </div>
+          </motion.div>
+        </AnimatePresence>
+
+        {/* Progress bar navigation */}
+        <div className="flex items-center gap-3 mt-10 max-w-xs mx-auto">
+          {tourSlides.map((_, i) => (
+            <button
+              key={i}
+              onClick={() => goTo(i)}
+              aria-label={`Go to slide ${i + 1}`}
+              className="flex-1 h-1 rounded-full overflow-hidden bg-[#E2E2DA] transition-all duration-300"
+            >
+              {activeIdx === i && (
+                <div className="h-full bg-[#0057ff] rounded-full w-full" />
+              )}
+              {activeIdx !== i && (
+                <div
+                  className={`h-full rounded-full transition-all duration-300 ${
+                    i < activeIdx ? "w-full bg-[#0057ff]/30" : "w-0"
+                  }`}
+                />
+              )}
+            </button>
+          ))}
         </div>
       </div>
     </section>
