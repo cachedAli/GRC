@@ -115,7 +115,7 @@ export const NAV_MENUS: NavMenu[] = [
         links: [
           { title: "Unified control library", desc: "Harmonised controls, live coverage", href: "/features", icon: NAV_ICON.matrix },
           { title: "Workflow automation", desc: "Event-driven routing and approvals", href: "/features", icon: NAV_ICON.branch },
-          { title: "Integrations", desc: "Scanners, cloud, ticketing, chat", href: "/features", icon: NAV_ICON.plug },
+          { title: "Integrations", desc: "40 connectors, evidence on autopilot", href: "/integrations", icon: NAV_ICON.plug },
           { title: "Security & architecture", desc: "Tenant isolation and controls", href: "/about", icon: NAV_ICON.shieldCheck },
         ],
       },
@@ -142,6 +142,7 @@ export const NAV_MENUS: NavMenu[] = [
           { title: "Business continuity", desc: "ISO 22301 readiness", href: "/features", icon: NAV_ICON.lifebuoy },
           { title: "Asset management", desc: "Inventory, CIA scoring, coverage", href: "/features", icon: NAV_ICON.racks },
           { title: "Gap analysis", desc: "Where coverage actually stops", href: "/compliance", icon: NAV_ICON.gap },
+          { title: "Compliance automation", desc: "Connect your stack, collect evidence", href: "/integrations", icon: NAV_ICON.plug },
           { title: "Enterprise risk (ERM)", desc: "Register, KRIs, RCSA, appetite", href: "/risk", icon: NAV_ICON.gauge },
         ],
       },

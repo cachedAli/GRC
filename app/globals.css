@@ -1964,3 +1964,12 @@
   0%, 40%   { background: transparent; border-color: transparent; }
   55%, 100% { background: rgb(240 253 249); border-color: rgb(206 248 240); }
 }
+
+/* A connector mark arriving in the integration wall. */
+@keyframes cv-logo-in {
+  from { opacity: 0; transform: scale(.72); }
+  to   { opacity: 1; transform: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  [style*="cv-logo-in"] { animation: none !important; opacity: 1 !important; transform: none !important; }
+}

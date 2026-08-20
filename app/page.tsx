@@ -2,6 +2,7 @@ import Hero from "@/components/home/Hero";
 import FrameworkMarquee from "@/components/home/FrameworkMarquee";
 import CapabilityGrid from "@/components/home/CapabilityGrid";
 import CapabilityCatalogue from "@/components/home/CapabilityCatalogue";
+import IntegrationsSection from "@/components/home/IntegrationsSection";
 import ModuleExplorer from "@/components/home/ModuleExplorer";
 import LinkageGraph from "@/components/home/LinkageGraph";
 import StageCards from "@/components/home/StageCards";
@@ -16,6 +17,7 @@ export default function Home() {
       <FrameworkMarquee />
       <CapabilityGrid />
       <CapabilityCatalogue />
+      <IntegrationsSection />
       <ModuleExplorer />
       <LinkageGraph />
       <StageCards />
