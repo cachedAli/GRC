@@ -2,7 +2,7 @@
  * The integration catalogue, mirrored from the platform
  * (`components/integrations/connector-catalogue.ts`).
  *
- * `syncs` is a scope statement — what a connector will collect — not a result.
+ * `syncs` is a scope statement, what a connector will collect, not a result.
  * There are deliberately no counts, dates or health values here: nothing is
  * connected until the sync backend ships, and a compliance product must never
  * display an invented sync time.

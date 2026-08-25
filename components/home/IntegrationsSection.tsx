@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useMemo, useState } from "react";
 import { INTEGRATIONS } from "@/data/integrations";
 
-/** Cells per grid, per side. Sparse on purpose — empty cells carry the rhythm. */
+/** Cells per grid, per side. Sparse on purpose, empty cells carry the rhythm. */
 const ROWS = 5;
 const COLS = 3;
 const CELLS = ROWS * COLS;
@@ -39,7 +39,7 @@ function initials(name: string) {
  *
  * Two sparse grids flank the message. On each tick one cell swaps its logo for
  * another from the catalogue, so the wall reads as a living inventory rather
- * than a static logo dump — and the eye is never asked to track more than one
+ * than a static logo dump, and the eye is never asked to track more than one
  * change at a time.
  */
 export default function IntegrationsSection() {
@@ -120,7 +120,7 @@ export default function IntegrationsSection() {
   return (
     <section className="overflow-hidden border-y border-line bg-[#fbfdfd] py-[72px]">
       <div className="mx-auto flex max-w-[1180px] items-center justify-center gap-0 px-6">
-        {/* Left wall — hidden below lg, where the message needs the width. */}
+        {/* Left wall, hidden below lg, where the message needs the width. */}
         <div className="hidden lg:block">{grid(0)}</div>
 
         <div className="min-w-0 flex-1 px-6 text-center lg:px-12">
@@ -133,7 +133,7 @@ export default function IntegrationsSection() {
               <br className="hidden sm:block" /> itself.
             </h2>
             <p className="mx-auto mt-4 max-w-[420px] text-[14.5px] leading-[1.65] text-ink-soft">
-              Connect the systems you already run. CompliVerse pulls the evidence,
+              Connect the systems you already run. Complyverse pulls the evidence,
               attaches it to the right control, and keeps it current.
             </p>
 

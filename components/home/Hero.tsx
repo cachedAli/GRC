@@ -36,7 +36,7 @@ function Kpi({
  */
 export default function Hero() {
   return (
-    <section className="relative -mt-[76px] overflow-hidden bg-[linear-gradient(180deg,#e9fbf6_0%,#f6fdfb_55%,#ffffff_100%)]">
+    <section className="relative -mt-[76px] overflow-hidden bg-[linear-gradient(180deg,#d9f4ee_0%,#eefaf6_28%,#f6fdfb_60%,#ffffff_100%)]">
       {/* Two soft brand blooms behind the fold. */}
       <div
         className="pointer-events-none absolute inset-0"
@@ -67,9 +67,8 @@ export default function Hero() {
             className="cv-fade-up mt-5 max-w-[470px] text-[16.5px] leading-[1.68] text-ink-muted"
             style={{ animationDelay: ".14s" }}
           >
-            Upload any regulation. CompliVerse drafts the policies, maps the controls,
-            assesses the evidence and hands you the gap list — every framework, one
-            connected graph.
+            Every framework, document, control, risk and piece of evidence in one
+            connected system. Gaps surface on their own.
           </p>
 
           <div
@@ -81,12 +80,6 @@ export default function Hero() {
               className="rounded-full bg-brand px-7 py-3.5 font-display text-[14.5px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong"
             >
               Book a live demo
-            </Link>
-            <Link
-              href="/features"
-              className="rounded-full border border-[#d7e3e0] bg-white px-7 py-3.5 font-display text-[14.5px] font-semibold text-ink transition hover:border-brand hover:text-brand-ink"
-            >
-              Explore the platform
             </Link>
           </div>
 
@@ -104,9 +97,10 @@ export default function Hero() {
         <div className="cv-fade-up relative mt-6 lg:mt-0" style={{ animationDelay: ".2s" }}>
           <div className="overflow-hidden rounded-[18px] border border-line bg-white shadow-[0_30px_70px_-30px_rgba(13,148,136,.3),0_8px_24px_-12px_rgba(15,23,42,.12)]">
             <div className="flex items-center gap-1.5 border-b border-line-soft bg-[#fbfdfd] px-3.5 py-2.5">
-              <span className="h-2 w-2 rounded-full bg-line" />
-              <span className="h-2 w-2 rounded-full bg-line" />
-              <span className="h-2 w-2 rounded-full bg-line" />
+              {/* macOS traffic lights: close / minimise / full-screen. */}
+              <span className="h-[9px] w-[9px] rounded-full bg-[#ff5f57]" />
+              <span className="h-[9px] w-[9px] rounded-full bg-[#febc2e]" />
+              <span className="h-[9px] w-[9px] rounded-full bg-[#28c840]" />
               <span className="ml-2 font-mono text-[10px] text-ink-faint">
                 app.compliverse.ai/dashboard
               </span>
@@ -160,7 +154,7 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Floating AI callout — evidence reuse. */}
+          {/* Floating AI callout, evidence reuse. */}
           <div
             className="absolute -right-3.5 -top-[22px] hidden w-[250px] rounded-[14px] border border-brand-200 bg-white px-[15px] py-3.5 shadow-[0_20px_44px_-18px_rgba(13,148,136,.4)] sm:block"
             style={{ animation: "cv-float-y 5s ease-in-out infinite" }}
@@ -170,8 +164,8 @@ export default function Hero() {
               AI · EVIDENCE REUSE
             </div>
             <div className="text-[11.5px] leading-[1.55] text-[#334155]">
-              <b>Exit-plan.pdf</b> also satisfies <b>ISO 27001 A.5.23</b> and{" "}
-              <b>SOC 2 CC9.2</b>.
+              <b>Cloud-Security-Policy.pdf</b> also satisfies <b>ISO 27001 A.5.23</b>{" "}
+              and <b>SOC 2 CC9.2</b>.
             </div>
             <span className="mt-2 inline-block rounded-full bg-brand px-3 py-1 text-[10.5px] font-semibold text-on-brand">
               Create 2 links

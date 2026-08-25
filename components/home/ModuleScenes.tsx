@@ -12,7 +12,7 @@ import {
 import { Card, CardTitle, Lines, Pill, PillRow, Scene, Stat, Wire } from "./SceneKit";
 
 /* ================================================================== *
- * 01 · Governance — a policy moves through its gates, then the gap it
+ * 01 · Governance, a policy moves through its gates, then the gap it
  * leaves behind gets a treatment decision.
  * ================================================================== */
 function GovernanceScene() {
@@ -84,7 +84,7 @@ function GovernanceScene() {
 }
 
 /* ================================================================== *
- * 02 · Committees — members assemble around a charter, actions eject.
+ * 02 · Committees, members assemble around a charter, actions eject.
  * ================================================================== */
 function CommitteeScene() {
   const people = ["MA", "SK", "RF", "JD", "LP"];
@@ -137,7 +137,7 @@ function CommitteeScene() {
 }
 
 /* ================================================================== *
- * 03 · Evidence — one artifact is scanned, then wired to three frameworks.
+ * 03 · Evidence, one artifact is scanned, then wired to three frameworks.
  * ================================================================== */
 function EvidenceScene() {
   return (
@@ -192,7 +192,7 @@ function EvidenceScene() {
 }
 
 /* ================================================================== *
- * 04 · Vendors — a vendor token walks the eleven governed stages.
+ * 04 · Vendors, a vendor token walks the eleven governed stages.
  * ================================================================== */
 function VendorScene() {
   return (
@@ -251,7 +251,7 @@ function VendorScene() {
 }
 
 /* ================================================================== *
- * 05 · Assets — a criticality radar draws, then hardening results land.
+ * 05 · Assets, a criticality radar draws, then hardening results land.
  * ================================================================== */
 function AssetScene() {
   const n = ASSET_AXES.length;
@@ -338,7 +338,7 @@ function AssetScene() {
 }
 
 /* ================================================================== *
- * 06 · Vulnerabilities — the score is recomputed against its host.
+ * 06 · Vulnerabilities, the score is recomputed against its host.
  * ================================================================== */
 function VulnScene() {
   return (
@@ -406,7 +406,7 @@ function VulnScene() {
 }
 
 /* ================================================================== *
- * 07 · Workflow — nodes wire themselves together, a token takes a branch.
+ * 07 · Workflow, nodes wire themselves together, a token takes a branch.
  * ================================================================== */
 function WorkflowScene() {
   const node = (x: string, y: string, label: string, delay: number, tone = "brand") => (
@@ -443,7 +443,7 @@ function WorkflowScene() {
 }
 
 /* ================================================================== *
- * 08 · Integrations — packets travel from connectors into the graph.
+ * 08 · Integrations, packets travel from connectors into the graph.
  * ================================================================== */
 function ConnectorScene() {
   const shown = CONNECTOR_LOGOS.slice(0, 12);
@@ -506,7 +506,7 @@ function ConnectorScene() {
 }
 
 /* ================================================================== *
- * 09 · Assessments — statements tick off, the readiness ring closes.
+ * 09 · Assessments, statements tick off, the readiness ring closes.
  * ================================================================== */
 function AssessmentScene() {
   const rows = [
@@ -560,7 +560,7 @@ function AssessmentScene() {
 }
 
 /* ================================================================== *
- * 10 · Controls — one control inherits out to many frameworks.
+ * 10 · Controls, one control inherits out to many frameworks.
  * ================================================================== */
 function ControlScene() {
   const fws = ["ISO 27001", "SOC 2", "PCI DSS", "SAMA CSF", "NIST CSF"];
@@ -600,7 +600,7 @@ function ControlScene() {
 }
 
 /* ================================================================== *
- * 11 · Risk — a risk moves from inherent to residual on the heatmap.
+ * 11 · Risk, a risk moves from inherent to residual on the heatmap.
  * ================================================================== */
 function RiskScene() {
   const cell = (r: number, c: number) => {
@@ -664,7 +664,7 @@ function RiskScene() {
 }
 
 /* ================================================================== *
- * 12 · Audit — evidence tiles fly into an assembling package.
+ * 12 · Audit, evidence tiles fly into an assembling package.
  * ================================================================== */
 function AuditScene() {
   return (
@@ -708,52 +708,7 @@ function AuditScene() {
 }
 
 /* ================================================================== *
- * 13 · Framework upload — a PDF is parsed into a control tree.
- * ================================================================== */
-function FrameworkScene() {
-  return (
-    <Scene>
-      <Card x="4%" y="16%" w="34%" delay={0}>
-        <CardTitle>SAMA-CSF.pdf</CardTitle>
-        <div className="relative">
-          <Lines n={5} w={["88%", "64%", "80%", "52%", "72%"]} />
-          <span
-            className="pointer-events-none absolute left-2 right-2 h-[2px] rounded-full bg-[linear-gradient(90deg,transparent,#1ed4b0,transparent)]"
-            style={{ animation: "cv-scan 1.8s 200ms ease-in-out 2" }}
-          />
-        </div>
-      </Card>
-
-      <svg className="absolute inset-0 z-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-        <Wire d="M38 40 H 48 V 20 H 58" delay={1300} dash={50} />
-        <Wire d="M48 40 H 58" delay={1450} dash={20} />
-        <Wire d="M38 40 H 48 V 62 H 58" delay={1600} dash={50} />
-      </svg>
-
-      {["Domain · Governance", "Domain · Cyber security", "Domain · Third party"].map((d, i) => (
-        <div
-          key={d}
-          className="absolute z-20 rounded-lg border border-brand-200 bg-white px-2 py-1 text-[9px] font-semibold text-ink shadow-sm"
-          style={{
-            left: "57%",
-            top: `${16 + i * 21}%`,
-            animation: `cv-pop .4s ${1500 + i * 160}ms cubic-bezier(.22,1,.36,1) both`,
-          }}
-        >
-          {d}
-          <span className="mt-0.5 block font-mono text-[7.5px] font-normal text-brand-ink">
-            {[42, 68, 31][i]} controls
-          </span>
-        </div>
-      ))}
-
-      <PillRow items={["Mandatory vs advisory", "Evidence expectations", "Auto-aligned"]} delay={2100} />
-    </Scene>
-  );
-}
-
-/* ================================================================== *
- * 14 · ComplyChat — a question is answered from live tables.
+ * 13 · ComplyChat, a question is answered from live tables.
  * ================================================================== */
 function InsightScene() {
   return (
@@ -771,7 +726,7 @@ function InsightScene() {
             className="max-w-[88%] rounded-[10px_10px_10px_3px] border border-line bg-[#f8fafc] px-2 py-1.5 text-[9px] text-ink-muted"
             style={{ animation: "cv-pop .4s 1100ms cubic-bezier(.22,1,.36,1) both" }}
           >
-            3 controls lack evidence — CC6.1, CC6.8, CC7.2. Two can reuse ISO artifacts.
+            3 controls lack evidence, CC6.1, CC6.8, CC7.2. Two can reuse ISO artifacts.
           </div>
         </div>
       </Card>
@@ -806,7 +761,6 @@ const SCENES: Record<ModuleStory["proof"], () => React.JSX.Element> = {
   controls: ControlScene,
   risk: RiskScene,
   audit: AuditScene,
-  frameworks: FrameworkScene,
   insights: InsightScene,
 };
 

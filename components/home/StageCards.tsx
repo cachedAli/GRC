@@ -5,7 +5,7 @@ import { useCallback, useState } from "react";
 import { TIERS, type Tier } from "@/data/home";
 
 /**
- * "Designed for every stage" — three audience cards on a dark band.
+ * "Designed for every stage", three audience cards on a dark band.
  *
  * The lit/dim card state lives in CSS (see .cv-stage-card in globals.css) so it
  * survives without JS and still reads correctly on touch devices, where :hover
@@ -43,7 +43,7 @@ export default function StageCards() {
           </h2>
           <p className="mx-auto mt-5 max-w-[540px] text-[15px] leading-[1.7] text-slate-300/60">
             Whether you&apos;re chasing your first certificate or answering to four
-            regulators at once — the same connected graph, scaled to where you are.
+            regulators at once, the same connected graph, scaled to where you are.
           </p>
         </div>
 
@@ -77,7 +77,7 @@ function StageCard({
   onEnter: () => void;
   onLeave: () => void;
 }) {
-  // Write the pointer position straight to CSS vars — no state, no re-render.
+  // Write the pointer position straight to CSS vars, no state, no re-render.
   const onMove = useCallback((e: React.PointerEvent<HTMLDivElement>) => {
     const el = e.currentTarget;
     const r = el.getBoundingClientRect();

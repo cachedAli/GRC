@@ -2,8 +2,8 @@
 
 import Link from "next/link";
 import { useEffect, useLayoutEffect, useRef, useState } from "react";
-import { NAV_MENUS, type NavLink, type NavMenu } from "@/data/nav";
-import { Icon, Logo } from "@/components/ui/Primitives";
+import { NAV_MENUS, type NavFeature, type NavLink, type NavMenu } from "@/data/nav";
+import { Logo, Sparkle } from "@/components/ui/Primitives";
 
 export default function SiteNav() {
   const [open, setOpen] = useState<string | null>(null);
@@ -43,17 +43,17 @@ export default function SiteNav() {
 
   return (
     <header>
-      {/* Announcement bar — the honest pre-revenue signal. */}
+      {/* Announcement bar, the honest pre-revenue signal. */}
       <div className="flex items-center justify-center gap-2.5 bg-[#0b1220] px-5 py-2.5 text-center text-[12.5px] text-white/85">
         <span
           className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
           style={{ animation: "cv-pulse-dot 2s infinite" }}
         />
         <span className="hidden sm:inline">
-          Founding-customer program open — shaped pricing for the first 10 teams
+          Founding customer program open. Shaped pricing for the first 10 customers.
         </span>
-        <span className="sm:hidden">Founding-customer program open</span>
-        <Link href="/about" className="font-semibold text-[#3ddfc2] hover:underline">
+        <span className="sm:hidden">Founding customer program open</span>
+        <Link href="/request-demo" className="font-semibold text-[#3ddfc2] hover:underline">
           Apply →
         </Link>
       </div>
@@ -61,19 +61,16 @@ export default function SiteNav() {
       {/*
         A floating island rather than a full-bleed bar. It still occupies its own
         76px of layout, so inner pages keep their normal top spacing; the hero
-        opts into the overlay by pulling itself up under it. No `overflow` here —
+        opts into the overlay by pulling itself up under it. No `overflow` here -
         the mega-menu panels are absolutely positioned inside and would clip.
       */}
       <div ref={navRef} className="sticky top-3 z-[900] px-3 sm:px-5">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-2 rounded-full border border-line bg-white/80 px-3 shadow-[0_10px_34px_-12px_rgba(15,23,42,.22)] backdrop-blur-xl sm:gap-4 sm:px-5">
-          <Link href="/" className="flex shrink-0 items-center gap-2.5">
-            <Logo size={22} />
-            <span className="font-display text-[15px] font-bold tracking-[-.01em] text-ink sm:text-[16px]">
-              CompliVerse<span className="text-brand-deep"> AI</span>
-            </span>
+          <Link href="/" className="flex shrink-0 items-center" aria-label="Complyverse AI home">
+            <Logo size={20} />
           </Link>
 
-          <nav className="ml-2 hidden min-w-0 flex-1 items-center gap-0.5 lg:flex">
+          <nav className="hidden min-w-0 flex-1 items-center justify-center gap-1 lg:flex">
             {NAV_MENUS.map((menu) => (
               <div
                 key={menu.label}
@@ -146,8 +143,8 @@ export default function SiteNav() {
                     <div className="pb-3">
                       {menu.groups.map((group) => (
                         <div key={group.label} className="mb-2">
-                          <div className="mb-1 px-1 font-mono text-[10px] font-semibold tracking-[.14em] text-brand-ink">
-                            [ {group.label.toUpperCase()} ]
+                          <div className="mb-1 px-1 text-[10.5px] font-semibold uppercase tracking-[.14em] text-ink-faint">
+                            {group.label}
                           </div>
                           {group.links.map((link) => (
                             <MenuItem
@@ -205,7 +202,7 @@ function MenuPanel({ menu, onNavigate }: { menu: NavMenu; onNavigate: () => void
   const [shift, setShift] = useState(0);
 
   /**
-   * A panel centred on its trigger can run off-screen — a 680px menu on a tab
+   * A panel centred on its trigger can run off-screen, a 680px menu on a tab
    * near the left edge is the obvious case. Measure before paint and nudge it
    * back inside so wide menus stay usable at any window width.
    *
@@ -243,50 +240,39 @@ function MenuPanel({ menu, onNavigate }: { menu: NavMenu; onNavigate: () => void
       role="menu"
     >
       <div
-        className="grid gap-5 p-5"
-        style={{ gridTemplateColumns: hasFeature ? "1fr 210px" : "1fr" }}
+        className="grid gap-7 p-6"
+        style={{
+          gridTemplateColumns: hasFeature ? "1fr 264px" : "1fr",
+        }}
       >
         <div
-          className="grid gap-x-5 gap-y-4"
+          className="grid gap-x-8 gap-y-5"
           style={{ gridTemplateColumns: `repeat(${cols}, minmax(0,1fr))` }}
         >
-          {menu.groups.map((group) => (
-            <div key={group.label}>
-              <div className="mb-2 ml-1 font-mono text-[10px] font-semibold tracking-[.14em] text-brand-ink">
-                [ {group.label.toUpperCase()} ]
+          {menu.groups.map((group) => {
+            // A single-group menu spreads its links across two columns so the
+            // wide panel reads as one organised board rather than a tall list.
+            const twoCol = menu.groups.length === 1 && group.links.length > 3;
+            return (
+              <div key={group.label}>
+                <div className="mb-2.5 px-3 text-[10.5px] font-semibold uppercase tracking-[.15em] text-ink-faint">
+                  {group.label}
+                </div>
+                <div className={twoCol ? "grid grid-cols-2 gap-0.5" : "grid gap-0.5"}>
+                  {group.links.map((link) => (
+                    <MenuItem key={link.title} link={link} onNavigate={onNavigate} />
+                  ))}
+                </div>
               </div>
-              <div
-                className={
-                  // The capability list is long; run it in two columns.
-                  group.links.length > 6 ? "grid grid-cols-2 gap-0.5" : "grid gap-0.5"
-                }
-              >
-                {group.links.map((link) => (
-                  <MenuItem key={link.title} link={link} onNavigate={onNavigate} />
-                ))}
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
 
-        {menu.feature && (
-          <div className="flex flex-col justify-between rounded-2xl bg-[#0b1220] p-4">
-            <div>
-              <div className="font-display text-[13.5px] font-semibold text-white">
-                {menu.feature.title}
-              </div>
-              <p className="mt-1.5 text-[11.5px] leading-[1.55] text-slate-200/65">
-                {menu.feature.body}
-              </p>
-            </div>
-            <Link
-              href={menu.feature.href}
-              onClick={onNavigate}
-              className="mt-4 inline-flex items-center justify-center rounded-lg bg-brand px-3 py-2 font-display text-[12px] font-semibold text-on-brand transition hover:bg-brand-strong"
-            >
-              {menu.feature.cta} →
-            </Link>
-          </div>
+        {menu.feature?.variant === "assistant" && (
+          <AssistantPromo feature={menu.feature} onNavigate={onNavigate} />
+        )}
+        {menu.feature?.variant === "demo" && (
+          <DemoPromo feature={menu.feature} onNavigate={onNavigate} />
         )}
       </div>
 
@@ -304,6 +290,138 @@ function MenuPanel({ menu, onNavigate }: { menu: NavMenu; onNavigate: () => void
   );
 }
 
+/**
+ * The demo call-to-action card. A dark, premium panel with a brand glow and a
+ * short "what the demo shows" checklist, so the column reads as designed rather
+ * than an empty box with a button under it.
+ */
+function DemoPromo({
+  feature,
+  onNavigate,
+}: {
+  feature: NavFeature;
+  onNavigate: () => void;
+}) {
+  const shows = ["Your frameworks mapped", "Gaps surfaced live", "Evidence linked back"];
+  return (
+    <div className="relative flex flex-col overflow-hidden rounded-2xl bg-[linear-gradient(160deg,#0b1220,#0d211d)] p-5">
+      <span
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-10 -top-12 h-32 w-32 rounded-full bg-brand/20 blur-2xl"
+      />
+      <div className="relative">
+        <div className="mb-3 inline-flex h-9 w-9 items-center justify-center rounded-xl bg-brand text-[15px] text-on-brand shadow-[0_8px_20px_-8px_rgba(30,212,176,.7)]">
+          <Sparkle />
+        </div>
+        <div className="text-[15px] font-semibold tracking-[-.01em] text-white">
+          {feature.title}
+        </div>
+        <p className="mt-1.5 text-[11.5px] leading-[1.6] text-slate-300/75">
+          {feature.body}
+        </p>
+        <div className="mt-4 grid gap-2">
+          {shows.map((s) => (
+            <div key={s} className="flex items-center gap-2 text-[11px] text-slate-200/85">
+              <span className="flex h-4 w-4 shrink-0 items-center justify-center rounded-full bg-brand/20 text-brand">
+                <svg width="9" height="9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 12.5l5 5L20 6.5" stroke="currentColor" strokeWidth="3.4" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+              </span>
+              {s}
+            </div>
+          ))}
+        </div>
+      </div>
+      <Link
+        href={feature.href}
+        onClick={onNavigate}
+        className="relative mt-5 inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2.5 text-[12.5px] font-semibold text-on-brand transition hover:bg-brand-strong"
+      >
+        {feature.cta}
+        <span aria-hidden="true">→</span>
+      </Link>
+    </div>
+  );
+}
+
+/**
+ * The illustrated AI-assistant promo, in the spirit of the policy-assistant
+ * panels competitors run in their product menus. The avatar is drawn, not a
+ * stock photo of an invented person, so nothing on the page is fabricated.
+ */
+function AssistantPromo({
+  feature,
+  onNavigate,
+}: {
+  feature: NavFeature;
+  onNavigate: () => void;
+}) {
+  return (
+    <div className="flex flex-col overflow-hidden rounded-2xl border border-brand-200 bg-white shadow-[0_16px_40px_-24px_rgba(13,148,136,.5)]">
+      {/* Illustrated header */}
+      <div className="relative overflow-hidden bg-[linear-gradient(150deg,#0b1220,#0e2a24)] px-4 pb-3 pt-4">
+        <span className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-brand/20 blur-xl" />
+        <div className="relative flex items-center gap-3">
+          <AssistantAvatar />
+          <div>
+            <div className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[8.5px] font-bold uppercase tracking-[.12em] text-[#3ddfc2]">
+              <Sparkle /> AI assistant
+            </div>
+            <div className="mt-1 font-display text-[13px] font-semibold text-white">
+              {feature.greeting}
+            </div>
+          </div>
+        </div>
+        {/* A little chat bubble to sell the interaction. */}
+        <div className="relative mt-3 rounded-[12px_12px_12px_4px] bg-white/10 px-2.5 py-1.5 text-[10.5px] leading-[1.5] text-slate-100/90 backdrop-blur-sm">
+          &ldquo;Draft an access-control policy for ISO 27001.&rdquo;
+        </div>
+      </div>
+
+      <div className="flex flex-1 flex-col p-4">
+        <div className="font-display text-[14px] font-semibold text-ink">
+          {feature.title}
+        </div>
+        <p className="mt-1.5 text-[11.5px] leading-[1.6] text-ink-soft">{feature.body}</p>
+        <Link
+          href={feature.href}
+          onClick={onNavigate}
+          className="mt-3.5 inline-flex items-center justify-center gap-1 rounded-lg border border-brand-200 bg-brand-50 px-3 py-2 font-display text-[12px] font-semibold text-brand-deep transition hover:border-brand hover:bg-brand-100"
+        >
+          {feature.cta} <span aria-hidden="true">→</span>
+        </Link>
+      </div>
+    </div>
+  );
+}
+
+/** A drawn, abstract assistant avatar. Geometric, on-brand, not a person. */
+function AssistantAvatar() {
+  return (
+    <span className="relative inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[linear-gradient(150deg,#1ed4b0,#0c8f76)] shadow-[0_6px_16px_-6px_rgba(30,212,176,.7)]">
+      <svg width="26" height="26" viewBox="0 0 32 32" fill="none" aria-hidden="true">
+        {/* head */}
+        <rect x="7" y="9" width="18" height="15" rx="6" fill="#ffffff" />
+        {/* eyes */}
+        <circle cx="13" cy="16.5" r="1.7" fill="#0b1220" />
+        <circle cx="19" cy="16.5" r="1.7" fill="#0b1220" />
+        {/* smile */}
+        <path d="M13 20c1.5 1.4 4.5 1.4 6 0" stroke="#0b1220" strokeWidth="1.4" strokeLinecap="round" />
+        {/* antenna spark */}
+        <path d="M16 9V5.5" stroke="#ffffff" strokeWidth="1.6" strokeLinecap="round" />
+        <circle cx="16" cy="4" r="1.6" fill="#ffffff" />
+      </svg>
+      <span className="absolute -bottom-0.5 -right-0.5 h-3 w-3 rounded-full border-2 border-[#0b1220] bg-[#3ddfc2]" />
+    </span>
+  );
+}
+
+/**
+ * A menu item, text-first in the Vanta style: a bold heading over a small
+ * muted description, generous spacing, no icon chrome. Framework entries are
+ * the one exception, showing the bare regulator mark (no box) to the left,
+ * because a logo carries recognition an icon can't.
+ */
 function MenuItem({
   link,
   onNavigate,
@@ -318,25 +436,23 @@ function MenuItem({
       href={link.href}
       onClick={onNavigate}
       role="menuitem"
-      className="group/item flex items-start gap-3 rounded-[10px] px-2.5 py-2 transition-colors hover:bg-brand-50"
+      className="group/item flex items-start gap-3 rounded-[10px] px-3 py-2.5 transition-colors hover:bg-brand-50"
     >
-      <span className="mt-px flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-[9px] border border-brand-200 bg-brand-100 text-brand-ink transition-colors group-hover/item:border-brand group-hover/item:bg-brand group-hover/item:text-on-brand">
-        {link.logo ? (
-          // eslint-disable-next-line @next/next/no-img-element
-          <img
-            src={link.logo}
-            alt=""
-            className="h-[17px] w-[17px] object-contain"
-            loading="lazy"
-          />
-        ) : (
-          <Icon d={link.icon ?? ""} size={16} strokeWidth={1.6} />
-        )}
-      </span>
+      {link.logo && (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={link.logo}
+          alt=""
+          className="mt-[3px] h-[22px] w-[22px] shrink-0 object-contain"
+          loading="lazy"
+        />
+      )}
       <span className="min-w-0">
-        <span className="block text-[12.5px] font-semibold text-ink">{link.title}</span>
+        <span className="block text-[13.5px] font-semibold tracking-[-.005em] text-ink transition-colors group-hover/item:text-brand-deep">
+          {link.title}
+        </span>
         {!compact && (
-          <span className="mt-0.5 block text-[11px] leading-[1.4] text-ink-soft">
+          <span className="mt-0.5 block text-[12px] leading-[1.5] text-ink-soft">
             {link.desc}
           </span>
         )}

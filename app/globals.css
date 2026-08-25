@@ -1652,7 +1652,7 @@
 }
 
 /* =====================================================================
-   Home page (2026 redesign) — motion + reveal primitives.
+   Home page (2026 redesign), motion + reveal primitives.
    Ported from the approved Claude Design comp. Keyframe names are kept
    short because they are referenced from inline styles in the section
    components, where a utility class would need a Tailwind round-trip.
@@ -1672,7 +1672,7 @@
 
 /* Scroll reveal: elements start displaced, IntersectionObserver adds .cv-in.
    The hidden state is scoped to `html.cv-js`, which the reveal effect sets on
-   mount. Without JS — or before hydration — nothing is hidden, so the page can
+   mount. Without JS, or before hydration, nothing is hidden, so the page can
    never end up permanently blank because an observer failed to fire. */
 .cv-js [data-reveal] {
   opacity: 0;
@@ -1797,7 +1797,7 @@
   }
 }
 
-/* Hero typewriter caret — step-end so it snaps rather than fades. */
+/* Hero typewriter caret, step-end so it snaps rather than fades. */
 @keyframes cv-caret { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
 
 /* ---- Hero stat graphics: entrance animations ------------------------- */
@@ -1844,7 +1844,7 @@
 }
 
 /* Mega-menu panel entrance.
-   Transform is left alone here — the outer wrapper owns it, because it also
+   Transform is left alone here, the outer wrapper owns it, because it also
    carries the runtime clamp that keeps a wide panel inside the viewport. */
 @keyframes cv-menu-in {
   from { opacity: 0; transform: translateY(-6px); }
@@ -1859,7 +1859,7 @@
 
 /* ---- Module explorer -------------------------------------------------- */
 
-/* Pulse travelling the flow rail — shows direction without a label. */
+/* Pulse travelling the flow rail, shows direction without a label. */
 @keyframes cv-flow-pulse {
   from { transform: translateX(-100%); }
   to   { transform: translateX(363%); }
@@ -1882,7 +1882,7 @@
 }
 
 /* =====================================================================
-   Module scenes — one bespoke animation per module.
+   Module scenes, one bespoke animation per module.
 
    Every scene is keyed on the module id so React remounts it on change,
    which restarts these animations from zero. Keep durations under ~4s so a
@@ -1943,7 +1943,7 @@
 }
 
 /* Layered product-UI cards: a back card settles first, the front card slides
-   over it, and small stat chips arrive last — the composition reads as a real
+   over it, and small stat chips arrive last, the composition reads as a real
    screen rather than a diagram. */
 @keyframes cv-card-in {
   from { opacity: 0; transform: translateY(14px) scale(.97); }
@@ -1972,4 +1972,15 @@
 }
 @media (prefers-reduced-motion: reduce) {
   [style*="cv-logo-in"] { animation: none !important; opacity: 1 !important; transform: none !important; }
+}
+
+/* Typewriter icon swap: scale-and-fade in when the line changes. */
+@keyframes cv-icon-swap {
+  from { opacity: 0; transform: scale(.6) rotate(-8deg); }
+  to   { opacity: 1; transform: none; }
+}
+/* A soft ring that expands once as each new capability icon appears. */
+@keyframes cv-ring-ping {
+  0%   { opacity: .6; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1.6); }
 }

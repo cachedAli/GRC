@@ -5,7 +5,7 @@ export const runtime = "nodejs";
 /**
  * Demo requests.
  *
- * Validation runs here rather than only in the browser — the client form is a
+ * Validation runs here rather than only in the browser, the client form is a
  * convenience, not a trust boundary, and this endpoint is reachable directly.
  *
  * Delivery is deliberately a single function so there is one place to wire a
@@ -34,7 +34,7 @@ type Clean = {
   notes: string;
 };
 
-/** Deliberately permissive — the goal is to catch typos, not police addresses. */
+/** Deliberately permissive, the goal is to catch typos, not police addresses. */
 const EMAIL = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/;
 
 /** Free-mail domains: allowed, but flagged so sales can triage. */

@@ -89,7 +89,7 @@ function EvidenceProof() {
         </table>
       </div>
       <p className="mt-3 text-[11px] leading-[1.5] text-ink-soft">
-        <Sparkle /> Review each row, then link the ones that fit — the AI proposes, a
+        <Sparkle /> Review each row, then link the ones that fit, the AI proposes, a
         human decides.
       </p>
     </Panel>

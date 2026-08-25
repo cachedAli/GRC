@@ -64,7 +64,7 @@ export default function LinkageGraph() {
             Scattered across six tools. Connected in one.
           </h2>
           <p className="mt-3.5 text-[14.5px] leading-[1.65] text-ink-soft">
-            Not six products bolted together — one record moving through six states.
+            Not six products bolted together, one record moving through six states.
             Hover any link to see why it connects.
           </p>
         </div>
@@ -97,7 +97,7 @@ export default function LinkageGraph() {
                 </marker>
               </defs>
 
-              {/* Spokes to the hub — the shared data model underneath. */}
+              {/* Spokes to the hub, the shared data model underneath. */}
               {POS.map((p, i) => (
                 <line
                   key={`spoke-${i}`}

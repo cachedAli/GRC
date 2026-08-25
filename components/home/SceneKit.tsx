@@ -4,7 +4,7 @@
  * Shared building blocks for the module scenes.
  *
  * Every scene is a small composition of floating product-UI cards rather than
- * an abstract diagram — a back card settles first, a front card overlaps it,
+ * an abstract diagram, a back card settles first, a front card overlaps it,
  * and stat chips arrive last. Positioning is percentage-based so a scene scales
  * with its container instead of needing a fixed canvas size.
  */
@@ -107,7 +107,7 @@ export function Stat({
   );
 }
 
-/** Grey placeholder lines — stands in for body copy inside a mock surface. */
+/** Grey placeholder lines, stands in for body copy inside a mock surface. */
 export function Lines({ n = 3, w = ["80%", "60%", "70%"] }: { n?: number; w?: string[] }) {
   return (
     <div className="grid gap-1.5 px-3 py-2.5">

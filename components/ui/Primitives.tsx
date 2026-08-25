@@ -35,59 +35,43 @@ export function Icon({
 }
 
 /**
- * The CompliVerse GRC monogram.
- *
- * G, R and C drawn on one grid at a single stroke weight: the G's crossbar runs
- * out of the ring and into the R's stem, and the R's leg becomes one long sweep
- * that lands on the C's baseline with a horizontal tangent, so the three letters
- * read as a single continuous stroke. The G and C rings are the same radius and
- * open the same way — two near-complete revolutions joined by that sweep, which
- * is where the 360° idea lives rather than in any added symbol.
- *
- * Drawn with strokes rather than outlined fills: the weight stays mathematically
- * uniform, and it is four paths instead of a few hundred anchor points. Outline
- * them in one step if a print workflow needs filled contours.
+ * The Complyverse wordmark, matching the product UI: "Comply" in ink, "verse"
+ * in brand teal, with a small superscript AI. `tone` flips it for dark panels;
+ * `size` is the wordmark's font size in px.
  */
-const MONOGRAM = [
-  "M83.11 80.43A38 38 0 1 1 83.11 31.57", // G ring, 280°
-  "M50 56H116", //                            G crossbar, exits into the R
-  "M116 94V18A19 19 0 0 1 116 56C138 84 166 94 198 94", // R stem → bowl → sweep
-  "M226.24 81.43A38 38 0 1 1 226.24 30.57", // C ring, 276°
-];
-
 export function Logo({
-  size = 26,
+  size = 20,
   tone = "light",
   className,
 }: {
-  /** Rendered height in px; width follows the 252:112 ratio. */
   size?: number;
   tone?: "light" | "dark" | "mono";
   className?: string;
 }) {
-  const stroke =
-    tone === "dark" ? "#FFFFFF" : tone === "mono" ? "#111827" : "#1ED4B0";
+  const comply =
+    tone === "dark" ? "#FFFFFF" : tone === "mono" ? "#0f172a" : "#0b1220";
+  const verse = tone === "dark" ? "#3ddfc2" : "#17b898";
   return (
-    <svg
-      viewBox="0 0 252 112"
-      height={size}
-      width={size * (252 / 112)}
-      className={className}
+    <span
+      className={`inline-flex items-start font-display font-bold leading-none tracking-[-.02em] ${className ?? ""}`}
+      style={{ fontSize: size }}
       role="img"
-      aria-label="CompliVerse"
+      aria-label="Complyverse AI"
     >
-      <g
-        fill="none"
-        stroke={stroke}
-        strokeWidth={15}
-        strokeLinecap="round"
-        strokeLinejoin="round"
+      <span style={{ color: comply }}>Comply</span>
+      <span style={{ color: verse }}>verse</span>
+      <span
+        className="font-semibold tracking-[.08em]"
+        style={{
+          color: verse,
+          fontSize: size * 0.42,
+          marginLeft: size * 0.1,
+          marginTop: size * 0.04,
+        }}
       >
-        {MONOGRAM.map((d) => (
-          <path key={d} d={d} />
-        ))}
-      </g>
-    </svg>
+        AI
+      </span>
+    </span>
   );
 }
 

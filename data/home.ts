@@ -2,7 +2,7 @@
  * Home page content.
  *
  * The module list, framework coverage and AI blurbs are taken from the
- * platform itself (GRC-Tenant) rather than invented for marketing — the
+ * platform itself (GRC-Tenant) rather than invented for marketing, the
  * fourteen entries below are the fourteen route groups that actually ship.
  */
 
@@ -21,29 +21,29 @@ export function initialsBadge(text: string): string {
   return `data:image/svg+xml;utf8,${encodeURIComponent(svg)}`;
 }
 
-export type Framework = { name: string; blurb: string; src: string };
+export type Framework = { name: string; blurb: string; src: string; slug: string };
 
 export const FRAMEWORKS: Framework[] = [
-  { name: "ISO 27001", blurb: "Information security", src: `${LOGO}/iso.org.png` },
-  { name: "SOC 2", blurb: "Trust services", src: `${LOGO}/aicpa.org.png` },
-  { name: "SAMA CSF", blurb: "Saudi banking cyber", src: `${LOGO}/sama.gov.sa.png` },
-  { name: "NCA ECC", blurb: "Saudi essential controls", src: initialsBadge("NCA") },
-  { name: "PCI DSS", blurb: "Payment security", src: `${LOGO}/pcisecuritystandards.org.png` },
-  { name: "NIST CSF", blurb: "Cyber framework", src: `${LOGO}/nist.gov.png` },
-  { name: "GDPR", blurb: "Data protection", src: `${LOGO}/gdpr.eu.png` },
-  { name: "CBUAE Art.13", blurb: "UAE tech risk", src: initialsBadge("CB") },
-  { name: "SBP ETGRMF", blurb: "Pakistan banking tech", src: `${LOGO}/sbp.org.pk.png` },
-  { name: "MAS TRM", blurb: "Singapore tech risk", src: initialsBadge("MAS") },
-  { name: "ISO 22301", blurb: "Business continuity", src: `${LOGO}/iso.org.png` },
-  { name: "DORA", blurb: "EU op-resilience", src: `${LOGO}/esma.europa.eu.png` },
-  { name: "NIS2", blurb: "EU cyber directive", src: `${LOGO}/enisa.europa.eu.png` },
-  { name: "HIPAA", blurb: "Health data", src: `${LOGO}/hhs.gov.png` },
-  { name: "COBIT 2019", blurb: "IT governance", src: `${LOGO}/isaca.org.png` },
-  { name: "SOX ITGC", blurb: "Financial reporting", src: `${LOGO}/sec.gov.png` },
-  { name: "SWIFT CSCF", blurb: "Payments network", src: initialsBadge("SW") },
-  { name: "ARAMCO CCC", blurb: "Supplier cyber", src: initialsBadge("ARM") },
-  { name: "CIS Controls", blurb: "Security baselines", src: `${LOGO}/cisecurity.org.png` },
-  { name: "HITRUST", blurb: "Health trust", src: `${LOGO}/hitrustalliance.net.png` },
+  { name: "ISO 27001", blurb: "Information security", src: `${LOGO}/iso.org.png`, slug: "iso-27001" },
+  { name: "SOC 2", blurb: "Trust services", src: `${LOGO}/aicpa.org.png`, slug: "soc-2" },
+  { name: "SAMA CSF", blurb: "Saudi banking cyber", src: `${LOGO}/sama.gov.sa.png`, slug: "sama-csf" },
+  { name: "NCA ECC", blurb: "Saudi essential controls", src: initialsBadge("NCA"), slug: "nca-ecc" },
+  { name: "PCI DSS", blurb: "Payment security", src: `${LOGO}/pcisecuritystandards.org.png`, slug: "pci-dss" },
+  { name: "NIST CSF", blurb: "Cyber framework", src: `${LOGO}/nist.gov.png`, slug: "nist-csf" },
+  { name: "GDPR", blurb: "Data protection", src: `${LOGO}/gdpr.eu.png`, slug: "gdpr" },
+  { name: "CBUAE Art.13", blurb: "UAE tech risk", src: initialsBadge("CB"), slug: "cbuae" },
+  { name: "SBP ETGRMF", blurb: "Pakistan banking tech", src: `${LOGO}/sbp.org.pk.png`, slug: "sbp-etgrmf" },
+  { name: "MAS TRM", blurb: "Singapore tech risk", src: initialsBadge("MAS"), slug: "mas-trm" },
+  { name: "ISO 22301", blurb: "Business continuity", src: `${LOGO}/iso.org.png`, slug: "iso-22301" },
+  { name: "DORA", blurb: "EU op-resilience", src: `${LOGO}/esma.europa.eu.png`, slug: "dora" },
+  { name: "NIS2", blurb: "EU cyber directive", src: `${LOGO}/enisa.europa.eu.png`, slug: "nis2" },
+  { name: "HIPAA", blurb: "Health data", src: `${LOGO}/hhs.gov.png`, slug: "hipaa" },
+  { name: "COBIT 2019", blurb: "IT governance", src: `${LOGO}/isaca.org.png`, slug: "cobit-2019" },
+  { name: "SOX ITGC", blurb: "Financial reporting", src: `${LOGO}/sec.gov.png`, slug: "sox-itgc" },
+  { name: "SWIFT CSCF", blurb: "Payments network", src: initialsBadge("SW"), slug: "swift-cscf" },
+  { name: "ARAMCO CCC", blurb: "Supplier cyber", src: initialsBadge("ARM"), slug: "aramco-ccc" },
+  { name: "CIS Controls", blurb: "Security baselines", src: `${LOGO}/cisecurity.org.png`, slug: "cis-controls" },
+  { name: "HITRUST", blurb: "Health trust", src: `${LOGO}/hitrustalliance.net.png`, slug: "hitrust" },
 ];
 
 /** Shared 24x24 stroke-icon path data. */
@@ -62,6 +62,9 @@ export const ICON = {
   users: "M8 11a4 4 0 118 0v2a4 4 0 01-8 0zM5 20c1.5-2 4-3 7-3s5.5 1 7 3",
   search: "M11 17.5A6.5 6.5 0 1017.5 11 6.5 6.5 0 0011 17.5zM16 16l5 5",
   audit: "M11 17.5A6.5 6.5 0 1017.5 11 6.5 6.5 0 0011 17.5zM16 16l5 5M8.5 11l1.8 1.8 3.4-3.6",
+  // A magnifier centred in the 24x24 box (circle at 11,11), so it sits square
+  // in a tile instead of leaning to one corner like the audit glyph above.
+  auditCentered: "M11 5a6 6 0 100 12 6 6 0 000-12zM15.5 15.5 20 20",
   flow: "M5 6h4v4H5zM15 14h4v4h-4zM7 10v4a2 2 0 002 2h6M15 6h4v4h-4z",
   spark: "M12 3l2.1 6.9L21 12l-6.9 2.1L12 21l-2.1-6.9L3 12l6.9-2.1z",
   server: "M4 5h16v6H4zM4 15h16v4H4zM7 8h.01M7 17h.01",
@@ -119,7 +122,7 @@ export const MODULES: Module[] = [
   {
     name: "Evidence Management",
     tagline: "Intake with OCR, lifecycle states, quality tracking, audit packages.",
-    ai: "Deep-assesses artifacts against control catalogs — explicit, implicit or inferred match — and finds cross-framework equivalents.",
+    ai: "Deep-assesses artifacts against control catalogs, explicit, implicit or inferred match, and finds cross-framework equivalents.",
     chips: ["OCR", "Cross-framework reuse", "Audit packages"],
     icon: ICON.database,
     href: "/features",
@@ -168,7 +171,7 @@ export const MODULES: Module[] = [
     name: "Workflow Automation",
     tagline:
       "Event-driven definitions, executions, routing, notifications, integrations.",
-    ai: "Describe the workflow in English — AI builds, optimizes and routes it.",
+    ai: "Describe the workflow in English, AI builds, optimizes and routes it.",
     chips: ["NL to workflow", "Events", "Escalations"],
     icon: ICON.flow,
     href: "/features",
@@ -177,7 +180,7 @@ export const MODULES: Module[] = [
   {
     name: "ComplyChat AI",
     tagline:
-      "A GRC assistant over your live data — sessions, history, framework stats.",
+      "A GRC assistant over your live data, sessions, history, framework stats.",
     ai: "SQL-grounded answers, tenant-scoped, with conversation memory.",
     chips: ["SQL-grounded", "Tenant-scoped", "Session memory"],
     icon: ICON.spark,
@@ -205,16 +208,6 @@ export const MODULES: Module[] = [
     cta: "See certifications",
   },
   {
-    name: "Framework Upload",
-    tagline:
-      "Upload any regulation; parser extracts structure, controls and obligations.",
-    ai: "Extracts domains, controls, mandatory-vs-advisory interpretation and evidence expectations from PDFs.",
-    chips: ["AI parsing", "Alignment", "Publish flow"],
-    icon: ICON.upload,
-    href: "/compliance",
-    cta: "Upload a framework",
-  },
-  {
     name: "Dashboards & Insights",
     tagline:
       "Executive KPIs, compliance and risk signals, AI-prioritized recommendations.",
@@ -227,7 +220,7 @@ export const MODULES: Module[] = [
 ];
 
 /**
- * Hero typewriter lines — one per capability area.
+ * Hero typewriter lines, one per capability area.
  *
  * Deliberately short: these render on a single line at 17px, so anything past
  * ~36 characters wraps and the hero reflows. Each is a claim, not a noun.
@@ -240,13 +233,12 @@ export const CAPABILITY_LINES: CapabilityLine[] = [
   { label: "Enterprise Risk", icon: ICON.trend, text: "Score risk on a live heatmap." },
   { label: "Governance", icon: ICON.doc, text: "Draft policies from the clause." },
   { label: "Vendor Risk", icon: ICON.users, text: "Monitor every vendor, always." },
-  { label: "Audit", icon: ICON.audit, text: "Turn audit prep into a query." },
+  { label: "Audit", icon: ICON.auditCentered, text: "Turn audit prep into a query." },
   { label: "Vulnerabilities", icon: ICON.shieldAlert, text: "Close findings before the SLA." },
-  { label: "Framework Upload", icon: ICON.upload, text: "Parse any regulation you upload." },
 ];
 
 /**
- * The point-tool categories CompliVerse displaces. Shown as struck-through
+ * The point-tool categories Complyverse displaces. Shown as struck-through
  * icons next to the "tools replaced" figure, so the claim is illustrated by
  * what actually gets switched off rather than by five blank squares.
  */
@@ -260,7 +252,7 @@ export const TOOLS_REPLACED = [
 
 /** Hero proof stats, rendered as small graphics rather than plain text. */
 export const HERO_STATS = {
-  modules: 14,
+  modules: 13,
   frameworks: "25+",
   toolsReplaced: TOOLS_REPLACED.length,
   /** Real marks shown in the overlapping stack next to the framework count. */
@@ -276,7 +268,7 @@ export const HERO_STATS = {
 /**
  * The six links in the chain, and why each one exists.
  *
- * The point of the section is that these are not six tools — it is one record
+ * The point of the section is that these are not six tools, it is one record
  * passing through six states, so every edge carries the verb that connects
  * them rather than a decorative line.
  */
@@ -285,13 +277,13 @@ export const LINKS = [
     from: "Framework",
     verb: "demands",
     to: "Policy",
-    why: "Every clause names the policy statement that has to exist. Upload a regulation and the required documents are already listed.",
+    why: "Every clause names the policy statement that has to exist, so the moment you pick a framework the required documents are already listed against it.",
   },
   {
     from: "Policy",
     verb: "implements",
     to: "Control",
-    why: "A published policy becomes the controls that enforce it — written once, inherited by every framework that shares them.",
+    why: "A published policy becomes the controls that enforce it, written once, inherited by every framework that shares them.",
   },
   {
     from: "Control",
@@ -303,7 +295,7 @@ export const LINKS = [
     from: "Evidence",
     verb: "exposes",
     to: "Risk",
-    why: "Where evidence is missing or stale, the gap becomes an owned risk with a treatment plan — no re-keying between systems.",
+    why: "Where evidence is missing or stale, the gap becomes an owned risk with a treatment plan, no re-keying between systems.",
   },
   {
     from: "Risk",
@@ -330,7 +322,7 @@ export const STAGES = [
   {
     title: "Policy",
     icon: ICON.docSimple,
-    desc: "Full lifecycle — draft, review, approval, publish, attestations — every statement traceable to its framework clauses.",
+    desc: "Full lifecycle, draft, review, approval, publish, attestations, every statement traceable to its framework clauses.",
     ai: "Drafts policies from framework context; flags uncovered clauses.",
   },
   {
@@ -343,7 +335,7 @@ export const STAGES = [
     title: "Evidence",
     icon: ICON.databaseSimple,
     desc: "OCR intake, lifecycle and quality states. One artifact satisfies every framework that shares the control.",
-    ai: "Assesses artifacts — explicit, implicit or inferred — and finds equivalents.",
+    ai: "Assesses artifacts, explicit, implicit or inferred, and finds equivalents.",
   },
   {
     title: "Risk",
@@ -354,7 +346,7 @@ export const STAGES = [
   {
     title: "Audit",
     icon: ICON.search,
-    desc: "Universe to findings — the audit trail is a query, not a quarter of evidence-hunting.",
+    desc: "Universe to findings, the audit trail is a query, not a quarter of evidence-hunting.",
     ai: "Drafts plans, procedures, findings and the board narrative.",
   },
 ];
@@ -391,7 +383,7 @@ export const TIERS: Tier[] = [
     accent: "#f5a524",
     accentSoft: "245 165 36",
     bullets: [
-      "AI assembles the policies, controls and evidence requests — you review and approve.",
+      "AI assembles the policies, controls and evidence requests, you review and approve.",
       "Framework roadmaps that prioritise whatever is blocking the deal in front of you.",
       "Prove security early so enterprise buyers stop stalling procurement.",
     ],
@@ -405,7 +397,7 @@ export const TIERS: Tier[] = [
   {
     who: "Mid-market",
     tagline: "Scale trust smoothly",
-    href: "/features",
+    href: "/platform",
     cta: "Scale smoothly",
     accent: "#1ed4b0",
     accentSoft: "30 212 176",
@@ -491,7 +483,7 @@ export const SOLUTIONS = [
   { name: "Risk Management (ERM)", desc: "Register, KRIs, RCSA, analytics", href: "/risk", icon: ICON.trend },
 ];
 
-/** Hero dashboard mock — "needs attention" rows. */
+/** Hero dashboard mock, "needs attention" rows. */
 export const ATTENTION = [
   { dot: "#f43f5e", text: "Access Control Policy review overdue 12d", tag: "Governance", bg: "#fef2f2", fg: "#b91c1c" },
   { dot: "#f59e0b", text: "3 SAMA CSF controls missing evidence", tag: "Compliance", bg: "#fffbeb", fg: "#b45309" },

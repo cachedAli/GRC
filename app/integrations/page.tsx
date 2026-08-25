@@ -3,9 +3,9 @@ import IntegrationsCatalogue from "@/components/integrations/IntegrationsCatalog
 import { INTEGRATIONS } from "@/data/integrations";
 
 export const metadata: Metadata = {
-  title: "Integrations — CompliVerse AI",
+  title: "Integrations, Complyverse AI",
   description:
-    "Every system CompliVerse connects to, what each one collects as evidence, and which control families it feeds.",
+    "Every system Complyverse connects to, what each one collects as evidence, and which control families it feeds.",
 };
 
 export default function IntegrationsPage() {
@@ -21,7 +21,7 @@ export default function IntegrationsPage() {
           </h1>
           <p className="mx-auto mt-4 max-w-[560px] text-[15px] leading-[1.65] text-ink-muted">
             {INTEGRATIONS.length} integrations across eight categories. Each one lists
-            the evidence it pulls — so you can check it answers your auditor&apos;s
+            the evidence it pulls, so you can check it answers your auditor&apos;s
             question before you connect anything.
           </p>
         </div>
@@ -32,7 +32,7 @@ export default function IntegrationsPage() {
       {/*
         Honest status note. The platform's own catalogue carries a comment that
         nothing is connected until the sync backend ships and that a compliance
-        product must never show an invented sync time — the same rule applies
+        product must never show an invented sync time, the same rule applies
         here, so the page states scope rather than implying live syncing.
       */}
       <div className="border-t border-line bg-[#fbfdfd]">
@@ -40,7 +40,7 @@ export default function IntegrationsPage() {
           <p className="text-[13px] leading-[1.7] text-ink-soft">
             Connector sync is rolling out with the founding-customer program. The
             list above is the supported catalogue and the evidence each connector
-            is scoped to collect — not a live status board. If a system you depend
+            is scoped to collect, not a live status board. If a system you depend
             on is missing, tell us in the demo and we&apos;ll tell you honestly
             where it sits.
           </p>

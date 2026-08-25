@@ -3,7 +3,7 @@ import { CAPABILITIES } from "@/data/modules";
 import { Icon } from "@/components/ui/Primitives";
 
 /**
- * The capability catalogue — everything the platform does, on one dark grid.
+ * The capability catalogue, everything the platform does, on one dark grid.
  *
  * Hairline dividers rather than card borders, so twelve cells read as a single
  * table a buyer can scan in one pass. Each cell carries its own verb, because
@@ -23,7 +23,7 @@ export default function CapabilityCatalogue() {
               The whole surface area
             </div>
             <h2 className="font-display text-[28px] font-semibold leading-[1.15] tracking-[-.02em] text-white sm:text-[36px]">
-              Discover the CompliVerse difference
+              Discover the Complyverse difference
             </h2>
           </div>
           <Link
@@ -36,7 +36,7 @@ export default function CapabilityCatalogue() {
 
         {/*
           Hairlines come from a 1px grid gap with the divider colour behind the
-          cells, not from nth-child border math — that collided at `lg` and left
+          cells, not from nth-child border math, that collided at `lg` and left
           some columns unruled. This version is correct at any column count.
         */}
         <div className="grid grid-cols-1 gap-px bg-white/10 sm:grid-cols-2 lg:grid-cols-3">

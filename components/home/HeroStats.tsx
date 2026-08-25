@@ -56,7 +56,7 @@ function useCountUp(target: number, duration = 1100, delay = 260) {
 }
 
 /**
- * Hero proof stats — drawn and animated rather than written.
+ * Hero proof stats, drawn and animated rather than written.
  *
  * Each figure counts up while its graphic assembles in step: fourteen module
  * dots pop in sequence, five real regulator marks slide into a stack, and five
@@ -69,7 +69,7 @@ export default function HeroStats() {
 
   return (
     <div className="grid max-w-[500px] grid-cols-3 divide-x divide-[#cfe6df] rounded-2xl border border-brand-200 bg-white/60 backdrop-blur-sm">
-      {/* Modules — a 7x2 dot grid that fills in. */}
+      {/* Modules, a 7x2 dot grid that fills in. */}
       <Stat value={String(modules)} label="modules">
         <span className="grid grid-cols-7 gap-[3px]">
           {Array.from({ length: HERO_STATS.modules }).map((_, i) => (
@@ -87,7 +87,7 @@ export default function HeroStats() {
         </span>
       </Stat>
 
-      {/* Frameworks — real regulator marks sliding into an overlapping stack. */}
+      {/* Frameworks, real regulator marks sliding into an overlapping stack. */}
       <Stat value={`${frameworks}+`} label="frameworks">
         <span className="flex items-center">
           {HERO_STATS.frameworkFaces.map((src, i) => (
@@ -116,7 +116,7 @@ export default function HeroStats() {
       </Stat>
 
       {/*
-        Point tools — one icon per category that gets switched off, struck
+        Point tools, one icon per category that gets switched off, struck
         through in turn. Sized to the narrowest column: five tiles plus gaps
         must fit ~89px at 375px wide, so they only grow from `sm` up.
       */}
@@ -164,7 +164,7 @@ function Stat({
       </span>
       <span className="flex min-h-[19px] items-center">{children}</span>
       {/* Two lines of label height are reserved on narrow screens, where
-          "tools replaced" wraps and the other two do not — without it the
+          "tools replaced" wraps and the other two do not, without it the
           three figures sit at different baselines. */}
       <span className="min-h-[1.75rem] text-[9.5px] font-medium uppercase leading-[1.35] tracking-[.06em] text-ink-soft sm:min-h-0 sm:text-[10.5px] sm:tracking-[.1em]">
         {label}

@@ -48,14 +48,14 @@ export default function CapabilityGrid() {
             It&apos;s all here.
           </h2>
           <p className="mt-3 text-[15px] leading-[1.6] text-ink-soft">
-            Governance, compliance, risk and proof — one data model, fourteen modules,
+            Governance, compliance, risk and proof, one data model, thirteen modules,
             AI in every one of them.
           </p>
         </div>
 
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           {/* Compliance */}
-          <Link data-reveal href="/compliance" className={CARD}>
+          <Link data-reveal href="/platform/assessments" className={CARD}>
             <b className="font-display text-[15.5px] text-ink">Compliance</b>
             <span className="text-[12.5px] leading-[1.55] text-ink-soft">
               Multi-framework assessments with AI evidence recommendations.
@@ -81,13 +81,13 @@ export default function CapabilityGrid() {
           {/* Risk */}
           <Link
             data-reveal
-            href="/risk"
+            href="/platform/risk"
             className={CARD}
             style={{ transitionDelay: ".08s" }}
           >
             <b className="font-display text-[15.5px] text-ink">Risk (ERM)</b>
             <span className="text-[12.5px] leading-[1.55] text-ink-soft">
-              Register, KRIs, RCSA and appetite — scored on a live heatmap.
+              Register, KRIs, RCSA and appetite, scored on a live heatmap.
             </span>
             <span className="mt-1.5 flex items-center gap-2.5 rounded-xl border border-line bg-white p-3">
               <span className="grid grid-cols-[repeat(3,26px)] gap-[3px] [grid-auto-rows:26px]">
@@ -113,7 +113,7 @@ export default function CapabilityGrid() {
           {/* TPRM */}
           <Link
             data-reveal
-            href="/features"
+            href="/platform/vendors"
             className={CARD}
             style={{ transitionDelay: ".16s" }}
           >
@@ -146,10 +146,10 @@ export default function CapabilityGrid() {
           </Link>
 
           {/* Audit */}
-          <Link data-reveal href="/features" className={CARD}>
+          <Link data-reveal href="/platform/audit" className={CARD}>
             <b className="font-display text-[15.5px] text-ink">Audit</b>
             <span className="text-[12.5px] leading-[1.55] text-ink-soft">
-              Universe to findings — packages assemble from existing links.
+              Universe to findings, packages assemble from existing links.
             </span>
             <span className="mt-1.5 grid grid-cols-2 gap-[7px] rounded-xl border border-line bg-white p-3">
               {AUDIT.map((a) => (
@@ -166,7 +166,7 @@ export default function CapabilityGrid() {
           {/* Documents */}
           <Link
             data-reveal
-            href="/governance"
+            href="/platform/governance"
             className={CARD}
             style={{ transitionDelay: ".08s" }}
           >
@@ -198,27 +198,27 @@ export default function CapabilityGrid() {
             </span>
           </Link>
 
-          {/* ComplyChat — the one dark card, so the AI story reads as the finale. */}
+          {/* ComplyChat, the one dark card, so the AI story reads as the finale. */}
           <Link
             data-reveal
-            href="/features"
+            href="/platform/insights"
             className="flex flex-col gap-2 rounded-[18px] border border-[#0b1220] bg-[#0b1220] p-5 text-inherit transition hover:shadow-[0_18px_40px_-20px_rgba(11,18,32,.5)]"
             style={{ transitionDelay: ".16s" }}
           >
             <b className="font-display text-[15.5px] text-white">ComplyChat AI</b>
             <span className="text-[12.5px] leading-[1.55] text-slate-200/65">
-              Ask your GRC data anything — SQL-grounded, tenant-scoped.
+              Ask a plain question, get an answer you can act on and trust.
             </span>
             <span className="mt-1.5 rounded-xl border border-[#3ddfc2]/25 bg-white/5 p-3">
               <span className="block text-[11px] leading-[1.6] text-slate-200/85">
                 <b className="text-[#3ddfc2]">Q:</b> Which controls block the Q3 SOC 2 audit?
               </span>
               <span className="mt-1.5 block text-[11px] leading-[1.6] text-slate-200/85">
-                <b className="text-[#3ddfc2]">A:</b> 3 controls lack evidence — CC6.1, CC6.8,
+                <b className="text-[#3ddfc2]">A:</b> 3 controls lack evidence, CC6.1, CC6.8,
                 CC7.2. Two can reuse ISO artifacts. <u>Queue links?</u>
               </span>
               <span className="mt-2 inline-block rounded-full border border-[#3ddfc2]/40 px-2.5 py-[3px] text-[9.5px] font-semibold text-[#3ddfc2]">
-                <Sparkle /> SQL-grounded · 148ms
+                <Sparkle /> Answers only from your own data
               </span>
             </span>
           </Link>

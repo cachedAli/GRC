@@ -1,19 +1,15 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { FRAMEWORK_GUIDES } from "@/data/frameworks";
 
 const TEAM_SIZES = ["1–50", "51–200", "201–1,000", "1,001–5,000", "5,000+"];
 
-/** Kept short on purpose — this scopes the demo, it is not a qualification quiz. */
-const FRAMEWORKS = [
-  "ISO 27001",
-  "SOC 2",
-  "PCI DSS",
-  "SAMA CSF",
-  "NCA ECC",
-  "SBP / MAS",
-  "GDPR",
+/** Every framework the platform supports, searchable in the picker below. */
+const ALL_FRAMEWORKS = [
+  ...Object.values(FRAMEWORK_GUIDES).map((g) => g.name),
+  "Other",
   "Not sure yet",
 ];
 
@@ -25,10 +21,50 @@ export default function DemoForm() {
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
 
+  // Framework picker (searchable popup) state.
+  const [pickerOpen, setPickerOpen] = useState(false);
+  const [query, setQuery] = useState("");
+  const [dropUp, setDropUp] = useState(false);
+  const pickerRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLDivElement>(null);
+
+  // Open above the field when there isn't room below, so the popup never
+  // clips off the bottom of a short viewport.
+  const openPicker = () => {
+    const el = triggerRef.current;
+    if (el) {
+      const r = el.getBoundingClientRect();
+      const below = window.innerHeight - r.bottom;
+      setDropUp(below < 300 && r.top > below);
+    }
+    setPickerOpen(true);
+  };
+
+  useEffect(() => {
+    if (!pickerOpen) return;
+    const onClick = (e: MouseEvent) => {
+      if (pickerRef.current && !pickerRef.current.contains(e.target as Node))
+        setPickerOpen(false);
+    };
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setPickerOpen(false);
+    };
+    document.addEventListener("mousedown", onClick);
+    document.addEventListener("keydown", onKey);
+    return () => {
+      document.removeEventListener("mousedown", onClick);
+      document.removeEventListener("keydown", onKey);
+    };
+  }, [pickerOpen]);
+
   const toggle = (f: string) =>
     setFrameworks((cur) =>
       cur.includes(f) ? cur.filter((x) => x !== f) : [...cur, f],
     );
+
+  const filtered = ALL_FRAMEWORKS.filter((f) =>
+    f.toLowerCase().includes(query.trim().toLowerCase()),
+  );
 
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -154,37 +190,135 @@ export default function DemoForm() {
         </Field>
       </div>
 
-      <fieldset className="mt-5">
+      <fieldset className="mt-4">
         <legend className="text-[12.5px] font-semibold text-ink">
           Which frameworks should we run live?
           <span className="ml-1.5 font-normal text-ink-faint">Optional</span>
         </legend>
-        <div className="mt-2.5 grid grid-cols-2 gap-x-3 gap-y-1.5">
-          {FRAMEWORKS.map((f) => {
-            const on = frameworks.includes(f);
-            return (
-              <label
-                key={f}
-                className={`flex cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-2 text-[12.5px] transition-colors ${
-                  on
-                    ? "border-brand bg-brand-50 text-brand-forest"
-                    : "border-line text-ink-muted hover:border-brand-200"
-                }`}
-              >
+        <div ref={pickerRef} className="relative mt-2">
+          {/* Trigger, shows selected frameworks as removable chips */}
+          <div
+            ref={triggerRef}
+            role="button"
+            tabIndex={0}
+            aria-haspopup="listbox"
+            aria-expanded={pickerOpen}
+            onClick={() => (pickerOpen ? setPickerOpen(false) : openPicker())}
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                pickerOpen ? setPickerOpen(false) : openPicker();
+              }
+            }}
+            className="flex min-h-[44px] w-full cursor-pointer items-center gap-2 rounded-lg border border-line bg-white px-2.5 py-1.5 transition-colors hover:border-brand-200 focus:border-brand focus:outline-none"
+          >
+            <span className="flex flex-1 flex-wrap items-center gap-1.5">
+              {frameworks.length === 0 ? (
+                <span className="px-0.5 text-[13px] text-ink-faint">
+                  Search and select frameworks…
+                </span>
+              ) : (
+                frameworks.map((f) => (
+                  <span
+                    key={f}
+                    className="inline-flex items-center gap-1 rounded-md border border-brand-200 bg-brand-50 py-0.5 pl-2 pr-1 text-[11.5px] font-medium text-brand-forest"
+                  >
+                    {f}
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggle(f);
+                      }}
+                      aria-label={`Remove ${f}`}
+                      className="flex h-4 w-4 items-center justify-center rounded text-brand-deep transition hover:bg-brand-100"
+                    >
+                      <svg width="9" height="9" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+                      </svg>
+                    </button>
+                  </span>
+                ))
+              )}
+            </span>
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              aria-hidden="true"
+              className="shrink-0 text-ink-faint transition-transform"
+              style={{ transform: pickerOpen ? "rotate(180deg)" : "none" }}
+            >
+              <path d="M5 9l7 7 7-7" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+          </div>
+
+          {/* Popup: search + scrollable list, absolutely positioned so it never grows the card */}
+          {pickerOpen && (
+            <div
+              className={`absolute left-0 right-0 z-30 overflow-hidden rounded-xl border border-line bg-white shadow-[0_20px_50px_-16px_rgba(15,23,42,.35)] ${
+                dropUp ? "bottom-full mb-1.5" : "top-full mt-1.5"
+              }`}
+            >
+              <div className="border-b border-line-soft p-2">
                 <input
-                  type="checkbox"
-                  checked={on}
-                  onChange={() => toggle(f)}
-                  className="h-3.5 w-3.5 shrink-0 accent-[#1ed4b0]"
+                  autoFocus
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search frameworks…"
+                  className="w-full rounded-lg border border-line bg-[#f8fafc] px-3 py-2 text-[13px] text-ink outline-none placeholder:text-ink-faint focus:border-brand focus:bg-white"
                 />
-                {f}
-              </label>
-            );
-          })}
+              </div>
+              <div
+                className="max-h-[190px] overflow-y-auto p-1.5"
+                role="listbox"
+                aria-multiselectable="true"
+              >
+                {filtered.length === 0 ? (
+                  <div className="px-2.5 py-3 text-center text-[12.5px] text-ink-faint">
+                    No frameworks match that search.
+                  </div>
+                ) : (
+                  filtered.map((f) => {
+                    const on = frameworks.includes(f);
+                    return (
+                      <label
+                        key={f}
+                        className={`flex cursor-pointer items-center gap-2.5 rounded-lg px-2.5 py-2 text-[13px] transition-colors ${
+                          on ? "bg-brand-50 text-brand-forest" : "text-ink-muted hover:bg-[#f4f9f8]"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          checked={on}
+                          onChange={() => toggle(f)}
+                          className="h-3.5 w-3.5 shrink-0 accent-[#1ed4b0]"
+                        />
+                        {f}
+                      </label>
+                    );
+                  })
+                )}
+              </div>
+              {frameworks.length > 0 && (
+                <div className="flex items-center justify-between border-t border-line-soft px-3 py-2 text-[11.5px]">
+                  <span className="text-ink-soft">{frameworks.length} selected</span>
+                  <button
+                    type="button"
+                    onClick={() => setFrameworks([])}
+                    className="font-semibold text-brand-deep hover:underline"
+                  >
+                    Clear all
+                  </button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       </fieldset>
 
-      <Field label="Anything specific you want to see?" name="notes" className="mt-4">
+      <Field label="Anything specific you want to see?" name="notes" className="mt-3">
         <textarea
           id="notes"
           name="notes"
@@ -203,7 +337,7 @@ export default function DemoForm() {
       <button
         type="submit"
         disabled={busy}
-        className="mt-5 w-full rounded-xl bg-brand py-3.5 font-display text-[14.5px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong disabled:opacity-60"
+        className="mt-4 w-full rounded-xl bg-brand py-3.5 font-display text-[14.5px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong disabled:opacity-60"
       >
         {busy ? "Sending…" : "Book a live demo"}
       </button>

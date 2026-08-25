@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; text: string; book?: boolean };
 const OPENER: Msg = {
   role: "assistant",
   text:
-    "Hi there! I'm ComplyChat, CompliVerse's AI. We link frameworks, policies, " +
+    "Hi there! I'm ComplyChat, Complyverse's AI. We link frameworks, policies, " +
     "controls and evidence into one 360-degree graph. What compliance challenge " +
     "are you working on today?",
 };
@@ -18,6 +18,13 @@ const CHIPS = [
   "How does evidence reuse work?",
   "How are you different from Vanta or Drata?",
   "What does pricing look like?",
+];
+
+/** The prompts shown in the welcome teaser. */
+const TEASER_QUESTIONS = [
+  "How can we manage multiple frameworks?",
+  "How can we reduce manual compliance work?",
+  "How can we stay audit-ready year-round?",
 ];
 
 export default function ComplyChat() {
@@ -66,7 +73,7 @@ export default function ComplyChat() {
           role: "assistant",
           text:
             data.reply ??
-            "Something went wrong on my side — try again, or book a demo and we'll answer live.",
+            "Something went wrong on my side, try again, or book a demo and we'll answer live.",
           book: Boolean(data.book),
         },
       ]);
@@ -219,7 +226,7 @@ export default function ComplyChat() {
 
       {teaser && !open && (
         <div
-          className="relative w-[274px] rounded-2xl border border-brand-200 bg-white px-4 py-3.5 shadow-[0_24px_56px_-18px_rgba(13,148,136,.45)]"
+          className="relative w-[310px] overflow-hidden rounded-2xl border border-line bg-white shadow-[0_28px_64px_-20px_rgba(15,23,42,.4)]"
           style={{ animation: "cv-teaser .5s cubic-bezier(.22,1,.36,1) both" }}
         >
           <button
@@ -229,32 +236,55 @@ export default function ComplyChat() {
               setTeaserDone(true);
             }}
             aria-label="Dismiss"
-            className="absolute right-2.5 top-2 cursor-pointer p-0.5 text-[12px] text-ink-faint transition hover:text-[#334155]"
+            className="absolute right-3 top-3 z-10 cursor-pointer p-0.5 text-[13px] text-ink-faint transition hover:text-ink"
           >
             ✕
           </button>
-          <div className="mb-[7px] flex items-center gap-2">
-            <span className="inline-flex h-[26px] w-[26px] items-center justify-center rounded-lg bg-brand text-[12px] text-on-brand">
+
+          <div className="px-5 pb-4 pt-5 text-center">
+            <span className="mx-auto mb-3 flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-[18px] text-brand">
               &#10022;
             </span>
-            <b className="font-display text-[12.5px] text-ink">Hi! I&apos;m ComplyChat</b>
-          </div>
-          <div className="mb-2.5 text-[11.5px] leading-[1.5] text-ink-soft">
-            I&apos;m CompliVerse&apos;s AI concierge. Try one:
-          </div>
-          <div className="flex flex-col gap-1.5">
-            {["Which frameworks do you support?", "How is this different from Vanta?"].map(
-              (q) => (
+            <h3 className="font-display text-[16px] font-semibold text-ink">
+              Welcome to Complyverse
+            </h3>
+            <p className="mx-auto mt-2 max-w-[260px] text-[12px] leading-[1.6] text-ink-soft">
+              Replace fragmented GRC workflows with one intelligent compliance system.
+            </p>
+
+            <div className="mb-2.5 mt-4 text-[12px] font-semibold text-ink">
+              What are you trying to solve?
+            </div>
+            <div className="flex flex-col gap-2">
+              {TEASER_QUESTIONS.map((q) => (
                 <button
                   key={q}
                   type="button"
                   onClick={() => teaserGo(q)}
-                  className="cursor-pointer rounded-[9px] border border-brand-200 bg-brand-50 px-3 py-2 text-left text-[11.5px] font-medium text-brand-forest transition hover:border-brand"
+                  className="cursor-pointer rounded-xl border border-brand-200 px-4 py-2.5 text-left text-[12.5px] font-semibold text-brand-deep transition hover:border-brand hover:bg-brand-50"
                 >
-                  &ldquo;{q}&rdquo;
+                  {q}
                 </button>
-              ),
-            )}
+              ))}
+            </div>
+
+            <Link
+              href="/request-demo"
+              onClick={() => {
+                setTeaser(false);
+                setTeaserDone(true);
+              }}
+              className="mt-3 flex items-center justify-center gap-1.5 rounded-xl bg-ink px-4 py-2.5 text-[12.5px] font-semibold text-white transition hover:bg-[#1a2740]"
+            >
+              Talk to our team <span aria-hidden="true">→</span>
+            </Link>
+
+            <Link
+              href="/terms"
+              className="mt-3 inline-block text-[11px] font-medium text-ink-faint underline decoration-ink-faint/40 underline-offset-2 transition hover:text-ink-soft"
+            >
+              Privacy policy
+            </Link>
           </div>
         </div>
       )}

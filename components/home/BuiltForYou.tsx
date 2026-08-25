@@ -60,7 +60,7 @@ export function FinalCta() {
           See your frameworks in it, not ours.
         </h2>
         <p className="mt-4 text-[15px] leading-[1.65] text-ink-muted">
-          Demos are scoped to your regulatory stack — pick a slot, name your frameworks,
+          Demos are scoped to your regulatory stack, pick a slot, name your frameworks,
           and we&apos;ll run the gap analysis live.
         </p>
         <div className="mt-7 flex flex-wrap justify-center gap-3">

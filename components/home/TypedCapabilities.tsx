@@ -4,20 +4,22 @@ import { useEffect, useState } from "react";
 import { CAPABILITY_LINES } from "@/data/home";
 import { Icon } from "@/components/ui/Primitives";
 
-const TYPE_MS = 30; // per character while writing
-const DELETE_MS = 14; // per character while erasing — deleting reads faster
-const HOLD_MS = 1900; // pause on the finished line
-const GAP_MS = 300; // pause on the empty line before the next one starts
+const TYPE_MS = 55; // per character while writing (slower, more deliberate)
+const DELETE_MS = 26; // per character while erasing, deleting reads faster
+const HOLD_MS = 2800; // pause on the finished line
+const GAP_MS = 480; // pause on the empty line before the next one starts
 
-/** Commas get a beat, so it reads like typing rather than a ticker. */
+/** Commas and full stops get a beat, so it reads like typing, not a ticker. */
 function pauseFor(char: string): number {
-  return char === "," ? 120 : 0;
+  if (char === ".") return 260;
+  if (char === ",") return 200;
+  return 0;
 }
 
 /**
  * Hero typewriter: a single highlighted line that writes one short capability
  * claim, holds, backspaces it, and moves to the next module. Sits inline under
- * the CTAs with no surrounding panel — the mint highlight is the container.
+ * the CTAs with no surrounding panel, the mint highlight is the container.
  */
 export default function TypedCapabilities() {
   const [index, setIndex] = useState(0);
@@ -74,9 +76,22 @@ export default function TypedCapabilities() {
 
   return (
     <div className="flex items-center gap-3">
-      {/* Icon swaps with the line; the ring pulses on the brand colour. */}
-      <span className="relative inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-ink ring-1 ring-brand-200">
-        <Icon d={line.icon} size={17} />
+      {/*
+        The tile is keyed on the label, so React remounts it whenever the line
+        changes and the icon scales in fresh, giving the swap a smooth beat.
+        The label under it swaps on the same key.
+      */}
+      <span
+        key={line.label}
+        className="relative inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-ink ring-1 ring-brand-200"
+        style={{ animation: reduced ? "none" : "cv-icon-swap .45s cubic-bezier(.22,1,.36,1) both" }}
+      >
+        <span
+          aria-hidden="true"
+          className="absolute inset-0 rounded-xl ring-2 ring-brand/40"
+          style={{ animation: reduced ? "none" : "cv-ring-ping 1.8s ease-out" }}
+        />
+        <Icon d={line.icon} size={18} />
       </span>
 
       {/*

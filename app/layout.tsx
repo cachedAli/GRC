@@ -30,9 +30,9 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "CompliVerse AI — Compliance that proves itself",
+  title: "Complyverse AI, Compliance that proves itself",
   description:
-    "Upload any regulation. CompliVerse drafts the policies, maps the controls, assesses the evidence and hands you the gap list — every framework, one connected graph.",
+    "Every framework, document, control, risk and piece of evidence in one connected system. Governance, risk and compliance on a single data model, with the links between them mapped for you.",
 };
 
 export default function RootLayout({
@@ -43,7 +43,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="scroll-smooth">
       <body
-        className={`${poppins.variable} ${inter.variable} ${jetbrains.variable} ${sourceSerif.variable} font-body bg-white text-[#1e293b] antialiased`}
+        className={`${poppins.variable} ${inter.variable} ${jetbrains.variable} ${sourceSerif.variable} font-body bg-[linear-gradient(180deg,#cfeee5_0px,#dcf4ed_70px,#e9faf5_150px,#ffffff_340px)] text-[#1e293b] antialiased`}
       >
         <SiteNav />
         <main>{children}</main>

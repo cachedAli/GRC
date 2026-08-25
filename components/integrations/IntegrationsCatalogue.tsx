@@ -93,7 +93,7 @@ export default function IntegrationsCatalogue() {
       {shown.length === 0 ? (
         <p className="rounded-2xl border border-line bg-[#fbfdfd] px-6 py-10 text-center text-[13.5px] text-ink-soft">
           Nothing matches <b className="text-ink">{q}</b> in this category. Try
-          &ldquo;All&rdquo;, or tell us about it in a demo — the parser can take
+          &ldquo;All&rdquo;, or tell us about it in a demo, the parser can take
           systems that are not on this list yet.
         </p>
       ) : (

@@ -8,80 +8,77 @@ const COLUMNS: Column[] = [
   {
     title: "Product",
     links: [
-      { label: "Platform overview", href: "/features" },
-      { label: "All 14 modules", href: "/features" },
-      { label: "AI catalog", href: "/features" },
-      { label: "360° linkage", href: "/features" },
+      { label: "Platform overview", href: "/platform" },
+      { label: "All 13 modules", href: "/platform" },
+      { label: "AI catalog", href: "/platform/insights" },
+      { label: "360° linkage", href: "/platform#linkage" },
       { label: "ROI and time savings", href: "/roi" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Document Management", href: "/governance" },
-      { label: "Vendor Risk (TPRM)", href: "/features" },
-      { label: "Vulnerability Mgmt", href: "/features" },
-      { label: "Evidence Management", href: "/features" },
-      { label: "Enterprise Risk", href: "/risk" },
-      { label: "Business Continuity", href: "/features" },
-      { label: "Asset Management", href: "/features" },
-      { label: "Gap Analysis", href: "/compliance" },
+      { label: "Document Management", href: "/platform/governance" },
+      { label: "Vendor Risk (TPRM)", href: "/platform/vendors" },
+      { label: "Cybersecurity Assurance", href: "/platform/assurance" },
+      { label: "Evidence Management", href: "/platform/evidence" },
+      { label: "Enterprise Risk", href: "/platform/risk" },
+      { label: "Business Continuity", href: "/frameworks/iso-22301" },
+      { label: "Gap Analysis", href: "/platform/assessments" },
     ],
   },
   {
     title: "Frameworks",
     links: [
-      { label: "SOC 2", href: "/compliance" },
-      { label: "ISO 27001", href: "/compliance" },
-      { label: "ISO 22301", href: "/compliance" },
-      { label: "PCI DSS", href: "/compliance" },
-      { label: "NIST CSF", href: "/compliance" },
-      { label: "NIST 800-53", href: "/compliance" },
-      { label: "GDPR", href: "/compliance" },
-      { label: "HIPAA", href: "/compliance" },
-      { label: "DORA", href: "/compliance" },
-      { label: "NIS2", href: "/compliance" },
-      { label: "CIS Controls", href: "/compliance" },
-      { label: "COBIT 2019", href: "/compliance" },
-      { label: "SOX ITGC", href: "/compliance" },
-      { label: "HITRUST", href: "/compliance" },
+      { label: "SOC 2", href: "/frameworks/soc-2" },
+      { label: "ISO 27001", href: "/frameworks/iso-27001" },
+      { label: "ISO 22301", href: "/frameworks/iso-22301" },
+      { label: "PCI DSS", href: "/frameworks/pci-dss" },
+      { label: "NIST CSF", href: "/frameworks/nist-csf" },
+      { label: "NIST 800-53", href: "/frameworks/nist-800-53" },
+      { label: "GDPR", href: "/frameworks/gdpr" },
+      { label: "HIPAA", href: "/frameworks/hipaa" },
+      { label: "DORA", href: "/frameworks/dora" },
+      { label: "NIS2", href: "/frameworks/nis2" },
+      { label: "CIS Controls", href: "/frameworks/cis-controls" },
+      { label: "COBIT 2019", href: "/frameworks/cobit-2019" },
+      { label: "SOX ITGC", href: "/frameworks/sox-itgc" },
+      { label: "HITRUST", href: "/frameworks/hitrust" },
     ],
   },
   {
     title: "Regional",
     links: [
-      { label: "SAMA CSF", href: "/compliance" },
-      { label: "NCA ECC", href: "/compliance" },
-      { label: "CBUAE Art. 13", href: "/compliance" },
-      { label: "SBP ETGRMF", href: "/compliance" },
-      { label: "SBP Cloud Outsourcing", href: "/compliance" },
-      { label: "SBP Internet Banking", href: "/compliance" },
-      { label: "MAS TRM", href: "/compliance" },
-      { label: "SWIFT CSCF", href: "/compliance" },
-      { label: "ARAMCO CCC", href: "/compliance" },
-      { label: "SABIC CyberTrust", href: "/compliance" },
-      { label: "Sri Lanka BSS", href: "/compliance" },
-      { label: "Custom (AI upload)", href: "/compliance" },
+      { label: "SAMA CSF", href: "/frameworks/sama-csf" },
+      { label: "NCA ECC", href: "/frameworks/nca-ecc" },
+      { label: "CBUAE Art. 13", href: "/frameworks/cbuae" },
+      { label: "SBP ETGRMF", href: "/frameworks/sbp-etgrmf" },
+      { label: "SBP Cloud Outsourcing", href: "/frameworks/sbp-cloud" },
+      { label: "SBP Internet Banking", href: "/frameworks/sbp-ibanking" },
+      { label: "MAS TRM", href: "/frameworks/mas-trm" },
+      { label: "SWIFT CSCF", href: "/frameworks/swift-cscf" },
+      { label: "ARAMCO CCC", href: "/frameworks/aramco-ccc" },
+      { label: "SABIC CyberTrust", href: "/frameworks/sabic" },
+      { label: "Sri Lanka BSS", href: "/frameworks/sl-bss" },
+      { label: "All frameworks", href: "/frameworks" },
     ],
   },
   {
     title: "Resources",
     links: [
-      { label: "SAMA CSF guide", href: "/resources" },
-      { label: "NCA ECC checklist", href: "/resources" },
-      { label: "Evidence reuse", href: "/resources" },
-      { label: "Vendor questionnaires", href: "/resources" },
-      { label: "Policy gap analysis", href: "/resources" },
-      { label: "ISO 22301 BCM", href: "/resources" },
-      { label: "All articles", href: "/resources" },
+      { label: "Framework guides", href: "/frameworks" },
+      { label: "Compliance glossary", href: "/resources/glossary" },
+      { label: "Integrations catalog", href: "/integrations" },
+      { label: "Evidence reuse", href: "/platform/evidence" },
+      { label: "ISO 22301 BCM", href: "/frameworks/iso-22301" },
+      { label: "All resources", href: "/resources" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "About us", href: "/about" },
-      { label: "Security posture", href: "/about" },
-      { label: "Founding customers", href: "/about" },
+      { label: "Founding customers", href: "/request-demo" },
+      { label: "Security & hosting", href: "/hosting" },
       { label: "Book a demo", href: "/request-demo" },
     ],
   },
@@ -93,18 +90,15 @@ export default function SiteFooter() {
       <div className="mx-auto max-w-[1240px] px-7 pt-[72px]">
         <div className="grid grid-cols-2 gap-8 pb-[54px] md:grid-cols-4 lg:grid-cols-[1.4fr_1fr_1.1fr_1fr_1fr_1.05fr_1fr]">
           <div className="col-span-2 md:col-span-4 lg:col-span-1">
-            <div className="mb-4 flex items-center gap-2.5">
-              <Logo size={24} tone="dark" />
-              <span className="font-display text-[16px] font-bold text-white">
-                CompliVerse<span className="text-[#3ddfc2]"> AI</span>
-              </span>
+            <div className="mb-4 flex items-center">
+              <Logo size={22} tone="dark" />
             </div>
             <p className="mb-5 max-w-[230px] text-[13px] leading-[1.7]">
               The AI-native GRC platform. Frameworks, policies, controls, evidence, risks
-              and audits — one connected graph.
+              and audits, one connected graph.
             </p>
             <div className="mb-[22px] flex flex-wrap gap-1.5">
-              {["14 modules", "25+ frameworks", "AI-native"].map((b) => (
+              {["13 modules", "25+ frameworks", "AI-native"].map((b) => (
                 <span
                   key={b}
                   className="rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1 text-[11px] font-semibold text-[#3ddfc2]"
@@ -141,10 +135,10 @@ export default function SiteFooter() {
           ))}
         </div>
 
-        {/* Trust strip — the frameworks we get you ready for, not badges we hold. */}
+        {/* Trust strip, the frameworks we get you ready for, not badges we hold. */}
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-slate-400/15 py-[26px]">
           <div className="text-[11px] font-bold uppercase tracking-[.16em] text-slate-400/70">
-            Get audit-ready with CompliVerse
+            Get audit-ready with Complyverse
           </div>
           <div className="flex flex-wrap gap-3.5">
             {TRUST_BADGES.map((b) => (
@@ -170,7 +164,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-400/15 pb-[26px] pt-5 text-[12px] text-slate-400/70">
-          <span>© {new Date().getFullYear()} CompliVerse AI. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Complyverse AI. All rights reserved.</span>
           <span className="flex gap-5">
             <Link href="/terms" className="hover:text-[#3ddfc2]">
               Privacy
@@ -178,7 +172,7 @@ export default function SiteFooter() {
             <Link href="/terms" className="hover:text-[#3ddfc2]">
               Terms
             </Link>
-            <Link href="/about" className="hover:text-[#3ddfc2]">
+            <Link href="/hosting" className="hover:text-[#3ddfc2]">
               Trust
             </Link>
           </span>

@@ -20,7 +20,7 @@ export type ModuleStory = {
   icon: string;
   /** The end-to-end pipeline, rendered as an animated flow. */
   flow: Stage[];
-  /** What a record here links into — the 360° payoff. */
+  /** What a record here links into, the 360° payoff. */
   links: string[];
   /** The differentiator, stated plainly. */
   edge: string;
@@ -38,7 +38,6 @@ export type ModuleStory = {
     | "audit"
     | "workflow"
     | "connectors"
-    | "frameworks"
     | "insights";
 };
 
@@ -46,7 +45,7 @@ export const MODULE_STORIES: ModuleStory[] = [
   {
     key: "governance",
     name: "Governance & Documents",
-    promise: "One document library for the whole organisation — every policy traced to the clause that demands it.",
+    promise: "One document library for the whole organisation, every policy traced to the clause that demands it.",
     icon: ICON.doc,
     flow: [
       { label: "Draft", sub: "AI or template" },
@@ -94,7 +93,7 @@ export const MODULE_STORIES: ModuleStory[] = [
   {
     key: "vendors",
     name: "Vendor Risk (TPRM)",
-    promise: "Every third party through one governed lifecycle — from first intake to offboarding.",
+    promise: "Every third party through one governed lifecycle, from first intake to offboarding.",
     icon: ICON.users,
     flow: [
       { label: "Intake", sub: "Scoping & tiering" },
@@ -110,7 +109,7 @@ export const MODULE_STORIES: ModuleStory[] = [
   {
     key: "assets",
     name: "Asset Management",
-    promise: "Know what you own, how much it matters, and whether it is hardened — before an auditor asks.",
+    promise: "Know what you own, how much it matters, and whether it is hardened, before an auditor asks.",
     icon: ICON.server,
     flow: [
       { label: "Ingest", sub: "CSV or connector" },
@@ -120,7 +119,7 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Linked", sub: "Risks & findings" },
     ],
     links: ["Vulnerabilities", "Risks", "Controls", "Evidence", "CIS benchmarks", "Owners"],
-    edge: "Criticality is scored across eight business axes — not a dropdown someone guessed. That score is what re-prioritises every vulnerability sitting on the host.",
+    edge: "Criticality is scored across eight business axes, not a dropdown someone guessed. That score is what re-prioritises every vulnerability sitting on the host.",
     proof: "assets",
   },
   {
@@ -136,13 +135,13 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Remediate", sub: "SLA tracked" },
     ],
     links: ["Assets", "Risks", "Exceptions", "SLA policy", "Owners", "Evidence"],
-    edge: "Seven signals re-score every finding against the host it sits on — so a CVSS 8.8 can fall, and a quiet CVE on a critical internet-facing box can rise.",
+    edge: "Seven signals re-score every finding against the host it sits on, so a CVSS 8.8 can fall, and a quiet CVE on a critical internet-facing box can rise.",
     proof: "vulnerabilities",
   },
   {
     key: "workflow",
     name: "Workflow Automation",
-    promise: "Describe how your organisation actually works — the engine routes, escalates and chases for you.",
+    promise: "Describe how your organisation actually works, the engine routes, escalates and chases for you.",
     icon: ICON.flow,
     flow: [
       { label: "Trigger", sub: "Any record event" },
@@ -152,7 +151,7 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Close", sub: "Audit trail kept" },
     ],
     links: ["Every module", "Approvals", "Notifications", "Escalations", "Integrations"],
-    edge: "Not a fixed approval chain. Build the flow your regulator expects, per record type, per business unit — including ones nobody anticipated.",
+    edge: "Not a fixed approval chain. Build the flow your regulator expects, per record type, per business unit, including ones nobody anticipated.",
     proof: "workflow",
   },
   {
@@ -168,7 +167,7 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Evidence", sub: "Collected for you" },
     ],
     links: ["Assets", "Vulnerabilities", "Evidence", "Identity providers", "Audit logs"],
-    edge: "Findings arrive already attached to the right asset — no reconciliation spreadsheet between the scanner and the register.",
+    edge: "Findings arrive already attached to the right asset, no reconciliation spreadsheet between the scanner and the register.",
     proof: "connectors",
   },
   {
@@ -206,7 +205,7 @@ export const MODULE_STORIES: ModuleStory[] = [
   {
     key: "risk",
     name: "Enterprise Risk (ERM)",
-    promise: "Gaps become owned risks automatically — no re-keying between the finding and the register.",
+    promise: "Gaps become owned risks automatically, no re-keying between the finding and the register.",
     icon: ICON.trend,
     flow: [
       { label: "Identify", sub: "Gap or incident" },
@@ -216,7 +215,7 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Report", sub: "Board view" },
     ],
     links: ["Controls", "Assets", "Vendors", "Incidents", "RCSA", "Appetite", "KRIs"],
-    edge: "Appetite is enforced, not decorative — breach a threshold and the workflow engine escalates it to the committee that owns it.",
+    edge: "Appetite is enforced, not decorative, breach a threshold and the workflow engine escalates it to the committee that owns it.",
     proof: "risk",
   },
   {
@@ -236,22 +235,6 @@ export const MODULE_STORIES: ModuleStory[] = [
     proof: "audit",
   },
   {
-    key: "frameworks",
-    name: "Framework Upload",
-    promise: "Bring a regulation we have never seen. The parser turns the PDF into a working control set.",
-    icon: ICON.upload,
-    flow: [
-      { label: "Upload", sub: "Any regulation" },
-      { label: "Parse", sub: "Domains extracted" },
-      { label: "Interpret", sub: "Mandatory vs advisory" },
-      { label: "Align", sub: "To your controls" },
-      { label: "Publish", sub: "Live framework" },
-    ],
-    links: ["Control library", "Assessments", "Evidence", "Policies", "Gap analysis"],
-    edge: "Regional and sector mandates do not wait for a vendor roadmap — upload it and start assessing the same day.",
-    proof: "frameworks",
-  },
-  {
     key: "insights",
     name: "Dashboards & ComplyChat",
     promise: "Ask your own GRC data a question in English and get an answer grounded in your records.",
@@ -264,12 +247,12 @@ export const MODULE_STORIES: ModuleStory[] = [
       { label: "Act", sub: "Jump to the record" },
     ],
     links: ["Every module", "Exec KPIs", "Trends", "Recommendations", "Session history"],
-    edge: "Answers are generated against your live tables, so the number in the chat is the number in the register — not a summary of a summary.",
+    edge: "Answers are generated against your live tables, so the number in the chat is the number in the register, not a summary of a summary.",
     proof: "insights",
   },
 ];
 
-/** Evidence coverage suggestions — the cross-framework payoff, verbatim shape. */
+/** Evidence coverage suggestions, the cross-framework payoff, verbatim shape. */
 export const EVIDENCE_MATCHES = [
   { framework: "SWIFT CSCF", control: "4.1", title: "Logging and Monitoring", coverage: "partial" },
   { framework: "NIST SP 800-53 Rev 5", control: "AU-6", title: "Audit Record Review & Reporting", coverage: "partial" },
@@ -334,7 +317,7 @@ export const SCANNERS = ["Tenable Nessus", "Rapid7", "Wiz", "Microsoft Defender"
 
 
 /**
- * The capability catalogue — everything the platform does, at a glance.
+ * The capability catalogue, everything the platform does, at a glance.
  *
  * Twelve cells rather than fourteen modules: a couple of the smaller modules
  * are folded into the capability a buyer would actually search for, and each
@@ -351,86 +334,79 @@ export type Capability = {
 export const CAPABILITIES: Capability[] = [
   {
     title: "Policy & Document Management",
-    body: "One library for every policy, standard and procedure — drafted by AI, versioned in place, and attested by the people it applies to.",
+    body: "One library for every policy, standard and procedure, drafted by AI, versioned in place, and attested by the people it applies to.",
     cta: "Manage policies",
-    href: "/governance",
+    href: "/platform/governance",
     icon: NAV_ICON.doc,
   },
   {
     title: "Committees & Meetings",
     body: "Charter a governance committee, seat its members, schedule the meetings and track every action item to a named owner.",
     cta: "Run committees",
-    href: "/governance",
+    href: "/platform/committees",
     icon: NAV_ICON.vendors,
   },
   {
     title: "Custom Workflows",
     body: "Design event-driven workflows without code to route approvals, chase owners and escalate across any record in the platform.",
     cta: "Build workflows",
-    href: "/features",
+    href: "/platform/workflow",
     icon: NAV_ICON.branch,
   },
   {
     title: "Controls & Evidence",
     body: "Define controls once, keep ownership explicit, and link evidence so an artifact uploaded today answers every framework that needs it.",
     cta: "Automate evidence",
-    href: "/features",
+    href: "/platform/evidence",
     icon: NAV_ICON.clip,
   },
   {
     title: "Enterprise Risk Management",
     body: "Document risks, score inherent against residual, run RCSA campaigns and hold the register to a stated appetite.",
     cta: "See the register",
-    href: "/risk",
+    href: "/platform/risk",
     icon: NAV_ICON.gauge,
   },
   {
     title: "Vendor Risk Management",
-    body: "Bring third-party risk into one governed lifecycle — eleven stages from intake and tiering through to reassessment and offboarding.",
+    body: "Bring third-party risk into one governed lifecycle, eleven stages from intake and tiering through to reassessment and offboarding.",
     cta: "Report on vendor risk",
-    href: "/features",
+    href: "/platform/vendors",
     icon: NAV_ICON.shieldCheck,
   },
   {
     title: "Vulnerability & Asset Management",
     body: "Inventory what you own, score its business criticality, then re-rank every finding by what is genuinely exploitable on that host.",
     cta: "Manage assets",
-    href: "/features",
+    href: "/platform/vulnerabilities",
     icon: NAV_ICON.racks,
   },
   {
     title: "Multi-Framework Support",
     body: "25+ frameworks share one control library, so global standards and regional mandates stop being separate programmes.",
     cta: "Map frameworks",
-    href: "/compliance",
+    href: "/platform/controls",
     icon: NAV_ICON.globe,
-  },
-  {
-    title: "Framework Upload",
-    body: "Bring a regulation we have never seen. The parser extracts domains, controls and evidence expectations straight from the PDF.",
-    cta: "Upload a framework",
-    href: "/compliance",
-    icon: NAV_ICON.upload,
   },
   {
     title: "Integrations & Identity",
     body: "Pull findings and assets from the scanners and clouds you already run, and let people in with the identity they already have.",
     cta: "Connect your stack",
-    href: "/features",
+    href: "/platform/connectors",
     icon: NAV_ICON.plug,
   },
   {
     title: "ComplyChat AI",
     body: "Ask your own GRC data a question in plain English and get an answer grounded in your live records, scoped to your tenant.",
     cta: "Ask ComplyChat",
-    href: "/features",
+    href: "/platform/insights",
     icon: NAV_ICON.ask,
   },
   {
     title: "Audit Management",
     body: "Run the universe, plans, engagements and findings in one place, with packages that assemble from links that already exist.",
     cta: "Collaborate with auditors",
-    href: "/features",
+    href: "/platform/audit",
     icon: ICON.audit,
   },
 ];

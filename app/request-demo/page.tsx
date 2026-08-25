@@ -3,25 +3,25 @@ import DemoForm from "@/components/demo/DemoForm";
 import { TRUST_BADGES } from "@/data/home";
 
 export const metadata: Metadata = {
-  title: "Book a live demo — CompliVerse AI",
+  title: "Book a live demo, Complyverse AI",
   description:
     "Thirty minutes, scoped to your regulatory stack. We run a live gap analysis against a framework you name.",
 };
 
 const PROMISES = [
   "Map your regulatory stack against the 25+ frameworks that ship built in",
-  "Run a live gap analysis on a framework you name — not a canned tour",
+  "Run a live gap analysis on a framework you name, not a canned tour",
   "Show one artifact satisfying several frameworks at once, on your use case",
 ];
 
 export default function RequestDemoPage() {
   return (
     <div className="bg-[linear-gradient(180deg,#f6fdfb,#ffffff_40%)]">
-      <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-10 px-6 py-16 lg:grid-cols-[1fr_460px] lg:gap-16 lg:py-20">
+      <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-10 px-6 py-10 lg:grid-cols-[1fr_460px] lg:gap-16 lg:py-12">
         {/* ---------------- Pitch ---------------- */}
         <div className="lg:pt-4">
           <h1 className="font-display text-[32px] font-semibold leading-[1.15] tracking-[-.02em] text-ink sm:text-[40px]">
-            See CompliVerse on your
+            See Complyverse on your
             <br className="hidden sm:block" /> frameworks, not ours.
           </h1>
 
@@ -49,7 +49,7 @@ export default function RequestDemoPage() {
           </ul>
 
           {/*
-            No rating or customer count here on purpose — pre-launch, those would
+            No rating or customer count here on purpose, pre-launch, those would
             be invented. The frameworks we cover are verifiable, so that is what
             carries the proof.
           */}
@@ -82,7 +82,7 @@ export default function RequestDemoPage() {
               />
               <p className="text-[12px] leading-[1.55] text-brand-forest">
                 <b>Founding-customer program is open.</b> We&apos;re pre-launch with
-                live demos running — the first ten teams help shape the roadmap and
+                live demos running, the first ten teams help shape the roadmap and
                 the pricing.
               </p>
             </div>
