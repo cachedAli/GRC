@@ -15,6 +15,8 @@ export type Stage = { label: string; sub: string };
 export type ModuleStory = {
   key: string;
   name: string;
+  /** Optional explore-link override; defaults to /platform/[key]. */
+  href?: string;
   /** One line, use-case framed: what this does for the person using it. */
   promise: string;
   icon: string;
@@ -107,35 +109,20 @@ export const MODULE_STORIES: ModuleStory[] = [
     proof: "vendors",
   },
   {
-    key: "assets",
-    name: "Asset Management",
-    promise: "Know what you own, how much it matters, and whether it is hardened, before an auditor asks.",
-    icon: ICON.server,
-    flow: [
-      { label: "Ingest", sub: "CSV or connector" },
-      { label: "Classify", sub: "CDE, CIA, owner" },
-      { label: "Score", sub: "8 criticality axes" },
-      { label: "Harden", sub: "CIS benchmark" },
-      { label: "Linked", sub: "Risks & findings" },
-    ],
-    links: ["Vulnerabilities", "Risks", "Controls", "Evidence", "CIS benchmarks", "Owners"],
-    edge: "Criticality is scored across eight business axes, not a dropdown someone guessed. That score is what re-prioritises every vulnerability sitting on the host.",
-    proof: "assets",
-  },
-  {
     key: "vulnerabilities",
-    name: "Vulnerability Management",
-    promise: "Stop patching by CVSS. Prioritise by what is actually exploitable, on the hosts that actually matter.",
-    icon: ICON.shieldAlert,
+    name: "Cybersecurity Assurance",
+    href: "/platform/assurance",
+    promise: "Inventory what you own, score its business criticality, then re-rank every finding by what is genuinely exploitable on that host.",
+    icon: NAV_ICON.shieldCheck,
     flow: [
-      { label: "Import", sub: "Scanner or CSV" },
-      { label: "Enrich", sub: "EPSS, KEV, CWE" },
-      { label: "Contextualise", sub: "Asset criticality" },
-      { label: "Prioritise", sub: "Composite score" },
-      { label: "Remediate", sub: "SLA tracked" },
+      { label: "Discover", sub: "EASM + sweep" },
+      { label: "Inventory", sub: "the one hub" },
+      { label: "Criticality", sub: "8 business axes" },
+      { label: "Contextualise", sub: "EPSS, KEV, reach" },
+      { label: "Remediate", sub: "re-scan verifies" },
     ],
-    links: ["Assets", "Risks", "Exceptions", "SLA policy", "Owners", "Evidence"],
-    edge: "Seven signals re-score every finding against the host it sits on, so a CVSS 8.8 can fall, and a quiet CVE on a critical internet-facing box can rise.",
+    links: ["Risks", "Controls", "CIS benchmarks", "Evidence", "Owners", "Findings"],
+    edge: "Discovery, inventory, criticality and exposure are one pipeline. Seven signals re-score every finding against the host it sits on, and the asset's own criticality decides what rises.",
     proof: "vulnerabilities",
   },
   {
@@ -375,11 +362,11 @@ export const CAPABILITIES: Capability[] = [
     icon: NAV_ICON.shieldCheck,
   },
   {
-    title: "Vulnerability & Asset Management",
+    title: "Cybersecurity Assurance",
     body: "Inventory what you own, score its business criticality, then re-rank every finding by what is genuinely exploitable on that host.",
-    cta: "Manage assets",
-    href: "/platform/vulnerabilities",
-    icon: NAV_ICON.racks,
+    cta: "Explore assurance",
+    href: "/platform/assurance",
+    icon: NAV_ICON.shieldCheck,
   },
   {
     title: "Multi-Framework Support",

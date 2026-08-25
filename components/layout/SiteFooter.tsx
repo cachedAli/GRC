@@ -9,7 +9,7 @@ const COLUMNS: Column[] = [
     title: "Product",
     links: [
       { label: "Platform overview", href: "/platform" },
-      { label: "All 13 modules", href: "/platform" },
+      { label: "All 12 modules", href: "/platform" },
       { label: "AI catalog", href: "/platform/insights" },
       { label: "360° linkage", href: "/platform#linkage" },
       { label: "ROI and time savings", href: "/roi" },
@@ -98,7 +98,7 @@ export default function SiteFooter() {
               and audits, one connected graph.
             </p>
             <div className="mb-[22px] flex flex-wrap gap-1.5">
-              {["13 modules", "25+ frameworks", "AI-native"].map((b) => (
+              {["12 modules", "25+ frameworks", "AI-native"].map((b) => (
                 <span
                   key={b}
                   className="rounded-full border border-brand/30 bg-brand/10 px-2.5 py-1 text-[11px] font-semibold text-[#3ddfc2]"

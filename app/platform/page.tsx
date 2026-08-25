@@ -7,7 +7,7 @@ import LinkageGraph from "@/components/home/LinkageGraph";
 export const metadata: Metadata = {
   title: "Platform overview, Complyverse AI",
   description:
-    "Governance, risk and compliance on one data model. Thirteen modules, a unified control library and a 360-degree linkage graph, with AI in every module.",
+    "Governance, risk and compliance on one data model. Twelve modules, a unified control library and a 360-degree linkage graph, with AI in every module.",
 };
 
 export default function PlatformOverviewPage() {
@@ -34,7 +34,7 @@ export default function PlatformOverviewPage() {
             Governance, risk and compliance on one model.
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.65] text-ink-muted">
-            Thirteen modules, a unified control library and a connected graph
+            Twelve modules, a unified control library and a connected graph
             that ties every framework, policy, control, risk and piece of
             evidence together. AI runs in every one of them.
           </p>
@@ -55,7 +55,7 @@ export default function PlatformOverviewPage() {
 
           <div className="mx-auto mt-11 flex max-w-[560px] flex-wrap justify-center gap-x-10 gap-y-4 border-t border-brand-200/60 pt-7">
             {[
-              { value: "13", label: "connected modules" },
+              { value: "12", label: "connected modules" },
               { value: "25+", label: "frameworks built in" },
               { value: "One", label: "data model" },
             ].map((s) => (
@@ -72,7 +72,7 @@ export default function PlatformOverviewPage() {
         </div>
       </section>
 
-      {/* All thirteen modules */}
+      {/* All twelve modules */}
       <ModuleExplorer />
 
       {/* The 360-degree linkage model (anchor target) */}

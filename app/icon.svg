@@ -1,12 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="CompliVerse">
-  <title>CompliVerse</title>
-  <rect width="512" height="512" rx="114" fill="#1ED4B0"/>
-  <g transform="translate(58.7 168.3) scale(1.5660)">
-    <g fill="none" stroke="#FFFFFF" stroke-width="15" stroke-linecap="round" stroke-linejoin="round">
-      <path d="M83.11 80.43A38 38 0 1 1 83.11 31.57"/>
-      <path d="M50 56H116"/>
-      <path d="M116 94V18A19 19 0 0 1 116 56C138 84 166 94 198 94"/>
-      <path d="M226.24 81.43A38 38 0 1 1 226.24 30.57"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Complyverse">
+  <title>Complyverse</title>
+  <rect width="32" height="32" rx="7" fill="#ffffff"/>
+  <circle cx="16" cy="8" r="4.1" fill="#1ed4b0"/>
+  <rect x="12.4" y="14" width="7.2" height="13.5" rx="3.4" fill="#0b1220"/>
 </svg>

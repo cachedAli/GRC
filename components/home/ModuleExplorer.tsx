@@ -12,7 +12,7 @@ import ModuleScene from "@/components/home/ModuleScenes";
  * scrolling past on the right.
  *
  * The stage answers the same questions for every module in the same visual
- * grammar, so a visitor learns to read one diagram and then reads all thirteen:
+ * grammar, so a visitor learns to read one diagram and then reads all twelve:
  * the end-to-end flow (the drawn scene), the proof stats, what the record links
  * into once it exists, and the problem it kills vs. how Complyverse fixes it.
  */
@@ -55,7 +55,7 @@ export default function ModuleExplorer() {
             Go deep, module by module
           </h2>
           <p className="mt-3 text-[14.5px] leading-[1.6] text-ink-soft">
-            All thirteen, on one data model. Scroll, the diagram follows you.
+            All twelve, on one data model. Scroll, the diagram follows you.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export default function ModuleExplorer() {
           {/* ---------------- Sticky graphical stage ---------------- */}
           <div className="top-[104px] hidden lg:sticky lg:block">
             <div className="relative overflow-hidden rounded-[22px] border border-line bg-white shadow-[0_24px_60px_-34px_rgba(15,23,42,.25)]">
-              {/* Progress through the thirteen. */}
+              {/* Progress through the twelve. */}
               <div
                 className="absolute left-0 top-0 z-10 h-[3px] bg-[linear-gradient(90deg,#1ed4b0,#3ddfc2)] transition-[width] duration-500 ease-[cubic-bezier(.22,1,.36,1)]"
                 style={{ width: `${progress}%` }}
@@ -294,7 +294,7 @@ function ProblemSolution({
       </div>
 
       <Link
-        href={`/platform/${story.key}`}
+        href={story.href ?? `/platform/${story.key}`}
         className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-[#3ddfc2] transition hover:gap-1.5"
       >
         Explore {story.name}

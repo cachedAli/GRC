@@ -48,7 +48,7 @@ export default function CapabilityGrid() {
             It&apos;s all here.
           </h2>
           <p className="mt-3 text-[15px] leading-[1.6] text-ink-soft">
-            Governance, compliance, risk and proof, one data model, thirteen modules,
+            Governance, compliance, risk and proof, one data model, twelve modules,
             AI in every one of them.
           </p>
         </div>
