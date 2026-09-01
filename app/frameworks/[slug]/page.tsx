@@ -13,9 +13,9 @@ export function generateMetadata({
   params: { slug: string };
 }): Metadata {
   const g = FRAMEWORK_GUIDES[params.slug];
-  if (!g) return { title: "Frameworks, Complyverse AI" };
+  if (!g) return { title: "Frameworks, Compliverse AI" };
   return {
-    title: `${g.name} guide, Complyverse AI`,
+    title: `${g.name} guide, Compliverse AI`,
     description: g.overview,
   };
 }

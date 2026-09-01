@@ -157,7 +157,7 @@ export default function CapabilityPageView({ story }: { story: ModuleStory }) {
               </span>
             </div>
 
-            {/* With Complyverse */}
+            {/* With Compliverse */}
             <div
               data-reveal
               style={{ transitionDelay: "90ms" }}
@@ -169,7 +169,7 @@ export default function CapabilityPageView({ story }: { story: ModuleStory }) {
               />
               <div className="relative mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/80 px-3 py-1 text-[10.5px] font-bold uppercase tracking-[.12em] text-brand-ink">
                 <Sparkle />
-                With Complyverse
+                With Compliverse
               </div>
               <p className="relative mb-5 font-display text-[18px] font-semibold leading-snug text-brand-forest">
                 {page.problem.gain}

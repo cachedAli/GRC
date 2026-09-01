@@ -3,7 +3,7 @@ import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/Primitives";
 
 export const metadata: Metadata = {
-  title: "Compliance glossary, Complyverse AI",
+  title: "Compliance glossary, Compliverse AI",
   description:
     "Plain definitions for the vocabulary of GRC: frameworks, controls, evidence, risk, assessments, audit and the terms in between.",
 };
@@ -64,7 +64,7 @@ const GLOSSARY: Group[] = [
     ],
   },
   {
-    label: "The Complyverse model",
+    label: "The Compliverse model",
     terms: [
       { term: "The linkage graph", def: "The connected data model that ties frameworks, policies, controls, evidence, risks and audits together as one graph." },
       { term: "Tenant isolation", def: "Keeping each customer's data separated in its own scope, so answers and evidence never cross tenants." },

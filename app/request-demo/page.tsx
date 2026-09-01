@@ -3,7 +3,7 @@ import DemoForm from "@/components/demo/DemoForm";
 import { TRUST_BADGES } from "@/data/home";
 
 export const metadata: Metadata = {
-  title: "Book a live demo, Complyverse AI",
+  title: "Book a live demo, Compliverse AI",
   description:
     "Thirty minutes, scoped to your regulatory stack. We run a live gap analysis against a framework you name.",
 };
@@ -21,7 +21,7 @@ export default function RequestDemoPage() {
         {/* ---------------- Pitch ---------------- */}
         <div className="lg:pt-4">
           <h1 className="font-display text-[32px] font-semibold leading-[1.15] tracking-[-.02em] text-ink sm:text-[40px]">
-            See Complyverse on your
+            See Compliverse on your
             <br className="hidden sm:block" /> frameworks, not ours.
           </h1>
 

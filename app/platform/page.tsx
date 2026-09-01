@@ -5,7 +5,7 @@ import ModuleExplorer from "@/components/home/ModuleExplorer";
 import LinkageGraph from "@/components/home/LinkageGraph";
 
 export const metadata: Metadata = {
-  title: "Platform overview, Complyverse AI",
+  title: "Platform overview, Compliverse AI",
   description:
     "Governance, risk and compliance on one data model. Twelve modules, a unified control library and a 360-degree linkage graph, with AI in every module.",
 };

@@ -137,7 +137,7 @@ export default function SiteFooter() {
         {/* Trust strip, the frameworks we get you ready for, not badges we hold. */}
         <div className="flex flex-wrap items-center justify-between gap-5 border-t border-slate-400/15 py-[26px]">
           <div className="text-[11px] font-bold uppercase tracking-[.16em] text-slate-400/70">
-            Get audit-ready with Complyverse
+            Get audit-ready with Compliverse
           </div>
           <div className="flex flex-wrap gap-3.5">
             {TRUST_BADGES.map((b) => (
@@ -163,7 +163,7 @@ export default function SiteFooter() {
         </div>
 
         <div className="flex flex-wrap items-center justify-between gap-4 border-t border-slate-400/15 pb-[26px] pt-5 text-[12px] text-slate-400/70">
-          <span>© {new Date().getFullYear()} Complyverse AI. All rights reserved.</span>
+          <span>© {new Date().getFullYear()} Compliverse AI. All rights reserved.</span>
           <span className="flex gap-5">
             <Link href="/terms" className="hover:text-[#3ddfc2]">
               Privacy

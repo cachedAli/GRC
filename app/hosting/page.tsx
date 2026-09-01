@@ -5,9 +5,9 @@ import { Icon } from "@/components/ui/Primitives";
 import { RevealOnScroll } from "@/components/ui/Primitives";
 
 export const metadata: Metadata = {
-  title: "Hosting, Complyverse AI",
+  title: "Hosting, Compliverse AI",
   description:
-    "Run Complyverse the way your regulator expects: secure global cloud (SaaS), or on-premise in your own infrastructure.",
+    "Run Compliverse the way your regulator expects: secure global cloud (SaaS), or on-premise in your own infrastructure.",
 };
 
 const OPTIONS = [
@@ -22,7 +22,7 @@ const OPTIONS = [
     icon: NAV_ICON.racks,
     tag: "Self-hosted",
     title: "On-premise",
-    body: "Run Complyverse inside your own environment when policy or jurisdiction requires the data to stay on your infrastructure.",
+    body: "Run Compliverse inside your own environment when policy or jurisdiction requires the data to stay on your infrastructure.",
     points: ["Your infrastructure, your control", "Air-gapped deployments supported", "Same platform, same features"],
   },
 ];
@@ -69,7 +69,7 @@ export default function HostingPage() {
             Deployed the way your regulator expects.
           </h1>
           <p className="mx-auto mt-5 max-w-[560px] text-[16px] leading-[1.65] text-ink-muted">
-            Complyverse runs as secure global cloud, or on-premise inside your own
+            Compliverse runs as secure global cloud, or on-premise inside your own
             environment. Same platform either way, so the deployment model is your
             call, not a compromise.
           </p>

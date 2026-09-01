@@ -102,7 +102,7 @@ export default function Hero() {
               <span className="h-[9px] w-[9px] rounded-full bg-[#febc2e]" />
               <span className="h-[9px] w-[9px] rounded-full bg-[#28c840]" />
               <span className="ml-2 font-mono text-[10px] text-ink-faint">
-                app.complyverse.ai/dashboard
+                app.compliverse.ai/dashboard
               </span>
             </div>
 

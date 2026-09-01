@@ -133,7 +133,7 @@ export default function IntegrationsSection() {
               <br className="hidden sm:block" /> itself.
             </h2>
             <p className="mx-auto mt-4 max-w-[420px] text-[14.5px] leading-[1.65] text-ink-soft">
-              Connect the systems you already run. Complyverse pulls the evidence,
+              Connect the systems you already run. Compliverse pulls the evidence,
               attaches it to the right control, and keeps it current.
             </p>
 

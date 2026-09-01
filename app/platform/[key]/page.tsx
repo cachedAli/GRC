@@ -18,9 +18,9 @@ export function generateMetadata({
 }): Metadata {
   const story = MODULE_STORIES.find((m) => m.key === params.key);
   const page = story ? CAPABILITY_PAGES[story.key] : undefined;
-  if (!story || !page) return { title: "Platform, Complyverse AI" };
+  if (!story || !page) return { title: "Platform, Compliverse AI" };
   return {
-    title: `${story.name}, Complyverse AI`,
+    title: `${story.name}, Compliverse AI`,
     description: page.subtitle,
   };
 }

@@ -179,7 +179,7 @@ export default function FrameworkGuideView({ guide }: { guide: FrameworkGuide })
         <div className="mx-auto max-w-[1120px]">
           <div data-reveal className="mb-10 max-w-[600px]">
             <div className="mb-2.5 text-[11px] font-bold uppercase tracking-[.2em] text-brand-ink">
-              On Complyverse
+              On Compliverse
             </div>
             <h2 className="font-display text-[26px] font-semibold tracking-[-.01em] text-ink sm:text-[32px]">
               {guide.name}, worked in the platform

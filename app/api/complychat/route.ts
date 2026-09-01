@@ -10,7 +10,7 @@ export const runtime = "nodejs";
  * The pre-launch line is deliberate: we have demos running and no signed
  * customers, and the bot must say so rather than invent social proof.
  */
-const SYSTEM = `You are ComplyChat, the website concierge for Complyverse AI, an AI-native enterprise GRC platform (pre-launch: live demos running, no public case studies yet, be honest about that if asked).
+const SYSTEM = `You are ComplyChat, the website concierge for Compliverse AI, an AI-native enterprise GRC platform (pre-launch: live demos running, no public case studies yet, be honest about that if asked).
 
 FACTS: 13 integrated modules: Governance & Document Management (policy lifecycle, versioning, attestations, committees, regulatory change), Compliance Assessments, Unified Control Library, Evidence Management (OCR, AI assessment, cross-framework reuse, audit packages), Enterprise Risk (register, KRIs, incidents, RCSA, appetite, analytics), Vulnerability Management (register, SLA, exceptions, AI fixes), Vendor Risk/TPRM, Audit Management, Workflow Automation, Asset Management (CIA scoring), Certification journeys, Dashboards, ComplyChat.
 
@@ -38,7 +38,7 @@ function scripted(q: string): string {
   if (/pric|cost/.test(s))
     return "Pricing is tiered by modules and users, the pricing page shows the tier shapes, and exact numbers are shared in a demo scoped to your frameworks.";
   if (/vanta|drata|onetrust|competitor|different/.test(s))
-    return "The short version: those platforms focus on trust automation or point domains. Complyverse links the whole chain, framework, policy, control, evidence, risk, audit, as one graph, with regional frameworks (SAMA, NCA, SBP) built in, not bolted on.";
+    return "The short version: those platforms focus on trust automation or point domains. Compliverse links the whole chain, framework, policy, control, evidence, risk, audit, as one graph, with regional frameworks (SAMA, NCA, SBP) built in, not bolted on.";
   if (/demo|trial|start|onboard/.test(s))
     return "Easiest path is a 30-minute live demo scoped to your frameworks, pick a slot and we'll show your use case, not a canned tour.";
   if (/risk|erm|kri|rcsa/.test(s))
@@ -47,7 +47,7 @@ function scripted(q: string): string {
     return "Staying audit-ready is the default, not a scramble. Evidence, controls and risks live on one graph, workflows chase the owners, and an audit package assembles from links that already exist. When the auditor asks, the trail is a query, not a quarter of hunting.";
   if (/manual|reduce.*work|automat|less work|save time/.test(s))
     return "The AI does the repetitive part: it drafts policies from framework context, recommends the evidence for each control, and reuses one artifact across every framework it satisfies. You review and approve, so people spend time on judgement, not data entry.";
-  return "Complyverse is an AI-native GRC platform: 13 modules, 25+ frameworks, and a 360-degree linkage model that connects policies, controls, evidence, risks and audits. What would you like to dig into, frameworks, evidence, risk, or how the AI works?";
+  return "Compliverse is an AI-native GRC platform: 13 modules, 25+ frameworks, and a 360-degree linkage model that connects policies, controls, evidence, risks and audits. What would you like to dig into, frameworks, evidence, risk, or how the AI works?";
 }
 
 type Turn = { role: "user" | "assistant"; text: string };

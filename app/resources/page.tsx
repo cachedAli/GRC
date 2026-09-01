@@ -4,7 +4,7 @@ import { Icon, RevealOnScroll } from "@/components/ui/Primitives";
 import { NAV_ICON } from "@/data/nav";
 
 export const metadata: Metadata = {
-  title: "Resources, Complyverse AI",
+  title: "Resources, Compliverse AI",
   description:
     "Framework guides, a compliance glossary and the integrations catalog. Practical references for building and running a GRC programme.",
 };

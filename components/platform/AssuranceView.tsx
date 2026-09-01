@@ -219,7 +219,7 @@ export default function AssuranceView() {
             body="Discovery runs both directions: outside-in EASM from a domain, inside-out network sweep from a CIDR. Both turn unknowns into the same inventory, agentless."
           />
           <div data-reveal>
-            <Screen crumb="complyverse / assurance / discovery" tag="LIVE · EASM + Network">
+            <Screen crumb="compliverse / assurance / discovery" tag="LIVE · EASM + Network">
               <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                 {/* Outside-in */}
                 <div className="rounded-xl border border-line-soft bg-[#f8fafc] p-3">
@@ -282,7 +282,7 @@ export default function AssuranceView() {
       <section className="border-y border-line-warm bg-[#f6f8fa] px-6 py-[72px]">
         <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div data-reveal className="order-2 lg:order-1">
-            <Screen crumb="complyverse / assurance / criticality / core-banking-host" tag="ISCA · 28 / 32">
+            <Screen crumb="compliverse / assurance / criticality / core-banking-host" tag="ISCA · 28 / 32">
               <div className="mb-3 grid grid-cols-2 gap-2">
                 {[
                   { k: "Operational", v: "4/4" },
@@ -367,7 +367,7 @@ export default function AssuranceView() {
           />
           <div data-reveal className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_1fr]">
             {/* The re-score */}
-            <Screen crumb="complyverse / assurance / vulnerabilities / VULN-299">
+            <Screen crumb="compliverse / assurance / vulnerabilities / VULN-299">
               <div className="flex items-center justify-between gap-4">
                 <div className="text-center">
                   <div className="text-[10px] font-bold uppercase tracking-[.1em] text-ink-faint">Raw CVSS</div>
@@ -493,7 +493,7 @@ export default function AssuranceView() {
             body="CIS, vulnerabilities, criticality, controls and linked risk blend into one banded score per asset, tuned to your own appetite with business multipliers for exposure and data class."
           />
           <div data-reveal>
-            <Screen crumb="complyverse / assurance / risk-posture" tag="Banking preset · tunable">
+            <Screen crumb="compliverse / assurance / risk-posture" tag="Banking preset · tunable">
               <div className="flex items-center gap-4 rounded-xl border border-line-soft bg-[#f8fafc] px-4 py-3">
                 <div>
                   <div className="text-[10px] uppercase tracking-[.1em] text-ink-faint">Average risk / 100</div>

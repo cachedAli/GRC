@@ -319,7 +319,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   security: {
     eyebrow: "Security and architecture",
-    title: "Understand how Complyverse structures tenant access and activity.",
+    title: "Understand how Compliverse structures tenant access and activity.",
     summary:
       "Review tenant architecture, authentication, roles, permissions, identity configuration and audit logging.",
     scope: [
@@ -333,9 +333,9 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   signin: {
     eyebrow: "Sign in",
-    title: "Customer sign-in for teams already running Complyverse.",
+    title: "Customer sign-in for teams already running Compliverse.",
     summary:
-      "Tenant sign-in is live for teams already running Complyverse. If you are evaluating, book a demo and we will provision a scoped tenant for you.",
+      "Tenant sign-in is live for teams already running Compliverse. If you are evaluating, book a demo and we will provision a scoped tenant for you.",
     scope: [
       "Tenant-scoped access",
       "Role and module permissions",
@@ -356,10 +356,10 @@ const plannedPages: Record<string, PlannedPage> = {
     status: "Launch",
   },
   about: {
-    eyebrow: "About Complyverse",
+    eyebrow: "About Compliverse",
     title: "GRC work deserves a connected operational record.",
     summary:
-      "Learn why Complyverse is built around visible ownership, supporting evidence and reviewable decisions.",
+      "Learn why Compliverse is built around visible ownership, supporting evidence and reviewable decisions.",
     scope: [
       "The problem",
       "Product belief",
@@ -373,7 +373,7 @@ const plannedPages: Record<string, PlannedPage> = {
     eyebrow: "Contact",
     title: "Discuss the GRC programme you are building.",
     summary:
-      "Tell the Complyverse team about your frameworks, workflows and evaluation requirements.",
+      "Tell the Compliverse team about your frameworks, workflows and evaluation requirements.",
     scope: [
       "Programme questions",
       "Framework requirements",
@@ -384,7 +384,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   demo: {
     eyebrow: "Product demonstration",
-    title: "Walk through Complyverse with your programme in mind.",
+    title: "Walk through Compliverse with your programme in mind.",
     summary:
       "Explore the frameworks, controls, evidence, risks and review processes relevant to your team.",
     scope: [
@@ -426,7 +426,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   integrations: {
     eyebrow: "Integrations",
-    title: "Connect approved systems with Complyverse workflows.",
+    title: "Connect approved systems with Compliverse workflows.",
     summary:
       "Review integration categories, provider status, authentication and supported data flows.",
     scope: [
@@ -440,7 +440,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   resources: {
     eyebrow: "Resources",
-    title: "Learn how Complyverse supports GRC operations.",
+    title: "Learn how Compliverse supports GRC operations.",
     summary:
       "Access maintained framework guidance, documentation and product information.",
     scope: [
@@ -453,7 +453,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   "resources/documentation": {
     eyebrow: "Product documentation",
-    title: "Understand Complyverse workflows and configuration.",
+    title: "Understand Compliverse workflows and configuration.",
     summary:
       "A future maintained reference for product setup, administration and everyday work.",
     scope: [
@@ -481,7 +481,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   "resources/glossary": {
     eyebrow: "GRC glossary",
-    title: "Understand the language used across Complyverse.",
+    title: "Understand the language used across Compliverse.",
     summary:
       "Clear definitions for frameworks, controls, evidence, risk, assessment, findings and review.",
     scope: [

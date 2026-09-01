@@ -52,7 +52,7 @@ export default function SiteNav() {
       */}
       <div ref={navRef} className="sticky top-3 z-[900] px-3 sm:px-5">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-2 rounded-full border border-line bg-white/80 px-3 shadow-[0_10px_34px_-12px_rgba(15,23,42,.22)] backdrop-blur-xl sm:gap-4 sm:px-5">
-          <Link href="/" className="flex shrink-0 items-center" aria-label="Complyverse AI home">
+          <Link href="/" className="flex shrink-0 items-center" aria-label="Compliverse AI home">
             <Logo size={20} />
           </Link>
 

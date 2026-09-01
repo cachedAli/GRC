@@ -4,9 +4,9 @@ import { FRAMEWORK_GUIDES } from "@/data/frameworks";
 import { RevealOnScroll } from "@/components/ui/Primitives";
 
 export const metadata: Metadata = {
-  title: "Framework guides, Complyverse AI",
+  title: "Framework guides, Compliverse AI",
   description:
-    "Guides to every framework Complyverse supports, overview, scope, structure and the journey to compliance, one connected data model behind all of them.",
+    "Guides to every framework Compliverse supports, overview, scope, structure and the journey to compliance, one connected data model behind all of them.",
 };
 
 export default function FrameworksIndexPage() {

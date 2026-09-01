@@ -23,7 +23,7 @@ export default function CapabilityCatalogue() {
               The whole surface area
             </div>
             <h2 className="font-display text-[28px] font-semibold leading-[1.15] tracking-[-.02em] text-white sm:text-[36px]">
-              Discover the Complyverse difference
+              Discover the Compliverse difference
             </h2>
           </div>
           <Link

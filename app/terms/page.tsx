@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "Terms of Service | Complyverse AI",
-  description: "Terms of Service for Complyverse AI.",
+  title: "Terms of Service | Compliverse AI",
+  description: "Terms of Service for Compliverse AI.",
 };
 
 export default function TermsPage() {
@@ -26,7 +26,7 @@ export default function TermsPage() {
               </h2>
               <div className="mt-2 space-y-3">
                 <p>
-                  Complyverse AI is a governance, risk, and compliance platform
+                  Compliverse AI is a governance, risk, and compliance platform
                   designed to help teams manage frameworks, controls, evidence,
                   findings, and remediation tracking.
                 </p>
@@ -82,7 +82,7 @@ export default function TermsPage() {
                   your users.
                 </p>
                 <p>
-                  You retain ownership of your data. Complyverse AI processes
+                  You retain ownership of your data. Compliverse AI processes
                   your data only to operate, secure, and support the service.
                 </p>
                 <p>

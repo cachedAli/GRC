@@ -3,9 +3,9 @@ import IntegrationsCatalogue from "@/components/integrations/IntegrationsCatalog
 import { INTEGRATIONS } from "@/data/integrations";
 
 export const metadata: Metadata = {
-  title: "Integrations, Complyverse AI",
+  title: "Integrations, Compliverse AI",
   description:
-    "Every system Complyverse connects to, what each one collects as evidence, and which control families it feeds.",
+    "Every system Compliverse connects to, what each one collects as evidence, and which control families it feeds.",
 };
 
 export default function IntegrationsPage() {

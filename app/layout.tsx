@@ -30,7 +30,7 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  title: "Complyverse AI, Compliance that proves itself",
+  title: "Compliverse AI, Compliance that proves itself",
   description:
     "Every framework, document, control, risk and piece of evidence in one connected system. Governance, risk and compliance on a single data model, with the links between them mapped for you.",
 };

@@ -4,7 +4,7 @@ export default function ROI() {
       <div className="text-center mb-16">
         <h1 className="text-4xl md:text-5xl font-bold text-[#000414] mb-6">Return on Investment</h1>
         <p className="text-xl text-slate-600 max-w-3xl mx-auto">
-          Quantifiable time savings across all GRC activities using Complyverse AI.
+          Quantifiable time savings across all GRC activities using Compliverse AI.
         </p>
       </div>
 
@@ -14,7 +14,7 @@ export default function ROI() {
             <tr>
               <th className="p-6 font-bold text-lg">Activity</th>
               <th className="p-6 font-bold text-lg">❌ Manual Process</th>
-              <th className="p-6 font-bold text-lg">✅ With Complyverse AI</th>
+              <th className="p-6 font-bold text-lg">✅ With Compliverse AI</th>
               <th className="p-6 font-bold text-lg">⏱ Time Saved</th>
             </tr>
           </thead>

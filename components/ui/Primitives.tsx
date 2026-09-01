@@ -35,7 +35,7 @@ export function Icon({
 }
 
 /**
- * The Complyverse wordmark, matching the product UI: "Comply" in ink, "verse"
+ * The Compliverse wordmark, matching the product UI: "Compli" in ink, "verse"
  * in brand teal, with a small superscript AI. `tone` flips it for dark panels;
  * `size` is the wordmark's font size in px.
  */
@@ -56,9 +56,9 @@ export function Logo({
       className={`inline-flex items-start font-display font-bold leading-none tracking-[-.02em] ${className ?? ""}`}
       style={{ fontSize: size }}
       role="img"
-      aria-label="Complyverse AI"
+      aria-label="Compliverse AI"
     >
-      <span style={{ color: comply }}>Comply</span>
+      <span style={{ color: comply }}>Compli</span>
       <span style={{ color: verse }}>verse</span>
       <span
         className="font-semibold tracking-[.08em]"

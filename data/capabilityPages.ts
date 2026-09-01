@@ -15,7 +15,7 @@ import { NAV_ICON } from "@/data/nav";
 export type Feature = { icon: string; title: string; body: string };
 export type ProofStat = { value: string; label: string };
 
-/** The "today it's broken / with Complyverse" contrast shown per page. */
+/** The "today it's broken / with Compliverse" contrast shown per page. */
 export type ProblemShift = {
   pain: string;
   painPoints: string[];

@@ -8,7 +8,7 @@ type Msg = { role: "user" | "assistant"; text: string; book?: boolean };
 const OPENER: Msg = {
   role: "assistant",
   text:
-    "Hi there! I'm ComplyChat, Complyverse's AI. We link frameworks, policies, " +
+    "Hi there! I'm ComplyChat, Compliverse's AI. We link frameworks, policies, " +
     "controls and evidence into one 360-degree graph. What compliance challenge " +
     "are you working on today?",
 };
@@ -246,7 +246,7 @@ export default function ComplyChat() {
               &#10022;
             </span>
             <h3 className="font-display text-[16px] font-semibold text-ink">
-              Welcome to Complyverse
+              Welcome to Compliverse
             </h3>
             <p className="mx-auto mt-2 max-w-[260px] text-[12px] leading-[1.6] text-ink-soft">
               Replace fragmented GRC workflows with one intelligent compliance system.

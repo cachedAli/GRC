@@ -238,7 +238,7 @@ export const CAPABILITY_LINES: CapabilityLine[] = [
 ];
 
 /**
- * The point-tool categories Complyverse displaces. Shown as struck-through
+ * The point-tool categories Compliverse displaces. Shown as struck-through
  * icons next to the "tools replaced" figure, so the claim is illustrated by
  * what actually gets switched off rather than by five blank squares.
  */
