@@ -76,7 +76,7 @@ export default function FrameworksIndexPage() {
                   className="text-[12px] font-semibold transition-all group-hover:translate-x-0.5"
                   style={{ color: g.accent }}
                 >
-                  Open guide →
+                  Open guide
                 </span>
               </div>
             </Link>

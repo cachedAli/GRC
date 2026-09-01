@@ -19,7 +19,7 @@ export default function FrameworkWorkspace({ guide }: { guide: FrameworkGuide })
   const open = rows.filter((r) => r.status !== "ready").length;
 
   return (
-    <div className="w-[540px] overflow-hidden rounded-[16px] border border-line bg-white font-body">
+    <div className="cv-fitscale w-[540px] overflow-hidden rounded-[16px] border border-line bg-white font-body">
       {/* Title bar */}
       <div className="flex items-center gap-2.5 border-b border-line-soft bg-[#f8fafc] px-4 py-3">
         <span className="flex h-7 w-7 items-center justify-center overflow-hidden rounded-lg border border-line-soft bg-white">

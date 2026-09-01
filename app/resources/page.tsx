@@ -84,7 +84,7 @@ export default function ResourcesPage() {
                 {r.body}
               </p>
               <span className="mt-5 inline-flex items-center gap-1 text-[13px] font-semibold text-brand-deep transition-all group-hover:gap-2">
-                {r.cta} <span aria-hidden="true">→</span>
+                {r.cta} 
               </span>
             </Link>
           ))}
@@ -95,8 +95,7 @@ export default function ResourcesPage() {
           className="mx-auto mt-6 max-w-[1080px] rounded-[20px] border border-dashed border-line bg-[#f8fafc] px-7 py-6 text-center"
         >
           <p className="text-[13.5px] leading-[1.6] text-ink-soft">
-            Long-form articles and product documentation are being written
-            alongside the founding-customer program.{" "}
+            Long-form articles and product documentation are on the way.{" "}
             <Link href="/request-demo" className="font-semibold text-brand-deep hover:underline">
               Book a demo
             </Link>{" "}

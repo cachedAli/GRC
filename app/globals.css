@@ -1942,6 +1942,15 @@
   .cv-scene [style*="stroke-dashoffset"] { stroke-dashoffset: 0 !important; }
 }
 
+/* On phones the fixed-width drawn scenes/mockups (540px) are scaled down to fit
+   the screen rather than scrolling or clipping. `zoom` collapses the layout box
+   too, so no empty space is left; browsers without `zoom` fall back to the
+   overflow-x-auto wrappers and simply scroll. */
+@media (max-width: 520px) {
+  .cv-scene,
+  .cv-fitscale { zoom: 0.6; }
+}
+
 /* Layered product-UI cards: a back card settles first, the front card slides
    over it, and small stat chips arrive last, the composition reads as a real
    screen rather than a diagram. */

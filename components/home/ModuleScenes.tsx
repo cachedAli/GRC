@@ -359,9 +359,7 @@ function VulnScene() {
               88
             </span>
           </span>
-          <span className="pb-1 text-[13px] text-brand" aria-hidden="true">
-            →
-          </span>
+          
           <span className="text-center">
             <span className="block text-[8px] uppercase tracking-[.08em] text-brand-ink">
               On this host
@@ -610,7 +608,7 @@ function RiskScene() {
   return (
     <Scene>
       <Card x="5%" y="12%" w="46%" delay={0}>
-        <CardTitle>Inherent → residual</CardTitle>
+        <CardTitle>Inherent vs residual</CardTitle>
         <div className="p-2.5">
           <div className="relative grid grid-cols-5 gap-[3px]">
             {Array.from({ length: 25 }).map((_, i) => (
@@ -736,7 +734,7 @@ function InsightScene() {
           <Pill tone="brand">SQL-grounded</Pill>
           <span className="font-mono text-[8px] text-ink-soft">148ms</span>
           <span className="ml-auto text-[8.5px] font-semibold text-brand-deep">
-            Jump to record →
+            Jump to record
           </span>
         </div>
       </Card>

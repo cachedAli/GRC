@@ -142,7 +142,7 @@ export default function IntegrationsSection() {
                 href="/integrations"
                 className="rounded-full bg-brand px-6 py-3 font-display text-[14px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong"
               >
-                See all integrations →
+                See all integrations
               </Link>
             </div>
 

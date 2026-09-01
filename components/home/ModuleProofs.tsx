@@ -102,9 +102,7 @@ function VulnProof() {
     <Panel title="CVE-2024-2961 · on Primary Web Server">
       <div className="mb-3 flex items-center gap-3">
         <ScoreChip label="Before · CVSS alone" value={88} tone="mute" />
-        <span className="text-[16px] text-ink-faint" aria-hidden="true">
-          →
-        </span>
+        
         <ScoreChip label="After · on this host" value={79} tone="brand" />
         <span className="ml-auto rounded-full bg-[#fef2f2] px-2.5 py-1 text-[10px] font-bold text-[#b91c1c]">
           Weaponized

@@ -340,7 +340,7 @@ export const CAPABILITY_PAGES: Record<string, CapabilityPage> = {
       { icon: ICON.alert, title: "Enforced escalation", body: "Breach a threshold and the workflow engine escalates it to the committee that owns it." },
     ],
     stats: [
-      { value: "Inherent → residual", label: "on one model" },
+      { value: "Inherent vs residual", label: "on one model" },
       { value: "Appetite", label: "enforced, not decorative" },
     ],
     problem: {

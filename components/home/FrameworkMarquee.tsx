@@ -45,7 +45,7 @@ export default function FrameworkMarquee() {
           href="/frameworks"
           className="text-[13.5px] font-semibold text-brand-deep hover:text-[#086e5b]"
         >
-          Browse the full framework library →
+          Browse the full framework library
         </Link>
       </div>
     </section>

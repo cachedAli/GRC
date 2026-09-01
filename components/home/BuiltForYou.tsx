@@ -21,7 +21,7 @@ export function Articles() {
             href="/resources"
             className="whitespace-nowrap text-[13.5px] font-semibold text-brand-deep hover:text-[#086e5b]"
           >
-            All articles →
+            All articles
           </Link>
         </div>
 
@@ -42,7 +42,7 @@ export function Articles() {
               </span>
               <span className="text-[12.5px] leading-[1.6] text-ink-soft">{a.teaser}</span>
               <span className="mt-auto text-[12px] font-semibold text-brand-deep">
-                {a.read} · Read →
+                {a.read} · Read
               </span>
             </Link>
           ))}

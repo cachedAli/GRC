@@ -38,8 +38,7 @@ export default function IntegrationsPage() {
       <div className="border-t border-line bg-[#fbfdfd]">
         <div className="mx-auto max-w-[720px] px-6 py-12 text-center">
           <p className="text-[13px] leading-[1.7] text-ink-soft">
-            Connector sync is rolling out with the founding-customer program. The
-            list above is the supported catalogue and the evidence each connector
+            The list above is the supported catalogue and the evidence each connector
             is scoped to collect, not a live status board. If a system you depend
             on is missing, tell us in the demo and we&apos;ll tell you honestly
             where it sits.
@@ -48,7 +47,7 @@ export default function IntegrationsPage() {
             href="/request-demo"
             className="mt-5 inline-block rounded-full bg-brand px-6 py-3 font-display text-[14px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong"
           >
-            Book a live demo →
+            Book a live demo
           </a>
         </div>
       </div>

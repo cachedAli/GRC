@@ -140,7 +140,7 @@ export default function ModuleExplorer() {
                     card carries its own diagram directly beneath it.
                   */}
                   <div className="mt-3 lg:hidden">
-                    <div className="overflow-hidden rounded-2xl border border-line bg-white">
+                    <div className="overflow-x-auto rounded-2xl border border-line bg-white">
                       <div className="px-3 pt-3">
                         <ModuleScene story={m} />
                       </div>
@@ -298,7 +298,7 @@ function ProblemSolution({
         className="mt-3 inline-flex items-center gap-1 text-[12px] font-semibold text-[#3ddfc2] transition hover:gap-1.5"
       >
         Explore {story.name}
-        <span aria-hidden="true">→</span>
+        
       </Link>
     </div>
   );

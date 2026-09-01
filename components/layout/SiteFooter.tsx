@@ -77,7 +77,6 @@ const COLUMNS: Column[] = [
   {
     title: "Company",
     links: [
-      { label: "Founding customers", href: "/request-demo" },
       { label: "Security & hosting", href: "/hosting" },
       { label: "Book a demo", href: "/request-demo" },
     ],
@@ -111,7 +110,7 @@ export default function SiteFooter() {
               href="/request-demo"
               className="inline-block rounded-full bg-brand px-[22px] py-2.5 font-display text-[13px] font-semibold text-on-brand transition hover:bg-brand-strong"
             >
-              Book a demo →
+              Book a demo
             </Link>
           </div>
 

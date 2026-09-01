@@ -30,7 +30,7 @@ export default function CapabilityCatalogue() {
             href="/request-demo"
             className="shrink-0 rounded-full bg-brand px-5 py-2.5 font-display text-[13px] font-semibold text-on-brand shadow-[0_10px_26px_-10px_rgba(30,212,176,.6)] transition hover:bg-brand-strong"
           >
-            Book a demo →
+            Book a demo
           </Link>
         </div>
 
@@ -60,12 +60,7 @@ export default function CapabilityCatalogue() {
 
               <span className="mt-auto inline-flex items-center gap-1.5 pt-1 text-[12px] font-semibold text-[#3ddfc2]">
                 {c.cta}
-                <span
-                  aria-hidden="true"
-                  className="transition-transform duration-300 group-hover/cell:translate-x-1"
-                >
-                  →
-                </span>
+                
               </span>
             </Link>
           ))}

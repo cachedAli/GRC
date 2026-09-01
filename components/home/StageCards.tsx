@@ -153,12 +153,7 @@ function StageCard({
           style={{ marginTop: "1.75rem" }}
         >
           {tier.cta}
-          <span
-            aria-hidden="true"
-            className="transition-transform duration-300 group-hover/btn:translate-x-1"
-          >
-            →
-          </span>
+          
         </Link>
       </div>
     </div>

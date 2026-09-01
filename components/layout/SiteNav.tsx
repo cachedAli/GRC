@@ -42,27 +42,13 @@ export default function SiteNav() {
   const cancelClose = () => window.clearTimeout(closeTimer.current);
 
   return (
-    <header>
-      {/* Announcement bar, the honest pre-revenue signal. */}
-      <div className="flex items-center justify-center gap-2.5 bg-[#0b1220] px-5 py-2.5 text-center text-[12.5px] text-white/85">
-        <span
-          className="h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
-          style={{ animation: "cv-pulse-dot 2s infinite" }}
-        />
-        <span className="hidden sm:inline">
-          Founding customer program open. Shaped pricing for the first 10 customers.
-        </span>
-        <span className="sm:hidden">Founding customer program open</span>
-        <Link href="/request-demo" className="font-semibold text-[#3ddfc2] hover:underline">
-          Apply →
-        </Link>
-      </div>
-
+    <header className="pt-3">
       {/*
-        A floating island rather than a full-bleed bar. It still occupies its own
-        76px of layout, so inner pages keep their normal top spacing; the hero
-        opts into the overlay by pulling itself up under it. No `overflow` here -
-        the mega-menu panels are absolutely positioned inside and would clip.
+        A floating island rather than a full-bleed bar. The pt-3 above plus the
+        island keep it to ~76px of layout, so inner pages keep their normal top
+        spacing; the hero opts into the overlay by pulling itself up under it.
+        No `overflow` here - the mega-menu panels are absolutely positioned
+        inside and would clip.
       */}
       <div ref={navRef} className="sticky top-3 z-[900] px-3 sm:px-5">
         <div className="mx-auto flex h-16 max-w-[1200px] items-center gap-2 rounded-full border border-line bg-white/80 px-3 shadow-[0_10px_34px_-12px_rgba(15,23,42,.22)] backdrop-blur-xl sm:gap-4 sm:px-5">
@@ -108,8 +94,8 @@ export default function SiteNav() {
               href="/request-demo"
               className="whitespace-nowrap rounded-full bg-brand px-3.5 py-2.5 font-display text-[13px] font-semibold text-on-brand shadow-[0_8px_20px_-8px_rgba(30,212,176,.55)] transition hover:bg-brand-strong sm:px-[19px]"
             >
-              <span className="sm:hidden">Demo →</span>
-              <span className="hidden sm:inline">Book a demo →</span>
+              <span className="sm:hidden">Demo</span>
+              <span className="hidden sm:inline">Book a demo</span>
             </Link>
             <button
               type="button"
@@ -282,7 +268,7 @@ function MenuPanel({ menu, onNavigate }: { menu: NavMenu; onNavigate: () => void
           onClick={onNavigate}
           className="block border-t border-line-soft bg-[#fbfdfd] py-3 text-center text-[12.5px] font-semibold text-brand-deep transition hover:bg-brand-50"
         >
-          {menu.footer.label} →
+          {menu.footer.label}
         </Link>
       )}
     </div>
@@ -338,7 +324,7 @@ function DemoPromo({
         className="relative mt-5 inline-flex items-center justify-center gap-1.5 rounded-xl bg-brand px-3 py-2.5 text-[12.5px] font-semibold text-on-brand transition hover:bg-brand-strong"
       >
         {feature.cta}
-        <span aria-hidden="true">→</span>
+        
       </Link>
     </div>
   );
@@ -388,7 +374,7 @@ function AssistantPromo({
           onClick={onNavigate}
           className="mt-3.5 inline-flex items-center justify-center gap-1 rounded-lg border border-brand-200 bg-brand-50 px-3 py-2 font-display text-[12px] font-semibold text-brand-deep transition hover:border-brand hover:bg-brand-100"
         >
-          {feature.cta} <span aria-hidden="true">→</span>
+          {feature.cta} 
         </Link>
       </div>
     </div>

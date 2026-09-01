@@ -76,7 +76,7 @@ export default function CapabilityPageView({ story }: { story: ModuleStory }) {
           {/* 3D-tilted platform mockup, stacked for depth */}
           <div className="[perspective:1600px]">
             <div
-              className="relative origin-center transition-transform duration-500 [transform:rotateY(-13deg)_rotateX(7deg)] hover:[transform:rotateY(-7deg)_rotateX(4deg)]"
+              className="relative origin-center transition-transform duration-500 lg:[transform:rotateY(-13deg)_rotateX(7deg)] lg:hover:[transform:rotateY(-7deg)_rotateX(4deg)]"
               style={{ transformStyle: "preserve-3d" }}
             >
               {/* two offset panels sitting behind, so the mockup reads as a 3D stack */}

@@ -192,7 +192,7 @@ export default function ComplyChat() {
                 href="/request-demo"
                 className="mt-0.5 block rounded-[11px] bg-brand p-2.5 text-center font-display text-[13px] font-semibold text-on-brand transition hover:bg-brand-strong"
               >
-                Book a live demo →
+                Book a live demo
               </Link>
             )}
           </div>
@@ -276,7 +276,7 @@ export default function ComplyChat() {
               }}
               className="mt-3 flex items-center justify-center gap-1.5 rounded-xl bg-ink px-4 py-2.5 text-[12.5px] font-semibold text-white transition hover:bg-[#1a2740]"
             >
-              Talk to our team <span aria-hidden="true">→</span>
+              Talk to our team 
             </Link>
 
             <Link

@@ -333,7 +333,7 @@ const plannedPages: Record<string, PlannedPage> = {
   },
   signin: {
     eyebrow: "Sign in",
-    title: "Customer sign-in opens with the founding-customer program.",
+    title: "Customer sign-in for teams already running Complyverse.",
     summary:
       "Tenant sign-in is live for teams already running Complyverse. If you are evaluating, book a demo and we will provision a scoped tenant for you.",
     scope: [
@@ -351,7 +351,7 @@ const plannedPages: Record<string, PlannedPage> = {
     scope: [
       "Module-based tiers",
       "User bands",
-      "Founding-customer program",
+      "Flexible onboarding",
     ],
     status: "Launch",
   },

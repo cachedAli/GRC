@@ -65,7 +65,7 @@ export const NAV_ICON = {
   /** Windowed building, the company. */
   building:
     "M4 21V6.5L11 3l7 3.5V21M3 21h18M9 21v-4.5h4V21M8 9h.01M12 9h.01M16 9h.01M8 13h.01M12 13h.01M16 13h.01",
-  /** Shoot breaking ground, the founding-customer programme. */
+  /** Shoot breaking ground, growth and onboarding. */
   sprout: "M12 21v-8M12 13c0-3.3-2.7-6-6-6 0 3.3 2.7 6 6 6zM12 13c0-3.9 3.1-7 7-7 0 3.9-3.1 7-7 7z",
   /** Envelope, contact. */
   mail: "M3 6h18v12H3zM3.5 6.7 12 13l8.5-6.3",

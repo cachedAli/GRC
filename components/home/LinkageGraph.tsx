@@ -269,7 +269,7 @@ export default function LinkageGraph() {
                         }`}
                       >
                         {l.verb}
-                        <span aria-hidden="true">→</span>
+                        
                       </span>
                       <span className="text-[12px] font-semibold text-ink">{l.to}</span>
                     </span>

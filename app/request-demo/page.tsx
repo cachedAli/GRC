@@ -74,18 +74,6 @@ export default function RequestDemoPage() {
                 </span>
               ))}
             </div>
-
-            <div className="mt-5 flex items-start gap-2.5 rounded-xl border border-brand-200 bg-brand-50 px-3.5 py-3">
-              <span
-                className="mt-1.5 h-1.5 w-1.5 shrink-0 rounded-full bg-brand"
-                style={{ animation: "cv-pulse-dot 2s infinite" }}
-              />
-              <p className="text-[12px] leading-[1.55] text-brand-forest">
-                <b>Founding-customer program is open.</b> We&apos;re pre-launch with
-                live demos running, the first ten teams help shape the roadmap and
-                the pricing.
-              </p>
-            </div>
           </div>
         </div>
 

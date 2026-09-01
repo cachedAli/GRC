@@ -12,7 +12,7 @@ import { NAV_ICON } from "@/data/nav";
  */
 
 const HERO_STATS = [
-  { v: "205", l: "findings re-scored", s: "raw CVSS → contextual priority" },
+  { v: "205", l: "findings re-scored", s: "raw CVSS to contextual priority" },
   { v: "426", l: "reachable attack paths", s: "surfaced, not guessed" },
   { v: "47 / 85", l: "inventory score", s: "measured against target" },
   { v: "Agentless", l: "platform connectors", s: "nothing installed" },
@@ -269,7 +269,7 @@ export default function AssuranceView() {
                 {["Campaign", "Run", "Observation", "Inbox", "Connect", "Inventory"].map((s, i, a) => (
                   <span key={s} className="flex items-center gap-1.5">
                     <span className="text-[11px] font-semibold text-brand-forest">{s}</span>
-                    {i < a.length - 1 && <span className="text-brand/60">→</span>}
+                    {i < a.length - 1 && <span className="text-brand/60">·</span>}
                   </span>
                 ))}
               </div>
@@ -338,7 +338,7 @@ export default function AssuranceView() {
             <div data-reveal className="grid gap-2.5">
               {[
                 { icon: NAV_ICON.gauge, t: "Eight scored criteria", b: "Operational, financial, customer, data, access, RTO/RPO and exposure." },
-                { icon: NAV_ICON.branch, t: "Assessor → In review → Approved", b: "A governed workflow; an approved score is signed, dated and locked." },
+                { icon: NAV_ICON.branch, t: "Assessor, review, approved", b: "A governed workflow; an approved score is signed, dated and locked." },
                 { icon: ICON.doc, t: "Exports on the bank template", b: "Promote to the risk register, or export .xlsx / PDF for the file." },
               ].map((f) => (
                 <div key={f.t} className="flex gap-3.5 rounded-2xl border border-line bg-white p-4">
@@ -434,7 +434,7 @@ export default function AssuranceView() {
                 {["Open", "In Progress", "Remediated", "Verified", "Closed"].map((s, i, a) => (
                   <span key={s} className="flex items-center gap-1.5">
                     <span className="text-[10.5px] font-semibold text-ink-muted">{s}</span>
-                    {i < a.length - 1 && <span className="text-brand/50 text-[10px]">→</span>}
+                    {i < a.length - 1 && <span className="text-brand/50 text-[10px]">·</span>}
                   </span>
                 ))}
               </div>

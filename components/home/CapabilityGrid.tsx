@@ -172,7 +172,7 @@ export default function CapabilityGrid() {
           >
             <b className="font-display text-[15.5px] text-ink">Documents &amp; Policy</b>
             <span className="text-[12.5px] leading-[1.55] text-ink-soft">
-              Draft → review → approve → publish, with AI drafting and attestations.
+              Draft, review, approve, publish, with AI drafting and attestations.
             </span>
             <span className="mt-1.5 rounded-xl border border-line bg-white p-3">
               {LIFECYCLE.map((d) => (
