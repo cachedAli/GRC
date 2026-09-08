@@ -1,3 +1,12 @@
+import type { Metadata } from "next";
+import { createMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  title: "GRC return on investment",
+  description: "Quantifiable time savings across GRC activities using Compliverse AI.",
+  path: "/roi",
+});
+
 export default function ROI() {
   return (
     <div className="container mx-auto px-4 py-16">

@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { FileText, CheckCircle, Presentation } from 'lucide-react';
+import { createMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  title: "AI governance",
+  description: "Policy management, attestation and board oversight powered by intelligent agents.",
+  path: "/governance",
+});
 
 export default function Governance() {
   return (

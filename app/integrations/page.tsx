@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import IntegrationsCatalogue from "@/components/integrations/IntegrationsCatalogue";
 import { INTEGRATIONS } from "@/data/integrations";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Integrations, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Compliance integrations",
   description:
     "Every system Compliverse connects to, what each one collects as evidence, and which control families it feeds.",
-};
+  path: "/integrations",
+});
 
 export default function IntegrationsPage() {
   return (

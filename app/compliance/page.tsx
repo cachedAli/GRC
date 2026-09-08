@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { BookOpen, Search, Check } from 'lucide-react';
+import { createMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  title: "AI compliance management",
+  description: "Framework ingestion, evidence management and compliance reporting with Compliverse AI.",
+  path: "/compliance",
+});
 
 export default function Compliance() {
   return (

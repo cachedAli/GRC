@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Hero from "@/components/home/Hero";
 import FrameworkMarquee from "@/components/home/FrameworkMarquee";
 import CapabilityGrid from "@/components/home/CapabilityGrid";
@@ -8,6 +9,10 @@ import LinkageGraph from "@/components/home/LinkageGraph";
 import StageCards from "@/components/home/StageCards";
 import { Articles, FinalCta } from "@/components/home/BuiltForYou";
 import { RevealOnScroll } from "@/components/ui/Primitives";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default function Home() {
   return (

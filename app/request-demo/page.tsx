@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import DemoForm from "@/components/demo/DemoForm";
 import { TRUST_BADGES } from "@/data/home";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Book a live demo, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Book a live demo",
   description:
     "Thirty minutes, scoped to your regulatory stack. We run a live gap analysis against a framework you name.",
-};
+  path: "/request-demo",
+});
 
 const PROMISES = [
   "Map your regulatory stack against the 25+ frameworks that ship built in",

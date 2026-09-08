@@ -1,4 +1,12 @@
+import type { Metadata } from "next";
 import { Activity, ShieldAlert, Cpu } from 'lucide-react';
+import { createMetadata } from "@/lib/seo";
+
+export const metadata: Metadata = createMetadata({
+  title: "AI risk management",
+  description: "Continuous risk register, scenario modeling and treatment plans with Compliverse AI.",
+  path: "/risk",
+});
 
 export default function Risk() {
   return (

@@ -1,12 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { RevealOnScroll } from "@/components/ui/Primitives";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Compliance glossary, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Compliance glossary",
   description:
     "Plain definitions for the vocabulary of GRC: frameworks, controls, evidence, risk, assessments, audit and the terms in between.",
-};
+  path: "/resources/glossary",
+});
 
 type Term = { term: string; def: string };
 type Group = { label: string; terms: Term[] };

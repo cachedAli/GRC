@@ -3,12 +3,14 @@ import Link from "next/link";
 import { RevealOnScroll, Sparkle } from "@/components/ui/Primitives";
 import ModuleExplorer from "@/components/home/ModuleExplorer";
 import LinkageGraph from "@/components/home/LinkageGraph";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Platform overview, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "GRC platform overview",
   description:
     "Governance, risk and compliance on one data model. Twelve modules, a unified control library and a 360-degree linkage graph, with AI in every module.",
-};
+  path: "/platform",
+});
 
 export default function PlatformOverviewPage() {
   return (

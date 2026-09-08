@@ -3,12 +3,14 @@ import Link from "next/link";
 import { NAV_ICON } from "@/data/nav";
 import { Icon } from "@/components/ui/Primitives";
 import { RevealOnScroll } from "@/components/ui/Primitives";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Hosting, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Cloud and on-premise hosting",
   description:
     "Run Compliverse the way your regulator expects: secure global cloud (SaaS), or on-premise in your own infrastructure.",
-};
+  path: "/hosting",
+});
 
 const OPTIONS = [
   {

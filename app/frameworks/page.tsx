@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { FRAMEWORK_GUIDES } from "@/data/frameworks";
 import { RevealOnScroll } from "@/components/ui/Primitives";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Framework guides, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Compliance framework guides",
   description:
     "Guides to every framework Compliverse supports, overview, scope, structure and the journey to compliance, one connected data model behind all of them.",
-};
+  path: "/frameworks",
+});
 
 export default function FrameworksIndexPage() {
   const guides = Object.values(FRAMEWORK_GUIDES);

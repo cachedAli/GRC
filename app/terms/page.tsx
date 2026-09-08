@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Terms of Service | Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "Terms of Service",
   description: "Terms of Service for Compliverse AI.",
-};
+  path: "/terms",
+});
 
 export default function TermsPage() {
   return (

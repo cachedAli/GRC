@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { MODULE_STORIES } from "@/data/modules";
 import { CAPABILITY_PAGES } from "@/data/capabilityPages";
 import CapabilityPageView from "@/components/platform/CapabilityPageView";
+import { createMetadata } from "@/lib/seo";
 
 /** One page per module that has capability-page detail. */
 export function generateStaticParams() {
@@ -18,11 +19,12 @@ export function generateMetadata({
 }): Metadata {
   const story = MODULE_STORIES.find((m) => m.key === params.key);
   const page = story ? CAPABILITY_PAGES[story.key] : undefined;
-  if (!story || !page) return { title: "Platform, Compliverse AI" };
-  return {
-    title: `${story.name}, Compliverse AI`,
+  if (!story || !page) return { title: "GRC platform", robots: { index: false } };
+  return createMetadata({
+    title: story.name,
     description: page.subtitle,
-  };
+    path: `/platform/${story.key}`,
+  });
 }
 
 export default function PlatformCapabilityPage({

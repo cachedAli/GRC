@@ -1,6 +1,8 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { notFound } from "next/navigation";
+import { createMetadata } from "@/lib/seo";
 
 type PlannedPage = {
   eyebrow: string;
@@ -494,6 +496,24 @@ const plannedPages: Record<string, PlannedPage> = {
     status: "Phase 2",
   },
 };
+
+export function generateMetadata({
+  params,
+}: {
+  params: { slug: string[] };
+}): Metadata {
+  const key = params.slug.join("/");
+  const page = plannedPages[key];
+
+  if (!page) return { robots: { index: false, follow: false } };
+
+  return createMetadata({
+    title: page.eyebrow,
+    description: page.summary,
+    path: `/${key}`,
+    noIndex: true,
+  });
+}
 
 export default function PlannedMarketingPage({
   params,

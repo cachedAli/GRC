@@ -2,12 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { Icon, RevealOnScroll } from "@/components/ui/Primitives";
 import { NAV_ICON } from "@/data/nav";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Resources, Compliverse AI",
+export const metadata: Metadata = createMetadata({
+  title: "GRC resources",
   description:
     "Framework guides, a compliance glossary and the integrations catalog. Practical references for building and running a GRC programme.",
-};
+  path: "/resources",
+});
 
 const RESOURCES = [
   {
