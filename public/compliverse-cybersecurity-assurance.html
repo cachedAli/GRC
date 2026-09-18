@@ -311,7 +311,16 @@ document.addEventListener('DOMContentLoaded', async function() {
     var assuranceHeader = document.querySelector('header[data-screen-label="Header"]');
 if (assuranceHeader) assuranceHeader.style.display = 'none';
     var assuranceModuleNav = document.querySelector('nav[data-screen-label="Module nav"]');
-    if (assuranceModuleNav) assuranceModuleNav.style.display = 'none';
+if (assuranceModuleNav) assuranceModuleNav.style.display = 'none';
+    var assuranceFooter = document.querySelector('footer[data-screen-label="Footer"]');
+    if (assuranceFooter) assuranceFooter.style.display = 'none';
+    var reportAssuranceHeight = function () {
+      var assuranceHeight = Math.max(document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0);
+      if (window.parent !== window) window.parent.postMessage({ type: 'compliverse-assurance-height', height: assuranceHeight }, window.location.origin);
+    };
+    reportAssuranceHeight();
+    window.addEventListener('load', reportAssuranceHeight);
+    window.addEventListener('resize', reportAssuranceHeight);
 
     // Resolve page-frame markers: mint this document's own blob for each
     // framed page — from local text when this is the root, otherwise by
