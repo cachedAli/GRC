@@ -1,6 +1,12 @@
 @import "tailwindcss";
 @import "react-day-picker/style.css";
 
+/* The assurance page supplies its own dark canvas; keep the global mint
+   landing-page wash from showing around the shared site header. */
+body:has(.assurance-page-shell) {
+  background: #0b1220 !important;
+}
+
 .demo-calendar .rdp-root {
   --rdp-accent-color: #0c8f76;
   --rdp-accent-background-color: #e8fcf8;

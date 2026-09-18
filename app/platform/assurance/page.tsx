@@ -10,10 +10,12 @@ export const metadata: Metadata = createMetadata({
 
 export default function AssurancePage() {
   return (
-    <iframe
-      title="CompliVerse Cybersecurity Assurance"
-      src="/compliverse-cybersecurity-assurance.html"
-      className="block h-[calc(100vh-5rem)] min-h-[760px] w-full border-0 bg-[#0b1220]"
-    />
+    <div className="assurance-page-shell">
+      <iframe
+        title="CompliVerse Cybersecurity Assurance"
+        src="/compliverse-cybersecurity-assurance.html"
+        className="block h-[calc(100vh-5rem)] min-h-[760px] w-full border-0 bg-[#0b1220]"
+      />
+    </div>
   );
 }

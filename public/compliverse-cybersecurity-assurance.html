@@ -309,7 +309,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     document.documentElement.replaceWith(doc.documentElement);
     // Header intentionally hidden on the Next.js assurance route.
     var assuranceHeader = document.querySelector('header[data-screen-label="Header"]');
-    if (assuranceHeader) assuranceHeader.style.display = 'none';
+if (assuranceHeader) assuranceHeader.style.display = 'none';
+    var assuranceModuleNav = document.querySelector('nav[data-screen-label="Module nav"]');
+    if (assuranceModuleNav) assuranceModuleNav.style.display = 'none';
 
     // Resolve page-frame markers: mint this document's own blob for each
     // framed page — from local text when this is the root, otherwise by
