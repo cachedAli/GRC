@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import AssuranceEmbed from "@/components/platform/AssuranceEmbed";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
@@ -11,11 +12,7 @@ export const metadata: Metadata = createMetadata({
 export default function AssurancePage() {
   return (
     <div className="assurance-page-shell">
-      <iframe
-        title="CompliVerse Cybersecurity Assurance"
-        src="/compliverse-cybersecurity-assurance.html"
-        className="block h-[calc(100vh-5rem)] min-h-[760px] w-full border-0 bg-[#0b1220]"
-      />
+      <AssuranceEmbed />
     </div>
   );
 }
