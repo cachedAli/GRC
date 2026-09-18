@@ -88,30 +88,30 @@ export default function AssuranceView() {
       <RevealOnScroll />
 
       {/* ---------------- Hero ---------------- */}
-      <section className="relative -mt-[76px] overflow-hidden bg-[linear-gradient(180deg,#e9fbf6,#f6fdfb_55%,#ffffff)]">
+      <section className="relative -mt-[76px] overflow-hidden bg-[#0b1220]">
         <div
           aria-hidden="true"
           className="pointer-events-none absolute inset-0"
           style={{
             background:
-              "radial-gradient(ellipse 55% 45% at 18% 0%, rgba(30,212,176,.16), transparent 60%)," +
-              "radial-gradient(ellipse 45% 40% at 90% 20%, rgba(61,223,194,.12), transparent 55%)",
+              "radial-gradient(ellipse 60% 70% at 50% 0%, rgba(30,212,176,.16), transparent 70%)," +
+              "radial-gradient(ellipse 45% 55% at 90% 20%, rgba(61,223,194,.10), transparent 60%)",
           }}
         />
-        <div className="relative mx-auto max-w-[1120px] px-6 pb-14 pt-[132px] text-center">
-          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-brand-200 bg-white/70 px-3 py-1.5 text-[11px] font-bold uppercase tracking-[.16em] text-brand-ink backdrop-blur-sm">
+        <div className="relative mx-auto max-w-[1140px] px-6 pb-16 pt-[150px] text-left">
+          <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[.04] px-3.5 py-1.5 text-[11px] font-bold uppercase tracking-[.18em] text-brand-glow backdrop-blur-sm">
             <Icon d={NAV_ICON.shieldCheck} size={13} />
             Cybersecurity Assurance
           </div>
-          <h1 className="mx-auto max-w-[760px] font-display text-[36px] font-semibold leading-[1.06] tracking-[-.02em] text-ink sm:text-[52px]">
-            Prove your attack surface. <span className="text-brand-deep">Don&apos;t guess it.</span>
+          <h1 className="max-w-[760px] font-display text-[38px] font-semibold leading-[1.06] tracking-[-.03em] text-white sm:text-[56px]">
+            Prove your attack surface.<br /> <span className="text-brand-glow">Don&apos;t guess it.</span>
           </h1>
-          <p className="mx-auto mt-5 max-w-[600px] text-[16px] leading-[1.65] text-ink-muted">
-            Six modules, one loop: find what you own, score what matters, and
+          <p className="mt-6 max-w-[560px] text-[16px] leading-[1.65] text-slate-300/75">
+            Seven modules, one loop: find what you own, score what matters, and
             re-rank every finding by what is genuinely exploitable on the host it
             sits on. Assets and vulnerabilities, one connected pipeline.
           </p>
-          <div className="mt-8 flex flex-wrap justify-center gap-3">
+          <div className="mt-8 flex flex-wrap gap-3">
             <Link
               href="/request-demo"
               className="rounded-full bg-brand px-7 py-3.5 font-display text-[14.5px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong"
@@ -120,7 +120,7 @@ export default function AssuranceView() {
             </Link>
             <a
               href="#pipeline"
-              className="rounded-full border border-[#d7e3e0] bg-white px-7 py-3.5 font-display text-[14.5px] font-semibold text-ink transition hover:border-brand hover:text-brand-ink"
+              className="rounded-full border border-white/15 bg-white/[.04] px-7 py-3.5 font-display text-[14.5px] font-semibold text-white transition hover:bg-white/[.09]"
             >
               How it connects
             </a>
@@ -132,15 +132,45 @@ export default function AssuranceView() {
                 key={s.l}
                 data-reveal
                 style={{ transitionDelay: `${i * 70}ms` }}
-                className="rounded-2xl border border-line bg-white/80 p-4 text-left backdrop-blur-sm"
+                className="rounded-2xl border border-white/10 bg-white/[.05] p-4 text-left backdrop-blur-sm"
               >
                 <div className="font-display text-[24px] font-bold tracking-[-.01em] text-brand-deep">
                   {s.v}
                 </div>
-                <div className="mt-1 text-[12px] font-semibold text-ink">{s.l}</div>
-                <div className="mt-0.5 text-[11px] leading-tight text-ink-soft">{s.s}</div>
+                <div className="mt-1 text-[12px] font-semibold text-white">{s.l}</div>
+                <div className="mt-0.5 text-[11px] leading-tight text-slate-300/65">{s.s}</div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- Architecture ---------------- */}
+      <section id="architecture" className="border-b border-line-warm bg-white px-6 py-[72px]">
+        <div className="mx-auto max-w-[1120px]">
+          <div data-reveal className="mx-auto mb-10 max-w-[650px] text-center">
+            <div className="mb-2.5 text-[11px] font-bold uppercase tracking-[.2em] text-brand-ink">One pipeline</div>
+            <h2 className="font-display text-[28px] font-semibold tracking-[-.02em] text-ink sm:text-[36px]">One pipeline. The inventory is the hub.</h2>
+            <p className="mt-3 text-[14.5px] leading-[1.6] text-ink-soft">Discovery, scanning and identity feed one connected record. CTEM reads exposure from it, and a re-scan is the only proof a fix landed.</p>
+          </div>
+          <div data-reveal className="grid gap-3 md:grid-cols-3">
+            {[
+              { n: "01", title: "Feeders", items: ["IT Asset Discovery", "Network sweep", "Active Directory", "Nessus scanner"] },
+              { n: "02", title: "The hub", items: ["Asset inventory", "Ownership + CIA", "Criticality", "Lifecycle + controls"] },
+              { n: "03", title: "Read + act", items: ["CTEM exposure loop", "Reachable attack paths", "One named owner", "Verified re-scan"] },
+            ].map((group) => (
+              <div key={group.n} className="rounded-2xl border border-line bg-[#f8fafc] p-5 shadow-[0_18px_40px_-32px_rgba(15,23,42,.45)]">
+                <div className="font-mono text-[11px] font-bold text-brand-deep">{group.n}</div>
+                <h3 className="mt-1 font-display text-[17px] font-semibold text-ink">{group.title}</h3>
+                <div className="mt-4 grid gap-2">
+                  {group.items.map((item) => <div key={item} className="flex items-center gap-2 rounded-lg border border-line-soft bg-white px-3 py-2 text-[12px] font-medium text-ink-muted"><span className="h-1.5 w-1.5 rounded-full bg-brand" />{item}</div>)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div data-reveal className="mt-5 rounded-2xl border border-brand-200 bg-brand-50/70 p-5 text-center">
+            <div className="font-display text-[14px] font-semibold text-ink">Nothing is invented. Every value traces to a source.</div>
+            <div className="mt-1 text-[12px] text-brand-forest">NVD · FIRST.org EPSS · CISA KEV · Exploit-DB · GitHub PoCs · Nessus</div>
           </div>
         </div>
       </section>
@@ -278,7 +308,28 @@ export default function AssuranceView() {
         </div>
       </section>
 
-      {/* ---------------- 03 Criticality ---------------- */}
+      {/* ---------------- 02 Inventory + CIS ---------------- */}
+      <section id="inventory" className="border-y border-line-warm bg-[#f6f8fa] px-6 py-[72px]">
+        <div className="mx-auto grid max-w-[1120px] gap-12 lg:grid-cols-2">
+          <div>
+            <SectionHead n="02" eyebrow="IT Asset Inventory" title="A living register that scores its own trustworthiness." body="Machine-collected facts, manual ownership and outside-in probes become one inventory score you can trust." />
+            <div data-reveal className="rounded-2xl border border-line bg-white p-5">
+              <div className="flex items-end justify-between"><div><div className="text-[10px] font-bold uppercase tracking-[.12em] text-ink-faint">Inventory score / 100</div><div className="mt-1 font-display text-[40px] font-bold leading-none text-brand-deep">47</div></div><div className="text-right text-[11px] text-ink-soft">target <b className="text-ink">85</b><br />10 assets · 201 open vulns</div></div>
+              <div className="mt-5 grid gap-2">{[["Inventory hygiene",18,21],["Vulnerability exposure",18,76],["Remediation health",16,52],["Criticality coverage",15,28],["CIS benchmark",13,24],["Scan & monitoring",10,83]].map(([label,weight,value]) => <div key={String(label)} className="flex items-center gap-2 text-[11px]"><span className="w-[132px] shrink-0 text-ink-muted">{label}</span><span className="h-1.5 flex-1 overflow-hidden rounded-full bg-line-soft"><span className="block h-full rounded-full bg-brand" style={{ width: `${Number(value)}%` }} /></span><span className="w-9 text-right font-mono text-[10px] text-brand-deep">{weight}%</span></div>)}</div>
+            </div>
+          </div>
+          <div id="cis">
+            <SectionHead n="03" eyebrow="CIS Benchmark" title="Hardening, proven — every check is immutable evidence." body="Import the benchmark, scan on schedule, and lock every pass-fail result to an evidence hash that cascades into risk posture." />
+            <div data-reveal className="rounded-2xl border border-line bg-white p-5">
+              <div className="flex items-center justify-between border-b border-line-soft pb-3"><div><div className="text-[10px] uppercase tracking-[.12em] text-ink-faint">Benchmark v5.0.1</div><div className="font-display text-[15px] font-semibold text-ink">Microsoft Windows 11 Enterprise</div></div><span className="rounded-full bg-brand-50 px-2.5 py-1 font-mono text-[10px] font-bold text-brand-deep">agent · every 30s</span></div>
+              <div className="mt-4 grid grid-cols-3 gap-2 text-center">{[["Passed","63","text-brand-deep"],["Failed","472","text-[#dc2626]"],["Errored","2","text-ink-muted"]].map(([l,v,c]) => <div key={l} className="rounded-xl border border-line-soft bg-[#f8fafc] p-3"><div className={`font-display text-[24px] font-bold ${c}`}>{v}</div><div className="text-[10px] font-semibold uppercase tracking-[.08em] text-ink-faint">{l}</div></div>)}</div>
+              <div className="mt-4 grid gap-1.5">{["1.1.1 Password history ≥ 24","2.2.21 Deny log on locally","5.1 Bluetooth service"].map((rule,i) => <div key={rule} className="flex items-center justify-between rounded-lg border border-line-soft px-3 py-2 text-[11px]"><span className="text-ink-muted"><b className={i===0 ? "text-[#dc2626]" : "text-brand-deep"}>{i===0 ? "FAIL" : "PASS"}</b> · {rule}</span><span className="font-mono text-[10px] text-ink-faint">sha256:{i===0 ? "9f3a1c…d41b" : "4be09a…77f2"}</span></div>)}</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- 04 Criticality ---------------- */}
       <section className="border-y border-line-warm bg-[#f6f8fa] px-6 py-[72px]">
         <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div data-reveal className="order-2 lg:order-1">
@@ -330,7 +381,7 @@ export default function AssuranceView() {
           </div>
           <div className="order-1 lg:order-2">
             <SectionHead
-              n="03"
+            n="04"
               eyebrow="Criticality Assessments"
               title="Business criticality, scored, not a dropdown someone guessed."
               body="Two bank-grade templates score what an asset is worth across eight criteria, signed, locked, then used to re-rank every finding on the host. Criticality is an input, not a label."
@@ -356,11 +407,11 @@ export default function AssuranceView() {
         </div>
       </section>
 
-      {/* ---------------- 04 Vulnerabilities ---------------- */}
+      {/* ---------------- 05 Vulnerabilities ---------------- */}
       <section className="px-6 py-[72px]">
         <div className="mx-auto max-w-[1120px]">
           <SectionHead
-            n="04"
+            n="05"
             eyebrow="Vulnerability Management"
             title="Stop patching by CVSS. Patch what is actually exploitable."
             body="Contextual priority weighs exposure, exploits and EPSS on top of CVSS. An urgent-looking 98 falls to 36 where nothing can reach it."
@@ -446,11 +497,11 @@ export default function AssuranceView() {
         </div>
       </section>
 
-      {/* ---------------- 05 CTEM ---------------- */}
+      {/* ---------------- 06 CTEM ---------------- */}
       <section className="border-y border-line-warm bg-[#f6f8fa] px-6 py-[72px]">
         <div className="mx-auto max-w-[1000px] text-center">
           <div data-reveal className="mb-3 inline-flex items-center gap-2.5">
-            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand font-mono text-[12px] font-bold text-on-brand">05</span>
+            <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-brand font-mono text-[12px] font-bold text-on-brand">06</span>
             <span className="text-[11px] font-bold uppercase tracking-[.18em] text-brand-ink">CTEM exposure loop</span>
           </div>
           <h2 data-reveal className="mx-auto max-w-[680px] font-display text-[26px] font-semibold tracking-[-.01em] text-ink sm:text-[32px]">
@@ -483,11 +534,11 @@ export default function AssuranceView() {
         </div>
       </section>
 
-      {/* ---------------- 06 Posture ---------------- */}
+      {/* ---------------- 07 Posture ---------------- */}
       <section className="px-6 py-[72px]">
         <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-12 lg:grid-cols-[1fr_1.05fr]">
           <SectionHead
-            n="06"
+            n="07"
             eyebrow="Assets Risk Posture"
             title="One composite risk score per asset, banded, not vibes."
             body="CIS, vulnerabilities, criticality, controls and linked risk blend into one banded score per asset, tuned to your own appetite with business multipliers for exposure and data class."
@@ -543,6 +594,20 @@ export default function AssuranceView() {
                 ))}
               </div>
             </Screen>
+          </div>
+        </div>
+      </section>
+
+      {/* ---------------- Asset anatomy ---------------- */}
+      <section id="anatomy" className="border-t border-line-warm bg-[#f6f8fa] px-6 py-[72px]">
+        <div className="mx-auto max-w-[1120px]">
+          <div data-reveal className="mx-auto mb-10 max-w-[650px] text-center">
+            <div className="mb-2.5 text-[11px] font-bold uppercase tracking-[.2em] text-brand-ink">Anatomy of an asset</div>
+            <h2 className="font-display text-[28px] font-semibold tracking-[-.02em] text-ink sm:text-[36px]">One asset, one connected record.</h2>
+            <p className="mt-3 text-[14.5px] leading-[1.6] text-ink-soft">Every fact, finding, control and relationship attaches to the same asset record — traceable from discovery to risk posture.</p>
+          </div>
+          <div data-reveal className="grid grid-cols-2 gap-2 sm:grid-cols-5">
+            {["Discovered", "Machine facts", "CIA ratings", "Criticality", "Software", "CIS evidence", "Vulnerabilities", "Controls", "Relationships", "Risk posture"].map((item, i) => <div key={item} className="rounded-xl border border-line bg-white p-3"><div className="font-mono text-[10px] font-bold text-brand-deep">{String(i + 1).padStart(2, "0")}</div><div className="mt-1 text-[12px] font-semibold text-ink">{item}</div><div className="mt-1 h-1 rounded-full bg-brand/20"><div className="h-full rounded-full bg-brand" style={{ width: `${35 + ((i * 17) % 60)}%` }} /></div></div>)}
           </div>
         </div>
       </section>

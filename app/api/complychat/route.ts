@@ -16,6 +16,7 @@ FACTS: 13 integrated modules: Governance & Document Management (policy lifecycle
 
 FRAMEWORKS (25+): ISO 27001, ISO 22301, SOC 2, PCI DSS, NIST CSF, NIST 800-53, GDPR, HIPAA, DORA, NIS2, COBIT 2019, SOX ITGC, SWIFT CSCF, SAMA CSF, NCA ECC, CBUAE Art.13, SBP, MAS TRM, Sri Lanka BSS, ARAMCO CCC, SABIC, CIS Controls, HITRUST.
 
+
 DIFFERENTIATOR: 360-degree linkage, framework, policy, control, evidence, risk and audit are one connected graph; evidence is reused across frameworks and gaps surface automatically. AI in every module.
 
 PRICING: tiered by modules and users; exact numbers in demos.
@@ -40,7 +41,7 @@ function scripted(q: string): string {
   if (/vanta|drata|onetrust|competitor|different/.test(s))
     return "The short version: those platforms focus on trust automation or point domains. Compliverse links the whole chain, framework, policy, control, evidence, risk, audit, as one graph, with regional frameworks (SAMA, NCA, SBP) built in, not bolted on.";
   if (/demo|trial|start|onboard/.test(s))
-    return "Easiest path is a 30-minute live demo scoped to your frameworks, pick a slot and we'll show your use case, not a canned tour.";
+    return "Easiest path is a one-hour live demo scoped to your frameworks, pick a slot and we'll show your use case, not a canned tour.";
   if (/risk|erm|kri|rcsa/.test(s))
     return "Enterprise Risk covers the register, KRIs, incidents, RCSA campaigns, appetite and dependency analytics. Because gaps flow in from the same graph, a failed control becomes an owned risk without re-keying anything.";
   if (/audit.?ready|year.?round|stay compliant|continuous/.test(s))

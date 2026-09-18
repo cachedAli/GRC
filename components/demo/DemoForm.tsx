@@ -2,6 +2,9 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
+import { PopupModal, useCalendlyEventListener } from "react-calendly";
+import { addDays, format, startOfDay } from "date-fns";
+import { DayPicker } from "react-day-picker";
 import { FRAMEWORK_GUIDES } from "@/data/frameworks";
 
 const TEAM_SIZES = ["1–50", "51–200", "201–1,000", "1,001–5,000", "5,000+"];
@@ -15,11 +18,46 @@ const ALL_FRAMEWORKS = [
 
 type Errors = Record<string, string>;
 
+const CALENDLY_URL = "https://calendly.com/animeblk2003/30min";
+
 export default function DemoForm() {
   const [frameworks, setFrameworks] = useState<string[]>([]);
   const [errors, setErrors] = useState<Errors>({});
   const [busy, setBusy] = useState(false);
   const [done, setDone] = useState(false);
+  const [scheduleOpen, setScheduleOpen] = useState(false);
+  const [calendlyEventUri, setCalendlyEventUri] = useState("");
+  const [calendlyInviteeUri, setCalendlyInviteeUri] = useState("");
+  const [prefill, setPrefill] = useState({ name: "", email: "" });
+  const [popupRoot, setPopupRoot] = useState<HTMLElement | null>(null);
+  const formRef = useRef<HTMLFormElement>(null);
+  // Kept only for the retired in-file picker markup below; Calendly is now the active scheduler.
+  const [selectedDate, setSelectedDate] = useState("");
+  const [selectedTime, setSelectedTime] = useState("");
+  const [timezone, setTimezone] = useState("UTC");
+  const timezoneOptions = ["UTC"];
+
+  useEffect(() => {
+    setPopupRoot(document.body);
+  }, []);
+
+  useCalendlyEventListener({
+    onEventScheduled: (event) => {
+      setCalendlyEventUri(event.data.payload.event.uri);
+      setCalendlyInviteeUri(event.data.payload.invitee.uri);
+      setErrors((current) => ({ ...current, schedule: "" }));
+      setScheduleOpen(false);
+    },
+  });
+
+  useEffect(() => {
+    if (!scheduleOpen) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setScheduleOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [scheduleOpen]);
 
   // Framework picker (searchable popup) state.
   const [pickerOpen, setPickerOpen] = useState(false);
@@ -69,9 +107,14 @@ export default function DemoForm() {
   async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     if (busy) return;
-    setBusy(true);
     setErrors({});
+    if (!calendlyEventUri || !calendlyInviteeUri) {
+      setErrors({ schedule: "Choose and confirm a time in Calendly first." });
+      setScheduleOpen(true);
+      return;
+    }
 
+    setBusy(true);
     const fd = new FormData(e.currentTarget);
     const payload = {
       email: fd.get("email"),
@@ -81,6 +124,8 @@ export default function DemoForm() {
       teamSize: fd.get("teamSize"),
       notes: fd.get("notes"),
       frameworks,
+      calendlyEventUri,
+      calendlyInviteeUri,
     };
 
     try {
@@ -117,24 +162,21 @@ export default function DemoForm() {
           </svg>
         </span>
         <h2 className="font-display text-[20px] font-semibold text-ink">
-          Request received
+          Request sent successfully
         </h2>
         <p className="mx-auto mt-2 max-w-[340px] text-[13.5px] leading-[1.6] text-ink-muted">
-          We&apos;ll be in touch within one business day to find a slot and confirm
-          which frameworks you want us to run live.
+          Your details and Calendly booking have been sent to our team. Calendly
+          has also emailed your invitation and the reschedule or cancellation links.
         </p>
-        <Link
-          href="/"
-          className="mt-6 inline-block rounded-full border border-line px-5 py-2.5 font-display text-[13px] font-semibold text-ink transition hover:border-brand hover:text-brand-ink"
-        >
-          Back to the site
-        </Link>
+        <p className="mt-5 font-mono text-[10px] font-semibold uppercase tracking-[.12em] text-brand-ink">
+          You can safely close this page
+        </p>
       </div>
     );
   }
 
   return (
-    <form
+    <form ref={formRef}
       onSubmit={onSubmit}
       noValidate
       className="rounded-[20px] border border-line bg-white p-5 shadow-[0_20px_50px_-30px_rgba(15,23,42,.25)] sm:p-6"
@@ -334,21 +376,149 @@ export default function DemoForm() {
         </p>
       )}
 
-      <button
-        type="submit"
-        disabled={busy}
-        className="mt-4 w-full rounded-xl bg-brand py-3.5 font-display text-[14.5px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong disabled:opacity-60"
-      >
-        {busy ? "Sending…" : "Book a live demo"}
-      </button>
+      {errors.schedule && (
+        <p role="alert" className="mt-3 text-[12.5px] font-medium text-[#b91c1c]">
+          {errors.schedule}
+        </p>
+      )}
+
+      <div className="mt-4 grid grid-cols-[minmax(0,1fr)_minmax(0,1.15fr)] gap-2.5">
+        <button
+          type="button"
+          onClick={() => {
+            const form = formRef.current;
+            if (form) {
+              const data = new FormData(form);
+              setPrefill({
+                name: `${String(data.get("firstName") ?? "")} ${String(data.get("lastName") ?? "")}`.trim(),
+                email: String(data.get("email") ?? ""),
+              });
+            }
+            setScheduleOpen(true);
+          }}
+          className={`flex min-h-[50px] items-center justify-center gap-2 rounded-xl border px-3 font-display text-[12.5px] font-semibold transition ${
+            calendlyEventUri
+              ? "border-brand bg-brand-50 text-brand-forest"
+              : "border-line bg-white text-ink-muted hover:border-brand hover:text-brand-deep"
+          }`}
+        >
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true" className="shrink-0">
+            <path d="M7 3v3M17 3v3M4 9h16M5 5h14a1 1 0 011 1v13a1 1 0 01-1 1H5a1 1 0 01-1-1V6a1 1 0 011-1z" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+          <span className="min-w-0 truncate">
+            {calendlyEventUri ? "Time selected" : "Choose time in Calendly"}
+          </span>
+        </button>
+        <button
+          type="submit"
+          disabled={busy}
+          className="min-h-[50px] rounded-xl bg-brand px-3 font-display text-[14px] font-semibold text-on-brand shadow-[0_12px_28px_-10px_rgba(30,212,176,.55)] transition hover:bg-brand-strong disabled:opacity-60"
+        >
+          {busy ? "Sending…" : "Book a live demo"}
+        </button>
+      </div>
 
       <p className="mt-3 text-center text-[11px] leading-[1.5] text-ink-faint">
-        30 minutes, no slide deck. By submitting you agree to our{" "}
+        One hour, focused on your use case. By submitting you agree to our{" "}
         <Link href="/terms" className="font-semibold text-brand-deep hover:underline">
           privacy policy
         </Link>
         .
       </p>
+
+      {false && (
+        <div
+          className="fixed inset-0 z-[100] flex items-end justify-center bg-night/55 p-0 backdrop-blur-[3px] sm:items-center sm:p-5"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="schedule-title"
+          onMouseDown={(event) => {
+            if (event.target === event.currentTarget) setScheduleOpen(false);
+          }}
+        >
+          <div className="max-h-[92vh] w-full max-w-[680px] overflow-y-auto rounded-t-[24px] border border-brand-200 bg-white shadow-[0_28px_90px_-24px_rgba(11,18,32,.45)] sm:rounded-[24px]">
+            <div className="flex items-start justify-between border-b border-line-soft bg-[linear-gradient(145deg,#f0fdf9,#ffffff_75%)] px-5 py-4 sm:px-6 sm:py-5">
+              <div>
+                <div className="font-mono text-[9.5px] font-bold uppercase tracking-[.16em] text-brand-ink">Preferred meeting time</div>
+                <h2 id="schedule-title" className="mt-1 font-display text-[19px] font-semibold text-ink">Choose a date and time</h2>
+                <p className="mt-1 text-[12px] text-ink-soft">Request a one-hour Microsoft Teams demo.</p>
+              </div>
+              <button type="button" onClick={() => setScheduleOpen(false)} aria-label="Close scheduler" className="flex h-9 w-9 items-center justify-center rounded-full border border-line bg-white text-ink-soft transition hover:border-brand hover:text-brand-deep">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" /></svg>
+              </button>
+            </div>
+
+            <div className="grid gap-5 p-5 sm:grid-cols-[1.12fr_.88fr] sm:p-6">
+              <div className="demo-calendar rounded-2xl border border-line bg-white p-2">
+                <DayPicker
+                  mode="single"
+                  selected={selectedDate ? new Date(`${selectedDate}T12:00:00`) : undefined}
+                  onSelect={(day) => {
+                    setSelectedDate(day ? format(day, "yyyy-MM-dd") : "");
+                    setErrors((current) => ({ ...current, schedule: "" }));
+                  }}
+                  disabled={{ before: startOfDay(new Date()), after: addDays(startOfDay(new Date()), 89) }}
+                  startMonth={startOfDay(new Date())}
+                  endMonth={addDays(startOfDay(new Date()), 89)}
+                  showOutsideDays
+                  fixedWeeks
+                />
+              </div>
+
+              <div className="flex flex-col">
+                <label htmlFor="demo-time" className="text-[10px] font-bold uppercase tracking-[.12em] text-ink-soft">Start time</label>
+                <input
+                  id="demo-time"
+                  type="time"
+                  step="60"
+                  value={selectedTime}
+                  onChange={(event) => {
+                    setSelectedTime(event.target.value);
+                    setErrors((current) => ({ ...current, schedule: "" }));
+                  }}
+                  className="mt-2 w-full rounded-xl border border-line bg-white px-3.5 py-3 font-display text-[15px] font-semibold text-ink outline-none transition focus:border-brand focus:ring-2 focus:ring-brand-100"
+                />
+                <p className="mt-1.5 text-[10.5px] leading-4 text-ink-faint">Choose any preferred start time. One hour will be reserved after admin approval.</p>
+
+                <label htmlFor="timezone" className="mt-5 text-[10px] font-bold uppercase tracking-[.12em] text-ink-soft">Your timezone</label>
+                <select id="timezone" value={timezone} onChange={(event) => setTimezone(event.target.value)} className="mt-2 w-full rounded-xl border border-line bg-white px-3 py-3 text-[12px] text-ink outline-none transition focus:border-brand focus:ring-2 focus:ring-brand-100">
+                  {timezoneOptions.map((zone) => <option key={zone} value={zone}>{zone.replace(/_/g, " ")}</option>)}
+                </select>
+
+                <div className="mt-5 rounded-xl border border-brand-200 bg-brand-50 p-3.5">
+                  <div className="text-[9.5px] font-bold uppercase tracking-[.12em] text-brand-ink">Requested slot</div>
+                  <div className="mt-1.5 font-display text-[13px] font-semibold text-brand-forest">
+                    {selectedDate ? format(new Date(`${selectedDate}T12:00:00`), "EEEE, MMMM d") : "Select a date"}
+                  </div>
+                  <div className="mt-0.5 text-[11px] text-ink-soft">
+                    {selectedTime ? format(new Date(`2000-01-01T${selectedTime}:00`), "h:mm a") : "Select a time"} · {timezone.replace(/_/g, " ")}
+                  </div>
+                </div>
+
+                <button type="button" disabled={!selectedDate || !selectedTime} onClick={() => setScheduleOpen(false)} className="mt-4 min-h-[46px] rounded-xl bg-brand px-4 font-display text-[13px] font-semibold text-on-brand transition hover:bg-brand-strong disabled:cursor-not-allowed disabled:opacity-40 sm:mt-auto">
+                  Confirm preferred time
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+      {popupRoot && (
+        <PopupModal
+          url={CALENDLY_URL}
+          open={scheduleOpen}
+          onModalClose={() => setScheduleOpen(false)}
+          rootElement={popupRoot}
+          prefill={{ name: prefill.name, email: prefill.email }}
+          pageSettings={{
+            primaryColor: "1ed4b0",
+            textColor: "0f172a",
+            backgroundColor: "ffffff",
+            hideEventTypeDetails: false,
+            hideLandingPageDetails: false,
+          }}
+        />
+      )}
     </form>
   );
 }

@@ -1,4 +1,56 @@
 @import "tailwindcss";
+@import "react-day-picker/style.css";
+
+.demo-calendar .rdp-root {
+  --rdp-accent-color: #0c8f76;
+  --rdp-accent-background-color: #e8fcf8;
+  --rdp-day_button-border-radius: 10px;
+  --rdp-day_button-width: 36px;
+  --rdp-day_button-height: 36px;
+  width: 100%;
+  margin: 0;
+  color: #334155;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+
+.demo-calendar .rdp-month,
+.demo-calendar .rdp-month_grid { width: 100%; }
+
+.demo-calendar .rdp-month_caption {
+  min-height: 44px;
+  padding: 0 8px;
+  font-family: "Poppins", sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.demo-calendar .rdp-nav button {
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  color: #0c8f76;
+  cursor: pointer;
+}
+
+.demo-calendar .rdp-weekday {
+  padding: 7px 0;
+  color: #94a3b8;
+  font-size: 9px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.demo-calendar .rdp-day_button:not(:disabled) { cursor: pointer; }
+.demo-calendar .rdp-day_button:hover:not(:disabled) { background: #f0fdf9; color: #0c8f76; }
+.demo-calendar .rdp-day_button:disabled,
+.demo-calendar .rdp-nav button:disabled { cursor: not-allowed; }
+.demo-calendar .rdp-selected .rdp-day_button {
+  border-color: #1ed4b0;
+  background: #1ed4b0;
+  color: #0a0a0a;
+  font-weight: 800;
+}
 
 @theme {
   --font-display: "Poppins", sans-serif;
@@ -74,6 +126,27 @@
   * {
     box-sizing: border-box;
   }
+
+  a[href],
+  button:not(:disabled),
+  select:not(:disabled),
+  summary,
+  label[for],
+  [role="button"]:not([aria-disabled="true"]),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled),
+  input[type="date"]:not(:disabled),
+  input[type="time"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  button:disabled,
+  select:disabled,
+  input:disabled,
+  [aria-disabled="true"] {
+    cursor: not-allowed;
+  }
+
   html {
     scroll-behavior: smooth;
   }

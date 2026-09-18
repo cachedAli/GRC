@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import AssuranceView from "@/components/platform/AssuranceView";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata: Metadata = createMetadata({
@@ -10,5 +9,11 @@ export const metadata: Metadata = createMetadata({
 });
 
 export default function AssurancePage() {
-  return <AssuranceView />;
+  return (
+    <iframe
+      title="CompliVerse Cybersecurity Assurance"
+      src="/compliverse-cybersecurity-assurance.html"
+      className="fixed inset-0 z-[100] h-screen w-screen border-0 bg-[#0b1220]"
+    />
+  );
 }
