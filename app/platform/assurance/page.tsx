@@ -13,7 +13,7 @@ export default function AssurancePage() {
     <iframe
       title="CompliVerse Cybersecurity Assurance"
       src="/compliverse-cybersecurity-assurance.html"
-      className="fixed inset-0 z-[100] h-screen w-screen border-0 bg-[#0b1220]"
+      className="block h-[calc(100vh-5rem)] min-h-[760px] w-full border-0 bg-[#0b1220]"
     />
   );
 }
