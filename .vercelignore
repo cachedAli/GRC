@@ -1,0 +1,12 @@
+node_modules
+.next
+grc-frontend
+dist
+docs
+complyverse-product-discovery
+complyverse-website-strategy
+.claude
+.env
+.env.*
+*.tsbuildinfo
+README-DEPLOY.md

@@ -1,0 +1,388 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Committees &amp; Meetings · CompliVerse AI</title>
+  <meta name="description" content="Stand up a governance committee, charter it, seat its members and never lose an action item.">
+  <meta name="theme-color" content="#050608">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050608'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C9D0D7' stroke-width='3'/%3E%3Ccircle cx='16' cy='7' r='3.6' fill='%232F6BFF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/chrome.css">
+  <link rel="stylesheet" href="../css/kit.css">
+  <link rel="stylesheet" href="../css/explorer.css">
+  <link rel="stylesheet" href="../css/previews.css">
+  <link rel="stylesheet" href="../css/module.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/site.js" defer></script>
+  <script src="../js/explorer.js" defer></script>
+</head>
+<body class="page-module">
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M16.5 14c2.4.3 4.2 2.4 4.2 5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M19.5 11.5l-7.8 7.8a4.7 4.7 0 0 1-6.6-6.6l7.6-7.6a3.1 3.1 0 0 1 4.4 4.4l-7.6 7.6a1.6 1.6 0 0 1-2.2-2.2l7-7"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4.5 20.5V5l7.5-2v17.5M12 8l7.5 2v10.5M2.5 20.5h19M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15 13h1.5M15 17h1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v6c0 4.3-3.2 7.9-7.5 9-4.3-1.1-7.5-4.7-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M6 8.5V14a4 4 0 0 0 4 4h5.5"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4.5M15 3v4.5M6 7.5h12V11a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6.5l1.5 1.5L8 5.5M4 12.5l1.5 1.5L8 11.5M4 18.5l1.5 1.5L8 17.5M11 7h9M11 13h9M11 19h9"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12.5l8.5 4.5 8.5-4.5M3.5 16.5l8.5 4.5 8.5-4.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.4-3.6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8.5-8.5M16 7l2.5 2.5M13.8 9.2l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M19 5v6.5a3 3 0 0 1-3 3H6"/><path d="M9.5 11L6 14.5 9.5 18"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3.5 7.5c3-1.4 14-1.4 17 0 0 6-3.6 9.5-8.5 9.5S3.5 13.5 3.5 7.5z"/><path d="M8 10.5h2.5M13.5 10.5H16"/></symbol>
+  <symbol id="i-ledger" viewBox="0 0 24 24"><path d="M5 3.5h11l3 3v14H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16.5a8 8 0 1 1 16 0"/><path d="M12 16.5l4-5"/><path d="M4 19.5h16"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z"/><path d="M14 7l3 3"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="8.5" r="3"/><path d="M2.5 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5M11 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0 2.5-1.5 5-1.5 8 0v13c-3-1.5-5.5-1.5-8 0-2.5-1.5-5-1.5-8 0z"/><path d="M12 5.5v13"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.6 5.3 3.6 8.5s-1.1 6.1-3.6 8.5c-2.5-2.4-3.6-5.3-3.6-8.5s1.1-6.1 3.6-8.5z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav" data-nav>
+  <nav class="nav-bar" aria-label="Primary">
+    <a class="wordmark" href="../index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+    <div class="nav-panel" id="nav-panel" data-nav-panel>
+      <ul class="nav-links" role="list">
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-ai" data-dd-btn><span class="spark" aria-hidden="true"></span>AI<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--ai" id="dd-ai" data-dd-panel>
+            <a class="dd-feature" href="../ai/index.html">
+              <span class="dd-feature-k"><span class="spark" aria-hidden="true"></span>AI is the platform</span>
+              <span class="dd-feature-t">The intelligence layer</span>
+              <span class="dd-feature-d">One AI layer under all 13 modules: it reads what you hold, suggests, drafts, and says who approves.</span>
+              <span class="dd-feature-go">Explore the layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+            </a>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="../ai/studio.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg><span class="dd-text"><span class="dd-name">Compli AI Studio</span><span class="dd-sub">Write and edit documents with AI</span></span></a></li>
+              <li><a class="dd-link" href="../ai/trust.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><span class="dd-text"><span class="dd-name">AI trust &amp; control</span><span class="dd-sub">Approval, masking, audit trail, budgets</span></span></a></li>
+              <li><a class="dd-link" href="../ai/capabilities.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="dd-text"><span class="dd-name">All AI capabilities</span><span class="dd-sub">Every AI job, by module</span></span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item is-current" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-platform" data-dd-btn>Platform<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-platform" data-dd-panel>
+            <p class="dd-head"><a href="../platform/index.html">Platform overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>13 modules · one data model</span></p>
+            <ul class="dd-mods" role="list">
+              <li><a class="dd-mod" href="../modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span>Governance &amp; Documents</span></a></li>
+              <li><a class="dd-mod" href="../modules/committees.html" aria-current="page"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Committees &amp; Meetings</span></a></li>
+              <li><a class="dd-mod" href="../modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><span>Evidence Management</span></a></li>
+              <li><a class="dd-mod" href="../modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><span>Vendor Risk (TPRM)</span></a></li>
+              <li><a class="dd-mod" href="../modules/cybersecurity.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Cybersecurity Assessment &amp; Assurance</span></a></li>
+              <li><a class="dd-mod" href="../modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span>Workflow Automation</span></a></li>
+              <li><a class="dd-mod" href="../modules/connectors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span>Integrations &amp; Identity</span></a></li>
+              <li><a class="dd-mod" href="../modules/assessments.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span>Compliance Assessments</span></a></li>
+              <li><a class="dd-mod" href="../modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Unified Control Library</span></a></li>
+              <li><a class="dd-mod" href="../modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><span>Enterprise Risk (ERM)</span></a></li>
+              <li><a class="dd-mod" href="../modules/audit.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg><span>Audit Management</span></a></li>
+              <li><a class="dd-mod" href="../modules/insights.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span>Dashboards &amp; Insights</span></a></li>
+              <li><a class="dd-mod" href="../modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><span>Access Reviews</span><span class="tag-new">New</span></a></li>
+            </ul>
+            <p class="dd-foot"><a href="../solutions/index.html">Solutions by stage</a><a href="../integrations.html">Integrations</a><a href="../hosting.html">Cloud or on-premise</a></p>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-services" data-dd-btn>Services<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-services" data-dd-panel>
+            <p class="dd-head"><a href="../services/index.html">Services overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>Platform + people</span></p>
+            <ul class="dd-mods dd-mods--plain" role="list">
+              <li><a class="dd-mod" href="../services/grc-consulting.html"><span>GRC Consulting &amp; Advisory</span></a></li>
+              <li><a class="dd-mod" href="../services/regulatory-compliance.html"><span>Regulatory Compliance Consulting</span></a></li>
+              <li><a class="dd-mod" href="../services/ai-governance.html"><span>AI Governance &amp; Risk Management</span></a></li>
+              <li><a class="dd-mod" href="../services/compliance-automation.html"><span>Compliance Automation &amp; Digital Transformation</span></a></li>
+              <li><a class="dd-mod" href="../services/risk-management.html"><span>Risk Assessment &amp; Management</span></a></li>
+              <li><a class="dd-mod" href="../services/cybersecurity-assessment.html"><span>Cybersecurity Assessment</span></a></li>
+              <li><a class="dd-mod" href="../services/policy-documentation.html"><span>Policy &amp; Documentation Management</span></a></li>
+              <li><a class="dd-mod" href="../services/implementation-integration.html"><span>Implementation &amp; Integration</span></a></li>
+              <li><a class="dd-mod" href="../services/training.html"><span>Training &amp; Capacity Building</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-btn" href="../frameworks/index.html">Frameworks</a></li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-resources" data-dd-btn>Resources<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--res" id="dd-resources" data-dd-panel>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="../resources/index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span class="dd-text"><span class="dd-name">Library</span><span class="dd-sub">Practical guides for audit season</span></span></a></li>
+              <li><a class="dd-link" href="../resources/glossary.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="dd-text"><span class="dd-name">Glossary</span><span class="dd-sub">The terms, as we use them</span></span></a></li>
+              <li><a class="dd-link" href="../integrations.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span class="dd-text"><span class="dd-name">Integrations</span><span class="dd-sub">40 connectors, what each collects</span></span></a></li>
+              <li><a class="dd-link" href="../hosting.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg><span class="dd-text"><span class="dd-name">Cloud and on-premise</span><span class="dd-sub">Deployed the way your regulator expects</span></span></a></li>
+              <li><a class="dd-link" href="../roi.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="dd-text"><span class="dd-name">ROI and time savings</span><span class="dd-sub">Manual process versus CompliVerse</span></span></a></li>
+            </ul>
+            <div class="dd-guides"><p class="dd-guides-k">From the library</p><ul role="list"><li><a href="../resources/sama-csf-practical-map.html"><span class="dd-guide-cat">SAMA CSF</span>SAMA CSF compliance, control by control: a practical map</a></li><li><a href="../resources/evidence-reuse.html"><span class="dd-guide-cat">Evidence</span>Evidence reuse: satisfy ISO 27001, SOC 2 and SAMA with one artifact</a></li><li><a href="../resources/policy-gap-analysis.html"><span class="dd-guide-cat">Gap analysis</span>Running a policy gap analysis your regulator would sign</a></li></ul></div>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-panel-cta" href="../request-demo.html">Book a demo</a>
+    </div>
+    <a class="btn btn--primary btn--sm nav-cta" href="../request-demo.html">Book a demo</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu><span class="nav-menu-bars" aria-hidden="true"></span><span class="nav-menu-label">Menu</span></button>
+  </nav>
+</header>
+<main id="main">
+<section class="m-hero" aria-labelledby="m-title">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol role="list"><li><a href="../index.html">Home</a></li><li><a href="../platform/index.html">Platform</a></li><li><span aria-current="page">Committees &amp; Meetings</span></li></ol></nav>
+        <div class="m-hero-grid">
+          <div class="m-hero-text">
+            <p class="m-kicker"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Module</span><span class="m-kicker-loop">360° loop: Policy</span></p>
+            <h1 class="m-title" id="m-title"><span class="m-name">Committees &amp; Meetings</span><span class="m-outcome chrome-text">The charter is drafted before the first meeting.</span></h1>
+            <p class="m-lede"><span class="spark" aria-hidden="true"></span>The AI drafts a charter from the committee’s purpose and frameworks, turns an uploaded agenda into items, and rewords actions so their owners can act on them. The committee approves every word.</p>
+            <div class="actions">
+              <a class="btn btn--primary" href="../request-demo.html?interest=committees">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+              <a class="link-u" href="#preview">See it working</a>
+            </div>
+          </div>
+          <aside class="m-hero-side" aria-label="Committees &amp; Meetings at a glance">
+            <div class="m-glance">
+            <p class="m-glance-k">How the work flows</p>
+            <ol class="fs" role="list" aria-label="Steps, and where the AI works"><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Create</span></li><li class="fs-i fs-i--confirm"><span class="mark mark--confirm" aria-hidden="true"></span><span>Charter</span></li><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Members</span></li><li class="fs-i fs-i--confirm"><span class="mark mark--confirm" aria-hidden="true"></span><span>Meetings</span></li><li class="fs-i fs-i--confirm"><span class="mark mark--confirm" aria-hidden="true"></span><span>Actions</span></li></ol>
+            <p class="m-glance-sum"><span class="spark" aria-hidden="true"></span>AI in 3 of 5 steps · 3 suggest, you confirm</p>
+            <a class="link-arrow" href="#flow">Step by step<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </div>
+            <dl class="m-stats"><div><dt>on every action</dt><dd>Owner + due date</dd></div><div><dt>charters to approvals</dt><dd>One workflow</dd></div></dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="m-preview" id="preview" aria-labelledby="pv-title">
+      <div class="wrap">
+        <header class="m-sec-head">
+          <p class="eyebrow">Inside the module</p>
+          <h2 class="h2-s" id="pv-title">Security Steering Committee</h2>
+          <p class="m-hint">Switch between actions, members and the charter. <span class="pv-meta">Sample data</span></p>
+        </header>
+        <div class="win">
+          <div class="win-bar" aria-hidden="true"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-path">compliverse / governance / committees</span></div>
+          <div class="win-body"><div class="pv pv--lg pv-committees" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Security Steering Committee</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Charter v2.1 approved 12 Feb</span></div>
+        <div class="seg" role="group" aria-label="Committee view" data-pick="tab"><button class="seg-btn" type="button" data-pick-key="a" aria-pressed="true">Open actions</button><button class="seg-btn" type="button" data-pick-key="m" aria-pressed="false">Members</button><button class="seg-btn" type="button" data-pick-key="c" aria-pressed="false">Charter</button></div>
+        <div class="pick-panel is-on" data-pick-panel="tab:a"><table class="pv-table"><caption class="sr-only">Open actions</caption><thead><tr><th scope="col">Action</th><th scope="col">Owner</th><th scope="col">Due</th></tr></thead><tbody><tr><td>Approve revised BCM policy</td><td>CISO</td><td class="mono">12 Mar</td></tr><tr><td>Close <span class="ref ref--gap">SAMA 3.3.14</span> gap</td><td>Head of IT</td><td class="mono">20 Mar</td></tr><tr><td>Q1 vendor reassessments</td><td>Procurement</td><td class="mono">31 Mar</td></tr></tbody></table></div><div class="pick-panel" data-pick-panel="tab:m"><ul class="avatars" role="list" aria-label="Members"><li>MA</li><li>SK</li><li>RF</li><li>JD</li><li>LP</li></ul><p class="pv-muted">5 members · roles assigned</p></div><div class="pick-panel" data-pick-panel="tab:c"><p class="pv-line"><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Charter v2.1</span><span class="pv-muted">Approved · 12 Feb</span></p><p class="pv-muted">Runs the same approval workflow as any policy. <span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI-drafted</span></p></div>
+      </div></div></div>
+        </div>
+      </div>
+    </section>
+    <section class="m-flow" id="flow" aria-labelledby="flow-title">
+      <div class="wrap">
+        <header class="m-flow-head">
+          <div>
+            <p class="eyebrow">How the work flows</p>
+            <h2 class="h2" id="flow-title">Five steps. The AI works in three of them.</h2>
+          </div>
+          <div class="m-flow-key">
+            <p>At each step: what you do, and what the AI does.</p>
+            <ul class="fl-legend" role="list">
+              <li><span class="mark mark--confirm" aria-hidden="true"></span><span>Suggests, you confirm</span></li>
+              <li><span class="mark mark--auto" aria-hidden="true"></span><span>Automatic</span></li>
+              <li><span class="mark mark--none" aria-hidden="true"></span><span>No AI at this step</span></li>
+            </ul>
+          </div>
+        </header>
+        <div class="fl-lanes" aria-hidden="true"><span>Step</span><span>You</span><span><span class="spark" aria-hidden="true"></span>The AI</span></div>
+        <ol class="fl" role="list">
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">01</span>
+              <h3 class="fl-t"><span class="sr-only">Step 1: </span>Create</h3>
+              <p class="fl-c">Committee set up</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Name the committee and the frameworks it answers to.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step.</p>
+            </div>
+          </li>
+          <li class="fl-step fl-step--confirm">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">02</span>
+              <h3 class="fl-t"><span class="sr-only">Step 2: </span>Charter</h3>
+              <p class="fl-c">AI-drafted, approved</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Review the draft and send it through the same approval workflow as any policy.</p>
+            </div>
+            <div class="fl-ai fl-ai--confirm">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <p class="fl-d">Drafts a charter from the committee’s purpose and frameworks, and shows how an existing charter differs from a reference.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>The draft becomes the charter only after approval.</span></p>
+              
+            </div>
+          </li>
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">03</span>
+              <h3 class="fl-t"><span class="sr-only">Step 3: </span>Members</h3>
+              <p class="fl-c">Roles assigned</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Seat members, assign roles and keep the roster current.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step.</p>
+            </div>
+          </li>
+          <li class="fl-step fl-step--confirm">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">04</span>
+              <h3 class="fl-t"><span class="sr-only">Step 4: </span>Meetings</h3>
+              <p class="fl-c">Scheduled, minuted</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Schedule sessions, capture minutes and carry decisions into the record.</p>
+            </div>
+            <div class="fl-ai fl-ai--confirm">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <p class="fl-d">Turns an uploaded agenda into agenda items.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>The secretary keeps or edits them.</span></p>
+              
+            </div>
+          </li>
+          <li class="fl-step fl-step--confirm">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">05</span>
+              <h3 class="fl-t"><span class="sr-only">Step 5: </span>Actions</h3>
+              <p class="fl-c">Owned and chased</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Give every action an owner and a due date; the workflow engine chases it.</p>
+            </div>
+            <div class="fl-ai fl-ai--confirm">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <p class="fl-d">Summarises an action, or rewrites it more clearly so its owner can act on it.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>A draft the secretary keeps or discards. Chasing is the workflow engine’s rules, not AI.</span></p>
+              
+            </div>
+          </li>
+        </ol>
+        
+        
+        
+      </div>
+    </section>
+    <section class="m-features" aria-labelledby="feat-title">
+      <div class="wrap">
+        <header class="m-block-head"><p class="eyebrow">What you get</p><h2 class="h2-s" id="feat-title">Built for the way regulated teams actually work.</h2><p class="m-block-lede">Stand up a governance committee, charter it, seat its members and never lose an action item.</p></header>
+        <ul class="feat" role="list"><li class="feat-card"><h3 class="feat-name">Members &amp; roles</h3><p>Seat the committee, assign roles, and keep the roster current as people change.</p></li><li class="feat-card feat-card--ai"><h3 class="feat-name">AI-drafted charters<span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span></h3><p>Draft a charter, then run it through the same approval workflow as any policy.</p></li><li class="feat-card"><h3 class="feat-name">Scheduled meetings</h3><p>Schedule sessions, capture minutes, and carry decisions into the record.</p></li><li class="feat-card"><h3 class="feat-name">Tracked actions</h3><p>Every action item carries an owner and a due date the engine chases for you.</p></li></ul>
+        <div class="m-linked">
+          <div>
+            <p class="eyebrow">Linked into</p>
+            <p class="m-linked-intro">A record here never sits alone. The moment it exists, it connects to:</p>
+            <ul class="tags" role="list"><li>Charters</li><li>Approvals</li><li>Meeting minutes</li><li>Action items</li><li>Owners</li><li>Policies</li></ul>
+          </div>
+          <aside class="beyond" aria-label="Beyond the point tools"><p class="beyond-k">Beyond the point tools</p><p>Charters go through the same approval workflow as policies, and every action item carries an owner and a due date that the workflow engine chases.</p></aside>
+        </div>
+      </div>
+    </section>
+    <section class="m-runs" aria-labelledby="runs-title">
+      <div class="wrap m-runs-grid">
+        <div class="m-runs-ai">
+          <p class="eyebrow eyebrow--ai"><span class="spark" aria-hidden="true"></span>The intelligence layer</p>
+          <h2 class="h2-s" id="runs-title">Every AI step above runs on one intelligence layer, under the same rules as every other module.</h2>
+          <ul class="m-guard" role="list"><li><b>Masked before it leaves</b><span>AI prompts pass through a data-protection gateway: names, e-mails, hosts and IP addresses are swapped for placeholders, secrets and account numbers removed.</span></li><li><b>Every call on the record</b><span>Administrators see each AI call: who asked, which feature, the tokens and the cost.</span></li><li><b>Budgets that alert</b><span>Token usage is tracked per module against a monthly budget, with an alert before you run over.</span></li></ul>
+          <p class="m-runs-links"><a class="link-arrow" href="../ai/index.html">The intelligence layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="link-arrow" href="../ai/capabilities.html?module=committees">2 AI capabilities in Committees &amp; Meetings<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="link-arrow" href="../ai/trust.html">AI trust &amp; control<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+        </div>
+        <div class="m-runs-svc">
+          <p class="eyebrow">Platform + people</p>
+          <h2 class="h3">Services that run on Committees &amp; Meetings</h2>
+          <ul class="rows" role="list"><li><a class="row-link" href="../services/policy-documentation.html"><span><span class="row-t">Policy &amp; Documentation Management</span><span class="row-d">Policy development, standardisation, documentation and lifecycle management.</span></span><span class="row-go" aria-hidden="true">→</span></a></li></ul>
+          <a class="link-arrow" href="../services/index.html">All nine services<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <section class="m-context" aria-labelledby="ctx-loop">
+      <div class="wrap m-context-grid">
+        <div class="m-loop">
+          <p class="eyebrow">Where it sits in the 360° loop</p>
+          <h2 class="h2-s" id="ctx-loop">Policy.</h2>
+          <svg class="mini-ring" viewBox="-60 -6 420 312" role="img" aria-label="The 360° loop with Policy lit">
+        <circle class="mr-track" cx="150" cy="150" r="100"/><circle class="mr-dot" cx="150.0" cy="50.0" r="11"/><text class="mr-label" x="150.0" y="21.0" text-anchor="middle">Framework</text><circle class="mr-dot is-lit" cx="236.6" cy="100.0" r="11"/><text class="mr-label is-lit" x="266.0" y="88.0" text-anchor="start">Policy</text><circle class="mr-dot" cx="236.6" cy="200.0" r="11"/><text class="mr-label" x="266.0" y="222.0" text-anchor="start">Control</text><circle class="mr-dot" cx="150.0" cy="250.0" r="11"/><text class="mr-label" x="150.0" y="289.0" text-anchor="middle">Evidence</text><circle class="mr-dot" cx="63.4" cy="200.0" r="11"/><text class="mr-label" x="34.0" y="222.0" text-anchor="end">Risk</text><circle class="mr-dot" cx="63.4" cy="100.0" r="11"/><text class="mr-label" x="34.0" y="88.0" text-anchor="end">Audit</text>
+        <text class="mr-center" x="150" y="158" text-anchor="middle">360°</text>
+      </svg>
+          <p class="m-loop-note">A charter is a governed document like any policy, and the committee’s actions close the gaps the loop exposes, such as SAMA 3.3.14.</p>
+          <a class="link-arrow" href="../platform/index.html#loop">Follow one control round the loop<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="m-why">
+          <p class="eyebrow">Why it matters</p>
+          <h2 class="h2-s">From scattered to connected.</h2>
+          <div class="diff diff--full" role="group" aria-label="Today compared with CompliVerse">
+              <p class="diff-hunk" aria-hidden="true">@@ today → with CompliVerse @@</p>
+              <p class="diff-del diff-lead"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Committee work lives in inboxes.</span></p>
+              <p class="diff-add diff-lead"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>The committee runs on the record.</span></p>
+              <p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Minutes in one place, actions in another.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>Members, charter and minutes in one place.</span></p><p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Action items lose their owner by the next meeting.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>Every action carries an owner and a due date.</span></p><p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Charters drift from the approval record.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>Charters run the same approval as any policy.</span></p>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="m-related" aria-label="Frameworks and related modules">
+      <div class="wrap m-related-grid">
+        <div>
+          <p class="eyebrow">Frameworks it serves</p>
+          <ul class="fw-chips" role="list"><li class="is-regional"><b>SAMA CSF</b><span>KSA</span></li></ul>
+          <p class="pv-muted">Named in this page’s examples. The library holds 25+ frameworks, and every module works on the same records.</p>
+          <a class="link-arrow" href="../frameworks/index.html">All 25+ frameworks, by region<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div>
+          <p class="eyebrow">Related modules</p>
+          <ul class="rel" role="list"><li><a class="rel-card" href="../modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><b>Governance &amp; Documents</b><span>Every policy traced to its clause</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><b>Workflow Automation</b><span>Routes, chases and escalates for you</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><b>Enterprise Risk (ERM)</b><span>Gaps become owned risks</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><b>Vendor Risk (TPRM)</b><span>Intake to offboarding, one lifecycle</span><span class="rel-go" aria-hidden="true">→</span></a></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <h2 class="cta-title chrome-text" id="cta-title">See Committees &amp; Meetings on your own stack.</h2>
+    <div class="cta-foot">
+      <p class="lede">Demos are scoped to your regulators. Pick a slot and we’ll run it live.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="../request-demo.html?interest=committees">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--line" href="../roi.html">See the ROI</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="wordmark" href="../index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+        <p>AI-native enterprise GRC, and the people to run it with you. Compliance that proves itself.</p>
+        <a class="btn btn--line btn--sm" href="../request-demo.html">Book a live demo</a>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div><h2 class="footer-h"><span class="spark" aria-hidden="true"></span>AI</h2><ul role="list"><li><a href="../ai/index.html">The intelligence layer</a></li><li><a href="../ai/studio.html">Compli AI Studio</a></li><li><a href="../ai/trust.html">AI trust &amp; control</a></li><li><a href="../ai/capabilities.html">All AI capabilities</a></li></ul></div>
+        <div><h2 class="footer-h">Platform</h2><ul role="list"><li><a href="../platform/index.html">Platform overview</a></li><li><a href="../modules/governance.html">Governance &amp; Documents</a></li><li><a href="../modules/committees.html">Committees &amp; Meetings</a></li><li><a href="../modules/evidence.html">Evidence Management</a></li><li><a href="../modules/vendors.html">Vendor Risk (TPRM)</a></li><li><a href="../modules/cybersecurity.html">Cybersecurity Assessment &amp; Assurance</a></li><li><a href="../modules/workflow.html">Workflow Automation</a></li><li><a href="../modules/connectors.html">Integrations &amp; Identity</a></li><li><a href="../modules/assessments.html">Compliance Assessments</a></li><li><a href="../modules/controls.html">Unified Control Library</a></li><li><a href="../modules/risk.html">Enterprise Risk (ERM)</a></li><li><a href="../modules/audit.html">Audit Management</a></li><li><a href="../modules/insights.html">Dashboards &amp; Insights</a></li><li><a href="../modules/access-reviews.html">Access Reviews</a></li></ul></div>
+        <div><h2 class="footer-h">Services</h2><ul role="list"><li><a href="../services/index.html">Services overview</a></li><li><a href="../services/grc-consulting.html">GRC Consulting &amp; Advisory</a></li><li><a href="../services/regulatory-compliance.html">Regulatory Compliance Consulting</a></li><li><a href="../services/ai-governance.html">AI Governance &amp; Risk Management</a></li><li><a href="../services/compliance-automation.html">Compliance Automation &amp; Digital Transformation</a></li><li><a href="../services/risk-management.html">Risk Assessment &amp; Management</a></li><li><a href="../services/cybersecurity-assessment.html">Cybersecurity Assessment</a></li><li><a href="../services/policy-documentation.html">Policy &amp; Documentation Management</a></li><li><a href="../services/implementation-integration.html">Implementation &amp; Integration</a></li><li><a href="../services/training.html">Training &amp; Capacity Building</a></li></ul></div>
+        <div><h2 class="footer-h">Frameworks</h2><ul role="list"><li><a href="../frameworks/index.html">Framework library</a></li><li><a href="../frameworks/sama-csf.html">SAMA CSF</a></li><li><a href="../frameworks/nca-ecc.html">NCA ECC</a></li><li><a href="../frameworks/cbuae.html">CBUAE Art.13</a></li><li><a href="../frameworks/sbp-etgrmf.html">SBP ETGRMF</a></li><li><a href="../frameworks/iso-27001.html">ISO 27001</a></li><li><a href="../frameworks/soc-2.html">SOC 2</a></li><li><a href="../frameworks/pci-dss.html">PCI DSS</a></li><li><a href="../frameworks/dora.html">DORA</a></li></ul></div>
+        <div><h2 class="footer-h">Solutions &amp; resources</h2><ul role="list"><li><a href="../solutions/index.html">Solutions by stage</a></li><li><a href="../solutions/compliance.html">Compliance</a></li><li><a href="../solutions/governance.html">Governance</a></li><li><a href="../integrations.html">Integrations</a></li><li><a href="../hosting.html">Cloud and on-premise</a></li><li><a href="../roi.html">ROI and time savings</a></li><li><a href="../resources/index.html">Library</a></li><li><a href="../resources/glossary.html">Glossary</a></li><li><a href="../request-demo.html">Book a demo</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 CompliVerse AI</p>
+      <p class="footer-legal"><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></p>
+      <p>Draft 4 · a static prototype: nothing you type here leaves your browser.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

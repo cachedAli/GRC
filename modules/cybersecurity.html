@@ -1,0 +1,751 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cybersecurity Assessment &amp; Assurance · CompliVerse AI</title>
+  <meta name="description" content="Bring every finding into one register, rank it by what is actually exploitable on that asset, and track the fix until a re-scan proves it.">
+  <meta name="theme-color" content="#050608">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050608'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C9D0D7' stroke-width='3'/%3E%3Ccircle cx='16' cy='7' r='3.6' fill='%232F6BFF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/chrome.css">
+  <link rel="stylesheet" href="../css/kit.css">
+  <link rel="stylesheet" href="../css/explorer.css">
+  <link rel="stylesheet" href="../css/previews.css">
+  <link rel="stylesheet" href="../css/module.css">
+  <link rel="stylesheet" href="../css/module-cyber.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="../js/site.js" defer></script>
+  <script src="../js/explorer.js" defer></script>
+</head>
+<body class="page-module">
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M16.5 14c2.4.3 4.2 2.4 4.2 5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M19.5 11.5l-7.8 7.8a4.7 4.7 0 0 1-6.6-6.6l7.6-7.6a3.1 3.1 0 0 1 4.4 4.4l-7.6 7.6a1.6 1.6 0 0 1-2.2-2.2l7-7"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4.5 20.5V5l7.5-2v17.5M12 8l7.5 2v10.5M2.5 20.5h19M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15 13h1.5M15 17h1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v6c0 4.3-3.2 7.9-7.5 9-4.3-1.1-7.5-4.7-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M6 8.5V14a4 4 0 0 0 4 4h5.5"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4.5M15 3v4.5M6 7.5h12V11a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6.5l1.5 1.5L8 5.5M4 12.5l1.5 1.5L8 11.5M4 18.5l1.5 1.5L8 17.5M11 7h9M11 13h9M11 19h9"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12.5l8.5 4.5 8.5-4.5M3.5 16.5l8.5 4.5 8.5-4.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.4-3.6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8.5-8.5M16 7l2.5 2.5M13.8 9.2l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M19 5v6.5a3 3 0 0 1-3 3H6"/><path d="M9.5 11L6 14.5 9.5 18"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3.5 7.5c3-1.4 14-1.4 17 0 0 6-3.6 9.5-8.5 9.5S3.5 13.5 3.5 7.5z"/><path d="M8 10.5h2.5M13.5 10.5H16"/></symbol>
+  <symbol id="i-ledger" viewBox="0 0 24 24"><path d="M5 3.5h11l3 3v14H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16.5a8 8 0 1 1 16 0"/><path d="M12 16.5l4-5"/><path d="M4 19.5h16"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z"/><path d="M14 7l3 3"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="8.5" r="3"/><path d="M2.5 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5M11 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0 2.5-1.5 5-1.5 8 0v13c-3-1.5-5.5-1.5-8 0-2.5-1.5-5-1.5-8 0z"/><path d="M12 5.5v13"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.6 5.3 3.6 8.5s-1.1 6.1-3.6 8.5c-2.5-2.4-3.6-5.3-3.6-8.5s1.1-6.1 3.6-8.5z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav" data-nav>
+  <nav class="nav-bar" aria-label="Primary">
+    <a class="wordmark" href="../index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+    <div class="nav-panel" id="nav-panel" data-nav-panel>
+      <ul class="nav-links" role="list">
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-ai" data-dd-btn><span class="spark" aria-hidden="true"></span>AI<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--ai" id="dd-ai" data-dd-panel>
+            <a class="dd-feature" href="../ai/index.html">
+              <span class="dd-feature-k"><span class="spark" aria-hidden="true"></span>AI is the platform</span>
+              <span class="dd-feature-t">The intelligence layer</span>
+              <span class="dd-feature-d">One AI layer under all 13 modules: it reads what you hold, suggests, drafts, and says who approves.</span>
+              <span class="dd-feature-go">Explore the layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+            </a>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="../ai/studio.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg><span class="dd-text"><span class="dd-name">Compli AI Studio</span><span class="dd-sub">Write and edit documents with AI</span></span></a></li>
+              <li><a class="dd-link" href="../ai/trust.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><span class="dd-text"><span class="dd-name">AI trust &amp; control</span><span class="dd-sub">Approval, masking, audit trail, budgets</span></span></a></li>
+              <li><a class="dd-link" href="../ai/capabilities.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="dd-text"><span class="dd-name">All AI capabilities</span><span class="dd-sub">Every AI job, by module</span></span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item is-current" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-platform" data-dd-btn>Platform<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-platform" data-dd-panel>
+            <p class="dd-head"><a href="../platform/index.html">Platform overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>13 modules · one data model</span></p>
+            <ul class="dd-mods" role="list">
+              <li><a class="dd-mod" href="../modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span>Governance &amp; Documents</span></a></li>
+              <li><a class="dd-mod" href="../modules/committees.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Committees &amp; Meetings</span></a></li>
+              <li><a class="dd-mod" href="../modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><span>Evidence Management</span></a></li>
+              <li><a class="dd-mod" href="../modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><span>Vendor Risk (TPRM)</span></a></li>
+              <li><a class="dd-mod" href="../modules/cybersecurity.html" aria-current="page"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Cybersecurity Assessment &amp; Assurance</span></a></li>
+              <li><a class="dd-mod" href="../modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span>Workflow Automation</span></a></li>
+              <li><a class="dd-mod" href="../modules/connectors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span>Integrations &amp; Identity</span></a></li>
+              <li><a class="dd-mod" href="../modules/assessments.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span>Compliance Assessments</span></a></li>
+              <li><a class="dd-mod" href="../modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Unified Control Library</span></a></li>
+              <li><a class="dd-mod" href="../modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><span>Enterprise Risk (ERM)</span></a></li>
+              <li><a class="dd-mod" href="../modules/audit.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg><span>Audit Management</span></a></li>
+              <li><a class="dd-mod" href="../modules/insights.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span>Dashboards &amp; Insights</span></a></li>
+              <li><a class="dd-mod" href="../modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><span>Access Reviews</span><span class="tag-new">New</span></a></li>
+            </ul>
+            <p class="dd-foot"><a href="../solutions/index.html">Solutions by stage</a><a href="../integrations.html">Integrations</a><a href="../hosting.html">Cloud or on-premise</a></p>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-services" data-dd-btn>Services<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-services" data-dd-panel>
+            <p class="dd-head"><a href="../services/index.html">Services overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>Platform + people</span></p>
+            <ul class="dd-mods dd-mods--plain" role="list">
+              <li><a class="dd-mod" href="../services/grc-consulting.html"><span>GRC Consulting &amp; Advisory</span></a></li>
+              <li><a class="dd-mod" href="../services/regulatory-compliance.html"><span>Regulatory Compliance Consulting</span></a></li>
+              <li><a class="dd-mod" href="../services/ai-governance.html"><span>AI Governance &amp; Risk Management</span></a></li>
+              <li><a class="dd-mod" href="../services/compliance-automation.html"><span>Compliance Automation &amp; Digital Transformation</span></a></li>
+              <li><a class="dd-mod" href="../services/risk-management.html"><span>Risk Assessment &amp; Management</span></a></li>
+              <li><a class="dd-mod" href="../services/cybersecurity-assessment.html"><span>Cybersecurity Assessment</span></a></li>
+              <li><a class="dd-mod" href="../services/policy-documentation.html"><span>Policy &amp; Documentation Management</span></a></li>
+              <li><a class="dd-mod" href="../services/implementation-integration.html"><span>Implementation &amp; Integration</span></a></li>
+              <li><a class="dd-mod" href="../services/training.html"><span>Training &amp; Capacity Building</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-btn" href="../frameworks/index.html">Frameworks</a></li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-resources" data-dd-btn>Resources<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--res" id="dd-resources" data-dd-panel>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="../resources/index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span class="dd-text"><span class="dd-name">Library</span><span class="dd-sub">Practical guides for audit season</span></span></a></li>
+              <li><a class="dd-link" href="../resources/glossary.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="dd-text"><span class="dd-name">Glossary</span><span class="dd-sub">The terms, as we use them</span></span></a></li>
+              <li><a class="dd-link" href="../integrations.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span class="dd-text"><span class="dd-name">Integrations</span><span class="dd-sub">40 connectors, what each collects</span></span></a></li>
+              <li><a class="dd-link" href="../hosting.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg><span class="dd-text"><span class="dd-name">Cloud and on-premise</span><span class="dd-sub">Deployed the way your regulator expects</span></span></a></li>
+              <li><a class="dd-link" href="../roi.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="dd-text"><span class="dd-name">ROI and time savings</span><span class="dd-sub">Manual process versus CompliVerse</span></span></a></li>
+            </ul>
+            <div class="dd-guides"><p class="dd-guides-k">From the library</p><ul role="list"><li><a href="../resources/sama-csf-practical-map.html"><span class="dd-guide-cat">SAMA CSF</span>SAMA CSF compliance, control by control: a practical map</a></li><li><a href="../resources/evidence-reuse.html"><span class="dd-guide-cat">Evidence</span>Evidence reuse: satisfy ISO 27001, SOC 2 and SAMA with one artifact</a></li><li><a href="../resources/policy-gap-analysis.html"><span class="dd-guide-cat">Gap analysis</span>Running a policy gap analysis your regulator would sign</a></li></ul></div>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-panel-cta" href="../request-demo.html">Book a demo</a>
+    </div>
+    <a class="btn btn--primary btn--sm nav-cta" href="../request-demo.html">Book a demo</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu><span class="nav-menu-bars" aria-hidden="true"></span><span class="nav-menu-label">Menu</span></button>
+  </nav>
+</header>
+<main id="main">
+<section class="m-hero" aria-labelledby="m-title">
+      <div class="wrap">
+        <nav class="crumbs" aria-label="Breadcrumb"><ol role="list"><li><a href="../index.html">Home</a></li><li><a href="../platform/index.html">Platform</a></li><li><span aria-current="page">Cybersecurity Assessment &amp; Assurance</span></li></ol></nav>
+        <div class="m-hero-grid">
+          <div class="m-hero-text">
+            <p class="m-kicker"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Module</span><span class="m-kicker-loop">360° loop: Evidence + Risk</span></p>
+            <h1 class="m-title" id="m-title"><span class="m-name">Cybersecurity Assessment &amp; Assurance</span><span class="m-outcome chrome-text">Every finding mapped to the control that should have stopped it.</span></h1>
+            <p class="m-lede"><span class="spark" aria-hidden="true"></span>The AI maps each finding to the controls in your library, with a confidence and a reason, and drafts a fix plan for you to approve. The ranking itself is a fixed formula of CVSS, EPSS, CISA KEV and asset value: no AI, nothing hidden.</p>
+            <div class="actions">
+              <a class="btn btn--primary" href="../request-demo.html?interest=cybersecurity">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+              <a class="btn btn--line" href="../downloads/sample-security-report.pdf" download><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Download sample report</a>
+            </div>
+          </div>
+          <aside class="m-hero-side" aria-label="Cybersecurity Assessment &amp; Assurance at a glance">
+            <div class="m-glance">
+            <p class="m-glance-k">How the work flows</p>
+            <ol class="fs" role="list" aria-label="Steps, and where the AI works"><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Scope</span></li><li class="fs-i fs-i--confirm"><span class="mark mark--confirm" aria-hidden="true"></span><span>Bring in</span></li><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Rank</span></li><li class="fs-i fs-i--auto"><span class="mark mark--auto" aria-hidden="true"></span><span>Map</span></li><li class="fs-i fs-i--confirm"><span class="mark mark--confirm" aria-hidden="true"></span><span>Fix</span></li><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Verify</span></li><li class="fs-i fs-i--none"><span class="mark mark--none" aria-hidden="true"></span><span>Report</span></li></ol>
+            <p class="m-glance-sum"><span class="spark" aria-hidden="true"></span>AI in 3 of 7 steps · 2 suggest, you confirm · 1 automatic</p>
+            <a class="link-arrow" href="#flow">Step by step<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </div>
+            <dl class="m-stats"><div><dt>capability areas</dt><dd>8</dd></div><div><dt>ways to deliver: platform, our team, or both</dt><dd>3</dd></div></dl>
+          </aside>
+        </div>
+      </div>
+    </section>
+    <section class="section cy-areas" id="areas" aria-labelledby="areas-title">
+      <div class="wrap">
+        <header class="cy-head">
+          <div>
+            <p class="eyebrow">Eight capability areas</p>
+            <h2 class="h2" id="areas-title">Platform, our team, or both. Always labelled.</h2>
+          </div>
+          <ul class="dv-key" role="list" aria-label="Who delivers it"><li><span class="dv dv--platform"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span><span>Shipped in the product.</span></li><li><span class="dv dv--both"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span><span>The platform does the work; our team runs and interprets it.</span></li><li><span class="dv dv--team"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Our team</span></span><span>Delivered by CompliVerse’s security team.</span></li></ul>
+        </header>
+        <ul class="ag" role="list"><li><a class="ag-card" href="../modules/cybersecurity/vulnerability-assessment.html">
+            <span class="ag-top"><span class="dv dv--platform"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Vulnerability Assessment</span>
+            <span class="ag-line">Scanner intake and hosted scans, CVE identification, CVSS scoring, severity classification and remediation recommendations.</span>
+            <span class="ag-one">The platform does the assessment work. Our team validates and tunes it.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/penetration-testing.html">
+            <span class="ag-top"><span class="dv dv--team"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Our team</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Penetration Testing</span>
+            <span class="ag-line">Simulated attacks on web applications, APIs, networks, authentication, authorisation and infrastructure.</span>
+            <span class="ag-one">Our team runs the tests. The platform keeps the record.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/owasp-testing.html">
+            <span class="ag-top"><span class="dv dv--both"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">OWASP Testing</span>
+            <span class="ag-line">OWASP Top 10: injection, XSS, CSRF, SSRF, broken access control and security misconfiguration.</span>
+            <span class="ag-one">Our team performs the tests. The platform records every requirement, pass or fail.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/infrastructure-security.html">
+            <span class="ag-top"><span class="dv dv--both"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Infrastructure Security</span>
+            <span class="ag-line">Network scanning, open-port detection, firewall assessment, server hardening and cloud security posture.</span>
+            <span class="ag-one">The platform discovers and grades. Our team reviews what needs judgement.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/configuration-audits.html">
+            <span class="ag-top"><span class="dv dv--platform"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Configuration Audits</span>
+            <span class="ag-line">Configuration reviews against ISO 27001, NIST, CIS Benchmarks and regulatory requirements.</span>
+            <span class="ag-one">The platform runs the checks. Our team decides how they map to your obligations.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/identity-access-security.html">
+            <span class="ag-top"><span class="dv dv--both"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Identity &amp; Access Security</span>
+            <span class="ag-line">Privilege escalation risks, weak authentication, MFA gaps, excessive permissions and access-control weaknesses.</span>
+            <span class="ag-one">Access Reviews finds the weaknesses. Our team tests how far they go.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/api-security.html">
+            <span class="ag-top"><span class="dv dv--team"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Our team</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">API Security</span>
+            <span class="ag-line">Endpoint discovery, authentication flaws, rate-limiting gaps, data exposure and API vulnerabilities.</span>
+            <span class="ag-one">Our team tests your APIs. The platform keeps the record.</span>
+          </a></li><li><a class="ag-card" href="../modules/cybersecurity/risk-reporting.html">
+            <span class="ag-top"><span class="dv dv--platform"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span><span class="ag-go" aria-hidden="true">→</span></span>
+            <span class="ag-name">Risk Scoring &amp; Reporting</span>
+            <span class="ag-line">Risk scoring, evidence collection, exploitability assessment, remediation prioritisation and executive reports.</span>
+            <span class="ag-one">The platform scores and reports. Our team turns it into a board story.</span>
+          </a></li></ul>
+      </div>
+    </section>
+    <section class="roe section" id="roe" aria-labelledby="roe-title">
+      <div class="wrap">
+        <header class="m-block-head roe-sec-head">
+          <p class="eyebrow"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg>Authorised scope only</p>
+          <h2 class="h2" id="roe-title">No signature, no test.</h2>
+          <p class="m-block-lede">How our team runs every engagement. Before any active test, all seven of these are agreed in writing, and nothing outside them is touched.</p>
+        </header>
+        <div class="roe-doc">
+          <div class="roe-head">
+            <p class="roe-tab"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Rules of engagement · ENG-2026-015</p>
+            <dl class="roe-meta">
+              <dt>Engagement</dt><dd>Web application and API penetration test</dd>
+              <dt>Client</dt><dd>Example Bank · example-bank.sa</dd>
+              <dt>Run by</dt><dd><span class="dv dv--team"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Our team</span></span></dd>
+            </dl>
+            <ul class="roe-sign" role="list" aria-label="Signatures"><li><span class="roe-line" aria-hidden="true"></span><span class="roe-role">Chief Information Security Officer, Example Bank</span><span class="roe-ok"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Signed</span></li><li><span class="roe-line" aria-hidden="true"></span><span class="roe-role">Engagement lead, CompliVerse</span><span class="roe-ok"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>Signed</span></li></ul>
+            <div class="roe-keeps"><p class="roe-keeps-k"><span class="dv dv--platform dv--s"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span>keeps the record</p><ul role="list"><li>The scope, as a named set of assets</li><li>Every finding, with its evidence</li><li>Fix plans, tickets and retests</li><li>Every change, in the audit trail</li></ul></div>
+            <p class="pv-meta roe-sample">Sample · fictional data</p>
+          </div>
+          <ul class="roe-list" role="list"><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>Signed authorisation</b><p>Signed by the client’s accountable executive before any active test. No signature, no test.</p></div>
+              <span class="roe-v">Signed 30 Oct 2026</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>A written scope</b><p>Hosts, applications and APIs listed by name, address or path. Anything not on the list is out of scope.</p></div>
+              <span class="roe-v">3 hosts · 2 apps · 1 API</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>Agreed testing windows</b><p>Active testing runs only inside the windows agreed in writing.</p></div>
+              <span class="roe-v">Sun–Thu, 22:00–04:00 AST</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>Non-destructive by default</b><p>No denial of service, no data changes, proof-only checks. Anything intrusive needs its own written approval.</p></div>
+              <span class="roe-v">Intrusive tests approved: none</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>Rate limits</b><p>Request rates agreed per target, and set low for production.</p></div>
+              <span class="roe-v">At most 10 requests a second per host</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>A named stop contact and procedure</b><p>A named contact on each side can stop testing at any time. Testers halt on the call and confirm in writing.</p></div>
+              <span class="roe-v">Client: Head of IT Operations · Ours: engagement lead</span>
+            </li><li>
+              <span class="roe-check"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span>
+              <div class="roe-item"><b>Every action recorded</b><p>Testers log each action with its time, target and result. The platform’s audit trail records every change to scope, findings and evidence.</p></div>
+              <span class="roe-v">Engagement log + platform audit trail</span>
+            </li></ul>
+        </div>
+        <p class="roe-foot">These are our team’s controls, agreed in writing before any test. The platform keeps the record: scope, findings, evidence and every change to them.</p>
+      </div>
+    </section>
+    <section class="m-flow" id="flow" aria-labelledby="flow-title">
+      <div class="wrap">
+        <header class="m-flow-head">
+          <div>
+            <p class="eyebrow">How the work flows</p>
+            <h2 class="h2" id="flow-title">Seven steps. The AI works in three of them.</h2>
+          </div>
+          <div class="m-flow-key">
+            <p>At each step: what you do, and what the AI does.</p>
+            <ul class="fl-legend" role="list">
+              <li><span class="mark mark--confirm" aria-hidden="true"></span><span>Suggests, you confirm</span></li>
+              <li><span class="mark mark--auto" aria-hidden="true"></span><span>Automatic</span></li>
+              <li><span class="mark mark--none" aria-hidden="true"></span><span>No AI at this step</span></li>
+            </ul>
+          </div>
+        </header>
+        <div class="fl-lanes" aria-hidden="true"><span>Step</span><span>You</span><span><span class="spark" aria-hidden="true"></span>The AI</span></div>
+        <ol class="fl" role="list">
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">01</span>
+              <h3 class="fl-t"><span class="sr-only">Step 1: </span>Scope</h3>
+              <p class="fl-c">Authorised in writing</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Sign the authorisation and agree the scope, testing windows and stop contact with our team. The platform records the scope.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step. Scope is agreed between people, in writing.</p>
+            </div>
+          </li>
+          <li class="fl-step fl-step--confirm">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">02</span>
+              <h3 class="fl-t"><span class="sr-only">Step 2: </span>Bring in</h3>
+              <p class="fl-c">Scanners, cloud, files</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Connect Tenable Nessus, Rapid7, AWS Inspector, Defender for Cloud or Google SCC, or upload Excel or CSV.</p>
+            </div>
+            <div class="fl-ai fl-ai--confirm">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <p class="fl-d">Summarises an uploaded scan report in plain words.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>Advisory notes. Nothing changes on the findings.</span></p>
+              
+            </div>
+          </li>
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">03</span>
+              <h3 class="fl-t"><span class="sr-only">Step 3: </span>Rank</h3>
+              <p class="fl-c">A fixed formula</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Read the ranking, and the plain-English reason behind each score.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step. Each CVE is enriched with NVD, EPSS, CISA KEV and public-exploit data, then ranked by a fixed formula you can read. KEV-listed or likely-exploited flaws on high-value assets escalate to critical.</p>
+            </div>
+          </li>
+          <li class="fl-step fl-step--auto">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">04</span>
+              <h3 class="fl-t"><span class="sr-only">Step 4: </span>Map</h3>
+              <p class="fl-c">Findings to controls</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Reject a wrong link, or decide the weaker suggestions.</p>
+            </div>
+            <div class="fl-ai fl-ai--auto">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p>
+              <p class="fl-d">Maps each finding to the controls in your library that address it, with a confidence and a one-line reason, or answers “patch-only”.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>At or above the confidence floor (medium by default) the link is made on its own and a Reject removes it. Weaker suggestions wait for a person. One decision on a weakness (CWE) applies to every finding that shares it.</span></p>
+              
+            </div>
+          </li>
+          <li class="fl-step fl-step--confirm">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">05</span>
+              <h3 class="fl-t"><span class="sr-only">Step 5: </span>Fix</h3>
+              <p class="fl-c">Owner, plan, SLA</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Assign one owner, approve the fix plan and push a ServiceNow ticket. Your team applies the fix.</p>
+            </div>
+            <div class="fl-ai fl-ai--confirm">
+              <p class="fl-k"><span class="spark" aria-hidden="true"></span>The AI <span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <p class="fl-d">Drafts a fix plan for a finding: a summary, a copy-paste fix (patch, script, IaC or config) and the rationale. Without AI configured, a template writes it.</p>
+              <p class="fl-who"><span class="fl-who-k">Who decides</span><span>Plans move recommended → approved → applied → verified, with who and when at every step.</span></p>
+              
+            </div>
+          </li>
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">06</span>
+              <h3 class="fl-t"><span class="sr-only">Step 6: </span>Verify</h3>
+              <p class="fl-c">A re-scan proves it</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Re-scan. The finding closes when the scanner no longer detects it.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step. Verification is a re-scan, not a judgement.</p>
+            </div>
+          </li>
+          <li class="fl-step fl-step--none">
+            <div class="fl-rail">
+              <span class="fl-n" aria-hidden="true">07</span>
+              <h3 class="fl-t"><span class="sr-only">Step 7: </span>Report</h3>
+              <p class="fl-c">PDF, CSV, Excel, Word, HTML</p>
+            </div>
+            <div class="fl-you">
+              <p class="fl-k">You</p>
+              <p class="fl-d">Export the executive report and the register. Our team writes the narrative readout when you engage us.</p>
+            </div>
+            <div class="fl-ai fl-ai--none">
+              <p class="fl-k"><span class="mark mark--none" aria-hidden="true"></span>The AI</p>
+              <p class="fl-d">No AI at this step. Reports are built from the record.</p>
+            </div>
+          </li>
+        </ol>
+        
+        
+        
+      </div>
+    </section>
+    <section class="section cy-console" id="preview" aria-labelledby="cx-title">
+      <div class="wrap">
+        <header class="m-sec-head">
+          <p class="eyebrow">Inside the module</p>
+          <h2 class="h2-s" id="cx-title">One register, from scan to signed-off fix.</h2>
+          <p class="m-hint">Switch views: the assessment workflow, findings, the severity dashboard, remediation, the audit trail and reports. <span class="pv-meta">Sample · fictional data</span></p>
+        </header>
+        <div class="win cx" data-pick-scope data-view="dash">
+          <div class="win-bar" aria-hidden="true"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-path">compliverse / cyber-assurance / example-bank / Q4 2026</span></div>
+          <div class="cx-body">
+            <div class="cx-nav" role="group" aria-label="Console view" data-pick="view"><button class="cx-nav-btn" type="button" data-pick-key="dash" aria-pressed="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span>Severity dashboard</span></button><button class="cx-nav-btn" type="button" data-pick-key="assess" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span>Assessments</span></button><button class="cx-nav-btn" type="button" data-pick-key="findings" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Findings</span></button><button class="cx-nav-btn" type="button" data-pick-key="fix" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span>Remediation</span></button><button class="cx-nav-btn" type="button" data-pick-key="trail" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-ledger"/></svg><span>Audit trail</span></button><button class="cx-nav-btn" type="button" data-pick-key="reports" aria-pressed="false"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span>Reports</span></button></div>
+            <div class="cx-main"><section class="cx-view pick-panel is-on" data-pick-panel="view:dash" aria-labelledby="cx-h-dash"><h3 class="cx-h" id="cx-h-dash">Severity dashboard</h3><ul class="cx-kpis" role="list"><li><b>205</b><span>open findings</span></li><li><b>9</b><span>listed in CISA KEV</span></li><li><b>7</b><span>past their SLA</span></li><li><b>4</b><span>exceptions approved</span></li></ul>
+        <div class="pv pv--lg pv-cybersecurity" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-db"/></svg>inventory / register</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Live</span></div>
+        <table class="pv-table"><caption class="sr-only">Asset register</caption><thead><tr><th scope="col">Asset</th><th scope="col">Crit.</th><th scope="col">Score</th></tr></thead><tbody><tr><td>Core banking host</td><td>Critical</td><td class="mono">28</td></tr><tr><td>Windows MSRPC service</td><td>Moderate</td><td class="mono">16</td></tr><tr><td>Internal file share</td><td>Moderate</td><td class="mono">16</td></tr></tbody></table>
+        <p class="strip"><span><b>10</b> assets</span><span><b>205</b> findings</span><span><b>3</b> critical on the asset</span><span><b>9</b> KEV-listed</span></p>
+      </div>
+      <div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Vulnerabilities · 205 findings</span><div class="seg" role="group" aria-label="Lens" data-pick="lens"><button class="seg-btn" type="button" data-pick-key="raw" aria-pressed="true">Raw CVSS</button><button class="seg-btn" type="button" data-pick-key="ctx" aria-pressed="false">On the asset</button></div></div>
+        <div class="pick-panel is-on" data-pick-panel="lens:raw"><p class="pv-label">By raw severity</p><ul class="tm" role="list"><li class="tm-raw-info" style="--w:0.883"><b>181</b><span>Info</span></li><li class="tm-raw-high" style="--w:0.063"><b>13</b><span>High</span></li><li class="tm-raw-medium" style="--w:0.039"><b>8</b><span>Medium</span></li><li class="tm-raw-critical" style="--w:0.035"><b>3</b><span>Critical</span></li></ul></div>
+        <div class="pick-panel" data-pick-panel="lens:ctx"><p class="pv-label">By effective risk on the asset</p><ul class="tm" role="list"><li class="tm-ctx-low" style="--w:0.883"><b>181</b><span>Low</span></li><li class="tm-ctx-medium" style="--w:0.083"><b>17</b><span>Medium</span></li><li class="tm-ctx-high" style="--w:0.035"><b>4</b><span>High</span></li><li class="tm-ctx-critical" style="--w:0.035"><b>3</b><span>Critical</span></li></ul></div>
+        <div class="score-row">
+          <p class="pv-muted"><span class="mono">VULN-50</span> CVE-2024-2961</p>
+          <div class="score"><span class="score-l">CVSS alone</span><span class="score-v score-v--old">88</span></div>
+          <svg class="ico score-arrow" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>
+          <div class="score"><span class="score-l">On this asset</span><span class="score-v">79</span></div>
+          <p class="score-facts"><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>weaponized</span><span>EPSS 88.3% · not in KEV</span></p>
+        </div>
+        <p class="pv-label">The fixed formula, not AI: weight of each input</p><ul class="signals" role="list" aria-label="Inputs of the effective-risk formula and their weights"><li><span>CVSS ÷ 10</span><span class="sbar" aria-hidden="true"><i style="--v:1.00"></i></span><span class="mono">× 0.30</span></li><li><span>EPSS</span><span class="sbar" aria-hidden="true"><i style="--v:0.83"></i></span><span class="mono">× 0.25</span></li><li><span>CISA KEV</span><span class="sbar" aria-hidden="true"><i style="--v:0.67"></i></span><span class="mono">× 0.20</span></li><li><span>Impact − 1</span><span class="sbar" aria-hidden="true"><i style="--v:0.50"></i></span><span class="mono">× 0.15</span></li><li><span>Asset value</span><span class="sbar" aria-hidden="true"><i style="--v:0.33"></i></span><span class="mono">× 0.10</span></li></ul>
+      </div></div>
+        <div class="cx-row3">
+          <div class="cx-card"><p class="cx-card-k">SLA status</p><ul class="bars" role="list"><li><span>Within SLA</span><span class="meter" aria-hidden="true"><i style="--v:0.820"></i></span><span class="mono">168</span></li><li><span>Due within 7 days</span><span class="meter" aria-hidden="true"><i style="--v:0.146"></i></span><span class="mono">30</span></li><li><span>Past SLA</span><span class="meter" aria-hidden="true"><i style="--v:0.034"></i></span><span class="mono">7</span></li></ul><p class="pv-muted pv-small">Due dates set by severity on import: 7, 30, 90 and 180 days.</p></div>
+          <div class="cx-card"><p class="cx-card-k">Threat intelligence</p><ul class="cx-intel" role="list"><li><b class="mono">9</b><span>KEV-listed</span></li><li><b class="mono">12</b><span>EPSS 0.7 or more</span></li><li><b class="mono">31</b><span>Public exploit (Exploit-DB or GitHub)</span></li></ul><p class="pv-muted pv-small">NVD, EPSS and KEV refreshed daily; Exploit-DB weekly.</p></div>
+          <div class="cx-card"><p class="cx-card-k">Most exposed assets</p><ul class="cx-exp" role="list"><li><span>vpn.example-bank.sa</span><span class="chip chip--risk chip--band">0.88</span></li><li><span>rpt-app-03</span><span class="chip chip--risk chip--band">0.88</span></li><li><span>www.example-bank.sa</span><span class="chip chip--risk chip--band">0.85</span></li><li><span>jump-host-01</span><span class="chip chip--line chip--band"><i class="dot dot--amber" aria-hidden="true"></i>0.45</span></li></ul><p class="pv-muted pv-small">Highest effective risk among open findings.</p></div>
+        </div></section><section class="cx-view pick-panel" data-pick-panel="view:assess" aria-labelledby="cx-h-assess"><h3 class="cx-h" id="cx-h-assess">Assessments</h3><div class="cx-asm" data-pick-scope>
+          <div class="cx-asm-list" role="group" aria-label="Choose an assessment" data-pick="asm"><button class="cx-asm-row" type="button" data-pick-key="eng14" aria-pressed="true"><span class="cx-asm-name">External and internal vulnerability assessment</span><span class="cx-asm-meta">ENG-2026-014 · example-bank.sa · 8 assets</span><span class="dv dv--both dv--s"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span></button><button class="cx-asm-row" type="button" data-pick-key="asvs" aria-pressed="false"><span class="cx-asm-name">OWASP ASVS level 2 · Online banking web app</span><span class="cx-asm-meta">ENG-2026-015 · www.example-bank.sa · production</span><span class="dv dv--both dv--s"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-people"/></svg><span>Platform + our team</span></span></button><button class="cx-asm-row" type="button" data-pick-key="cis" aria-pressed="false"><span class="cx-asm-name">CIS AWS Foundations v3.0 · prod-payments</span><span class="cx-asm-meta">Benchmark run · AWS account · read-only runner</span><span class="dv dv--platform dv--s"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Platform</span></span></button></div>
+          <div class="cx-asm-panels"><div class="pick-panel is-on" data-pick-panel="asm:eng14"><ol class="stg7" role="list" aria-label="Stages"><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Scope</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Bring in</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Rank</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Map</span></li><li class="is-now"><span class="stg7-dot" aria-hidden="true"></span><span>Fix</span><span class="sr-only"> (current stage)</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Verify</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Report</span></li></ol>
+            <p class="cx-sub">Start checklist</p>
+            <ul class="cx-check" role="list"><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Authorisation signed</b><span>Chief Information Security Officer · 30 Oct 2026</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Scope recorded</b><span>8 assets, 1 exclusion</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Windows agreed</b><span>Sun–Thu, 22:00–04:00 AST</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Sources connected</b><span>Nessus, Rapid7, AWS Inspector</span></li></ul></div><div class="pick-panel" data-pick-panel="asm:asvs"><ol class="stg7" role="list" aria-label="Stages"><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Scope</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Rules of engagement</span></li><li class="is-now"><span class="stg7-dot" aria-hidden="true"></span><span>Test</span><span class="sr-only"> (current stage)</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Record results</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Score</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Report</span></li></ol>
+            <p class="cx-sub">Start checklist</p>
+            <ul class="cx-check" role="list"><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Rules of engagement approved</b><span>Chief Information Security Officer · 3 Nov 2026</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Test window</b><span>Sun–Thu, 22:00–04:00 AST</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Test accounts by role</b><span>Retail customer, business customer, branch teller</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Exclusions</b><span>Third-party payment gateway</span></li></ul></div><div class="pick-panel" data-pick-panel="asm:cis"><ol class="stg7" role="list" aria-label="Stages"><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Import benchmark</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Approve</span></li><li class="is-done"><span class="stg7-dot" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg></span><span>Run read-only</span></li><li class="is-now"><span class="stg7-dot" aria-hidden="true"></span><span>Results</span><span class="sr-only"> (current stage)</span></li><li class=""><span class="stg7-dot" aria-hidden="true"></span><span>Map to controls</span></li></ol>
+            <p class="cx-sub">Run record</p>
+            <ul class="cx-check" role="list"><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Runner</b><span>AWS, read-only</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Mapped to</b><span>ISO 27001 and NIST SP 800-53, by you</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Last run</b><span>12 Nov 2026, 02:10</span></li><li><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-check"/></svg><b>Result</b><span>14 pass · 4 fail</span></li></ul></div></div>
+        </div></section><section class="cx-view pick-panel" data-pick-panel="view:findings" aria-labelledby="cx-h-findings"><h3 class="cx-h" id="cx-h-findings">Findings</h3><div class="cx-f" data-pick-scope data-ff="all">
+          <div class="cx-tool">
+            <p class="mono">Q4 2026 assessment · ENG-2026-014 and ENG-2026-015 · 10 of 205 findings</p>
+            <div class="seg" role="group" aria-label="Filter findings" data-pick="ff"><button class="seg-btn" type="button" data-pick-key="all" aria-pressed="true">All <span class="mono">10</span></button><button class="seg-btn" type="button" data-pick-key="crit" aria-pressed="false">Critical on the asset <span class="mono">3</span></button><button class="seg-btn" type="button" data-pick-key="kev" aria-pressed="false">KEV-listed <span class="mono">3</span></button><button class="seg-btn" type="button" data-pick-key="late" aria-pressed="false">Past SLA <span class="mono">1</span></button><button class="seg-btn" type="button" data-pick-key="team" aria-pressed="false">Found by our team <span class="mono">1</span></button></div>
+          </div>
+          <div class="ft-wrap"><table class="ft">
+            <caption class="sr-only">Findings in the Q4 2026 assessment</caption>
+            <thead><tr><th scope="col">ID</th><th scope="col">Finding</th><th scope="col">CVSS</th><th scope="col">EPSS</th><th scope="col">KEV</th><th scope="col">Effective risk</th><th scope="col">Status</th><th scope="col">Owner</th><th scope="col">Due</th></tr></thead>
+            <tbody><tr class="ft-row" data-band="critical" data-kev>
+              <td class="mono ft-id">F-101</td>
+              <th scope="row" class="ft-t"><span>OS command injection in the remote access gateway</span><span class="ft-a">vpn.example-bank.sa · Tenable Nessus</span></th>
+              <td class="mono" data-k="CVSS">10.0</td>
+              <td class="mono" data-k="EPSS">0.94</td>
+              <td data-k="KEV"><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>KEV</span></td>
+              <td data-k="Effective risk"><span class="chip chip--risk chip--band">critical 0.88</span></td>
+              <td data-k="Status"><span class="ft-st">Resolved</span></td>
+              <td data-k="Owner">Network security lead</td>
+              <td class="mono" data-k="Due">11 Nov</td>
+            </tr><tr class="ft-row" data-band="critical" data-kev>
+              <td class="mono ft-id">F-102</td>
+              <th scope="row" class="ft-t"><span>HTTP/2 rapid reset denial of service on the web tier</span><span class="ft-a">www.example-bank.sa · Tenable Nessus</span></th>
+              <td class="mono" data-k="CVSS">7.5</td>
+              <td class="mono" data-k="EPSS">0.82</td>
+              <td data-k="KEV"><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>KEV</span></td>
+              <td data-k="Effective risk"><span class="chip chip--risk chip--band">critical 0.85</span></td>
+              <td data-k="Status"><span class="ft-st">In progress</span></td>
+              <td data-k="Owner">Web platform owner</td>
+              <td class="mono" data-k="Due">4 Dec</td>
+            </tr><tr class="ft-row" data-band="critical" data-kev data-late>
+              <td class="mono ft-id">F-103</td>
+              <th scope="row" class="ft-t"><span>Log4j remote code execution (Log4Shell)</span><span class="ft-a">rpt-app-03 · 10.20.6.14 · Rapid7 InsightVM</span></th>
+              <td class="mono" data-k="CVSS">10.0</td>
+              <td class="mono" data-k="EPSS">0.94</td>
+              <td data-k="KEV"><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>KEV</span></td>
+              <td data-k="Effective risk"><span class="chip chip--risk chip--band">critical 0.88</span></td>
+              <td data-k="Status"><span class="ft-st">In progress</span></td>
+              <td data-k="Owner">Applications manager</td>
+              <td class="mono" data-k="Due"><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>11 Nov · late</span></td>
+            </tr><tr class="ft-row" data-band="medium">
+              <td class="mono ft-id">F-104</td>
+              <th scope="row" class="ft-t"><span>OpenSSH signal handler race (regreSSHion)</span><span class="ft-a">jump-host-01 · 10.20.1.5 · Tenable Nessus</span></th>
+              <td class="mono" data-k="CVSS">8.1</td>
+              <td class="mono" data-k="EPSS">0.38</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="chip chip--line chip--band"><i class="dot dot--amber" aria-hidden="true"></i>medium 0.45</span></td>
+              <td data-k="Status"><span class="ft-st">Open</span></td>
+              <td data-k="Owner">Infrastructure lead</td>
+              <td class="mono" data-k="Due">4 Dec</td>
+            </tr><tr class="ft-row" data-band="low">
+              <td class="mono ft-id">F-105</td>
+              <th scope="row" class="ft-t"><span>SWEET32: 64-bit block ciphers offered on TLS</span><span class="ft-a">core-bank-db-01 · 10.20.4.11 · Tenable Nessus</span></th>
+              <td class="mono" data-k="CVSS">7.5</td>
+              <td class="mono" data-k="EPSS">0.02</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="chip chip--solid chip--band">low 0.39</span></td>
+              <td data-k="Status"><span class="ft-st">Accepted</span></td>
+              <td data-k="Owner">Database administrator</td>
+              <td class="mono" data-k="Due">31 Mar 2027</td>
+            </tr><tr class="ft-row" data-band="low">
+              <td class="mono ft-id">F-106</td>
+              <th scope="row" class="ft-t"><span>SSH prefix truncation (Terrapin)</span><span class="ft-a">jump-host-01 · 10.20.1.5 · Tenable Nessus</span></th>
+              <td class="mono" data-k="CVSS">5.9</td>
+              <td class="mono" data-k="EPSS">0.05</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="chip chip--solid chip--band">low 0.30</span></td>
+              <td data-k="Status"><span class="ft-st">Open</span></td>
+              <td data-k="Owner">Infrastructure lead</td>
+              <td class="mono" data-k="Due">2 Feb 2027</td>
+            </tr><tr class="ft-row" data-band="none">
+              <td class="mono ft-id">F-107</td>
+              <th scope="row" class="ft-t"><span>TLS 1.0 and 1.1 still enabled</span><span class="ft-a">api.example-bank.sa · External surface probe</span></th>
+              <td class="mono" data-k="CVSS">—</td>
+              <td class="mono" data-k="EPSS">—</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="mono ft-dim">no CVE</span></td>
+              <td data-k="Status"><span class="ft-st">Open</span></td>
+              <td data-k="Owner">Mobile API owner</td>
+              <td class="mono" data-k="Due">2 Feb 2027</td>
+            </tr><tr class="ft-row" data-band="none">
+              <td class="mono ft-id">F-108</td>
+              <th scope="row" class="ft-t"><span>AWS root user has no MFA (CIS AWS 1.5)</span><span class="ft-a">prod-payments · CIS AWS Foundations v3.0</span></th>
+              <td class="mono" data-k="CVSS">—</td>
+              <td class="mono" data-k="EPSS">—</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="mono ft-dim">no CVE</span></td>
+              <td data-k="Status"><span class="ft-st">Resolved</span></td>
+              <td data-k="Owner">Cloud platform lead</td>
+              <td class="mono" data-k="Due">4 Dec</td>
+            </tr><tr class="ft-row" data-band="none" data-team>
+              <td class="mono ft-id">F-109</td>
+              <th scope="row" class="ft-t"><span>Broken object-level authorisation on GET /v2/accounts/{id}</span><span class="ft-a">api.example-bank.sa · Our team · manual test</span></th>
+              <td class="mono" data-k="CVSS">—</td>
+              <td class="mono" data-k="EPSS">—</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="mono ft-dim">no CVE</span></td>
+              <td data-k="Status"><span class="ft-st">In progress</span></td>
+              <td data-k="Owner">Mobile API owner</td>
+              <td class="mono" data-k="Due">4 Dec</td>
+            </tr><tr class="ft-row" data-band="none">
+              <td class="mono ft-id">F-110</td>
+              <th scope="row" class="ft-t"><span>Privileged account without MFA (PRIV-05)</span><span class="ft-a">Microsoft Entra ID · Access Reviews</span></th>
+              <td class="mono" data-k="CVSS">—</td>
+              <td class="mono" data-k="EPSS">—</td>
+              <td data-k="KEV"><span class="mono ft-dim">—</span></td>
+              <td data-k="Effective risk"><span class="mono ft-dim">no CVE</span></td>
+              <td data-k="Status"><span class="ft-st">Open</span></td>
+              <td data-k="Owner">Identity and access manager</td>
+              <td class="mono" data-k="Due">4 Dec</td>
+            </tr></tbody>
+          </table></div>
+          <div class="cx-detail">
+            <div class="cx-card"><p class="cx-card-k">Why F-102 is critical</p><p>Escalated to critical: listed in CISA KEV and likely to be exploited, on a high-value customer-facing asset.</p><p class="mono pv-small">CVSS ÷ 10 0.225 + EPSS 0.205 + CISA KEV 0.200 + Asset value 0.100 + Business impact − 1 0.060 = 0.790 → floor 0.850</p><p class="fx-nai">Not AI: a fixed formula</p></div>
+            <div class="cx-card cx-card--ai cx-card--auto"><p class="cx-card-k"><span class="spark" aria-hidden="true"></span>Mapped to your controls <span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p><ul class="cx-map" role="list"><li><b>Vulnerability and patch management</b><span>Confidence high · patch a KEV-listed flaw on the web tier</span></li><li><b>Capacity and availability management</b><span>Confidence medium · limit concurrent streams per connection</span></li></ul><p class="pv-muted pv-small">At or above the confidence floor a link is made on its own; a Reject removes it. Weaker suggestions wait for a person.</p></div>
+            <div class="cx-card"><p class="cx-card-k">Workflow history</p><ul class="cx-hist" role="list"><li><span class="mono">04 Nov 06:00</span>Imported from Tenable Nessus · SLA 30 days</li><li><span class="mono">05 Nov 10:12</span>Assigned to the web platform owner</li><li><span class="mono">11 Nov 14:30</span>Fix plan approved · ticket INC0048213</li><li><span class="mono">13 Nov 09:15</span>ServiceNow: In progress</li></ul></div>
+          </div>
+        </div></section><section class="cx-view pick-panel" data-pick-panel="view:fix" aria-labelledby="cx-h-fix"><h3 class="cx-h" id="cx-h-fix">Remediation</h3><div class="kb"><div class="kb-col">
+            <p class="kb-k">Recommended <span class="mono">4</span></p>
+            <ul class="kb-list" role="list"><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-104</span><span class="chip chip--gap chip--band">High</span></p>
+              <p class="kb-t">Upgrade OpenSSH to 9.8p1 or later on jump-host-01</p>
+              <p class="kb-o">Infrastructure lead · due 4 Dec</p>
+              <p class="kb-tags"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>AI draft</span></p>
+            </li><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-106</span><span class="chip chip--line chip--band"><i class="dot dot--amber" aria-hidden="true"></i>Medium</span></p>
+              <p class="kb-t">Covered by the OpenSSH upgrade in F-104</p>
+              <p class="kb-o">Infrastructure lead · due 2 Feb 2027</p>
+              <p class="kb-tags"><span class="chip chip--line">Template</span></p>
+            </li><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-107</span><span class="chip chip--line chip--band"><i class="dot dot--amber" aria-hidden="true"></i>Medium</span></p>
+              <p class="kb-t">Allow TLS 1.2 and 1.3 only on the API gateway</p>
+              <p class="kb-o">Mobile API owner · due 2 Feb 2027</p>
+              <p class="kb-tags"><span class="chip chip--line">Template</span></p>
+            </li><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-110</span><span class="chip chip--gap chip--band">High</span></p>
+              <p class="kb-t">Register MFA for the account, or remove the privileged role</p>
+              <p class="kb-o">Identity and access manager · due 4 Dec</p>
+              <p class="kb-tags"><span class="chip chip--line">Template</span></p>
+            </li></ul>
+          </div><div class="kb-col">
+            <p class="kb-k">Approved <span class="mono">3</span></p>
+            <ul class="kb-list" role="list"><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-102</span><span class="chip chip--gap chip--band">High</span></p>
+              <p class="kb-t">Apply the web server vendor’s HTTP/2 rapid-reset mitigations and cap concurrent streams per connection</p>
+              <p class="kb-o">Web platform owner · due 4 Dec</p>
+              <p class="kb-tags"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>AI draft</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>INC0048213</span></p>
+            </li><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-103</span><span class="chip chip--risk chip--band">Critical</span></p>
+              <p class="kb-t">Upgrade Log4j to 2.17.1 or later on rpt-app-03</p>
+              <p class="kb-o">Applications manager · due 11 Nov · late</p>
+              <p class="kb-tags"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>AI draft</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>INC0048207</span></p>
+            </li><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-109</span><span class="chip chip--gap chip--band">High</span></p>
+              <p class="kb-t">Check that the account belongs to the signed-in customer on every object lookup</p>
+              <p class="kb-o">Mobile API owner · due 4 Dec</p>
+              <p class="kb-tags"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>AI draft</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>INC0048215</span></p>
+            </li></ul>
+          </div><div class="kb-col">
+            <p class="kb-k">Applied <span class="mono">1</span></p>
+            <ul class="kb-list" role="list"><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-101</span><span class="chip chip--risk chip--band">Critical</span></p>
+              <p class="kb-t">Apply the vendor hotfix for CVE-2024-3400 on the gateway, then rotate the credentials it holds</p>
+              <p class="kb-o">Network security lead · due 11 Nov</p>
+              <p class="kb-tags"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>AI draft</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>INC0048202</span></p>
+            </li></ul>
+          </div><div class="kb-col">
+            <p class="kb-k">Verified <span class="mono">1</span></p>
+            <ul class="kb-list" role="list"><li class="kb-card">
+              <p class="kb-id"><span class="mono">F-108</span><span class="chip chip--gap chip--band">High</span></p>
+              <p class="kb-t">Enable a hardware MFA device on the root user</p>
+              <p class="kb-o">Cloud platform lead · due 4 Dec</p>
+              <p class="kb-tags"><span class="chip chip--line">Template</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>INC0048198</span></p>
+            </li></ul>
+          </div></div>
+        <div class="kb-ex">
+          <p class="kb-k">Exceptions</p>
+          <p><span class="mono">F-105</span> SWEET32: 64-bit block ciphers offered on TLS · approved by the Chief Information Security Officer until 31 Mar 2027. Compensating control: reachable only inside the network.</p>
+        </div>
+        <p class="pv-muted pv-small">Who and when are recorded at every step. A resolved ServiceNow ticket moves a plan to applied, never to verified: only a re-scan verifies. Nothing here touches a host; your team applies the fix.</p></section><section class="cx-view pick-panel" data-pick-panel="view:trail" aria-labelledby="cx-h-trail"><h3 class="cx-h" id="cx-h-trail">Audit trail</h3><div class="ft-wrap"><table class="tr">
+          <caption class="sr-only">Audit trail, newest first</caption>
+          <thead><tr><th scope="col">When</th><th scope="col">Who</th><th scope="col">IP</th><th scope="col">Log</th><th scope="col">Record</th><th scope="col">Change</th></tr></thead>
+          <tbody><tr><td class="mono">13 Nov 09:42</td><td>Network security lead</td><td class="mono">10.20.12.41</td><td><span class="chip chip--line">App audit log</span></td><td class="mono">F-101</td><td>Re-scan requested for vpn.example-bank.sa</td></tr><tr><td class="mono">13 Nov 09:15</td><td>ServiceNow sync</td><td class="mono">—</td><td><span class="chip chip--line">Workflow history</span></td><td class="mono">F-102</td><td>Ticket INC0048213: New → In progress</td></tr><tr><td class="mono">12 Nov 18:03</td><td>Control mapping (job)</td><td class="mono">—</td><td><span class="chip chip--line">AI ledger</span></td><td class="mono">F-104</td><td><span class="spark" aria-hidden="true"></span>AI call: map findings to controls · success · prompt masked</td></tr><tr><td class="mono">12 Nov 16:40</td><td>Chief Information Security Officer</td><td class="mono">10.20.12.7</td><td><span class="chip chip--line">Workflow history</span></td><td class="mono">F-105</td><td>Exception approved until 31 Mar 2027</td></tr><tr><td class="mono">11 Nov 11:20</td><td>Engagement lead (CompliVerse)</td><td class="mono">10.20.12.90</td><td><span class="chip chip--line">App audit log</span></td><td class="mono">ENG-2026-015</td><td>Scope: added api.example-bank.sa /v2/* (written approval 2)</td></tr><tr><td class="mono">10 Nov 08:05</td><td>Security administrator</td><td class="mono">10.20.12.15</td><td><span class="chip chip--line">Scanner connections</span></td><td class="mono">Nessus</td><td>Connection credentials updated (secret masked)</td></tr><tr><td class="mono">09 Nov 22:31</td><td>Network security lead</td><td class="mono">10.20.12.41</td><td><span class="chip chip--line">Workflow history</span></td><td class="mono">F-101</td><td>Fix plan: Approved → Applied</td></tr><tr><td class="mono">04 Nov 06:00</td><td>Nessus import (job)</td><td class="mono">—</td><td><span class="chip chip--line">App audit log</span></td><td class="mono">ENG-2026-014</td><td>412 findings imported; SLA due dates set</td></tr></tbody>
+        </table></div>
+        <p class="pv-muted pv-small">Four trails: the app-wide log of every change (who, IP, old and new values, secrets masked), each finding’s workflow history, the scanner-connection log and the AI ledger: which AI feature ran, for whom, and with what result.</p></section><section class="cx-view pick-panel" data-pick-panel="view:reports" aria-labelledby="cx-h-reports"><h3 class="cx-h" id="cx-h-reports">Reports</h3><ul class="cx-reports" role="list"><li><span class="cx-rep-t"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><b>Executive vulnerability report</b></span><span class="cx-rep-d">Trend window, posture by severity, status and SLA, and a KEV / EPSS / top-10 threat snapshot.</span><span class="mono cx-rep-f">PDF</span></li><li><span class="cx-rep-t"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><b>Vulnerability register</b></span><span class="cx-rep-d">Every finding with its enrichment, owner, SLA and status.</span><span class="mono cx-rep-f">CSV · Excel · Word · PDF</span></li><li><span class="cx-rep-t"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><b>Access review evidence</b></span><span class="cx-rep-d">The review’s sample, decisions and verdict.</span><span class="mono cx-rep-f">CSV · Excel · PDF</span></li><li><span class="cx-rep-t"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><b>Any register or dataset</b></span><span class="cx-rep-d">From the report builder, filtered the way you need it.</span><span class="mono cx-rep-f">CSV · Excel · Word · PDF · HTML</span></li></ul>
+        <div class="cx-rep-dl">
+          <p><b>Sample security report</b> · Example Bank · Q4 2026 · <span class="mono">Sample · fictional data</span></p>
+          <a class="btn btn--line btn--sm" href="../downloads/sample-security-report.pdf" download><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Download sample report</a>
+        </div></section></div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="rp section section--raised" id="report" aria-labelledby="report-title">
+      <div class="wrap rp-grid">
+        <div class="rp-cover" aria-hidden="true">
+          <div class="rp-sheet rp-sheet--back"></div>
+          <div class="rp-sheet">
+            <p class="rp-sheet-k">Security assessment report</p>
+            <p class="rp-sheet-t">Example Bank</p>
+            <p class="rp-sheet-m">Q4 2026 · Vulnerability assessment and penetration test</p>
+            <ul class="rp-sheet-bars"><li style="--v:.2"></li><li style="--v:.6"></li><li style="--v:.2"></li><li style="--v:0"></li></ul>
+            <p class="rp-sheet-s">Sample · fictional data</p>
+          </div>
+        </div>
+        <div class="rp-text">
+          <p class="eyebrow">Downloadable reports</p>
+          <h2 class="h2-s" id="report-title">See the report before you see a demo.</h2>
+          <p class="m-block-lede">A sample assessment report for a fictional bank, built from the same record the console shows: every finding with its CVSS, EPSS and KEV status, its effective risk and its fix.</p>
+          <ol class="rp-parts" role="list"><li>Cover</li><li>Scope and authorisation</li><li>Executive summary</li><li>Severity dashboard</li><li>Findings with CVSS, EPSS and KEV</li><li>Remediation plan</li><li>Appendix: method and formula</li></ol>
+          <div class="actions">
+            <a class="btn btn--primary" href="../downloads/sample-security-report.pdf" download><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Download sample report</a>
+            <span class="rp-meta">PDF · 9 pages · 1.0 MB · <b>Sample · fictional data</b></span>
+          </div>
+          <p class="rp-formats">Your own reports export as <b>PDF</b>, <b>CSV</b>, <b>Excel</b>, <b>Word</b> and <b>HTML</b>, and tickets go to <b>ServiceNow</b>.</p>
+        </div>
+      </div>
+    </section>
+    <section class="m-runs" aria-labelledby="runs-title">
+      <div class="wrap m-runs-grid">
+        <div class="m-runs-ai">
+          <p class="eyebrow eyebrow--ai"><span class="spark" aria-hidden="true"></span>The intelligence layer</p>
+          <h2 class="h2-s" id="runs-title">Every AI step above runs on one intelligence layer, under the same rules as every other module.</h2>
+          <ul class="m-guard" role="list"><li><b>Masked before it leaves</b><span>AI prompts pass through a data-protection gateway: names, e-mails, hosts and IP addresses are swapped for placeholders, secrets and account numbers removed.</span></li><li><b>Every call on the record</b><span>Administrators see each AI call: who asked, which feature, the tokens and the cost.</span></li><li><b>Budgets that alert</b><span>Token usage is tracked per module against a monthly budget, with an alert before you run over.</span></li></ul>
+          <p class="m-runs-links"><a class="link-arrow" href="../ai/index.html">The intelligence layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="link-arrow" href="../ai/capabilities.html?module=cybersecurity">4 AI capabilities in Cybersecurity Assessment &amp; Assurance<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><a class="link-arrow" href="../ai/trust.html">AI trust &amp; control<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a></p>
+        </div>
+        <div class="m-runs-svc">
+          <p class="eyebrow">Platform + people</p>
+          <h2 class="h3">Services that run on Cybersecurity Assessment &amp; Assurance</h2>
+          <ul class="rows" role="list"><li><a class="row-link" href="../services/cybersecurity-assessment.html"><span><span class="row-t">Cybersecurity Assessment</span><span class="row-d">Vulnerability assessment, penetration testing and security reviews, scoped and signed off before any active test begins.</span></span><span class="row-go" aria-hidden="true">→</span></a></li></ul>
+          <a class="link-arrow" href="../services/index.html">All nine services<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
+    </section>
+    <section class="m-context" aria-labelledby="ctx-loop">
+      <div class="wrap m-context-grid">
+        <div class="m-loop">
+          <p class="eyebrow">Where it sits in the 360° loop</p>
+          <h2 class="h2-s" id="ctx-loop">Evidence and Risk.</h2>
+          <svg class="mini-ring" viewBox="-60 -6 420 312" role="img" aria-label="The 360° loop with Evidence, Risk lit">
+        <circle class="mr-track" cx="150" cy="150" r="100"/><path class="mr-arc" d="M150.0 250.0 A100 100 0 0 1 63.4 200.0"/><circle class="mr-dot" cx="150.0" cy="50.0" r="11"/><text class="mr-label" x="150.0" y="21.0" text-anchor="middle">Framework</text><circle class="mr-dot" cx="236.6" cy="100.0" r="11"/><text class="mr-label" x="266.0" y="88.0" text-anchor="start">Policy</text><circle class="mr-dot" cx="236.6" cy="200.0" r="11"/><text class="mr-label" x="266.0" y="222.0" text-anchor="start">Control</text><circle class="mr-dot is-lit" cx="150.0" cy="250.0" r="11"/><text class="mr-label is-lit" x="150.0" y="289.0" text-anchor="middle">Evidence</text><circle class="mr-dot is-lit" cx="63.4" cy="200.0" r="11"/><text class="mr-label is-lit" x="34.0" y="222.0" text-anchor="end">Risk</text><circle class="mr-dot" cx="63.4" cy="100.0" r="11"/><text class="mr-label" x="34.0" y="88.0" text-anchor="end">Audit</text>
+        <text class="mr-center" x="150" y="158" text-anchor="middle">360°</text>
+      </svg>
+          <p class="m-loop-note">A re-scan is the proof a fix landed, and an exploitable finding on a critical asset is exposure the risk register should carry.</p>
+          <a class="link-arrow" href="../platform/index.html#loop">Follow one control round the loop<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div class="m-why">
+          <p class="eyebrow">Why it matters</p>
+          <h2 class="h2-s">From scattered to connected.</h2>
+          <div class="diff diff--full" role="group" aria-label="Today compared with CompliVerse">
+              <p class="diff-hunk" aria-hidden="true">@@ today → with CompliVerse @@</p>
+              <p class="diff-del diff-lead"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Patch by CVSS, drown in noise.</span></p>
+              <p class="diff-add diff-lead"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>Prioritise by what’s actually exploitable.</span></p>
+              <p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>Findings scattered across scanner exports.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>Scanners, cloud and spreadsheets feed one register.</span></p><p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>A high CVSS on a dev box outranks a real threat.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>A fixed formula re-ranks each finding on its own asset.</span></p><p class="diff-del"><span class="diff-sign" aria-hidden="true">−</span><span><span class="sr-only">Today: </span>A fix is closed when someone says so.</span></p><p class="diff-add"><span class="diff-sign" aria-hidden="true">+</span><span><span class="sr-only">With CompliVerse: </span>A re-scan is the only thing that closes a finding.</span></p>
+            </div>
+        </div>
+      </div>
+    </section>
+    <section class="m-related" aria-label="Frameworks and related modules">
+      <div class="wrap m-related-grid">
+        <div>
+          <p class="eyebrow">Frameworks it serves</p>
+          <ul class="fw-chips" role="list"><li class=""><b>ISO 27001</b><span>Global</span></li><li class=""><b>NIST CSF</b><span>Global</span></li><li class=""><b>NIST SP 800-53</b><span>Global</span></li><li class=""><b>PCI DSS</b><span>Global</span></li></ul>
+          <p class="pv-muted">Named in this page’s examples. The library holds 25+ frameworks, and every module works on the same records.</p>
+          <a class="link-arrow" href="../frameworks/index.html">All 25+ frameworks, by region<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+        </div>
+        <div>
+          <p class="eyebrow">Related modules</p>
+          <ul class="rel" role="list"><li><a class="rel-card" href="../modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><b>Enterprise Risk (ERM)</b><span>Gaps become owned risks</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><b>Unified Control Library</b><span>Implement once, inherit everywhere</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><b>Access Reviews</b><span>Certify who can get in</span><span class="rel-go" aria-hidden="true">→</span></a></li><li><a class="rel-card" href="../modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><b>Evidence Management</b><span>Upload once, satisfy everywhere</span><span class="rel-go" aria-hidden="true">→</span></a></li></ul>
+        </div>
+      </div>
+    </section>
+    <section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <h2 class="cta-title chrome-text" id="cta-title">See Cybersecurity Assessment &amp; Assurance on your own stack.</h2>
+    <div class="cta-foot">
+      <p class="lede">Demos are scoped to your regulators. Pick a slot and we’ll run it live.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="../request-demo.html?interest=cybersecurity">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--line" href="../roi.html">See the ROI</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="wordmark" href="../index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+        <p>AI-native enterprise GRC, and the people to run it with you. Compliance that proves itself.</p>
+        <a class="btn btn--line btn--sm" href="../request-demo.html">Book a live demo</a>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div><h2 class="footer-h"><span class="spark" aria-hidden="true"></span>AI</h2><ul role="list"><li><a href="../ai/index.html">The intelligence layer</a></li><li><a href="../ai/studio.html">Compli AI Studio</a></li><li><a href="../ai/trust.html">AI trust &amp; control</a></li><li><a href="../ai/capabilities.html">All AI capabilities</a></li></ul></div>
+        <div><h2 class="footer-h">Platform</h2><ul role="list"><li><a href="../platform/index.html">Platform overview</a></li><li><a href="../modules/governance.html">Governance &amp; Documents</a></li><li><a href="../modules/committees.html">Committees &amp; Meetings</a></li><li><a href="../modules/evidence.html">Evidence Management</a></li><li><a href="../modules/vendors.html">Vendor Risk (TPRM)</a></li><li><a href="../modules/cybersecurity.html">Cybersecurity Assessment &amp; Assurance</a></li><li><a href="../modules/workflow.html">Workflow Automation</a></li><li><a href="../modules/connectors.html">Integrations &amp; Identity</a></li><li><a href="../modules/assessments.html">Compliance Assessments</a></li><li><a href="../modules/controls.html">Unified Control Library</a></li><li><a href="../modules/risk.html">Enterprise Risk (ERM)</a></li><li><a href="../modules/audit.html">Audit Management</a></li><li><a href="../modules/insights.html">Dashboards &amp; Insights</a></li><li><a href="../modules/access-reviews.html">Access Reviews</a></li></ul></div>
+        <div><h2 class="footer-h">Services</h2><ul role="list"><li><a href="../services/index.html">Services overview</a></li><li><a href="../services/grc-consulting.html">GRC Consulting &amp; Advisory</a></li><li><a href="../services/regulatory-compliance.html">Regulatory Compliance Consulting</a></li><li><a href="../services/ai-governance.html">AI Governance &amp; Risk Management</a></li><li><a href="../services/compliance-automation.html">Compliance Automation &amp; Digital Transformation</a></li><li><a href="../services/risk-management.html">Risk Assessment &amp; Management</a></li><li><a href="../services/cybersecurity-assessment.html">Cybersecurity Assessment</a></li><li><a href="../services/policy-documentation.html">Policy &amp; Documentation Management</a></li><li><a href="../services/implementation-integration.html">Implementation &amp; Integration</a></li><li><a href="../services/training.html">Training &amp; Capacity Building</a></li></ul></div>
+        <div><h2 class="footer-h">Frameworks</h2><ul role="list"><li><a href="../frameworks/index.html">Framework library</a></li><li><a href="../frameworks/sama-csf.html">SAMA CSF</a></li><li><a href="../frameworks/nca-ecc.html">NCA ECC</a></li><li><a href="../frameworks/cbuae.html">CBUAE Art.13</a></li><li><a href="../frameworks/sbp-etgrmf.html">SBP ETGRMF</a></li><li><a href="../frameworks/iso-27001.html">ISO 27001</a></li><li><a href="../frameworks/soc-2.html">SOC 2</a></li><li><a href="../frameworks/pci-dss.html">PCI DSS</a></li><li><a href="../frameworks/dora.html">DORA</a></li></ul></div>
+        <div><h2 class="footer-h">Solutions &amp; resources</h2><ul role="list"><li><a href="../solutions/index.html">Solutions by stage</a></li><li><a href="../solutions/compliance.html">Compliance</a></li><li><a href="../solutions/governance.html">Governance</a></li><li><a href="../integrations.html">Integrations</a></li><li><a href="../hosting.html">Cloud and on-premise</a></li><li><a href="../roi.html">ROI and time savings</a></li><li><a href="../resources/index.html">Library</a></li><li><a href="../resources/glossary.html">Glossary</a></li><li><a href="../request-demo.html">Book a demo</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 CompliVerse AI</p>
+      <p class="footer-legal"><a href="../terms.html">Terms</a><a href="../privacy.html">Privacy</a></p>
+      <p>Draft 4 · a static prototype: nothing you type here leaves your browser.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

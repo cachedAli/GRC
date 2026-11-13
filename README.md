@@ -1,90 +1,101 @@
-# complyverse_website
+# CompliVerse website (static, 2026-11-13)
 
-Marketing site for **CompliVerse AI** — an AI-native GRC platform.
+The marketing site is a static website of 77 HTML pages with its stylesheets,
+scripts, images and one PDF. There is no server code, no database and no build
+step.
 
-Next.js 14 (App Router) · React 18 · Tailwind CSS 4 · TypeScript
-
----
-
-## Getting started
-
-```bash
-npm install
-npm run dev
-```
-
-The site runs at http://localhost:3000.
-
-```bash
-npm run build   # production build
-npm run start   # serve the production build
-npm run lint    # eslint
-```
-
-> **Note:** don't run `npm run build` while `npm run dev` is running — both write
-> to `.next/` and the dev server will start throwing `MODULE_NOT_FOUND`. Stop the
-> dev server first, or delete `.next/` afterwards.
-
-## Environment
-
-Copy `.env.example` to `.env`. Every value is optional — the site runs without
-them, with reduced functionality:
-
-| Variable | Unset | Set |
-| --- | --- | --- |
-| `ANTHROPIC_API_KEY` | ComplyChat serves keyword-matched scripted answers | ComplyChat answers via Claude, using the product facts in `app/api/complychat/route.ts` |
-| `DEMO_WEBHOOK_URL` | Demo requests are validated and logged server-side | Each validated request is POSTed as JSON to the URL (CRM / Zapier / inbox) |
-
-**Demo requests currently have no delivery destination.** Point
-`DEMO_WEBHOOK_URL` at a real endpoint before launch, or leads will only reach
-the server log.
-
-## Structure
+## What is in this repository
 
 ```
-app/
-  page.tsx              home page — composes the sections below
-  api/complychat/       ComplyChat endpoint (Claude + scripted fallback)
-  api/demo-request/     demo form endpoint (server-side validation)
-  request-demo/         book-a-demo page
-  [...slug]/            catch-all for planned pages
-components/
-  home/                 home page sections
-  home/ModuleScenes     14 bespoke animated module diagrams
-  home/SceneKit         shared primitives for those scenes
-  layout/               floating nav island + footer
-  chat/ComplyChat       the site AI concierge widget
-  ui/Primitives         Logo (GRC monogram), Icon, scroll reveal
-data/
-  home.ts               frameworks, modules, hero copy, linkage model
-  modules.ts            module stories + capability catalogue
-  nav.ts                navigation IA and its icon set
-public/
-  frameworks/           regulator marks (from the platform)
-  connectors/           integration logos (from the platform)
-  logo/                 GRC monogram variants
+index.html            the homepage
+*.html                hosting, integrations, request-demo, roi, terms, privacy
+ai/ platform/ modules/ services/ frameworks/ solutions/ resources/
+css/ js/              stylesheets and scripts (plain files, no bundler)
+assets/               integration logos (SVG)
+downloads/            sample-security-report.pdf
+netlify.toml          Netlify config (stages the deployable files into dist/)
+vercel.json           Vercel config (clean URLs, cache headers)
 ```
 
-## Brand
+Non-site working folders (`docs/`, `complyverse-product-discovery/`,
+`complyverse-website-strategy/`, `.claude/`) stay in git but are excluded from
+the published bundle.
 
-The GRC monogram is four stroked paths on one grid — a 76-unit cap height and a
-single 15-unit stroke weight throughout. Variants live in `public/logo/`; the
-React component is `Logo` in `components/ui/Primitives.tsx`.
+## How to host it
 
-| Token | Value |
-| --- | --- |
-| Brand | `#1ED4B0` |
-| Brand strong | `#17B898` |
-| Brand deep | `#109880` |
-| Night | `#0B1220` |
-| Mono | `#111827` |
+- Any static host works: Nginx or Apache, S3 + CloudFront, Azure Static Web Apps
+  or Storage, Netlify, Cloudflare Pages.
+- Serve the repository root as the document root (or use the provided
+  `netlify.toml` / `vercel.json`). The server only has to serve `index.html`
+  for `/`.
+- Every link is relative and names its file (`frameworks/index.html`, not
+  `frameworks/`), so the site also works under a sub-path and needs no rewrite
+  rules.
+- Make sure `.svg` is served as `image/svg+xml` and `.pdf` as
+  `application/pdf`.
+- Turn on gzip or Brotli for HTML, CSS, JS and SVG.
 
-Type: **Poppins** (display) · **Inter** (body) · **JetBrains Mono** (labels).
+## Caching
 
-## Content accuracy
+The CSS and JS file names carry no content hash, so do not cache them as
+immutable.
 
-CompliVerse is pre-launch: live demos, founding-customer program open, **no
-signed customers and no case studies**. The copy reflects that deliberately —
-there are no invented ratings, customer counts or logo walls anywhere on the
-site, and ComplyChat is instructed to say so if asked. Please keep it that way
-until there is something real to point at.
+- HTML: `Cache-Control: no-cache` (the browser revalidates every time).
+- CSS, JS, SVG, PDF: `Cache-Control: public, max-age=3600` or revalidate with
+  ETags.
+
+Both deployment configs already apply these headers.
+
+## Outside requests
+
+The pages load two web fonts from Google Fonts and nothing else from outside the
+site:
+
+- `https://fonts.googleapis.com` (the font stylesheet)
+- `https://fonts.gstatic.com` (the font files)
+
+There is no analytics, tracking, cookies, chat widget or third-party script.
+Nothing is stored in the browser.
+
+## Security headers (recommended)
+
+The pages have one tiny inline script (it adds a `js` class to `<html>`), no
+inline event handlers, and use `style` attributes on some elements. This
+Content-Security-Policy was tested against every page with no violations:
+
+```
+Content-Security-Policy: default-src 'self'; script-src 'self' 'sha256-/x7W7R75k8Roq0WaVRQX9blP4OufE5xbAdzklGxsgpw='; style-src 'self' https://fonts.googleapis.com; style-src-attr 'unsafe-inline'; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'self'; frame-ancestors 'none'; base-uri 'self'; object-src 'none'
+```
+
+If the inline script in the page head changes, its `sha256-` hash must be
+recomputed. The deployment configs enable the other suggested headers
+(`Strict-Transport-Security`, `X-Content-Type-Options`, `Referrer-Policy`,
+`Permissions-Policy`).
+
+## Not in the site
+
+- A 404 page (none exists; the host's default is fine, or point it at
+  `index.html`).
+- `robots.txt` and `sitemap.xml`: they need the final domain.
+- A favicon file: each page carries its icon inline, so nothing is required.
+
+## Before it goes live as the public site
+
+These are content decisions for the site owner, not server work. As delivered:
+
+- **The demo request form does not send anything.** `request-demo.html`
+  validates the form and shows a confirmation in the page; no data leaves the
+  browser. A real endpoint (CRM, form service or API) must be wired in before
+  launch.
+- **The footer says "Draft 4 — a static prototype: nothing you type here leaves
+  your browser."** Remove it for launch.
+- **`terms.html` and `privacy.html` are placeholders** awaiting the approved
+  legal text.
+- **Three library guides are outlines** marked "in preparation".
+- **The sample security report** (`downloads/sample-security-report.pdf`) and
+  the product mock-ups use fictional data and are labelled so.
+
+## Previous Next.js site
+
+The previous Next.js application is preserved on the
+`nextjs-archive-2026-11-13` branch. Check it out to restore that codebase.

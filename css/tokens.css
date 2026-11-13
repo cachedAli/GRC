@@ -1,0 +1,625 @@
+/* =========================================================
+   tokens.css: the design tokens for Draft 4 v2 (core-owned).
+   60% white · 30% tea green · 10% lime   (chosen by the user, 2026-11-12)
+
+   60 · white       #FFFFFF  the page and its sections (--black / --black-2 keep
+                    their old names for compatibility).
+   30 · tea green   #D0F0C0  cards, panels, menus, inputs, the module previews
+                    (--storm-1/2/3 keep their old names). It is close to white
+                    in lightness (1.24 : 1), so cards carry a soft green edge.
+   10 · lime        #32CD32  the loud tips: primary buttons (black text, 9.3 : 1),
+                    the underline beneath every headline and header, selection,
+                    active states. Where lime must be read as a mark or line on
+                    a light surface it deepens: #23A023 on white, #17801A on tea.
+   Type stays black (#0B0C08) for legibility; headlines are black with a lime
+   underline (set in base.css).
+
+   Text, lines and accents change shade with the surface they sit on.
+   tools/build-surfaces.mjs writes the scopes at the end of this file:
+   --storm-* surfaces get the --sc-* set (secondary), --black/--black-2 the
+   --lt-* set (page), --ink the --ik-* set, and variants that remove their
+   background inherit from whatever they sit on. Re-run it after editing CSS.
+
+   The --blue-* names now carry the lime accent.
+
+   Contrast (WCAG 2.x):
+     on white   --lt-text 19.6, --lt-text-2 12.9, --lt-muted 8.4, --lt-accent 3.4 (marks)
+     on tea     --sc-text 15.8, --sc-text-2 10.4, --sc-muted 6.8 (6.1 on hover), --sc-accent 4.1
+     black on a lime button 9.3 : 1 (7.5 on hover); lime on --ink 9.3 : 1
+   ========================================================= */
+
+:root {
+  /* 60 · white (names kept from the dark theme) */
+  --black: #FFFFFF;      /* page background, dominant fields */
+  --black-2: #F6FBF3;    /* alternate sections and bars: white with a tea-green hint */
+
+  /* 30 · tea green (names kept) */
+  --storm-1: #D0F0C0;    /* cards, panels, menus, the module previews */
+  --storm-2: #E6F7DD;    /* insets inside cards: inputs, chips, KPI tiles */
+  --storm-3: #BFE6AC;    /* hover, pressed and selected rows */
+  --glass: linear-gradient(180deg, rgba(255, 255, 255, .35) 0%, rgba(255, 255, 255, 0) 45%, rgba(255, 255, 255, .15) 100%);
+  --alu-wash: rgba(50, 205, 50, .08);   /* faint lime for row hovers on white */
+
+  /* 10 · lime, and black for type and accent panels */
+  --lime: #32CD32;
+  --ink: #0B0C08;        /* black accent panels: the intelligence-layer bar */
+  --on-accent: #0B0C08;  /* text on a lime fill */
+
+  /* text, lines and accents on white (the page default) */
+  --lt-text: #0B0C08;
+  --lt-text-2: #2B3427;
+  --lt-muted: #45513F;
+  --lt-edge: #DCE8D5;
+  --lt-edge-2: #B9D3AC;
+  --lt-metal: #45513F;
+  --lt-accent: #23A023;
+  --lt-amber: #B26B00;
+  --lt-coral: #C2372D;
+  --lt-coral-text: #A3261C;
+  --lt-underline: #32CD32;
+  --lt-chrome: linear-gradient(176deg, #0B0C08, #0B0C08);
+
+  /* on tea green (the secondary) */
+  --sc-text: #0B0C08;
+  --sc-text-2: #2B3427;
+  --sc-muted: #45513F;
+  --sc-edge: #9FD08A;
+  --sc-edge-2: #7BB866;
+  --sc-metal: #2B3427;
+  --sc-accent: #17801A;
+  --sc-amber: #7A4700;
+  --sc-coral: #9E2219;
+  --sc-coral-text: #9E2219;
+  --sc-underline: #23A023;
+  --sc-chrome: linear-gradient(176deg, #0B0C08, #0B0C08);
+
+  /* on ink (black accent panels) */
+  --ik-text: #FFFFFF;
+  --ik-text-2: #E2EBDD;
+  --ik-muted: #C2CFBB;
+  --ik-edge: #2A3326;
+  --ik-edge-2: #44523D;
+  --ik-metal: #C2CFBB;
+  --ik-accent: #32CD32;
+  --ik-amber: #FFB547;
+  --ik-coral: #FF8A84;
+  --ik-coral-text: #FF8A84;
+  --ik-underline: #32CD32;
+  --ik-chrome: linear-gradient(176deg, #FFFFFF 8%, #E2EBDD 60%, #C2CFBB 95%);
+
+  /* the live set, page default = on white; surface scopes below override it */
+  --text: var(--lt-text);
+  --text-2: var(--lt-text-2);
+  --muted: var(--lt-muted);
+  --edge: var(--lt-edge);
+  --edge-2: var(--lt-edge-2);
+  --metal: var(--lt-metal);      /* meters, neutral data marks, "proven" */
+  --on-metal: #FFFFFF;           /* text sitting on a --metal fill */
+  --underline: var(--lt-underline);
+
+  /* 10 · lime accent (kept under the old --blue-* names) */
+  --blue: var(--lt-accent);      /* marks: ✦, active bar, key data */
+  --blue-btn: #32CD32;           /* primary button fill (black text 9.3 : 1) */
+  --blue-btn-hover: #2CB82C;
+  --blue-hi: var(--lt-text);     /* accent text and link hover stay black */
+  --blue-glow: rgba(50, 205, 50, .40);
+  --blue-wash: rgba(50, 205, 50, .14);
+
+  /* display type: solid black */
+  --chrome: var(--lt-chrome);
+  --chrome-edge: linear-gradient(180deg, rgba(11, 12, 8, .12), rgba(11, 12, 8, .05));
+
+  /* status: only as small dots and chips inside data vignettes */
+  --amber-fill: #FFB547;  /* bright fills that carry black text, on any surface */
+  --coral-fill: #FF5E57;
+  --amber: var(--lt-amber);
+  --coral: var(--lt-coral);
+  --amber-wash: rgba(255, 181, 71, .22);
+  --coral-wash: rgba(255, 94, 87, .16);
+  --coral-text: var(--lt-coral-text);
+
+  /* type */
+  --font-sans: "Archivo", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+
+  /* shape and space */
+  --radius-s: 6px;
+  --radius-m: 12px;
+  --radius-l: 18px;
+  --gutter: clamp(16px, 4vw, 56px);
+  --max: 1328px;
+  --section-y: clamp(64px, 7vw, 112px);
+  --nav-h: 72px;
+  --ease-out: cubic-bezier(.2, .8, .1, 1);
+  --shadow-panel: 0 24px 60px -34px rgba(20, 60, 20, .28);
+
+  /* per-surface defaults (components read these) */
+  --line: var(--edge);
+  --focus: #0B0C08;      /* focus rings stay black: lime is too light to mark focus on white */
+
+  /* the ✦ glyph, drawn as a mask so it renders identically everywhere */
+  --spark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M12 1.5c.7 5.6 4.9 9.8 10.5 10.5-5.6.7-9.8 4.9-10.5 10.5C11.3 16.9 7.1 12.7 1.5 12 7.1 11.3 11.3 7.1 12 1.5z'/%3E%3C/svg%3E");
+}
+
+/* @surfaces:begin (generated by tools/build-surfaces.mjs; do not edit by hand) */
+
+.il-job,
+.mask-p,
+.studio-bar,
+.proposal,
+.dd-feature,
+.dd-guides,
+.page-hero,
+.cta-band,
+.footer,
+.xp-chrome,
+.xp-list,
+.rec--ai,
+.diff,
+.hero,
+.section--raised,
+.loop,
+.lifecycle li,
+.fwm-pill,
+.fx-facts > div,
+.fx-esc,
+.fx-code,
+.id-sugg,
+.roe-head,
+.cx-nav,
+.kb-col,
+.rp-sheet,
+.m-hero,
+.m-preview,
+.win,
+.fl-n,
+.m-features,
+.m-context,
+.dm,
+.fl-plate,
+.fl-ring,
+.fl-seq-n,
+.gl-bar,
+.mx-scroll,
+.mx tbody th,
+.pv-tags .is-ai,
+.seg,
+.stg-btn,
+.sugg,
+.mini-flow li,
+.flow-text,
+.st-sugg,
+.pv-inherit-src,
+.rv-band li,
+.rv-row {
+  --text: var(--lt-text); --text-2: var(--lt-text-2); --muted: var(--lt-muted);
+  --edge: var(--lt-edge); --edge-2: var(--lt-edge-2); --line: var(--lt-edge);
+  --metal: var(--lt-metal); --on-metal: #FFFFFF;
+  --blue: var(--lt-accent); --blue-hi: var(--lt-text); --focus: #0B0C08;
+  --amber: var(--lt-amber); --coral: var(--lt-coral); --coral-text: var(--lt-coral-text);
+  --underline: var(--lt-underline); --chrome: var(--lt-chrome);
+  color: var(--text);
+}
+.il-group,
+.il-part,
+.il-part:hover,
+.il-box,
+.il-mod a:hover .il-box,
+.il-mod a:focus-visible .il-box,
+.il-base,
+.seq li,
+.m-ph,
+.gw-col,
+.studio,
+.studio-outline li.is-now,
+.fchip[aria-pressed="true"],
+.cap,
+.btn--line:hover,
+.btn--ghost,
+.btn--ghost:hover,
+.chip,
+.chip--solid,
+.key,
+.ai-mini,
+.ai-badge,
+.nav-btn:hover,
+.nav-btn[aria-expanded="true"],
+.site-nav:not(.cta-free) .nav-cta,
+.site-nav:not(.cta-free) .nav-cta:hover,
+.dd,
+.dd-link:hover,
+.dd-link[aria-current="page"],
+.dd-mod[aria-current="page"],
+.dd-feature[aria-current="page"],
+.dd-mod:hover,
+.xp,
+.xp-row.is-on,
+.mod-ai li,
+.io-in .rec,
+.ctl,
+.ext:hover,
+.ext--more a:hover,
+.host-card,
+.card,
+.card-link:hover,
+.note,
+.input,
+.select,
+.textarea,
+.form-done,
+.ucard,
+.inherit-node,
+.inherit-list li,
+.ev-ctl,
+.fwm-badge,
+.fwm-pill:hover .fwm-badge:not(.is-first),
+.ah-card,
+.ao-i,
+.ao-i.is-here,
+.fx-pick,
+.fx-pick[aria-pressed="true"],
+.fx-panel,
+.src-logo,
+.ph li,
+.ow-scope,
+.ow-level,
+.if-ai,
+.grade,
+.cf-sugg,
+.dv--platform,
+.dv--both,
+.ag-card,
+.ag-card:hover,
+.roe-doc,
+.roe-c,
+.cx-nav-btn[aria-pressed="true"],
+.cx-kpis li,
+.cx-card,
+.cx-asm-row,
+.cx-asm-row[aria-pressed="true"],
+.cx-asm-panels .pick-panel,
+.kb-card,
+.cx-rep-dl,
+.rp-sheet--back,
+.m-glance,
+.win-bar,
+.fl-step--auto .fl-n,
+.fl-ai--confirm,
+.fl-ai--auto,
+.fl-side-i,
+.feat-card,
+.beyond,
+.fw-chips li,
+.rel-card,
+.so-stage,
+.so-block-side,
+.hs-opt,
+.roi-bar,
+.dm-card,
+.select option,
+.select optgroup,
+.dm-chip,
+.dm-fw-toggle,
+.dm-fw-panel,
+.dm-fw-search .input,
+.dm-fw-list label:hover,
+.dm-sum,
+.fl-nodes li,
+.fl-seq-t,
+.fl-vig,
+.fl-meter,
+.fl-jump a:hover,
+.lib-gloss,
+.ig-pill[aria-pressed="true"],
+.ig-card,
+.ig-logo--mono,
+.pg-chip:hover,
+.sv-panel,
+.sv-run,
+.sv-run:hover,
+.sv-ph-plat,
+.sv-dv-ico,
+.sv-split-col + .sv-split-col,
+.sv-thesis-lane--plat,
+.mx tbody tr:hover th,
+.mx tbody tr:hover td,
+.pv-card,
+.seg-btn[aria-pressed="true"],
+.stg-btn.is-now,
+.avatars li,
+.mini-flow .is-now,
+.flow-node.is-on .flow-text,
+.btn-mini:hover,
+.pv-kpis,
+.rv-row[aria-pressed="true"] {
+  --text: var(--sc-text); --text-2: var(--sc-text-2); --muted: var(--sc-muted);
+  --edge: var(--sc-edge); --edge-2: var(--sc-edge-2); --line: var(--sc-edge);
+  --metal: var(--sc-metal); --on-metal: #FFFFFF;
+  --blue: var(--sc-accent); --blue-hi: var(--sc-text); --focus: #0B0C08;
+  --amber: var(--sc-amber); --coral: var(--sc-coral); --coral-text: var(--sc-coral-text);
+  --underline: var(--sc-underline); --chrome: var(--sc-chrome);
+  color: var(--text);
+}
+.il-bus {
+  --text: var(--ik-text); --text-2: var(--ik-text-2); --muted: var(--ik-muted);
+  --edge: var(--ik-edge); --edge-2: var(--ik-edge-2); --line: var(--ik-edge);
+  --metal: var(--ik-metal); --on-metal: #0B0C08;
+  --blue: var(--ik-accent); --blue-hi: var(--ik-text); --focus: #32CD32;
+  --amber: var(--ik-amber); --coral: var(--ik-coral); --coral-text: var(--ik-coral-text);
+  --underline: var(--ik-underline); --chrome: var(--ik-chrome);
+  color: var(--text);
+}
+.m-swap,
+.m-cut,
+.studio-outline,
+.fchip,
+.btn--line,
+.chip--line,
+.chip--met,
+.chip--gap,
+.chip--risk,
+.status,
+.nav-btn,
+.xp-row,
+.confirm,
+.confirm:hover,
+.diff-del,
+.diff-add,
+.ring-label,
+.pager-btn,
+.fwm-toggle,
+.if-team,
+.grade--a,
+.grade--b,
+.grade--c,
+.grade--d,
+.grade--e,
+.grade--f,
+.dv--team,
+.cx-nav-btn,
+.cx-nav-btn:hover,
+.mark--none,
+.hs-opt + .hs-opt,
+.dm-errs,
+.dm-chip button,
+.dm-link,
+.dm-done,
+.ig-pill,
+.pv-card--flat,
+.seg-btn,
+.ref--gap,
+.btn-mini,
+.hm-0,
+.hm-1,
+.rv-band .is-rollout {
+  --text: inherit; --text-2: inherit; --muted: inherit;
+  --edge: inherit; --edge-2: inherit; --line: inherit;
+  --metal: inherit; --on-metal: inherit;
+  --blue: inherit; --blue-hi: inherit; --focus: inherit;
+  --amber: inherit; --coral: inherit; --coral-text: inherit;
+  --underline: inherit; --chrome: inherit;
+  color: inherit;
+}
+:root .il-group,
+:root .il-part,
+:root .il-part:hover,
+:root .il-box,
+:root .il-mod a:hover .il-box,
+:root .il-mod a:focus-visible .il-box,
+:root .il-base,
+:root .seq li,
+:root .m-ph,
+:root .gw-col,
+:root .studio,
+:root .studio-outline li.is-now,
+:root .fchip[aria-pressed="true"],
+:root .cap,
+:root .btn--line:hover,
+:root .btn--ghost,
+:root .btn--ghost:hover,
+:root .chip,
+:root .chip--solid,
+:root .key,
+:root .ai-mini,
+:root .ai-badge,
+:root .nav-btn:hover,
+:root .nav-btn[aria-expanded="true"],
+:root .site-nav:not(.cta-free) .nav-cta,
+:root .site-nav:not(.cta-free) .nav-cta:hover,
+:root .dd,
+:root .dd-link:hover,
+:root .dd-link[aria-current="page"],
+:root .dd-mod[aria-current="page"],
+:root .dd-feature[aria-current="page"],
+:root .dd-mod:hover,
+:root .mod-ai li,
+:root .io-in .rec,
+:root .ctl,
+:root .ext:hover,
+:root .ext--more a:hover,
+:root .host-card,
+:root .card,
+:root .card-link:hover,
+:root .note,
+:root .input,
+:root .select,
+:root .textarea,
+:root .form-done,
+:root .ucard,
+:root .inherit-node,
+:root .inherit-list li,
+:root .ev-ctl,
+:root .fwm-badge,
+:root .fwm-pill:hover .fwm-badge:not(.is-first),
+:root .ah-card,
+:root .ao-i,
+:root .ao-i.is-here,
+:root .fx-pick,
+:root .fx-pick[aria-pressed="true"],
+:root .fx-panel,
+:root .src-logo,
+:root .ph li,
+:root .ow-scope,
+:root .ow-level,
+:root .if-ai,
+:root .grade,
+:root .cf-sugg,
+:root .dv--platform,
+:root .ag-card,
+:root .ag-card:hover,
+:root .roe-doc,
+:root .roe-c,
+:root .cx-nav-btn[aria-pressed="true"],
+:root .cx-kpis li,
+:root .cx-card,
+:root .cx-asm-row,
+:root .cx-asm-row[aria-pressed="true"],
+:root .cx-asm-panels .pick-panel,
+:root .kb-card,
+:root .cx-rep-dl,
+:root .rp-sheet--back,
+:root .m-glance,
+:root .win-bar,
+:root .fl-step--auto .fl-n,
+:root .fl-ai--confirm,
+:root .fl-ai--auto,
+:root .fl-side-i,
+:root .feat-card,
+:root .beyond,
+:root .fw-chips li,
+:root .rel-card,
+:root .so-stage,
+:root .so-block-side,
+:root .hs-opt,
+:root .roi-bar,
+:root .dm-card,
+:root .select option,
+:root .select optgroup,
+:root .dm-chip,
+:root .dm-fw-toggle,
+:root .dm-fw-panel,
+:root .dm-fw-search .input,
+:root .dm-fw-list label:hover,
+:root .dm-sum,
+:root .fl-nodes li,
+:root .fl-seq-t,
+:root .fl-vig,
+:root .fl-meter,
+:root .fl-jump a:hover,
+:root .lib-gloss,
+:root .ig-pill[aria-pressed="true"],
+:root .ig-card,
+:root .ig-logo--mono,
+:root .pg-chip:hover,
+:root .sv-panel,
+:root .sv-run,
+:root .sv-run:hover,
+:root .sv-ph-plat,
+:root .sv-dv-ico,
+:root .sv-split-col + .sv-split-col,
+:root .sv-thesis-lane--plat,
+:root .mx tbody tr:hover th,
+:root .mx tbody tr:hover td,
+:root .pv-card,
+:root .seg-btn[aria-pressed="true"],
+:root .stg-btn.is-now,
+:root .avatars li,
+:root .mini-flow .is-now,
+:root .flow-node.is-on .flow-text,
+:root .btn-mini:hover,
+:root .pv-kpis,
+:root .rv-row[aria-pressed="true"] {
+  background-image: var(--glass);
+}
+
+@media (forced-colors: active) {
+.chrome-text {
+  --text: inherit; --text-2: inherit; --muted: inherit;
+  --edge: inherit; --edge-2: inherit; --line: inherit;
+  --metal: inherit; --on-metal: inherit;
+  --blue: inherit; --blue-hi: inherit; --focus: inherit;
+  --amber: inherit; --coral: inherit; --coral-text: inherit;
+  --underline: inherit; --chrome: inherit;
+  color: inherit;
+}
+}
+
+@media (max-width: 1023px) {
+.js .nav-panel {
+  --text: var(--lt-text); --text-2: var(--lt-text-2); --muted: var(--lt-muted);
+  --edge: var(--lt-edge); --edge-2: var(--lt-edge-2); --line: var(--lt-edge);
+  --metal: var(--lt-metal); --on-metal: #FFFFFF;
+  --blue: var(--lt-accent); --blue-hi: var(--lt-text); --focus: #0B0C08;
+  --amber: var(--lt-amber); --coral: var(--lt-coral); --coral-text: var(--lt-coral-text);
+  --underline: var(--lt-underline); --chrome: var(--lt-chrome);
+  color: var(--text);
+}
+.js .nav-menu {
+  --text: var(--sc-text); --text-2: var(--sc-text-2); --muted: var(--sc-muted);
+  --edge: var(--sc-edge); --edge-2: var(--sc-edge-2); --line: var(--sc-edge);
+  --metal: var(--sc-metal); --on-metal: #FFFFFF;
+  --blue: var(--sc-accent); --blue-hi: var(--sc-text); --focus: #0B0C08;
+  --amber: var(--sc-amber); --coral: var(--sc-coral); --coral-text: var(--sc-coral-text);
+  --underline: var(--sc-underline); --chrome: var(--sc-chrome);
+  color: var(--text);
+}
+.nav-btn:hover,
+.nav-btn[aria-expanded="true"],
+.dd,
+.dd--ai,
+.dd--wide,
+.dd--res,
+#dd-services {
+  --text: inherit; --text-2: inherit; --muted: inherit;
+  --edge: inherit; --edge-2: inherit; --line: inherit;
+  --metal: inherit; --on-metal: inherit;
+  --blue: inherit; --blue-hi: inherit; --focus: inherit;
+  --amber: inherit; --coral: inherit; --coral-text: inherit;
+  --underline: inherit; --chrome: inherit;
+  color: inherit;
+}
+:root .js .nav-menu {
+  background-image: var(--glass);
+}
+}
+
+@media (max-width: 1279px) {
+.il-group {
+  --text: var(--sc-text); --text-2: var(--sc-text-2); --muted: var(--sc-muted);
+  --edge: var(--sc-edge); --edge-2: var(--sc-edge-2); --line: var(--sc-edge);
+  --metal: var(--sc-metal); --on-metal: #FFFFFF;
+  --blue: var(--sc-accent); --blue-hi: var(--sc-text); --focus: #0B0C08;
+  --amber: var(--sc-amber); --coral: var(--sc-coral); --coral-text: var(--sc-coral-text);
+  --underline: var(--sc-underline); --chrome: var(--sc-chrome);
+  color: var(--text);
+}
+:root .il-group {
+  background-image: var(--glass);
+}
+}
+
+@media (max-width: 700px) {
+.il-job {
+  --text: inherit; --text-2: inherit; --muted: inherit;
+  --edge: inherit; --edge-2: inherit; --line: inherit;
+  --metal: inherit; --on-metal: inherit;
+  --blue: inherit; --blue-hi: inherit; --focus: inherit;
+  --amber: inherit; --coral: inherit; --coral-text: inherit;
+  --underline: inherit; --chrome: inherit;
+  color: inherit;
+}
+}
+
+@media (max-width: 900px) {
+.xp-list .xp-panel {
+  --text: var(--sc-text); --text-2: var(--sc-text-2); --muted: var(--sc-muted);
+  --edge: var(--sc-edge); --edge-2: var(--sc-edge-2); --line: var(--sc-edge);
+  --metal: var(--sc-metal); --on-metal: #FFFFFF;
+  --blue: var(--sc-accent); --blue-hi: var(--sc-text); --focus: #0B0C08;
+  --amber: var(--sc-amber); --coral: var(--sc-coral); --coral-text: var(--sc-coral-text);
+  --underline: var(--sc-underline); --chrome: var(--sc-chrome);
+  color: var(--text);
+}
+}
+
+/* @surfaces:end */

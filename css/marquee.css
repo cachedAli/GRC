@@ -1,0 +1,88 @@
+/* =========================================================
+   marquee.css: the "frameworks built in" marquee (tools/marquee.mjs).
+   White pills with a soft green edge drift left on the white page;
+   the edges fade out. Two identical tracks each slide by their own
+   width, so the loop has no seam.
+   ========================================================= */
+/* position: relative on the section, the row and each pill keeps the pills' screen-reader text (absolutely
+   positioned) inside the clip; without it, once the drift stops (reduced motion) that text escaped the
+   overflow and made phones zoom out to the full 5,000 px row */
+.fw-marquee { position: relative; padding-block: clamp(40px, 4.5vw, 64px) clamp(28px, 3vw, 44px); overflow: hidden; }
+
+.fwm-head { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: clamp(20px, 2.2vw, 30px); }
+.fwm-title {
+  margin: 0; font: 600 13px/1.3 var(--font-mono); letter-spacing: .28em; text-transform: uppercase;
+  color: var(--text-2);
+}
+.fwm-toggle {
+  display: grid; place-items: center; width: 30px; height: 30px; padding: 0;
+  border: 1px solid var(--edge-2); border-radius: 50%; background: transparent; color: var(--text-2);
+  cursor: pointer; transition: border-color .2s, color .2s;
+}
+.fwm-toggle:hover { border-color: var(--text); color: var(--text); }
+.fwm-toggle:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+.fwm-i { width: 14px; height: 14px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fwm-i--play { display: none; fill: currentColor; stroke-width: 1.5; }
+.fwm-toggle[aria-pressed="true"] .fwm-i--pause { display: none; }
+.fwm-toggle[aria-pressed="true"] .fwm-i--play { display: block; }
+
+.fwm {
+  position: relative; display: flex; width: 100%;
+  padding-block: 10px 18px;   /* room for the hover lift and the pill shadow */
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent);
+}
+.fwm-track {
+  display: flex; flex: none; gap: 18px; margin: 0; padding: 0 18px 0 0; list-style: none;
+  animation: fwm-drift var(--fwm-dur, 140s) linear infinite;
+}
+@keyframes fwm-drift { to { transform: translate3d(-100%, 0, 0); } }
+.fwm:hover .fwm-track,
+.fwm:focus-within .fwm-track,
+.fw-marquee.is-paused .fwm-track { animation-play-state: paused; }
+
+.fwm-pill {
+  position: relative; display: flex; align-items: center; gap: 14px; height: 76px; padding: 0 30px 0 12px;
+  border: 1px solid var(--edge); border-radius: 999px; background: var(--black);
+  box-shadow: 0 10px 26px -18px rgba(20, 60, 20, .35);
+  color: var(--text); text-decoration: none; white-space: nowrap;
+  transition: transform .3s var(--ease-out), border-color .2s, box-shadow .3s;
+}
+.fwm-pill:hover { transform: translateY(-3px); border-color: var(--edge-2); box-shadow: 0 16px 30px -18px rgba(20, 60, 20, .45); }
+.fwm-pill:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; }
+
+.fwm-badge {
+  display: grid; place-items: center; flex: none; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--storm-2); border: 1px solid var(--edge); color: var(--text);
+  font: 600 12.5px/1 var(--font-mono); letter-spacing: .02em;
+  transition: background-color .2s;
+}
+.fwm-badge .ico { width: 22px; height: 22px; }
+.fwm-badge.is-first { background: var(--lime); border-color: var(--lime); color: var(--on-accent); }
+.fwm-pill:hover .fwm-badge:not(.is-first) { background: var(--storm-1); }
+
+.fwm-text { display: grid; gap: 3px; }
+.fwm-name { font-size: 18px; font-weight: 750; font-stretch: 110%; letter-spacing: -.01em; line-height: 1.15; }
+.fwm-desc { font-size: 14.5px; line-height: 1.3; color: var(--muted); }
+
+.fwm-foot { margin: clamp(14px, 1.6vw, 22px) auto 0; text-align: center; }
+.fwm-foot .link-u { justify-content: center; }
+
+@media (max-width: 720px) {
+  .fwm-pill { height: 64px; gap: 12px; padding-right: 22px; }
+  .fwm-badge { width: 42px; height: 42px; font-size: 11px; }
+  .fwm-name { font-size: 16px; }
+  .fwm-desc { font-size: 13px; }
+  .fwm-title { letter-spacing: .2em; font-size: 12px; }
+}
+
+/* no drift for visitors who ask for less motion: the row becomes a plain scroller */
+@media (prefers-reduced-motion: reduce) {
+  .fwm { overflow-x: auto; scroll-snap-type: x proximity; -webkit-mask-image: none; mask-image: none; padding-inline: var(--gutter); }
+  .fwm-track { animation: none; }
+  .fwm-track[aria-hidden="true"], .fwm-toggle { display: none; }
+  .fwm-track li { scroll-snap-align: start; }
+}
+@media (forced-colors: active) {
+  .fwm-pill, .fwm-badge { border-color: CanvasText; }
+}

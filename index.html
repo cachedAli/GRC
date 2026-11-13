@@ -1,0 +1,1248 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CompliVerse AI · Compliance that proves itself</title>
+  <meta name="description" content="CompliVerse AI is AI-native enterprise GRC. One intelligence layer under all 13 modules reads your evidence, drafts your policies and maps your controls, and a person confirms what it suggests.">
+  <meta name="theme-color" content="#050608">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050608'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C9D0D7' stroke-width='3'/%3E%3Ccircle cx='16' cy='7' r='3.6' fill='%232F6BFF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chrome.css">
+  <link rel="stylesheet" href="css/kit.css">
+  <link rel="stylesheet" href="css/marquee.css">
+  <link rel="stylesheet" href="css/explorer.css">
+  <link rel="stylesheet" href="css/previews.css">
+  <link rel="stylesheet" href="css/loop.css">
+  <link rel="stylesheet" href="css/ai.css">
+  <link rel="stylesheet" href="css/home.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/site.js" defer></script>
+  <script src="js/marquee.js" defer></script>
+  <script src="js/explorer.js" defer></script>
+  <script src="js/loop.js" defer></script>
+</head>
+<body class="page-home">
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M16.5 14c2.4.3 4.2 2.4 4.2 5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M19.5 11.5l-7.8 7.8a4.7 4.7 0 0 1-6.6-6.6l7.6-7.6a3.1 3.1 0 0 1 4.4 4.4l-7.6 7.6a1.6 1.6 0 0 1-2.2-2.2l7-7"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4.5 20.5V5l7.5-2v17.5M12 8l7.5 2v10.5M2.5 20.5h19M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15 13h1.5M15 17h1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v6c0 4.3-3.2 7.9-7.5 9-4.3-1.1-7.5-4.7-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M6 8.5V14a4 4 0 0 0 4 4h5.5"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4.5M15 3v4.5M6 7.5h12V11a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6.5l1.5 1.5L8 5.5M4 12.5l1.5 1.5L8 11.5M4 18.5l1.5 1.5L8 17.5M11 7h9M11 13h9M11 19h9"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12.5l8.5 4.5 8.5-4.5M3.5 16.5l8.5 4.5 8.5-4.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.4-3.6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8.5-8.5M16 7l2.5 2.5M13.8 9.2l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M19 5v6.5a3 3 0 0 1-3 3H6"/><path d="M9.5 11L6 14.5 9.5 18"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3.5 7.5c3-1.4 14-1.4 17 0 0 6-3.6 9.5-8.5 9.5S3.5 13.5 3.5 7.5z"/><path d="M8 10.5h2.5M13.5 10.5H16"/></symbol>
+  <symbol id="i-ledger" viewBox="0 0 24 24"><path d="M5 3.5h11l3 3v14H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16.5a8 8 0 1 1 16 0"/><path d="M12 16.5l4-5"/><path d="M4 19.5h16"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z"/><path d="M14 7l3 3"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="8.5" r="3"/><path d="M2.5 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5M11 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0 2.5-1.5 5-1.5 8 0v13c-3-1.5-5.5-1.5-8 0-2.5-1.5-5-1.5-8 0z"/><path d="M12 5.5v13"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.6 5.3 3.6 8.5s-1.1 6.1-3.6 8.5c-2.5-2.4-3.6-5.3-3.6-8.5s1.1-6.1 3.6-8.5z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav" data-nav>
+  <nav class="nav-bar" aria-label="Primary">
+    <a class="wordmark" href="index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+    <div class="nav-panel" id="nav-panel" data-nav-panel>
+      <ul class="nav-links" role="list">
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-ai" data-dd-btn><span class="spark" aria-hidden="true"></span>AI<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--ai" id="dd-ai" data-dd-panel>
+            <a class="dd-feature" href="ai/index.html">
+              <span class="dd-feature-k"><span class="spark" aria-hidden="true"></span>AI is the platform</span>
+              <span class="dd-feature-t">The intelligence layer</span>
+              <span class="dd-feature-d">One AI layer under all 13 modules: it reads what you hold, suggests, drafts, and says who approves.</span>
+              <span class="dd-feature-go">Explore the layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+            </a>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="ai/studio.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg><span class="dd-text"><span class="dd-name">Compli AI Studio</span><span class="dd-sub">Write and edit documents with AI</span></span></a></li>
+              <li><a class="dd-link" href="ai/trust.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><span class="dd-text"><span class="dd-name">AI trust &amp; control</span><span class="dd-sub">Approval, masking, audit trail, budgets</span></span></a></li>
+              <li><a class="dd-link" href="ai/capabilities.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="dd-text"><span class="dd-name">All AI capabilities</span><span class="dd-sub">Every AI job, by module</span></span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-platform" data-dd-btn>Platform<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-platform" data-dd-panel>
+            <p class="dd-head"><a href="platform/index.html">Platform overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>13 modules · one data model</span></p>
+            <ul class="dd-mods" role="list">
+              <li><a class="dd-mod" href="modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span>Governance &amp; Documents</span></a></li>
+              <li><a class="dd-mod" href="modules/committees.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Committees &amp; Meetings</span></a></li>
+              <li><a class="dd-mod" href="modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><span>Evidence Management</span></a></li>
+              <li><a class="dd-mod" href="modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><span>Vendor Risk (TPRM)</span></a></li>
+              <li><a class="dd-mod" href="modules/cybersecurity.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Cybersecurity Assessment &amp; Assurance</span></a></li>
+              <li><a class="dd-mod" href="modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span>Workflow Automation</span></a></li>
+              <li><a class="dd-mod" href="modules/connectors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span>Integrations &amp; Identity</span></a></li>
+              <li><a class="dd-mod" href="modules/assessments.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span>Compliance Assessments</span></a></li>
+              <li><a class="dd-mod" href="modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Unified Control Library</span></a></li>
+              <li><a class="dd-mod" href="modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><span>Enterprise Risk (ERM)</span></a></li>
+              <li><a class="dd-mod" href="modules/audit.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg><span>Audit Management</span></a></li>
+              <li><a class="dd-mod" href="modules/insights.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span>Dashboards &amp; Insights</span></a></li>
+              <li><a class="dd-mod" href="modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><span>Access Reviews</span><span class="tag-new">New</span></a></li>
+            </ul>
+            <p class="dd-foot"><a href="solutions/index.html">Solutions by stage</a><a href="integrations.html">Integrations</a><a href="hosting.html">Cloud or on-premise</a></p>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-services" data-dd-btn>Services<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-services" data-dd-panel>
+            <p class="dd-head"><a href="services/index.html">Services overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>Platform + people</span></p>
+            <ul class="dd-mods dd-mods--plain" role="list">
+              <li><a class="dd-mod" href="services/grc-consulting.html"><span>GRC Consulting &amp; Advisory</span></a></li>
+              <li><a class="dd-mod" href="services/regulatory-compliance.html"><span>Regulatory Compliance Consulting</span></a></li>
+              <li><a class="dd-mod" href="services/ai-governance.html"><span>AI Governance &amp; Risk Management</span></a></li>
+              <li><a class="dd-mod" href="services/compliance-automation.html"><span>Compliance Automation &amp; Digital Transformation</span></a></li>
+              <li><a class="dd-mod" href="services/risk-management.html"><span>Risk Assessment &amp; Management</span></a></li>
+              <li><a class="dd-mod" href="services/cybersecurity-assessment.html"><span>Cybersecurity Assessment</span></a></li>
+              <li><a class="dd-mod" href="services/policy-documentation.html"><span>Policy &amp; Documentation Management</span></a></li>
+              <li><a class="dd-mod" href="services/implementation-integration.html"><span>Implementation &amp; Integration</span></a></li>
+              <li><a class="dd-mod" href="services/training.html"><span>Training &amp; Capacity Building</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-btn" href="frameworks/index.html">Frameworks</a></li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-resources" data-dd-btn>Resources<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--res" id="dd-resources" data-dd-panel>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="resources/index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span class="dd-text"><span class="dd-name">Library</span><span class="dd-sub">Practical guides for audit season</span></span></a></li>
+              <li><a class="dd-link" href="resources/glossary.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="dd-text"><span class="dd-name">Glossary</span><span class="dd-sub">The terms, as we use them</span></span></a></li>
+              <li><a class="dd-link" href="integrations.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span class="dd-text"><span class="dd-name">Integrations</span><span class="dd-sub">40 connectors, what each collects</span></span></a></li>
+              <li><a class="dd-link" href="hosting.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg><span class="dd-text"><span class="dd-name">Cloud and on-premise</span><span class="dd-sub">Deployed the way your regulator expects</span></span></a></li>
+              <li><a class="dd-link" href="roi.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="dd-text"><span class="dd-name">ROI and time savings</span><span class="dd-sub">Manual process versus CompliVerse</span></span></a></li>
+            </ul>
+            <div class="dd-guides"><p class="dd-guides-k">From the library</p><ul role="list"><li><a href="resources/sama-csf-practical-map.html"><span class="dd-guide-cat">SAMA CSF</span>SAMA CSF compliance, control by control: a practical map</a></li><li><a href="resources/evidence-reuse.html"><span class="dd-guide-cat">Evidence</span>Evidence reuse: satisfy ISO 27001, SOC 2 and SAMA with one artifact</a></li><li><a href="resources/policy-gap-analysis.html"><span class="dd-guide-cat">Gap analysis</span>Running a policy gap analysis your regulator would sign</a></li></ul></div>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-panel-cta" href="request-demo.html">Book a demo</a>
+    </div>
+    <a class="btn btn--primary btn--sm nav-cta" href="request-demo.html">Book a demo</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu><span class="nav-menu-bars" aria-hidden="true"></span><span class="nav-menu-label">Menu</span></button>
+  </nav>
+</header>
+<main id="main">
+<section class="hero" aria-labelledby="hero-title" data-hero>
+  <div class="wrap hero-inner">
+    <div class="hero-top">
+      <p class="hero-kicker"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI layer</span>AI-native enterprise GRC</p>
+      <p class="hero-spec"><span>13 modules</span><span>150+ AI use cases</span><span>25+ frameworks</span><span>Cloud or on-premise</span></p>
+    </div>
+    <h1 class="hero-title" id="hero-title"><span class="ht-a"><span class="w" style="--d:0"><span class="chrome-text">Compliance</span></span> <span class="w" style="--d:1"><span class="chrome-text">that</span></span> <span class="w" style="--d:2"><span class="chrome-text">proves</span></span> <span class="w" style="--d:3"><span class="chrome-text">itself.</span></span></span><span class="ht-b">AI reads your evidence, drafts your policies and maps your controls. You confirm what it suggests.</span></h1>
+    <div class="hero-grid">
+      <div class="hero-side">
+        <p class="hero-sub">One intelligence layer runs under the platform, with AI in 12 of the 13 modules. Upload a file once: the AI reads it and suggests the requirements it satisfies in your own frameworks. Nothing is linked until you click Link.</p>
+        <div class="actions">
+          <a class="btn btn--primary" href="request-demo.html?interest=ai">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+          <a class="link-u" href="ai/index.html">See the intelligence layer</a>
+        </div>
+        <p class="hero-note">Sample file and frameworks: try the Link buttons. <a href="ai/capabilities.html">Every AI job, by module</a></p>
+      </div>
+      <div class="xp hero-demo" role="region" aria-labelledby="hero-demo-t">
+        <div class="xp-chrome" aria-hidden="true">
+          <span class="xp-chrome-title"><span class="spark" aria-hidden="true"></span>AI at work</span>
+          <span class="xp-chrome-keys">Sample tenant</span>
+        </div>
+        <div class="hero-demo-body">
+          <header class="aip-head">
+            <p class="aip-meta"><a class="aip-module" href="modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>Evidence Management</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+            <h2 class="aip-name" id="hero-demo-t">Read evidence</h2>
+          </header>
+          <div class="io io--confirm" data-confirm-scope>
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">log-retention.pdf</p><p class="rec-meta">OCR on your server · valid to 12/2026</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">3 suggested links</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">SWIFT CSCF 4.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> SWIFT CSCF 4.1</span></span><span class="c-on">Linked<span class="sr-only"> SWIFT CSCF 4.1</span></span></button></li><li class="rec-row"><span class="rec-k">NIST SP 800-53 Rev 5 AU-6</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span><span class="c-on">Linked<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span></button></li><li class="rec-row"><span class="rec-k">PCI DSS v4.0.1 10.2.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span><span class="c-on">Linked<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span></button></li></ul><p class="rec-note">Not linked until you click Link</p><p class="rec-count" aria-live="polite"><span data-confirm-count>0</span> of 3 linked</p></div></div>
+    </div>
+          <p class="aip-who"><span class="aip-who-k">Who approves</span><span>You click Link on each suggestion. Only frameworks loaded in your tenant are matched, and control IDs the model invents are dropped before anything is saved.</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="fw-marquee" aria-labelledby="fwm-title" data-marquee>
+  <div class="wrap fwm-head">
+    <p class="fwm-title" id="fwm-title">25 frameworks built in</p>
+    <button type="button" class="fwm-toggle" data-marquee-toggle aria-pressed="false" aria-label="Pause the scrolling frameworks">
+      <svg class="fwm-i fwm-i--pause" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3.5v9M11 3.5v9"/></svg>
+      <svg class="fwm-i fwm-i--play" viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M5 3l8 5-8 5z"/></svg>
+    </button>
+  </div>
+  <div class="fwm" style="--fwm-dur: 138s">
+    <ul class="fwm-track" role="list"><li><a class="fwm-pill" href="frameworks/iso-27001.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">ISO 27001</span><span class="fwm-desc">Information security<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/soc-2.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">SOC 2</span><span class="fwm-desc">Trust services<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sama-csf.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">SAMA CSF</span><span class="fwm-desc">Saudi banking cyber<span class="sr-only">, KSA</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/nca-ecc.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">NCA ECC</span><span class="fwm-desc">Saudi essential controls<span class="sr-only">, KSA</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/pci-dss.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">PCI DSS</span><span class="fwm-desc">Payment security<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/nist-csf.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">NIST CSF</span><span class="fwm-desc">Cyber framework<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/nist-800-53.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">NIST SP 800-53</span><span class="fwm-desc">Security and privacy controls<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/gdpr.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">GDPR</span><span class="fwm-desc">Data protection<span class="sr-only">, EU</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/cbuae.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">UAE</span></span><span class="fwm-text"><span class="fwm-name">CBUAE Art.13</span><span class="fwm-desc">UAE tech risk<span class="sr-only">, UAE</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-etgrmf.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP ETGRMF</span><span class="fwm-desc">Pakistan banking tech<span class="sr-only">, Pakistan</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-cloud.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP Cloud</span><span class="fwm-desc">Pakistan banking cloud<span class="sr-only">, Pakistan</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-ibanking.html"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP iBanking</span><span class="fwm-desc">Pakistan internet banking<span class="sr-only">, Pakistan</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/mas-trm.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">SG</span></span><span class="fwm-text"><span class="fwm-name">MAS TRM</span><span class="fwm-desc">Singapore tech risk<span class="sr-only">, Singapore</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/iso-22301.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">ISO 22301</span><span class="fwm-desc">Business continuity<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/dora.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">DORA</span><span class="fwm-desc">EU op-resilience<span class="sr-only">, EU</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/nis2.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">NIS2</span><span class="fwm-desc">EU cyber directive<span class="sr-only">, EU</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/hipaa.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">HIPAA</span><span class="fwm-desc">Health data<span class="sr-only">, US</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/cobit-2019.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">COBIT 2019</span><span class="fwm-desc">IT governance<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sox-itgc.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">SOX ITGC</span><span class="fwm-desc">Financial reporting<span class="sr-only">, US</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/swift-cscf.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">SWIFT CSCF</span><span class="fwm-desc">Payments network<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/aramco-ccc.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">ARAMCO CCC</span><span class="fwm-desc">Supplier cyber<span class="sr-only">, KSA</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sabic.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">SABIC</span><span class="fwm-desc">Supplier cyber<span class="sr-only">, KSA</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/cis-controls.html"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">CIS Controls</span><span class="fwm-desc">Security baselines<span class="sr-only">, Global</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/hitrust.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">HITRUST</span><span class="fwm-desc">Health trust<span class="sr-only">, US</span></span></span></a></li><li><a class="fwm-pill" href="frameworks/sl-bss.html"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">LK</span></span><span class="fwm-text"><span class="fwm-name">SL-BSS</span><span class="fwm-desc">Sri Lanka banking security<span class="sr-only">, Sri Lanka</span></span></span></a></li></ul>
+    <ul class="fwm-track" role="list" aria-hidden="true"><li><a class="fwm-pill" href="frameworks/iso-27001.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">ISO 27001</span><span class="fwm-desc">Information security</span></span></a></li><li><a class="fwm-pill" href="frameworks/soc-2.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">SOC 2</span><span class="fwm-desc">Trust services</span></span></a></li><li><a class="fwm-pill" href="frameworks/sama-csf.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">SAMA CSF</span><span class="fwm-desc">Saudi banking cyber</span></span></a></li><li><a class="fwm-pill" href="frameworks/nca-ecc.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">NCA ECC</span><span class="fwm-desc">Saudi essential controls</span></span></a></li><li><a class="fwm-pill" href="frameworks/pci-dss.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">PCI DSS</span><span class="fwm-desc">Payment security</span></span></a></li><li><a class="fwm-pill" href="frameworks/nist-csf.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">NIST CSF</span><span class="fwm-desc">Cyber framework</span></span></a></li><li><a class="fwm-pill" href="frameworks/nist-800-53.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">NIST SP 800-53</span><span class="fwm-desc">Security and privacy controls</span></span></a></li><li><a class="fwm-pill" href="frameworks/gdpr.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">GDPR</span><span class="fwm-desc">Data protection</span></span></a></li><li><a class="fwm-pill" href="frameworks/cbuae.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">UAE</span></span><span class="fwm-text"><span class="fwm-name">CBUAE Art.13</span><span class="fwm-desc">UAE tech risk</span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-etgrmf.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP ETGRMF</span><span class="fwm-desc">Pakistan banking tech</span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-cloud.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP Cloud</span><span class="fwm-desc">Pakistan banking cloud</span></span></a></li><li><a class="fwm-pill" href="frameworks/sbp-ibanking.html" tabindex="-1"><span class="fwm-badge is-first" aria-hidden="true"><span class="fwm-code">PK</span></span><span class="fwm-text"><span class="fwm-name">SBP iBanking</span><span class="fwm-desc">Pakistan internet banking</span></span></a></li><li><a class="fwm-pill" href="frameworks/mas-trm.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">SG</span></span><span class="fwm-text"><span class="fwm-name">MAS TRM</span><span class="fwm-desc">Singapore tech risk</span></span></a></li><li><a class="fwm-pill" href="frameworks/iso-22301.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">ISO 22301</span><span class="fwm-desc">Business continuity</span></span></a></li><li><a class="fwm-pill" href="frameworks/dora.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">DORA</span><span class="fwm-desc">EU op-resilience</span></span></a></li><li><a class="fwm-pill" href="frameworks/nis2.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">EU</span></span><span class="fwm-text"><span class="fwm-name">NIS2</span><span class="fwm-desc">EU cyber directive</span></span></a></li><li><a class="fwm-pill" href="frameworks/hipaa.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">HIPAA</span><span class="fwm-desc">Health data</span></span></a></li><li><a class="fwm-pill" href="frameworks/cobit-2019.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">COBIT 2019</span><span class="fwm-desc">IT governance</span></span></a></li><li><a class="fwm-pill" href="frameworks/sox-itgc.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">SOX ITGC</span><span class="fwm-desc">Financial reporting</span></span></a></li><li><a class="fwm-pill" href="frameworks/swift-cscf.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">SWIFT CSCF</span><span class="fwm-desc">Payments network</span></span></a></li><li><a class="fwm-pill" href="frameworks/aramco-ccc.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">ARAMCO CCC</span><span class="fwm-desc">Supplier cyber</span></span></a></li><li><a class="fwm-pill" href="frameworks/sabic.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">KSA</span></span><span class="fwm-text"><span class="fwm-name">SABIC</span><span class="fwm-desc">Supplier cyber</span></span></a></li><li><a class="fwm-pill" href="frameworks/cis-controls.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg></span><span class="fwm-text"><span class="fwm-name">CIS Controls</span><span class="fwm-desc">Security baselines</span></span></a></li><li><a class="fwm-pill" href="frameworks/hitrust.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">US</span></span><span class="fwm-text"><span class="fwm-name">HITRUST</span><span class="fwm-desc">Health trust</span></span></a></li><li><a class="fwm-pill" href="frameworks/sl-bss.html" tabindex="-1"><span class="fwm-badge" aria-hidden="true"><span class="fwm-code">LK</span></span><span class="fwm-text"><span class="fwm-name">SL-BSS</span><span class="fwm-desc">Sri Lanka banking security</span></span></a></li></ul>
+  </div>
+  <p class="wrap fwm-foot"><a class="link-u" href="frameworks/index.html">Browse the full framework library</a></p>
+</section>
+<section class="section layer" id="layer" aria-labelledby="layer-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow eyebrow--ai"><span class="spark" aria-hidden="true"></span>One intelligence layer</p>
+        <h2 class="statement" id="layer-title"><span class="hl">AI is not a feature of one module. It is the layer under all thirteen.</span> <span class="muted">One registry of 150+ AI use cases, one data-protection gateway, one audit trail. Each module gets the AI job it needs, and says who approves it.</span></h2>
+      </div>
+      <a class="link-u" href="ai/index.html">Explore the layer</a>
+    </header>
+    <figure class="il" aria-labelledby="il-cap">
+        <figcaption class="sr-only" id="il-cap">The intelligence layer: Compli AI Studio is where people meet the AI; the data-protection gateway, audit trail and token budgets govern it. The layer runs across all 13 modules, each with its own AI job, on one data model.</figcaption>
+        <div class="il-top" style="--il-meet:1fr;--il-govern:3fr">
+          <div class="il-group"><p class="il-group-k">Where you meet it</p><ul role="list" style="--n:1"><li><a class="il-part il-part--meet" href="ai/studio.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg><span class="il-part-t">Compli AI Studio</span><span class="il-part-d">Plans and writes policies section by section; every edit is a proposal you accept.</span></a></li></ul></div>
+          <div class="il-group il-group--govern"><p class="il-group-k">How it is governed</p><ul role="list" style="--n:3"><li><a class="il-part il-part--govern" href="ai/trust.html#gateway"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-mask"/></svg><span class="il-part-t">Data-protection gateway</span><span class="il-part-d">Masks names, e-mails, hosts and IPs and removes secrets before a prompt leaves your server.</span></a></li><li><a class="il-part il-part--govern" href="ai/trust.html#trail"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-ledger"/></svg><span class="il-part-t">Audit trail</span><span class="il-part-d">Every AI call on the record: who, which feature, tokens, cost and status.</span></a></li><li><a class="il-part il-part--govern" href="ai/trust.html#budgets"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="il-part-t">Token budgets</span><span class="il-part-d">Usage per module against monthly budgets, with an alert at 85%.</span></a></li></ul></div>
+        </div>
+        <div class="il-bus"><p class="il-bus-t"><span class="spark" aria-hidden="true"></span>The intelligence layer</p><p class="il-bus-m">150+ registered AI use cases · leading AI models · prompts masked before they leave</p></div>
+        <ol class="il-mods" role="list" aria-label="The AI job in each of the 13 modules">
+          <li class="il-mod il-mod--auto"><a href="modules/governance.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Maps policy statements to controls</span><span class="sr-only"> (Automatic)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span class="il-name">Governance</span><span class="sr-only">: Governance &amp; Documents</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/committees.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Drafts the charter</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span class="il-name">Committees</span><span class="sr-only">: Committees &amp; Meetings</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/evidence.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Suggests what a file proves</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><span class="il-name">Evidence</span><span class="sr-only">: Evidence Management</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/vendors.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Reads questionnaire answers</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><span class="il-name">Vendors</span><span class="sr-only">: Vendor Risk (TPRM)</span></span></a></li>
+          <li class="il-mod il-mod--auto"><a href="modules/cybersecurity.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Maps findings to controls</span><span class="sr-only"> (Automatic)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span class="il-name">Cybersecurity</span><span class="sr-only">: Cybersecurity Assessment &amp; Assurance</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/workflow.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Builds a flow from a sentence</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span class="il-name">Workflow</span><span class="sr-only">: Workflow Automation</span></span></a></li>
+          <li class="il-mod il-mod--none"><a href="modules/connectors.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span>No AI: pulls your data in</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span class="il-name">Integrations</span><span class="sr-only">: Integrations &amp; Identity</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/assessments.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Finds evidence per statement</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="il-name">Assessments</span><span class="sr-only">: Compliance Assessments</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/controls.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Maps controls across frameworks</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="il-name">Controls</span><span class="sr-only">: Unified Control Library</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/risk.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Suggests treatments and KRIs</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><span class="il-name">Risk</span><span class="sr-only">: Enterprise Risk (ERM)</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/audit.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Drafts audit observations</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg><span class="il-name">Audit</span><span class="sr-only">: Audit Management</span></span></a></li>
+          <li class="il-mod il-mod--auto"><a href="modules/insights.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Writes dashboard observations</span><span class="sr-only"> (Automatic)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="il-name">Dashboards</span><span class="sr-only">: Dashboards &amp; Insights</span></span></a></li>
+          <li class="il-mod il-mod--confirm"><a href="modules/access-reviews.html"><span class="il-tap" aria-hidden="true"></span><span class="il-job"><span class="spark" aria-hidden="true"></span><span>Suggests keep, revoke or exception</span><span class="sr-only"> (Suggests, you confirm)</span></span><span class="il-box"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><span class="il-name">Access reviews</span><span class="sr-only">: Access Reviews</span></span></a></li>
+        </ol>
+        <div class="il-base"><p class="il-base-t"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-db"/></svg>One data model</p><p class="il-base-m">Frameworks · policies · controls · evidence · risks · audits, in your tenant’s own database</p></div>
+      </figure>
+      <p class="il-key"><span><span class="mark mark--confirm" aria-hidden="true"></span>Suggests, you confirm</span><span><span class="mark mark--auto" aria-hidden="true"></span>Runs on its own, and says so</span><span><span class="il-key-none" aria-hidden="true"></span>No AI in this module</span></p>
+  </div>
+</section>
+<section class="section section--raised ai-works" id="capabilities" aria-labelledby="cap-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow eyebrow--ai"><span class="spark" aria-hidden="true"></span>The AI capabilities explorer</p>
+        <h2 class="statement" id="cap-title"><span class="hl">14 jobs you can watch run.</span> <span class="muted">Each one reads what you already hold and says who approves what it produces. Dashed: it suggests, you confirm. Solid: it runs on its own, and says so.</span></h2>
+      </div>
+      <a class="link-u" href="ai/capabilities.html">All 39, by module</a>
+    </header>
+    <div class="xp" data-xp data-xp-param="ai">
+        <div class="xp-chrome" aria-hidden="true">
+          <span class="xp-chrome-title"><span class="spark" aria-hidden="true"></span>AI capabilities</span>
+          <span class="xp-chrome-keys"><kbd class="key">↑</kbd><kbd class="key">↓</kbd> Browse</span>
+        </div>
+        <div class="xp-body">
+          <div class="xp-list" data-xp-list aria-label="AI capabilities">
+          <button class="xp-row" type="button" id="ai-t-1" data-xp-i="1">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Map policies to controls</span><span class="xp-row-sub">Governance &amp; Documents</span></span>
+            <span class="xp-mark xp-mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-2" data-xp-i="2">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Draft in Compli AI Studio</span><span class="xp-row-sub">Governance &amp; Documents</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-3" data-xp-i="3">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Read a regulator’s circular</span><span class="xp-row-sub">Governance &amp; Documents</span></span>
+            <span class="xp-mark xp-mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-4" data-xp-i="4">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Read evidence</span><span class="xp-row-sub">Evidence Management</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-5" data-xp-i="5">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Find evidence per statement</span><span class="xp-row-sub">Compliance Assessments</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-6" data-xp-i="6">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Draft a committee charter</span><span class="xp-row-sub">Committees &amp; Meetings</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-7" data-xp-i="7">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Map controls across frameworks</span><span class="xp-row-sub">Unified Control Library</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-8" data-xp-i="8">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Map findings to controls</span><span class="xp-row-sub">Cybersecurity Assessment &amp; Assurance</span></span>
+            <span class="xp-mark xp-mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-9" data-xp-i="9">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Review vendor questionnaires</span><span class="xp-row-sub">Vendor Risk (TPRM)</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-10" data-xp-i="10">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Suggest risk treatments</span><span class="xp-row-sub">Enterprise Risk (ERM)</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-11" data-xp-i="11">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Draft audit observations</span><span class="xp-row-sub">Audit Management</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-12" data-xp-i="12">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Suggest access decisions</span><span class="xp-row-sub">Access Reviews</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-13" data-xp-i="13">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Build a workflow from a sentence</span><span class="xp-row-sub">Workflow Automation</span></span>
+            <span class="xp-mark xp-mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span>
+          </button>
+          <button class="xp-row" type="button" id="ai-t-14" data-xp-i="14">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Write dashboard observations</span><span class="xp-row-sub">Dashboards &amp; Insights</span></span>
+            <span class="xp-mark xp-mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span>
+          </button>
+          </div>
+          <div class="xp-panels" data-xp-panels>
+          <section class="xp-panel aip" id="ai-p-1" data-xp-i="1" aria-labelledby="ai-h-1">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance &amp; Documents</a><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p>
+              <h3 class="aip-name" id="ai-h-1">Map policies to controls</h3>
+              <p class="aip-sum">Splits an uploaded policy into numbered statements, then maps each one to the controls it implements and across your frameworks.</p>
+            </header>
+            <div class="io io--auto">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Information Security Policy</p><p class="rec-meta">Uploaded policy</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Produces</p><div class="rec rec--ai"><p class="rec-title">Statements mapped</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Policy statements</span><span class="rec-v">numbered</span></li><li class="rec-row"><span class="rec-k">Matching controls</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>from your library</span></li><li class="rec-row"><span class="rec-k">Framework controls</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>fanned out</span></li><li class="rec-row"><span class="rec-k">Evidence</span><span class="rec-v">through the control</span></li></ul></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Runs on its own once the policy is parsed. Lock a row and later re-runs leave it alone.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=governance">Every AI job in Governance &amp; Documents<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-2" data-xp-i="2" aria-labelledby="ai-h-2">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance &amp; Documents</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-2">Draft in Compli AI Studio</h3>
+              <p class="aip-sum">Plans a policy section from a gap and your organisation profile, writes it, and researches the laws that apply in your country and sector, with sources.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Gap card</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">SAMA 3.3.14</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>No documented cloud-exit strategy</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Draft the policy section</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Plan</span><span class="rec-v">what the section must cover</span></li><li class="rec-row"><span class="rec-k">Sections</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>written and checked</span></li><li class="rec-row"><span class="rec-k">Applicable law</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>researched, sources listed</span></li></ul><p class="rec-note">Edits come back as proposals</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Every edit is a proposal you accept or reject. Quotes are checked against the reference they cite.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=governance">Every AI job in Governance &amp; Documents<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-3" data-xp-i="3" aria-labelledby="ai-h-3">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance &amp; Documents</a><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p>
+              <h3 class="aip-name" id="ai-h-3">Read a regulator’s circular</h3>
+              <p class="aip-sum">Reads a circular clause by clause, lists every obligation with its reference and exact quote, and works out which of your policies, controls and departments it touches.</p>
+            </header>
+            <div class="io io--auto">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">A regulator’s circular</p><p class="rec-meta">Uploaded as published</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Produces</p><div class="rec rec--ai"><p class="rec-title">Obligations, clause by clause</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Each obligation</span><span class="rec-v">reference + exact quote</span></li><li class="rec-row"><span class="rec-k">Quote not found in the text</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>marked unverified</span></li><li class="rec-row"><span class="rec-k">Impact</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>policies, controls, departments</span></li></ul></div><p class="io-also"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span><span><b>Links to your controls.</b> Proposed, for a person to accept.</span></p></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Reading runs on its own. A quote the AI cannot find in the text is flagged for a person, and links to your controls are proposals.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=governance">Every AI job in Governance &amp; Documents<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-4" data-xp-i="4" aria-labelledby="ai-h-4">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>Evidence Management</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-4">Read evidence</h3>
+              <p class="aip-sum">Reads each upload and suggests the clauses of your own frameworks it appears to answer.</p>
+            </header>
+            <div class="io io--confirm" data-confirm-scope>
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">log-retention.pdf</p><p class="rec-meta">OCR on your server · valid to 12/2026</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">3 suggested links</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">SWIFT CSCF 4.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> SWIFT CSCF 4.1</span></span><span class="c-on">Linked<span class="sr-only"> SWIFT CSCF 4.1</span></span></button></li><li class="rec-row"><span class="rec-k">NIST SP 800-53 Rev 5 AU-6</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span><span class="c-on">Linked<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span></button></li><li class="rec-row"><span class="rec-k">PCI DSS v4.0.1 10.2.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span><span class="c-on">Linked<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span></button></li></ul><p class="rec-note">Not linked until you click Link</p><p class="rec-count" aria-live="polite"><span data-confirm-count>0</span> of 3 linked</p></div><p class="io-also"><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span><span><b>Quality rating.</b> Relevance, adequacy and audit readiness, and what is missing.</span></p></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>You click Link on each suggestion. Only frameworks loaded in your tenant are matched, and control IDs the model invents are dropped before anything is saved.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=evidence">Every AI job in Evidence Management<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-5" data-xp-i="5" aria-labelledby="ai-h-5">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/assessments.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Compliance Assessments</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-5">Find evidence per statement</h3>
+              <p class="aip-sum">Reads an assessment item and a shortlist of your evidence library, says which records prove it, and how to collect the rest.</p>
+            </header>
+            <div class="io io--confirm" data-confirm-scope>
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">ISO 27001 A.5.23</p><p class="rec-meta">Cloud services security</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Status</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>gap</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">From your evidence library</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Cloud-Security-Policy.pdf</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>suggested</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> Cloud-Security-Policy.pdf</span></span><span class="c-on">Linked<span class="sr-only"> Cloud-Security-Policy.pdf</span></span></button></li><li class="rec-row"><span class="rec-k">Also answers</span><span class="rec-v">SOC 2 CC9.2</span></li></ul><p class="rec-note">One click links it</p><p class="rec-count" aria-live="polite"><span data-confirm-count>0</span> of 1 linked</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>A person links each suggestion with one click. Record IDs the model invents are dropped.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=assessments">Every AI job in Compliance Assessments<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-6" data-xp-i="6" aria-labelledby="ai-h-6">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/committees.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Committees &amp; Meetings</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-6">Draft a committee charter</h3>
+              <p class="aip-sum">Drafts a charter from the committee’s purpose and the frameworks it answers to, and shows how an existing charter differs from a reference.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Security Steering Committee</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Purpose</span></li><li class="rec-row"><span class="rec-k">Frameworks it answers to</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Draft charter</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Charter draft</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>for review</span></li><li class="rec-row"><span class="rec-k">After approval</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Charter v2.1 · 12 Feb</span></li></ul></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>The draft runs the same approval workflow as any policy before it becomes the charter.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=committees">Every AI job in Committees &amp; Meetings<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-7" data-xp-i="7" aria-labelledby="ai-h-7">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Unified Control Library</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-7">Map controls across frameworks</h3>
+              <p class="aip-sum">Finds the matching controls in other frameworks: similarity, inheritance, differences and the evidence an auditor would accept.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Access review</p><p class="rec-meta">Implemented once · Owner · Head of IT</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Suggested matches</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">ISO 27001</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>match</span></li><li class="rec-row"><span class="rec-k">SOC 2</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>match</span></li><li class="rec-row"><span class="rec-k">PCI DSS</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>match</span></li><li class="rec-row"><span class="rec-k">SAMA CSF</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>match</span></li><li class="rec-row"><span class="rec-k">NIST CSF</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>match</span></li></ul></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Suggestions. A person accepts each mapping.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=controls">Every AI job in Unified Control Library<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-8" data-xp-i="8" aria-labelledby="ai-h-8">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/cybersecurity.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Cybersecurity Assessment &amp; Assurance</a><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p>
+              <h3 class="aip-name" id="ai-h-8">Map findings to controls</h3>
+              <p class="aip-sum">Reads a scanner finding and proposes the controls from your library that address it, each with a confidence and a one-line reason, or says it is patch-only.</p>
+            </header>
+            <div class="io io--auto">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">VULN-50 · CVE-2024-2961</p><p class="rec-meta">Scanner text, CVE, CWE, severity, asset</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Produces</p><div class="rec rec--ai"><p class="rec-title">Controls from your library</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Each control</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>confidence + one-line reason</span></li><li class="rec-row"><span class="rec-k">No control applies</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>answered “patch-only”</span></li></ul></div><p class="io-also"><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span><span><b>Below the confidence floor.</b> Weaker suggestions wait for a person.</span></p></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>At or above the confidence floor (medium by default) a link is made on its own, and a Reject removes it. One decision on a weakness (CWE) applies to every finding that shares it. Exploitability ranking is a fixed formula, not AI.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=cybersecurity">Every AI job in Cybersecurity Assessment &amp; Assurance<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-9" data-xp-i="9" aria-labelledby="ai-h-9">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg>Vendor Risk (TPRM)</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-9">Review vendor questionnaires</h3>
+              <p class="aip-sum">Reads a vendor’s questionnaire answers and drafts a risk narrative, findings and recommendations.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">PayGate Ltd</p><p class="rec-meta">Questionnaire answers · critical tier</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">For the analyst</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Risk narrative</span></li><li class="rec-row"><span class="rec-k">Findings</span></li><li class="rec-row"><span class="rec-k">Recommendations</span></li></ul><p class="rec-note">Official scores come from the scoring engine</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Advisory only. The text is stored beside the vendor for an analyst to weigh; it never changes the governed scores.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=vendors">Every AI job in Vendor Risk (TPRM)<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-10" data-xp-i="10" aria-labelledby="ai-h-10">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Enterprise Risk (ERM)</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-10">Suggest risk treatments</h3>
+              <p class="aip-sum">From a risk’s description and linked controls: category, scoring, wording and treatment options.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">R-20 · Segregation of duties</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Control</span><span class="rec-v">Access reviews conducted</span></li><li class="rec-row"><span class="rec-k">Owner</span><span class="rec-v">Mark Allen</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Suggestions, on click</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Category</span></li><li class="rec-row"><span class="rec-k">Scoring</span></li><li class="rec-row"><span class="rec-k">Wording</span></li><li class="rec-row"><span class="rec-k">Treatment options</span></li></ul></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Runs when someone clicks, and only suggests. The owner picks the treatment.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=risk">Every AI job in Enterprise Risk (ERM)<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-11" data-xp-i="11" aria-labelledby="ai-h-11">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/audit.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg>Audit Management</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-11">Draft audit observations</h3>
+              <p class="aip-sum">Reads an uploaded audit file and drafts the observations in it.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Uploaded audit file</p><p class="rec-meta">PDF, Word, Excel or CSV</p></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Draft observations</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Observation drafts</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>one per issue found</span></li></ul><p class="rec-note">Not saved until accepted</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>The AI does not write to the register. A person accepts each observation before it is saved.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=audit">Every AI job in Audit Management<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-12" data-xp-i="12" aria-labelledby="ai-h-12">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg>Access Reviews</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-12">Suggest access decisions</h3>
+              <p class="aip-sum">For every sampled person, proposes keep, revoke or exception with a reason of 22 words at most.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">One sampled person</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Department</span></li><li class="rec-row"><span class="rec-k">Roles</span></li><li class="rec-row"><span class="rec-k">MFA</span></li><li class="rec-row"><span class="rec-k">Last sign-in</span></li><li class="rec-row"><span class="rec-k">Terminated?</span></li><li class="rec-row"><span class="rec-k">Findings</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Suggestion</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Keep · Revoke · Exception</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>one of three</span></li><li class="rec-row"><span class="rec-k">Reason</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>22 words at most</span></li></ul><p class="rec-note">Shown beside the person, labelled as AI</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>A suggestion only: it never sets the decision. The reviewer decides each person.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=access-reviews">Every AI job in Access Reviews<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-13" data-xp-i="13" aria-labelledby="ai-h-13">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>Workflow Automation</a><span class="ai-badge ai-badge--confirm"><span class="spark" aria-hidden="true"></span>Suggests, you confirm</span></p>
+              <h3 class="aip-name" id="ai-h-13">Build a workflow from a sentence</h3>
+              <p class="aip-sum">Turns a plain description into a workflow definition: the nodes and the routing between them.</p>
+            </header>
+            <div class="io io--confirm">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">In plain words</p><ul class="rec-rows" role="list"><li class="rec-row rec-row--quote"><span class="rec-k">“When a control fails on a critical asset, route it to the owner, notify the committee and escalate on SLA breach.”</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Proposes</p><div class="rec rec--ai"><p class="rec-title">Workflow definition</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">When</span><span class="rec-v">Control fails</span></li><li class="rec-row"><span class="rec-k">If</span><span class="rec-v">Critical asset</span></li><li class="rec-row"><span class="rec-k">Then</span><span class="rec-v">Route to owner</span></li><li class="rec-row"><span class="rec-k">Then</span><span class="rec-v">Notify committee</span></li><li class="rec-row"><span class="rec-k">On SLA breach</span><span class="rec-v">Escalate</span></li></ul></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Returned as a definition for an admin to review and save. If AI is unavailable, rules build it instead.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=workflow">Every AI job in Workflow Automation<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          <section class="xp-panel aip" id="ai-p-14" data-xp-i="14" aria-labelledby="ai-h-14">
+            <header class="aip-head">
+              <p class="aip-meta"><a class="aip-module" href="modules/insights.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg>Dashboards &amp; Insights</a><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></p>
+              <h3 class="aip-name" id="ai-h-14">Write dashboard observations</h3>
+              <p class="aip-sum">Reads your compliance, evidence, risk and RCSA figures and writes short observations on the home dashboard.</p>
+            </header>
+            <div class="io io--auto">
+      <div class="io-in"><p class="io-k">Reads</p><div class="rec"><p class="rec-title">Your dashboard figures</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Compliance</span></li><li class="rec-row"><span class="rec-k">Evidence</span></li><li class="rec-row"><span class="rec-k">Risk</span></li><li class="rec-row"><span class="rec-k">RCSA</span></li></ul></div></div>
+      <span class="io-arrow" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+      <div class="io-out"><p class="io-k"><span class="spark" aria-hidden="true"></span>Produces</p><div class="rec rec--ai"><p class="rec-title">Short observations</p><ul class="rec-rows" role="list"><li class="rec-row"><span class="rec-k">Observations</span><span class="rec-v"><span class="spark" aria-hidden="true"></span>on the home dashboard</span></li><li class="rec-row"><span class="rec-k">Kept</span><span class="rec-v">for an hour</span></li></ul><p class="rec-note">Changes no record</p></div></div>
+    </div>
+            <p class="aip-who"><span class="aip-who-k">Who approves</span><span>Nothing to approve: the observations are text on the dashboard. They run on their own, are kept for an hour, and change no record.</span></p>
+            <a class="link-arrow aip-link" href="ai/capabilities.html?module=insights">Every AI job in Dashboards &amp; Insights<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a>
+          </section>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<section class="section control" id="control" aria-labelledby="control-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow">You stay in control</p>
+        <h2 class="statement" id="control-title"><span class="hl">AI suggests. People decide.</span> <span class="muted">Sensitive values are masked or removed before a prompt leaves your server, every AI call is on the record, and token budgets alert you before a module runs over.</span></h2>
+      </div>
+      <a class="link-u" href="ai/trust.html">AI trust &amp; control</a>
+    </header>
+    <div class="ctl-grid">
+      <article class="ctl" aria-labelledby="ctl-approve">
+        <p class="ctl-k">Suggests or automatic</p>
+        <h3 class="ctl-t" id="ctl-approve">Every AI job says which it is.</h3>
+        <div class="ctl-body"><ul class="vg-list" role="list"><li><span class="mark mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span><span class="vg-t">Evidence → requirement links</span><span class="vg-d">Suggested; a person clicks Link</span></li><li><span class="mark mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span><span class="vg-t">Access review decisions</span><span class="vg-d">Suggested; the reviewer decides</span></li><li><span class="mark mark--confirm" title="Suggests, you confirm"><span class="sr-only">Suggests, you confirm</span></span><span class="vg-t">Audit observations</span><span class="vg-d">Not saved until accepted</span></li><li><span class="mark mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span><span class="vg-t">Policy statements → controls</span><span class="vg-d">Automatic; lock any row</span></li><li><span class="mark mark--auto" title="Automatic"><span class="sr-only">Automatic</span></span><span class="vg-t">Findings → controls</span><span class="vg-d">Automatic above a confidence floor; Reject removes</span></li></ul></div>
+        <p class="ctl-more">Links, decisions and edits wait for a person. The few automatic jobs say so, and can be undone.</p>
+      </article>
+      <article class="ctl" aria-labelledby="ctl-mask">
+        <p class="ctl-k">Masked before it leaves</p>
+        <h3 class="ctl-t" id="ctl-mask">Names and hosts swapped, secrets cut.</h3>
+        <div class="ctl-body"><div class="mask" role="group" aria-label="Illustration: a prompt before and after the gateway">
+          <p class="mask-k">Before · on your server</p>
+          <p class="mask-p">Revoke VPN access for <mark class="m-swap">mark.allen@example-bank.sa</mark> on <mark class="m-swap">core-db-02</mark> (<mark class="m-swap">10.20.4.17</mark>). Card <mark class="m-cut">4111 1111 1111 1111</mark> is on file.</p>
+          <p class="mask-k">After · what the model sees</p>
+          <p class="mask-p">Revoke VPN access for <span class="m-ph">[EMAIL_1]</span> on <span class="m-ph">[HOST_1]</span> (<span class="m-ph">[IP_1]</span>). Card <span class="m-gone">removed</span> is on file.</p>
+          <p class="mask-foot"><span><i class="dot dot--metal" aria-hidden="true"></i>Masked, then put back in the answer</span><span><i class="dot dot--coral" aria-hidden="true"></i>Removed, never sent or restored</span></p>
+        </div></div>
+        <p class="ctl-more">Illustration. If the protection check itself fails, the AI is not used: it fails closed.</p>
+      </article>
+      <article class="ctl" aria-labelledby="ctl-trail">
+        <p class="ctl-k">Audit trail</p>
+        <h3 class="ctl-t" id="ctl-trail">Every AI call, on the record.</h3>
+        <div class="ctl-body"><div class="t-scroll"><table class="ledger"><caption class="sr-only">Sample AI call log</caption><thead><tr><th scope="col">Time</th><th scope="col">Who</th><th scope="col">Use case</th><th scope="col">Tokens</th><th scope="col">Status</th></tr></thead><tbody><tr><td class="mono">09:41</td><td>Head of IT</td><td>Evidence · suggest links</td><td class="mono">3,120</td><td><span class="ledger-ok">success</span></td></tr><tr><td class="mono">09:44</td><td>Background job</td><td>Policy statement mapping</td><td class="mono">8,402</td><td><span class="ledger-ok">success</span></td></tr><tr><td class="mono">09:52</td><td>Mark Allen</td><td>Risk · suggest treatment</td><td class="mono">1,240</td><td><span class="ledger-ok">success</span></td></tr><tr><td class="mono">10:03</td><td>Head of IT</td><td>Evidence · read image</td><td class="mono">0</td><td><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>blocked</span></td></tr></tbody></table></div></div>
+        <p class="ctl-more">Sample log. Reading a prompt’s text needs a separate right, and opening it is itself logged.</p>
+      </article>
+      <article class="ctl" aria-labelledby="ctl-budget">
+        <p class="ctl-k">Token budgets</p>
+        <h3 class="ctl-t" id="ctl-budget">Usage per module, alerts at 85%.</h3>
+        <div class="ctl-body"><ul class="budget" role="list" aria-label="Sample budgets: share of each module’s monthly budget used"><li class=""><span>Governance</span><span class="budget-bar" aria-hidden="true"><i style="--v:0.62"></i></span><span class="mono">62%</span></li><li class="is-alert"><span>Evidence</span><span class="budget-bar" aria-hidden="true"><i style="--v:0.88"></i></span><span class="mono">88% · alert</span></li><li class=""><span>Risk</span><span class="budget-bar" aria-hidden="true"><i style="--v:0.41"></i></span><span class="mono">41%</span></li><li class=""><span>Controls</span><span class="budget-bar" aria-hidden="true"><i style="--v:0.27"></i></span><span class="mono">27%</span></li><li class=""><span>Vendors</span><span class="budget-bar" aria-hidden="true"><i style="--v:0.19"></i></span><span class="mono">19%</span></li></ul>
+        <p class="budget-k"><span class="budget-tick" aria-hidden="true"></span>Alert at 85% of a module’s budget</p></div>
+        <p class="ctl-more">Sample tenant. Budgets track usage and raise alerts; administrators see it by module, user and event.</p>
+      </article>
+    </div>
+  </div>
+</section>
+    <section class="loop" id="loop" aria-labelledby="loop-title" data-loop>
+      <div class="loop-stage">
+
+        <div class="loop-figure">
+          <svg class="ring-svg" viewBox="0 0 1000 1000" aria-hidden="true" focusable="false">
+            <defs>
+              <path id="verb-0" d="M514.97 214.39 A286 286 0 0 1 739.86 344.23"/>
+              <path id="verb-1" d="M754.83 370.16 A286 286 0 0 1 754.83 629.84"/>
+              <path id="verb-2" d="M515.81 801.59 A302 302 0 0 0 753.28 664.48"/>
+              <path id="verb-3" d="M246.72 664.48 A302 302 0 0 0 484.19 801.59"/>
+              <path id="verb-4" d="M245.17 629.84 A286 286 0 0 1 245.17 370.16"/>
+              <path id="verb-5" d="M260.14 344.23 A286 286 0 0 1 485.03 214.39"/>
+            </defs>
+            <circle class="ring-track" cx="500" cy="500" r="330"/>
+            <circle class="ring-progress" cx="500" cy="500" r="330" pathLength="600" transform="rotate(-90 500 500)"/>
+            <text class="ring-verb"><textPath href="#verb-0" startOffset="50%" text-anchor="middle">demands</textPath></text>
+            <text class="ring-verb"><textPath href="#verb-1" startOffset="50%" text-anchor="middle">implements</textPath></text>
+            <text class="ring-verb"><textPath href="#verb-2" startOffset="50%" text-anchor="middle">proven by</textPath></text>
+            <text class="ring-verb"><textPath href="#verb-3" startOffset="50%" text-anchor="middle">exposes</textPath></text>
+            <text class="ring-verb"><textPath href="#verb-4" startOffset="50%" text-anchor="middle">tested in</textPath></text>
+            <text class="ring-verb"><textPath href="#verb-5" startOffset="50%" text-anchor="middle">closes back to</textPath></text>
+            <circle class="ring-station" cx="500" cy="170" r="13"/>
+            <circle class="ring-station" cx="785.79" cy="335" r="13"/>
+            <circle class="ring-station" cx="785.79" cy="665" r="13"/>
+            <circle class="ring-station" cx="500" cy="830" r="13"/>
+            <circle class="ring-station" cx="214.21" cy="665" r="13"/>
+            <circle class="ring-station" cx="214.21" cy="335" r="13"/>
+            <g class="ring-record" transform="rotate(0 500 500)">
+              <circle class="ring-record-halo" cx="500" cy="170" r="34"/>
+              <circle class="ring-record-dot" cx="500" cy="170" r="17"/>
+            </g>
+          </svg>
+
+          <button class="ring-label ring-label--top" type="button" data-goto="0" style="--x:50%;--y:13.2%"><span class="ring-label-num">01</span>Framework</button>
+          <button class="ring-label ring-label--right" type="button" data-goto="1" style="--x:81.8%;--y:33.5%"><span class="ring-label-num">02</span>Policy</button>
+          <button class="ring-label ring-label--right" type="button" data-goto="2" style="--x:81.8%;--y:66.5%"><span class="ring-label-num">03</span>Control</button>
+          <button class="ring-label ring-label--bottom" type="button" data-goto="3" style="--x:50%;--y:86.8%"><span class="ring-label-num">04</span>Evidence</button>
+          <button class="ring-label ring-label--left" type="button" data-goto="4" style="--x:18.2%;--y:66.5%"><span class="ring-label-num">05</span>Risk</button>
+          <button class="ring-label ring-label--left" type="button" data-goto="5" style="--x:18.2%;--y:33.5%"><span class="ring-label-num">06</span>Audit</button>
+
+          <div class="ring-center" aria-hidden="true">
+            <p class="rc-kicker"><span class="rc-dot"></span>Access review</p>
+            <p class="rc-word" data-rc-word>Framework</p>
+            <p class="rc-next" data-rc-next>demands → Policy</p>
+          </div>
+        </div>
+
+        <div class="loop-side">
+          <header class="loop-head">
+            <p class="eyebrow">The 360° loop</p>
+            <h2 class="loop-title" id="loop-title">Not six tools bolted together. One record moving through six states.</h2>
+            <p class="loop-sub">Follow one control, <strong>Access review</strong>, all the way round.</p>
+          </header>
+
+          <ol class="loop-steps" role="list">
+            <li class="loop-step is-active" id="loop-step-0" data-step="0">
+              <p class="step-meta"><span class="step-num">01</span><span class="step-station">Framework</span><span class="step-verb">demands policy</span></p>
+              <h3 class="step-title">Five frameworks ask for the same access review.</h3>
+              <p class="step-copy">Every clause names the policy statement that has to exist, so the moment you pick a framework, the documents it needs are already listed against it.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Reads a framework you upload and fills in the controls and the evidence each one needs.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/assessments.html">Compliance Assessments</a><span class="chip chip--solid">5 frameworks</span></p>
+                <ul class="fw-req" role="list">
+                  <li><b>ISO 27001</b><span>Information security</span><span class="mono-chip">Global</span></li>
+                  <li><b>SOC 2</b><span>Trust services</span><span class="mono-chip">Global</span></li>
+                  <li><b>PCI DSS</b><span>Payment security</span><span class="mono-chip">Global</span></li>
+                  <li><b>SAMA CSF</b><span>Saudi banking cyber</span><span class="mono-chip">KSA</span></li>
+                  <li><b>NIST CSF</b><span>Cyber framework</span><span class="mono-chip">Global</span></li>
+                </ul>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-1" data-step="1">
+              <p class="step-meta"><span class="step-num">02</span><span class="step-station">Policy</span><span class="step-verb">implements control</span></p>
+              <h3 class="step-title">The policy behind it is 12 days overdue.</h3>
+              <p class="step-copy">Access Control Policy sits in one governed library, traced to the clauses that demand it, with every version pinned. When its review slips, it shows up before anyone asks.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Splits each policy into statements and maps them to the controls they implement.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/governance.html">Governance &amp; Documents</a><span class="chip chip--gap">Needs attention</span></p>
+                <div class="doc-row">
+                  <span class="doc-icon" aria-hidden="true"></span>
+                  <div><b>Access Control Policy</b><span class="mono-muted">Governance</span></div>
+                  <span class="chip chip--gap"><i class="dot dot--amber" aria-hidden="true"></i>Review overdue 12d</span>
+                </div>
+                <ol class="lifecycle" role="list" aria-label="Policy lifecycle">
+                  <li>Draft</li><li class="is-due">Review</li><li>Approval</li><li>Published</li><li>Attested</li>
+                </ol>
+                <p class="ucard-foot"><span class="mono-muted">Implements</span><b>Access review</b><span class="arrow-mono" aria-hidden="true">→</span></p>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-2" data-step="2">
+              <p class="step-meta"><span class="step-num">03</span><span class="step-station">Control</span><span class="step-verb">proven by evidence</span></p>
+              <h3 class="step-title">Implemented once. Inherited by five.</h3>
+              <p class="step-copy">One owner, one implementation. Every framework that requires an access review inherits this one instead of asking for its own.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Suggests matching controls across frameworks; a person accepts each mapping.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/controls.html">Unified Control Library</a><span class="chip chip--solid">Implemented once</span></p>
+                <div class="inherit">
+                  <div class="inherit-node">
+                    <b>Access review</b>
+                    <span class="mono-muted">Owner · Head of IT</span>
+                  </div>
+                  <svg class="inherit-fan" viewBox="0 0 100 200" preserveAspectRatio="none" aria-hidden="true" focusable="false">
+                    <path d="M0 100 C50 100 50 20 100 20"/><path d="M0 100 C50 100 50 60 100 60"/><path d="M0 100 L100 100"/><path d="M0 100 C50 100 50 140 100 140"/><path d="M0 100 C50 100 50 180 100 180"/>
+                  </svg>
+                  <ul class="inherit-list" role="list" aria-label="Inherited by">
+                    <li>ISO 27001</li><li>SOC 2</li><li>PCI DSS</li><li>SAMA CSF</li><li>NIST CSF</li>
+                  </ul>
+                </div>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-3" data-step="3">
+              <p class="step-meta"><span class="step-num">04</span><span class="step-station">Evidence</span><span class="step-verb">exposes risk</span></p>
+              <h3 class="step-title">Proven once, for all five.</h3>
+              <p class="step-copy">Access Reviews pulls the accounts from the directories you already run, people are certified, and the closed review is exported as the proof. One proof covers every framework that inherits the control.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Suggests keep, revoke or exception for each person; the reviewer decides.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/access-reviews.html">Access Reviews</a><span class="chip chip--solid">Exported as evidence</span></p>
+                <div class="ev-flow">
+                  <div class="ev-src">
+                    <span class="mono-muted">Pulled live from</span>
+                    <span class="ev-logos"><img src="assets/okta.svg" alt="Okta" width="28" height="28"><img src="assets/azuread.svg" alt="Microsoft Entra ID" width="28" height="28"></span>
+                  </div>
+                  <span class="arrow-mono" aria-hidden="true">→</span>
+                  <div class="ev-ctl"><span class="mono-muted">Closed review proves</span><b>Access review</b></div>
+                </div>
+                <p class="ev-sat"><span class="mono-muted">Satisfies</span><span class="chip chip--line">ISO 27001</span><span class="chip chip--line">SOC 2</span><span class="chip chip--line">PCI DSS</span><span class="chip chip--line">SAMA CSF</span><span class="chip chip--line">NIST CSF</span></p>
+                <p class="ucard-foot"><i class="dot dot--coral" aria-hidden="true"></i>When evidence goes missing or stale, the gap is exposed as risk.</p>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-4" data-step="4">
+              <p class="step-meta"><span class="step-num">05</span><span class="step-station">Risk</span><span class="step-verb">tested in audit</span></p>
+              <h3 class="step-title">The gap becomes an owned risk.</h3>
+              <p class="step-copy">No re-keying between the finding and the register. The risk lands with a named owner, a linked control and a treatment.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Suggests treatments, KRI thresholds and plain-language bow-tie narratives.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/risk.html">Enterprise Risk (ERM)</a><span class="chip chip--solid">R-20</span></p>
+                <p class="risk-title">Segregation of duties</p>
+                <dl class="risk-dl">
+                  <div><dt>Owner</dt><dd>Mark Allen</dd></div>
+                  <div><dt>Category</dt><dd>Asset management</dd></div>
+                  <div><dt>Control</dt><dd>Access reviews conducted</dd></div>
+                  <div><dt>Treatment</dt><dd><span class="chip chip--solid">Mitigate</span></dd></div>
+                </dl>
+                <p class="ucard-foot risk-reg"><span><b>34</b> open risks</span><span><i class="dot dot--coral" aria-hidden="true"></i><b>5</b> above appetite</span><span><i class="dot dot--coral" aria-hidden="true"></i><b>3</b> KRIs breaching</span></p>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-5" data-step="5">
+              <p class="step-meta"><span class="step-num">06</span><span class="step-station">Audit</span><span class="step-verb">closes back to framework</span></p>
+              <h3 class="step-title">The SOC 2 package is already assembled.</h3>
+              <p class="step-copy">Audit prep becomes a query, not a quarter of chasing people for files. The package is built from links that already exist.</p>
+              <p class="step-ai"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Drafts observations from an uploaded audit file; nothing is saved until you accept.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/audit.html">Audit Management</a><span class="chip chip--solid">From existing links</span></p>
+                <div class="pkg">
+                  <p class="pkg-name">SOC 2 audit package</p>
+                  <p class="pkg-num">87%</p>
+                </div>
+                <div class="meter" role="img" aria-label="SOC 2 audit package 87 percent assembled"><i style="--v:.87"></i></div>
+                <p class="pkg-links"><span class="mono-muted">Linked in</span><span class="chip chip--line">Access Control Policy</span><span class="chip chip--line">Access review</span><span class="chip chip--line">Evidence</span><span class="chip chip--line">R-20</span></p>
+              </div>
+            </li>
+
+            <li class="loop-step" id="loop-step-6" data-step="6">
+              <p class="step-meta"><span class="step-num">01 ↺</span><span class="step-station">Framework</span><span class="step-verb">the loop closes</span></p>
+              <h3 class="step-title">Back to the framework. Around again.</h3>
+              <p class="step-copy">Audit results close back to the frameworks the control serves, so readiness reflects what was actually tested. The next gap starts the loop on its own.</p>
+              <div class="ucard">
+                <p class="ucard-head"><a href="modules/audit.html">Audit readiness</a><span class="chip chip--solid">By framework</span></p>
+                <ul class="readiness" role="list">
+                  <li><span>SOC 2</span><span class="meter" aria-hidden="true"><i style="--v:.87"></i></span><b>87%</b></li>
+                  <li><span>ISO 27001</span><span class="meter" aria-hidden="true"><i style="--v:.74"></i></span><b>74%</b></li>
+                  <li><span>SAMA CSF</span><span class="meter" aria-hidden="true"><i style="--v:.58"></i></span><b>58%</b></li>
+                  <li><span>PCI DSS</span><span class="meter" aria-hidden="true"><i style="--v:.81"></i></span><b>81%</b></li>
+                </ul>
+              </div>
+            </li>
+          </ol>
+
+          <div class="loop-pager" role="group" aria-label="Jump to a station">
+            <button class="pager-btn" type="button" data-goto="0" aria-label="Station 1, Framework">01</button>
+            <button class="pager-btn" type="button" data-goto="1" aria-label="Station 2, Policy">02</button>
+            <button class="pager-btn" type="button" data-goto="2" aria-label="Station 3, Control">03</button>
+            <button class="pager-btn" type="button" data-goto="3" aria-label="Station 4, Evidence">04</button>
+            <button class="pager-btn" type="button" data-goto="4" aria-label="Station 5, Risk">05</button>
+            <button class="pager-btn" type="button" data-goto="5" aria-label="Station 6, Audit">06</button>
+            <button class="pager-btn" type="button" data-goto="6" aria-label="Back to Framework, loop closed">↺</button>
+            <span class="pager-hint">Scroll to move the record</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+<section class="section modules" id="modules" aria-labelledby="modules-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow">The platform · 13 modules on one data model</p>
+        <h2 class="statement" id="modules-title"><span class="hl">Thirteen modules, one record, one AI layer.</span> <span class="muted">Each module reads and writes the records the loop runs on, and each shows the AI job it does, inline.</span></h2>
+      </div>
+      <a class="link-u" href="platform/index.html">Platform overview</a>
+    </header>
+    <div class="xp" data-xp data-xp-param="m">
+        <div class="xp-chrome" aria-hidden="true">
+          <span class="xp-chrome-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Modules</span>
+          <span class="xp-chrome-keys"><kbd class="key">↑</kbd><kbd class="key">↓</kbd> Browse</span>
+        </div>
+        <div class="xp-body">
+          <div class="xp-list" data-xp-list aria-label="Modules">
+          <button class="xp-row" type="button" id="m-t-1" data-xp-i="1">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Governance &amp; Documents</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Maps policy statements to controls</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-2" data-xp-i="2">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Committees &amp; Meetings</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Drafts the charter</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-3" data-xp-i="3">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Evidence Management</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Suggests what a file proves</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-4" data-xp-i="4">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Vendor Risk (TPRM)</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Reads questionnaire answers</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-5" data-xp-i="5">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Cybersecurity Assessment &amp; Assurance</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Maps findings to controls</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-6" data-xp-i="6">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Workflow Automation</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Builds a flow from a sentence</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-7" data-xp-i="7">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Integrations &amp; Identity</span><span class="xp-row-sub">No AI: pulls your data in</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-8" data-xp-i="8">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Compliance Assessments</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Finds evidence per statement</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-9" data-xp-i="9">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Unified Control Library</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Maps controls across frameworks</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-10" data-xp-i="10">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Enterprise Risk (ERM)</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Suggests treatments and KRIs</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-11" data-xp-i="11">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Audit Management</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Drafts audit observations</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-12" data-xp-i="12">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Dashboards &amp; Insights</span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Writes dashboard observations</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          <button class="xp-row" type="button" id="m-t-13" data-xp-i="13">
+            <span class="xp-icon"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg></span>
+            <span class="xp-row-text"><span class="xp-row-name">Access Reviews<span class="tag-new">New</span></span><span class="xp-row-sub"><span class="spark" aria-hidden="true"></span> Suggests keep, revoke or exception</span></span>
+            <kbd class="key key-ret" aria-hidden="true"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-return"/></svg></kbd>
+          </button>
+          </div>
+          <div class="xp-panels" data-xp-panels>
+          <section class="xp-panel" id="m-p-1" data-xp-i="1" aria-labelledby="m-h-1">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-1">Governance &amp; Documents</h3>
+              <p class="mod-promise">One library for every policy, standard and procedure, each traced to the clause that demands it.</p>
+              <a class="link-arrow mod-link" href="modules/governance.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Governance &amp; Documents</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class="is-auto"><span class="spark" aria-hidden="true"></span>Split a policy into statements<span class="sr-only"> (Automatic)</span></li><li class="is-auto"><span class="spark" aria-hidden="true"></span>Map every statement to controls<span class="sr-only"> (Automatic)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Check a document clause by clause<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Draft a complete policy from a brief<span class="sr-only"> (Suggests, you confirm)</span></li><li><a href="ai/capabilities.html?module=governance">+7 more</a></li></ul>
+            <div class="pv pv--sm pv-governance" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Information Security Policy</span><span class="pv-meta">Lifecycle</span></div>
+        <div class="stg" role="group" aria-label="Lifecycle stage" data-pick="stage"><button class="stg-btn is-done" type="button" data-pick-key="0" aria-pressed="false">Draft</button><button class="stg-btn is-done" type="button" data-pick-key="1" aria-pressed="false">Review</button><button class="stg-btn is-done" type="button" data-pick-key="2" aria-pressed="false">Approval</button><button class="stg-btn is-done" type="button" data-pick-key="3" aria-pressed="false">Published</button><button class="stg-btn is-now" type="button" data-pick-key="4" aria-pressed="true">Attested</button></div>
+        <p class="pick-panel stg-cap" data-pick-panel="stage:0"><b>Draft</b> · AI or template <span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span></p><p class="pick-panel stg-cap" data-pick-panel="stage:1"><b>Review</b> · Owners comment</p><p class="pick-panel stg-cap" data-pick-panel="stage:2"><b>Approval</b> · Tiered sign-off</p><p class="pick-panel stg-cap" data-pick-panel="stage:3"><b>Published</b> · Version pinned</p><p class="pick-panel stg-cap is-on" data-pick-panel="stage:4"><b>Attested</b> · Staff acknowledge</p>
+        <div class="pv-stat"><b>94%</b><span>attested across 1,204 staff</span><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.94"></i></span></div>
+      </div>
+      <div class="pv-card pv-card--flat">
+        <p class="pv-line"><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>Gap found</span><span class="ref">ISO 27001 A.5.23</span><span class="pv-muted">Cloud services security</span></p>
+        <div class="seg" role="group" aria-label="Handle the gap" data-pick="gap"><button class="seg-btn" type="button" data-pick-key="0" aria-pressed="false">Accept risk</button><button class="seg-btn" type="button" data-pick-key="1" aria-pressed="true">Mitigate risk</button><button class="seg-btn" type="button" data-pick-key="2" aria-pressed="false">Not applicable</button></div>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-2" data-xp-i="2" aria-labelledby="m-h-2">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-2">Committees &amp; Meetings</h3>
+              <p class="mod-promise">Stand up a governance committee, charter it, seat its members and never lose an action item.</p>
+              <a class="link-arrow mod-link" href="modules/committees.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Committees &amp; Meetings</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Draft a committee charter<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Read agendas, tidy actions<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-committees" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Security Steering Committee</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Charter v2.1 approved 12 Feb</span></div>
+        <div class="seg" role="group" aria-label="Committee view" data-pick="tab"><button class="seg-btn" type="button" data-pick-key="a" aria-pressed="true">Open actions</button><button class="seg-btn" type="button" data-pick-key="m" aria-pressed="false">Members</button><button class="seg-btn" type="button" data-pick-key="c" aria-pressed="false">Charter</button></div>
+        <div class="pick-panel is-on" data-pick-panel="tab:a"><table class="pv-table"><caption class="sr-only">Open actions</caption><thead><tr><th scope="col">Action</th><th scope="col">Owner</th><th scope="col">Due</th></tr></thead><tbody><tr><td>Approve revised BCM policy</td><td>CISO</td><td class="mono">12 Mar</td></tr><tr><td>Close <span class="ref ref--gap">SAMA 3.3.14</span> gap</td><td>Head of IT</td><td class="mono">20 Mar</td></tr><tr><td>Q1 vendor reassessments</td><td>Procurement</td><td class="mono">31 Mar</td></tr></tbody></table></div><div class="pick-panel" data-pick-panel="tab:m"><ul class="avatars" role="list" aria-label="Members"><li>MA</li><li>SK</li><li>RF</li><li>JD</li><li>LP</li></ul><p class="pv-muted">5 members · roles assigned</p></div><div class="pick-panel" data-pick-panel="tab:c"><p class="pv-line"><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Charter v2.1</span><span class="pv-muted">Approved · 12 Feb</span></p><p class="pv-muted">Runs the same approval workflow as any policy. <span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI-drafted</span></p></div>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-3" data-xp-i="3" aria-labelledby="m-h-3">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-3">Evidence Management</h3>
+              <p class="mod-promise">Upload an artifact once. The AI reads it and suggests the requirements it satisfies in your frameworks; you confirm each link.</p>
+              <a class="link-arrow mod-link" href="modules/evidence.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Evidence Management</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Suggest the requirements a file satisfies<span class="sr-only"> (Suggests, you confirm)</span></li><li class="is-auto"><span class="spark" aria-hidden="true"></span>Rate a file as audit evidence<span class="sr-only"> (Automatic)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Suggest what else a file belongs to<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Check a file against one requirement<span class="sr-only"> (Suggests, you confirm)</span></li><li><a href="ai/capabilities.html?module=evidence">+1 more</a></li></ul>
+            <div class="pv pv--sm pv-evidence" data-pick-scope><div class="pv-card" data-confirm-scope>
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>log-retention.pdf</span><span class="pv-meta">OCR · valid to 12/2026</span></div>
+        <p class="pv-label"><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span>Suggested · not yet linked</p>
+        <ul class="sugg" role="list"><li><span class="ref">SWIFT CSCF 4.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> SWIFT CSCF 4.1</span></span><span class="c-on">Linked<span class="sr-only"> SWIFT CSCF 4.1</span></span></button></li><li><span class="ref">NIST SP 800-53 Rev 5 AU-6</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span><span class="c-on">Linked<span class="sr-only"> NIST SP 800-53 Rev 5 AU-6</span></span></button></li><li><span class="ref">PCI DSS v4.0.1 10.2.1</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>partial</span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span><span class="c-on">Linked<span class="sr-only"> PCI DSS v4.0.1 10.2.1</span></span></button></li></ul>
+        <p class="pv-foot" aria-live="polite"><span><span data-confirm-count>0</span> of 3 linked</span><span>Reused across 3 frameworks from one upload</span></p>
+      </div>
+      </div>
+          </section>
+          <section class="xp-panel" id="m-p-4" data-xp-i="4" aria-labelledby="m-h-4">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-4">Vendor Risk (TPRM)</h3>
+              <p class="mod-promise">Every third party through one governed lifecycle, from first intake to reassessment and offboarding.</p>
+              <a class="link-arrow mod-link" href="modules/vendors.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Vendor Risk (TPRM)</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Review a vendor’s questionnaire<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Read contracts and alerts<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-vendors" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg>PayGate Ltd</span><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>Critical tier</span></div>
+        <div class="track" role="img" aria-label="Lifecycle of 11 stages; currently at stage 8, Approval decision"><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-done"></span><span class="is-now"></span><span class=""></span><span class=""></span><span class=""></span></div>
+        <p class="track-labels" aria-hidden="true"><span>1 Intake &amp; Scoping</span><span class="track-now">8 Approval decision</span><span>11 Reassessment &amp; Offboarding</span></p>
+        <p class="pv-label">Stage 8 · Approval decision</p>
+        <div class="seg" role="group" aria-label="Approval decision" data-pick="dec"><button class="seg-btn" type="button" data-pick-key="0" aria-pressed="false">Approve</button><button class="seg-btn" type="button" data-pick-key="1" aria-pressed="true">Approve with conditions</button><button class="seg-btn" type="button" data-pick-key="2" aria-pressed="false">Defer</button><button class="seg-btn" type="button" data-pick-key="3" aria-pressed="false">Reject</button></div>
+        <p class="pv-foot"><span>3 conditions tracked as obligations</span></p>
+      </div>
+      </div>
+          </section>
+          <section class="xp-panel" id="m-p-5" data-xp-i="5" aria-labelledby="m-h-5">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-5">Cybersecurity Assessment &amp; Assurance</h3>
+              <p class="mod-promise">Inventory what you own, score its business criticality, and rank every finding by what is actually exploitable on that host.</p>
+              <a class="link-arrow mod-link" href="modules/cybersecurity.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Cybersecurity Assessment &amp; Assurance</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class="is-auto"><span class="spark" aria-hidden="true"></span>Map scanner findings to controls<span class="sr-only"> (Automatic)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Summarise scans, suggest fixes<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Draft a fix plan for a finding<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Pick a hardening benchmark<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-cybersecurity" data-pick-scope>
+      <div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Vulnerabilities · 205 findings</span><div class="seg" role="group" aria-label="Lens" data-pick="lens"><button class="seg-btn" type="button" data-pick-key="raw" aria-pressed="true">Raw CVSS</button><button class="seg-btn" type="button" data-pick-key="ctx" aria-pressed="false">On the asset</button></div></div>
+        <div class="pick-panel is-on" data-pick-panel="lens:raw"><p class="pv-label">By raw severity</p><ul class="tm" role="list"><li class="tm-raw-info" style="--w:0.883"><b>181</b><span>Info</span></li><li class="tm-raw-high" style="--w:0.063"><b>13</b><span>High</span></li><li class="tm-raw-medium" style="--w:0.039"><b>8</b><span>Medium</span></li><li class="tm-raw-critical" style="--w:0.035"><b>3</b><span>Critical</span></li></ul></div>
+        <div class="pick-panel" data-pick-panel="lens:ctx"><p class="pv-label">By effective risk on the asset</p><ul class="tm" role="list"><li class="tm-ctx-low" style="--w:0.883"><b>181</b><span>Low</span></li><li class="tm-ctx-medium" style="--w:0.083"><b>17</b><span>Medium</span></li><li class="tm-ctx-high" style="--w:0.035"><b>4</b><span>High</span></li><li class="tm-ctx-critical" style="--w:0.035"><b>3</b><span>Critical</span></li></ul></div>
+        <div class="score-row">
+          <p class="pv-muted"><span class="mono">VULN-50</span> CVE-2024-2961</p>
+          <div class="score"><span class="score-l">CVSS alone</span><span class="score-v score-v--old">88</span></div>
+          <svg class="ico score-arrow" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg>
+          <div class="score"><span class="score-l">On this asset</span><span class="score-v">79</span></div>
+          <p class="score-facts"><span class="chip chip--risk"><i class="dot" aria-hidden="true"></i>weaponized</span><span>EPSS 88.3% · not in KEV</span></p>
+        </div>
+        
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-6" data-xp-i="6" aria-labelledby="m-h-6">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-6">Workflow Automation</h3>
+              <p class="mod-promise">Describe a workflow in plain words and the engine builds it. Then it routes, escalates and chases for you.</p>
+              <a class="link-arrow mod-link" href="modules/workflow.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Workflow Automation</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Build a workflow from a sentence<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-workflow" data-pick-scope><div class="pv-card" data-stepper>
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>Control fails</span><span class="pv-meta">Built by you</span></div>
+        <ol class="flow" role="list"><li class="flow-node flow-node--risk" data-step-item><span class="flow-kind">When</span><span class="flow-text"><i class="dot dot--coral" aria-hidden="true"></i>Control fails</span></li><li class="flow-node flow-node--cond" data-step-item><span class="flow-kind">If</span><span class="flow-text">Critical asset</span></li><li class="flow-node" data-step-item><span class="flow-kind">Then</span><span class="flow-text">Route to owner</span></li><li class="flow-node" data-step-item><span class="flow-kind">Then</span><span class="flow-text">Notify committee</span></li><li class="flow-node" data-step-item><span class="flow-kind">On SLA breach</span><span class="flow-text">Escalate</span></li></ol>
+        <p class="pv-foot"><button class="btn-mini" type="button" data-step-next>Step through</button><span class="pv-tags"><span>Event-driven</span><span>Conditional</span><span>Escalations</span><span>Full audit trail</span></span></p>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-7" data-xp-i="7" aria-labelledby="m-h-7">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-7">Integrations &amp; Identity</h3>
+              <p class="mod-promise">Pull the truth from the systems you already run, and let people in with the identity they already have.</p>
+              <a class="link-arrow mod-link" href="modules/connectors.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Integrations &amp; Identity</span></a>
+            </header>
+            <p class="mod-noai"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg>No AI here: it pulls in the data the AI in the other modules reads.</p>
+            <div class="pv pv--sm pv-connectors" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg>Connected sources</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Auto-linked</span></div>
+        <ul class="pv-list pv-list--src" role="list"><li><span class="src"><span class="src-logo"><img src="assets/tenable.svg" alt="" width="18" height="18"></span>Nessus</span><span class="mono">412 findings</span></li><li><span class="src"><span class="src-logo"><img src="assets/aws.svg" alt="" width="18" height="18"></span>AWS</span><span class="mono">1,204 assets</span></li><li><span class="src"><span class="src-logo"><img src="assets/okta.svg" alt="" width="18" height="18"></span>Okta</span><span class="mono">MFA enrolment per user</span></li></ul>
+        <p class="pv-tags"><span>Cloud connectors</span><span>Scanners</span><span>Identity providers</span><span>Evidence collectors</span></p>
+      </div>
+      </div>
+          </section>
+          <section class="xp-panel" id="m-p-8" data-xp-i="8" aria-labelledby="m-h-8">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-8">Compliance Assessments</h3>
+              <p class="mod-promise">Work a framework statement by statement, with the evidence already suggested for each one.</p>
+              <a class="link-arrow mod-link" href="modules/assessments.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Compliance Assessments</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Find evidence for each statement<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Draft the missing evidence document<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Draft an assessment of a control<span class="sr-only"> (Suggests, you confirm)</span></li><li class="is-auto"><span class="spark" aria-hidden="true"></span>Import a framework document<span class="sr-only"> (Automatic)</span></li><li><a href="ai/capabilities.html?module=assessments">+1 more</a></li></ul>
+            <div class="pv pv--sm pv-assessments" data-pick-scope><div class="pv-card" data-confirm-scope>
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>ISO 27001 · statement level</span><span class="pv-meta"><b class="pv-big">87%</b> audit ready</span></div>
+        <span class="meter meter--wide" aria-hidden="true"><i style="--v:0.87"></i></span>
+        <div class="seg" role="group" aria-label="Show statements" data-pick="f"><button class="seg-btn" type="button" data-pick-key="all" aria-pressed="true">All</button><button class="seg-btn" type="button" data-pick-key="met" aria-pressed="false">Met</button><button class="seg-btn" type="button" data-pick-key="gap" aria-pressed="false">Gap</button></div>
+        <ul class="st-list" role="list"><li class="st-row" data-st="met"><span class="ref">A.5.1</span><span>Policies for information security</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>met</span></li><li class="st-row" data-st="gap"><span class="ref">A.5.23</span><span>Cloud services security</span><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>gap</span><div class="st-sugg"><span class="spark" aria-hidden="true"></span><span>Suggested evidence: <b>Cloud-Security-Policy.pdf</b> · also answers <span class="ref">SOC 2 CC9.2</span></span><button class="confirm" type="button" aria-pressed="false" data-confirm><span class="c-off">Link<span class="sr-only"> Cloud-Security-Policy.pdf</span></span><span class="c-on">Linked<span class="sr-only"> Cloud-Security-Policy.pdf</span></span></button></div></li><li class="st-row" data-st="met"><span class="ref">A.8.16</span><span>Monitoring activities</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>met</span></li><li class="st-row" data-st="met"><span class="ref">A.8.8</span><span>Technical vulnerabilities</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>met</span></li></ul>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-9" data-xp-i="9" aria-labelledby="m-h-9">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-9">Unified Control Library</h3>
+              <p class="mod-promise">Implement a control once and inherit it everywhere it is required.</p>
+              <a class="link-arrow mod-link" href="modules/controls.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Unified Control Library</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Map controls across frameworks<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Plan a certification journey<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-controls" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Access review</span><div class="seg" role="group" aria-label="View" data-pick="view"><button class="seg-btn" type="button" data-pick-key="tree" aria-pressed="true">Tree</button><button class="seg-btn" type="button" data-pick-key="matrix" aria-pressed="false">Matrix</button></div></div>
+        <div class="pick-panel is-on" data-pick-panel="view:tree"><div class="pv-inherit">
+          <div class="pv-inherit-src"><b>Access review</b><span class="pv-muted">Implemented once</span><span class="pv-muted">Owner · Head of IT</span></div>
+          <ul class="pv-inherit-list" role="list" aria-label="Inherited by"><li><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>ISO 27001</span></li><li><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>SOC 2</span></li><li><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>PCI DSS</span></li><li><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>SAMA CSF</span></li><li><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>NIST CSF</span></li></ul>
+        </div></div><div class="pick-panel" data-pick-panel="view:matrix"><table class="pv-table pv-matrix"><caption class="sr-only">Coverage matrix</caption><thead><tr><th scope="col">Framework</th><th scope="col">Access review</th></tr></thead><tbody><tr><th scope="row">ISO 27001</th><td><svg class="ico ico-ok" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>inherited</td></tr><tr><th scope="row">SOC 2</th><td><svg class="ico ico-ok" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>inherited</td></tr><tr><th scope="row">PCI DSS</th><td><svg class="ico ico-ok" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>inherited</td></tr><tr><th scope="row">SAMA CSF</th><td><svg class="ico ico-ok" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>inherited</td></tr><tr><th scope="row">NIST CSF</th><td><svg class="ico ico-ok" aria-hidden="true" focusable="false"><use href="#i-check"/></svg>inherited</td></tr></tbody></table></div>
+        <p class="pv-foot"><span>Inherited by <b>5 frameworks</b></span></p>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-10" data-xp-i="10" aria-labelledby="m-h-10">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-10">Enterprise Risk (ERM)</h3>
+              <p class="mod-promise">Turn gaps into owned risks, score inherent against residual, and hold the register to a stated appetite.</p>
+              <a class="link-arrow mod-link" href="modules/risk.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Enterprise Risk (ERM)</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Suggest a risk’s details and treatment<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Suggest KRIs, appetite and narratives<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Analyse an incident<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-risk" data-pick-scope><div class="pv-kpis"><div><span class="kpi-v">34</span><span class="kpi-l">open risks</span></div><div><span class="kpi-v is-risk">5</span><span class="kpi-l">above appetite</span></div><div><span class="kpi-v is-risk">3</span><span class="kpi-l">KRIs breaching</span></div></div>
+      <div class="pv-card pv-risk" data-pick-scope>
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Inherent vs residual</span><div class="seg" role="group" aria-label="Score shown" data-pick="score"><button class="seg-btn" type="button" data-pick-key="inh" aria-pressed="true">Inherent</button><button class="seg-btn" type="button" data-pick-key="res" aria-pressed="false">Residual</button></div></div>
+        <div class="pv-risk-body">
+          <div class="hm" role="img" aria-label="Heat map of 34 open risks; R-20 moves from the top-right cell when scored inherent to a lower cell when scored residual"><span class="hm-cell hm-2"><b>4</b></span><span class="hm-cell hm-3"><b>2</b></span><span class="hm-cell hm-4"><b>1</b></span><span class="hm-cell hm-1"><b>6</b></span><span class="hm-cell hm-2"><b>3</b></span><span class="hm-cell hm-3"><b>2</b></span><span class="hm-cell hm-0"><b>9</b></span><span class="hm-cell hm-1"><b>5</b></span><span class="hm-cell hm-2"><b>2</b></span><span class="hm-marker" aria-hidden="true">R-20</span></div>
+          <div class="pv-riskcard">
+            <p class="pv-title"><span class="mono">R-20</span> Segregation of duties</p>
+            <dl class="kv"><dt>Owner</dt><dd>Head of Operational Risk</dd><dt>Category</dt><dd>Asset management</dd><dt>Control</dt><dd>Access reviews conducted</dd><dt>Treatment</dt><dd>Mitigate</dd></dl>
+          </div>
+        </div>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-11" data-xp-i="11" aria-labelledby="m-h-11">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-11">Audit Management</h3>
+              <p class="mod-promise">Audit prep becomes a query, not a quarter of chasing people for files.</p>
+              <a class="link-arrow mod-link" href="modules/audit.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Audit Management</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Draft observations from an audit file<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-audit" data-pick-scope><div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg>Linked evidence</span><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>Assembled from existing links</span></div>
+        <div class="seg" role="group" aria-label="Framework" data-pick="fw"><button class="seg-btn" type="button" data-pick-key="0" aria-pressed="true">SOC 2</button><button class="seg-btn" type="button" data-pick-key="1" aria-pressed="false">ISO 27001</button><button class="seg-btn" type="button" data-pick-key="2" aria-pressed="false">SAMA CSF</button><button class="seg-btn" type="button" data-pick-key="3" aria-pressed="false">PCI DSS</button></div>
+        <div class="pick-panel is-on" data-pick-panel="fw:0"><p class="pv-bignum"><b>87%</b><span>SOC 2 audit package, assembled from existing links</span></p><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.87"></i></span></div><div class="pick-panel" data-pick-panel="fw:1"><p class="pv-bignum"><b>74%</b><span>ISO 27001 readiness</span></p><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.74"></i></span></div><div class="pick-panel" data-pick-panel="fw:2"><p class="pv-bignum"><b>58%</b><span>SAMA CSF readiness</span></p><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.58"></i></span></div><div class="pick-panel" data-pick-panel="fw:3"><p class="pv-bignum"><b>81%</b><span>PCI DSS readiness</span></p><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.81"></i></span></div>
+        <p class="pv-foot"><span>Prep time: <b>minutes</b>, not a quarter</span></p>
+      </div>
+      </div>
+          </section>
+          <section class="xp-panel" id="m-p-12" data-xp-i="12" aria-labelledby="m-h-12">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-12">Dashboards &amp; Insights</h3>
+              <p class="mod-promise">Dashboards, KPIs and reports drawn from the records every other module keeps, with short AI-written observations on your compliance, evidence, risk and RCSA figures.</p>
+              <a class="link-arrow mod-link" href="modules/insights.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Dashboards &amp; Insights</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class="is-auto"><span class="spark" aria-hidden="true"></span>Write dashboard observations<span class="sr-only"> (Automatic)</span></li></ul>
+            <div class="pv pv--sm pv-insights" data-pick-scope><div class="pv-kpis"><div><span class="kpi-v">78%</span><span class="kpi-l">Compliance</span></div><div><span class="kpi-v">82%</span><span class="kpi-l">Evidence</span></div><div><span class="kpi-v">21</span><span class="kpi-l">Open gaps</span></div></div>
+      
+      <div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg>Observations</span><span class="ai-badge ai-badge--auto"><span class="spark" aria-hidden="true"></span>Automatic</span></div>
+        <ul class="pv-list pv-obs" role="list"><li><i class="dot dot--amber" aria-hidden="true"></i><span>Evidence coverage is 82%, but 3 SAMA CSF controls still have none.</span></li><li><i class="dot dot--coral" aria-hidden="true"></i><span>5 risks sit above appetite, and 3 KRIs are breaching.</span></li><li><i class="dot dot--amber" aria-hidden="true"></i><span>The Access Control Policy review is 12 days overdue.</span></li></ul>
+        <p class="pv-foot"><span><span class="spark" aria-hidden="true"></span> Written from your compliance, evidence, risk and RCSA figures</span><span>Kept for an hour · changes no record</span></p>
+      </div></div>
+          </section>
+          <section class="xp-panel" id="m-p-13" data-xp-i="13" aria-labelledby="m-h-13">
+            <header class="mod-head">
+              <h3 class="mod-name" id="m-h-13">Access Reviews</h3>
+              <p class="mod-promise">Pull every account from your directories, run access rules, certify each person with an AI suggestion beside them, and close the review as audit evidence.</p>
+              <a class="link-arrow mod-link" href="modules/access-reviews.html">Open the module<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg><span class="sr-only">: Access Reviews</span></a>
+            </header>
+            <ul class="mod-ai" role="list" aria-label="AI in this module"><li class=""><span class="spark" aria-hidden="true"></span>Suggest keep, revoke or exception<span class="sr-only"> (Suggests, you confirm)</span></li><li class=""><span class="spark" aria-hidden="true"></span>Write the review summary<span class="sr-only"> (Suggests, you confirm)</span></li></ul>
+            <div class="pv pv--sm pv-access-reviews" data-pick-scope><div class="pv-card">
+        <ul class="rv-band" role="list"><li><b>4</b><span>active reviews</span></li><li><b>203</b><span>decisions waiting</span></li><li class="is-rollout"><b>2</b><span>overdue reviewers</span><span class="status status--rollout">In rollout</span></li><li class="is-rollout"><b>14</b><span>revocations not yet verified</span><span class="status status--rollout">In rollout</span></li><li><b>2</b><span>sealed this quarter</span></li></ul>
+        <div class="pv-stat"><b>64%</b><span>decided, 369 of 572 decisions across 4 active reviews</span><span class="meter meter--wide" aria-hidden="true"><i style="--v:0.64"></i></span></div>
+      </div>
+      <div class="pv-card">
+        <div class="pv-head"><span class="pv-title"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg>Active reviews</span></div>
+        <div class="rv-list" role="group" aria-label="Choose a review" data-pick="rev"><button class="rv-row" type="button" data-pick-key="okta" aria-pressed="true"><span class="rv-name">H2 2026 user access, Okta</span><span class="rv-scope">everyone · 412 accounts</span><span class="rv-bar" aria-hidden="true"><i style="--v:0.650"></i></span><span class="rv-n mono">268/412</span></button><button class="rv-row" type="button" data-pick-key="core" aria-pressed="false"><span class="rv-name">Core Banking application owners, H2</span><span class="rv-scope">64 accounts</span><span class="rv-bar" aria-hidden="true"><i style="--v:0.484"></i></span><span class="rv-n mono">31/64</span></button><button class="rv-row" type="button" data-pick-key="priv" aria-pressed="false"><span class="rv-name">Okta privileged roles, Q4</span><span class="rv-scope">privileged · 58 accounts</span><span class="rv-bar" aria-hidden="true"><i style="--v:1.000"></i></span><span class="rv-n mono">58/58</span></button></div>
+        <div class="pick-panel is-on" data-pick-panel="rev:okta"><dl class="kv kv--row"><dt>Decided</dt><dd>268 of 412</dd><dt>Open findings</dt><dd>35</dd><dt>Due</dt><dd>Due 30 Nov 2026</dd></dl></div><div class="pick-panel" data-pick-panel="rev:core"><dl class="kv kv--row"><dt>Decided</dt><dd>31 of 64</dd><dt>Open findings</dt><dd>6</dd><dt>Due</dt><dd><span class="chip chip--gap"><i class="dot" aria-hidden="true"></i>Overdue 5 days</span></dd></dl></div><div class="pick-panel" data-pick-panel="rev:priv"><dl class="kv kv--row"><dt>Decided</dt><dd>58 of 58</dd><dt>Open findings</dt><dd>0</dd><dt>Due</dt><dd><span class="chip chip--met"><i class="dot" aria-hidden="true"></i>All decided</span></dd></dl></div>
+      </div>
+      </div>
+          </section>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+<section class="section section--raised services" id="services" aria-labelledby="svc-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow">Services · platform + people</p>
+        <h2 class="statement" id="svc-title"><span class="hl">Software, and the people to run it with you.</span> <span class="muted">CompliVerse is a technology provider and a GRC and AI consulting partner. Every service runs on the same modules and AI you license, so the work stays on your record.</span></h2>
+      </div>
+      <a class="link-u" href="services/index.html">Services overview</a>
+    </header>
+    <ul class="svc-grid" role="list"><li><a class="card card-link svc" href="services/grc-consulting.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">GRC Consulting &amp; Advisory</span>
+            <p>Strategy, assessments and implementation guidance for your governance, risk and compliance programme.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Assessments</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Risk</span></span>
+          </a></li><li><a class="card card-link svc" href="services/regulatory-compliance.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Regulatory Compliance Consulting</span>
+            <p>Gap assessments, compliance mapping and ongoing regulatory advisory.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Assessments</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Controls</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>Evidence</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg>Audit</span></span>
+          </a></li><li><a class="card card-link svc" href="services/ai-governance.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">AI Governance &amp; Risk Management</span>
+            <p>AI risk assessments, responsible-AI frameworks and AI governance implementation.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Risk</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Assessments</span></span>
+          </a></li><li><a class="card card-link svc" href="services/compliance-automation.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Compliance Automation &amp; Digital Transformation</span>
+            <p>Automating manual compliance work and modernising the workflows around it.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>Workflow</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg>Integrations</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>Evidence</span></span>
+          </a></li><li><a class="card card-link svc" href="services/risk-management.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Risk Assessment &amp; Management</span>
+            <p>Enterprise risk assessments, control evaluation and mitigation strategies.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Risk</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg>Controls</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg>Vendors</span></span>
+          </a></li><li><a class="card card-link svc" href="services/cybersecurity-assessment.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Cybersecurity Assessment</span>
+            <p>Vulnerability assessment, penetration testing and security reviews, scoped and signed off before any active test begins.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg>Cybersecurity</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg>Risk</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg>Evidence</span></span>
+          </a></li><li><a class="card card-link svc" href="services/policy-documentation.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Policy &amp; Documentation Management</span>
+            <p>Policy development, standardisation, documentation and lifecycle management.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg>Committees</span></span>
+          </a></li><li><a class="card card-link svc" href="services/implementation-integration.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Implementation &amp; Integration</span>
+            <p>Deployment, configuration, customisation and enterprise integration of the platform.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg>Integrations</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg>Workflow</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg>Access reviews</span></span>
+          </a></li><li><a class="card card-link svc" href="services/training.html">
+            <span class="card-go" aria-hidden="true">→</span>
+            <span class="card-t">Training &amp; Capacity Building</span>
+            <p>Training in GRC, regulatory compliance, AI governance and platform adoption.</p>
+            <span class="svc-runs"><span class="svc-runs-k">Runs on</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg>Governance</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg>Assessments</span><span class="chip chip--line"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg>Dashboards</span></span>
+          </a></li></ul>
+  </div>
+</section>
+<section class="section frameworks" id="frameworks" aria-labelledby="fw-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow">25+ frameworks</p>
+        <h2 class="statement" id="fw-title"><span class="hl">Your regulator is already in the library.</span> <span class="muted">SAMA, NCA, CBUAE and SBP are built in as first-class frameworks, not bolted on.</span></h2>
+      </div>
+      <a class="link-u" href="frameworks/index.html">Browse the framework library</a>
+    </header>
+    <div class="fw-index">
+          <div class="fw-col"><div class="fw-region"><h3 class="fw-region-name"><span>KSA</span><span class="fw-count">4</span></h3><ul role="list"><li class="is-first"><a href="frameworks/sama-csf.html"><span class="fw-name">SAMA CSF</span><span class="fw-desc">Saudi banking cyber</span></a></li><li class="is-first"><a href="frameworks/nca-ecc.html"><span class="fw-name">NCA ECC</span><span class="fw-desc">Saudi essential controls</span></a></li><li><a href="frameworks/aramco-ccc.html"><span class="fw-name">ARAMCO CCC</span><span class="fw-desc">Supplier cyber</span></a></li><li><a href="frameworks/sabic.html"><span class="fw-name">SABIC</span><span class="fw-desc">Supplier cyber</span></a></li></ul></div><div class="fw-region"><h3 class="fw-region-name"><span>UAE</span><span class="fw-count">1</span></h3><ul role="list"><li class="is-first"><a href="frameworks/cbuae.html"><span class="fw-name">CBUAE Art.13</span><span class="fw-desc">UAE tech risk</span></a></li></ul></div></div>
+          <div class="fw-col"><div class="fw-region"><h3 class="fw-region-name"><span>Pakistan</span><span class="fw-count">3</span></h3><ul role="list"><li class="is-first"><a href="frameworks/sbp-etgrmf.html"><span class="fw-name">SBP ETGRMF</span><span class="fw-desc">Pakistan banking tech</span></a></li><li class="is-first"><a href="frameworks/sbp-cloud.html"><span class="fw-name">SBP Cloud</span><span class="fw-desc">Pakistan banking cloud</span></a></li><li class="is-first"><a href="frameworks/sbp-ibanking.html"><span class="fw-name">SBP iBanking</span><span class="fw-desc">Pakistan internet banking</span></a></li></ul></div><div class="fw-region"><h3 class="fw-region-name"><span>Sri Lanka</span><span class="fw-count">1</span></h3><ul role="list"><li><a href="frameworks/sl-bss.html"><span class="fw-name">SL-BSS</span><span class="fw-desc">Sri Lanka banking security</span></a></li></ul></div><div class="fw-region"><h3 class="fw-region-name"><span>Singapore</span><span class="fw-count">1</span></h3><ul role="list"><li><a href="frameworks/mas-trm.html"><span class="fw-name">MAS TRM</span><span class="fw-desc">Singapore tech risk</span></a></li></ul></div></div>
+          <div class="fw-col"><div class="fw-region"><h3 class="fw-region-name"><span>EU</span><span class="fw-count">3</span></h3><ul role="list"><li><a href="frameworks/gdpr.html"><span class="fw-name">GDPR</span><span class="fw-desc">Data protection</span></a></li><li><a href="frameworks/dora.html"><span class="fw-name">DORA</span><span class="fw-desc">EU op-resilience</span></a></li><li><a href="frameworks/nis2.html"><span class="fw-name">NIS2</span><span class="fw-desc">EU cyber directive</span></a></li></ul></div><div class="fw-region"><h3 class="fw-region-name"><span>US</span><span class="fw-count">3</span></h3><ul role="list"><li><a href="frameworks/hipaa.html"><span class="fw-name">HIPAA</span><span class="fw-desc">Health data</span></a></li><li><a href="frameworks/sox-itgc.html"><span class="fw-name">SOX ITGC</span><span class="fw-desc">Financial reporting</span></a></li><li><a href="frameworks/hitrust.html"><span class="fw-name">HITRUST</span><span class="fw-desc">Health trust</span></a></li></ul></div></div>
+          <div class="fw-col fw-col--wide"><div class="fw-region"><h3 class="fw-region-name"><span>Global</span><span class="fw-count">9</span></h3><ul role="list"><li><a href="frameworks/iso-27001.html"><span class="fw-name">ISO 27001</span><span class="fw-desc">Information security</span></a></li><li><a href="frameworks/soc-2.html"><span class="fw-name">SOC 2</span><span class="fw-desc">Trust services</span></a></li><li><a href="frameworks/pci-dss.html"><span class="fw-name">PCI DSS</span><span class="fw-desc">Payment security</span></a></li><li><a href="frameworks/nist-csf.html"><span class="fw-name">NIST CSF</span><span class="fw-desc">Cyber framework</span></a></li><li><a href="frameworks/nist-800-53.html"><span class="fw-name">NIST SP 800-53</span><span class="fw-desc">Security and privacy controls</span></a></li><li><a href="frameworks/iso-22301.html"><span class="fw-name">ISO 22301</span><span class="fw-desc">Business continuity</span></a></li><li><a href="frameworks/cobit-2019.html"><span class="fw-name">COBIT 2019</span><span class="fw-desc">IT governance</span></a></li><li><a href="frameworks/swift-cscf.html"><span class="fw-name">SWIFT CSCF</span><span class="fw-desc">Payments network</span></a></li><li><a href="frameworks/cis-controls.html"><span class="fw-name">CIS Controls</span><span class="fw-desc">Security baselines</span></a></li></ul></div></div>
+        </div>
+        <p class="fw-key"><span class="dot dot--blue" aria-hidden="true"></span>Built in as first-class frameworks: SAMA, NCA, CBUAE and SBP</p>
+  </div>
+</section>
+<section class="section section--raised integrations" aria-labelledby="int-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div>
+        <p class="eyebrow">40 connectors · 8 categories</p>
+        <h2 class="statement" id="int-title"><span class="hl">Evidence that collects itself.</span> <span class="muted">Connect the systems you already run. CompliVerse pulls the evidence, attaches it to the right control, and keeps it current.</span></h2>
+      </div>
+      <a class="link-u" href="integrations.html">What each connector collects</a>
+    </header>
+    <ul class="ext-grid" role="list" aria-label="A selection of sources">
+      <li class="ext"><span class="ext-icon"><img src="assets/aws.svg" alt="" width="24" height="24"></span><span class="ext-name">AWS</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/azure.svg" alt="" width="24" height="24"></span><span class="ext-name">Azure</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/gcp.svg" alt="" width="24" height="24"></span><span class="ext-name">Google Cloud</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/kubernetes.svg" alt="" width="24" height="24"></span><span class="ext-name">Kubernetes</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/cloudflare.svg" alt="" width="24" height="24"></span><span class="ext-name">Cloudflare</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/okta.svg" alt="" width="24" height="24"></span><span class="ext-name">Okta</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/azuread.svg" alt="" width="24" height="24"></span><span class="ext-name">Microsoft Entra ID</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/googleworkspace.svg" alt="" width="24" height="24"></span><span class="ext-name">Google Workspace</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/github.svg" alt="" width="24" height="24"></span><span class="ext-name">GitHub</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/gitlab.svg" alt="" width="24" height="24"></span><span class="ext-name">GitLab</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/jira.svg" alt="" width="24" height="24"></span><span class="ext-name">Jira</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/servicenow.svg" alt="" width="24" height="24"></span><span class="ext-name">ServiceNow</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/crowdstrike.svg" alt="" width="24" height="24"></span><span class="ext-name">CrowdStrike</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/datadog.svg" alt="" width="24" height="24"></span><span class="ext-name">Datadog</span></li>
+      <li class="ext"><span class="ext-icon"><img src="assets/tenable.svg" alt="" width="24" height="24"></span><span class="ext-name">Tenable Nessus</span></li>
+      <li class="ext ext--more"><a href="integrations.html"><span class="ext-name">All 40 connectors, and exactly what each one collects</span><span class="ext-go" aria-hidden="true">→</span></a></li>
+    </ul>
+    <p class="ext-note">Scanner findings arrive from Tenable Nessus, Rapid7, AWS Inspector, Microsoft Defender for Cloud and Google Security Command Center, or from a spreadsheet.</p>
+  </div>
+</section>
+<section class="section hosting" aria-labelledby="host-title">
+  <div class="wrap host-grid">
+    <div class="host-intro">
+      <p class="eyebrow">Hosting and data residency</p>
+      <h2 class="h2-s" id="host-title">Deployed the way your regulator expects.</h2>
+      <ul class="host-sec" role="list"><li>Encryption in transit and at rest</li><li>Least-privilege access</li><li>Continuous monitoring</li></ul>
+      <a class="link-u" href="hosting.html">Cloud and on-premise</a>
+    </div>
+    <div class="host-card"><h3 class="host-name">Cloud <span class="host-name-sub">SaaS</span></h3><ul class="host-list" role="list"><li>Managed updates and uptime</li><li>Regional data residency</li><li>Tenant-isolated by design</li></ul></div>
+    <div class="host-card"><h3 class="host-name">On&#8209;premise</h3><ul class="host-list" role="list"><li>Your infrastructure, your control</li><li>Air-gapped deployments supported</li><li>Same platform, same features</li></ul></div>
+  </div>
+</section>
+<section class="section section--raised stages" aria-labelledby="stages-title">
+  <div class="wrap">
+    <header class="sec-head sec-head--split">
+      <div><p class="eyebrow">Every stage of the programme</p><h2 class="h2" id="stages-title">From first SOC 2 to board reporting.</h2></div>
+      <a class="link-u" href="solutions/index.html">Solutions by stage</a>
+    </header>
+    <div class="stage-rows">
+      <article class="stage-row stage-row--s">
+        <div class="stage-id"><p class="stage-label">Startup</p><h3 class="stage-title">Earn trust fast</h3></div>
+        <ul class="stage-points" role="list"><li><span class="ai-mini"><span class="spark" aria-hidden="true"></span>AI</span> suggests and drafts the policies, controls and evidence requests; you review and approve.</li><li>Framework roadmaps prioritise whatever is blocking the deal in front of you.</li><li>Prove security early so enterprise buyers stop stalling procurement.</li></ul>
+        <p class="stage-fws"><span class="chip chip--line">SOC 2</span><span class="chip chip--line">ISO 27001</span><span class="chip chip--line">GDPR</span></p>
+      </article>
+      <article class="stage-row stage-row--m">
+        <div class="stage-id"><p class="stage-label">Mid-market</p><h3 class="stage-title">Scale trust smoothly</h3></div>
+        <ul class="stage-points" role="list"><li>Standardise controls and policies as teams, tools and regions multiply.</li><li>Reuse evidence across frameworks so every audit stays predictable.</li><li>Workflows chase the owners, so your compliance team stops chasing people.</li></ul>
+        <p class="stage-fws"><span class="chip chip--line">PCI DSS</span><span class="chip chip--line">NIST CSF</span><span class="chip chip--line">HIPAA</span></p>
+      </article>
+      <article class="stage-row stage-row--l">
+        <div class="stage-id"><p class="stage-label">Enterprise</p><h3 class="stage-title">Command trust at scale</h3></div>
+        <ul class="stage-points" role="list"><li>Unify governance, risk and compliance across business units and regions.</li><li>SAMA, NCA, CBUAE and SBP built in as first-class frameworks.</li><li>Committees, attestations, internal audit and board reporting on one graph.</li></ul>
+        <p class="stage-fws"><span class="chip chip--line">SAMA CSF</span><span class="chip chip--line">SBP</span><span class="chip chip--line">DORA</span></p>
+      </article>
+    </div>
+  </div>
+</section>
+<section class="section library" aria-labelledby="lib-title">
+  <div class="wrap lib">
+    <header class="sec-head">
+      <p class="eyebrow">From the library</p>
+      <h2 class="statement" id="lib-title"><span class="hl">Read before your next audit.</span> <span class="muted">Practical guides on SAMA CSF, evidence reuse and gap analysis.</span></h2>
+      <a class="link-u" href="resources/index.html">The whole library</a>
+    </header>
+    <nav class="rows" aria-label="Guides">
+      <a class="row-link" href="resources/sama-csf-practical-map.html"><span><span class="row-m">SAMA CSF · 12 min</span><span class="row-t">SAMA CSF compliance, control by control: a practical map</span><span class="row-d">What the Saudi Central Bank actually checks, the evidence that satisfies each domain, and where banks lose weeks.</span></span><span class="row-go" aria-hidden="true">→</span></a>
+      <a class="row-link" href="resources/evidence-reuse.html"><span><span class="row-m">Evidence · 9 min</span><span class="row-t">Evidence reuse: satisfy ISO 27001, SOC 2 and SAMA with one artifact</span><span class="row-d">Cross-framework equivalence is the biggest audit-prep time saver.</span></span><span class="row-go" aria-hidden="true">→</span></a>
+      <a class="row-link" href="resources/policy-gap-analysis.html"><span><span class="row-m">Gap analysis · 10 min</span><span class="row-t">Running a policy gap analysis your regulator would sign</span><span class="row-d">Parse the framework, extract statements, map coverage, rank gaps by exposure.</span></span><span class="row-go" aria-hidden="true">→</span></a>
+    </nav>
+  </div>
+</section>
+<section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <h2 class="cta-title chrome-text" id="cta-title">See your frameworks in it, not ours.</h2>
+    <div class="cta-foot">
+      <p class="lede">Demos are scoped to your regulatory stack: name your frameworks, and we’ll run the gap analysis live.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="request-demo.html">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--line" href="roi.html">See the ROI</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="wordmark" href="index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+        <p>AI-native enterprise GRC, and the people to run it with you. Compliance that proves itself.</p>
+        <a class="btn btn--line btn--sm" href="request-demo.html">Book a live demo</a>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div><h2 class="footer-h"><span class="spark" aria-hidden="true"></span>AI</h2><ul role="list"><li><a href="ai/index.html">The intelligence layer</a></li><li><a href="ai/studio.html">Compli AI Studio</a></li><li><a href="ai/trust.html">AI trust &amp; control</a></li><li><a href="ai/capabilities.html">All AI capabilities</a></li></ul></div>
+        <div><h2 class="footer-h">Platform</h2><ul role="list"><li><a href="platform/index.html">Platform overview</a></li><li><a href="modules/governance.html">Governance &amp; Documents</a></li><li><a href="modules/committees.html">Committees &amp; Meetings</a></li><li><a href="modules/evidence.html">Evidence Management</a></li><li><a href="modules/vendors.html">Vendor Risk (TPRM)</a></li><li><a href="modules/cybersecurity.html">Cybersecurity Assessment &amp; Assurance</a></li><li><a href="modules/workflow.html">Workflow Automation</a></li><li><a href="modules/connectors.html">Integrations &amp; Identity</a></li><li><a href="modules/assessments.html">Compliance Assessments</a></li><li><a href="modules/controls.html">Unified Control Library</a></li><li><a href="modules/risk.html">Enterprise Risk (ERM)</a></li><li><a href="modules/audit.html">Audit Management</a></li><li><a href="modules/insights.html">Dashboards &amp; Insights</a></li><li><a href="modules/access-reviews.html">Access Reviews</a></li></ul></div>
+        <div><h2 class="footer-h">Services</h2><ul role="list"><li><a href="services/index.html">Services overview</a></li><li><a href="services/grc-consulting.html">GRC Consulting &amp; Advisory</a></li><li><a href="services/regulatory-compliance.html">Regulatory Compliance Consulting</a></li><li><a href="services/ai-governance.html">AI Governance &amp; Risk Management</a></li><li><a href="services/compliance-automation.html">Compliance Automation &amp; Digital Transformation</a></li><li><a href="services/risk-management.html">Risk Assessment &amp; Management</a></li><li><a href="services/cybersecurity-assessment.html">Cybersecurity Assessment</a></li><li><a href="services/policy-documentation.html">Policy &amp; Documentation Management</a></li><li><a href="services/implementation-integration.html">Implementation &amp; Integration</a></li><li><a href="services/training.html">Training &amp; Capacity Building</a></li></ul></div>
+        <div><h2 class="footer-h">Frameworks</h2><ul role="list"><li><a href="frameworks/index.html">Framework library</a></li><li><a href="frameworks/sama-csf.html">SAMA CSF</a></li><li><a href="frameworks/nca-ecc.html">NCA ECC</a></li><li><a href="frameworks/cbuae.html">CBUAE Art.13</a></li><li><a href="frameworks/sbp-etgrmf.html">SBP ETGRMF</a></li><li><a href="frameworks/iso-27001.html">ISO 27001</a></li><li><a href="frameworks/soc-2.html">SOC 2</a></li><li><a href="frameworks/pci-dss.html">PCI DSS</a></li><li><a href="frameworks/dora.html">DORA</a></li></ul></div>
+        <div><h2 class="footer-h">Solutions &amp; resources</h2><ul role="list"><li><a href="solutions/index.html">Solutions by stage</a></li><li><a href="solutions/compliance.html">Compliance</a></li><li><a href="solutions/governance.html">Governance</a></li><li><a href="integrations.html">Integrations</a></li><li><a href="hosting.html">Cloud and on-premise</a></li><li><a href="roi.html">ROI and time savings</a></li><li><a href="resources/index.html">Library</a></li><li><a href="resources/glossary.html">Glossary</a></li><li><a href="request-demo.html">Book a demo</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 CompliVerse AI</p>
+      <p class="footer-legal"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></p>
+      <p>Draft 4 · a static prototype: nothing you type here leaves your browser.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,39 @@
+# Static CompliVerse site. The site lives at the repo root, so the build only
+# stages the deployable files into dist/ (keeping docs, env files and local
+# working folders out of the published bundle).
+[build]
+  publish = "dist"
+  command = "mkdir -p dist && cp -R index.html hosting.html integrations.html privacy.html request-demo.html roi.html terms.html ai assets css downloads frameworks js modules platform resources services solutions dist/"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "camera=(), microphone=(), geolocation=()"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains"
+
+[[headers]]
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "no-cache"
+
+[[headers]]
+  for = "/css/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/js/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"
+
+[[headers]]
+  for = "/downloads/*"
+  [headers.values]
+    Cache-Control = "public, max-age=3600"

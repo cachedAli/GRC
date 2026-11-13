@@ -1,0 +1,481 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Integrations · CompliVerse AI</title>
+  <meta name="description" content="Every system CompliVerse connects to and what each one collects as evidence: 40 connectors across cloud, identity, code, endpoint, ticketing, communication, HR and monitoring.">
+  <meta name="theme-color" content="#050608">
+  <meta name="color-scheme" content="dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23050608'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23C9D0D7' stroke-width='3'/%3E%3Ccircle cx='16' cy='7' r='3.6' fill='%232F6BFF'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=DM+Mono:wght@400;500&display=swap">
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/chrome.css">
+  <link rel="stylesheet" href="css/kit.css">
+  <link rel="stylesheet" href="css/pages.css">
+  <link rel="stylesheet" href="css/pages-lib.css">
+  <script>document.documentElement.classList.add('js');</script>
+  <script src="js/site.js" defer></script>
+  <script src="js/pages.js" defer></script>
+</head>
+<body>
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="M16 16l4.5 4.5"/></symbol>
+  <symbol id="i-doc" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4M9 12h7M9 16h7"/></symbol>
+  <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><path d="M3.5 19.5c0-3 2.5-5.5 5.5-5.5s5.5 2.5 5.5 5.5"/><circle cx="17" cy="9" r="2.3"/><path d="M16.5 14c2.4.3 4.2 2.4 4.2 5"/></symbol>
+  <symbol id="i-clip" viewBox="0 0 24 24"><path d="M19.5 11.5l-7.8 7.8a4.7 4.7 0 0 1-6.6-6.6l7.6-7.6a3.1 3.1 0 0 1 4.4 4.4l-7.6 7.6a1.6 1.6 0 0 1-2.2-2.2l7-7"/></symbol>
+  <symbol id="i-building" viewBox="0 0 24 24"><path d="M4.5 20.5V5l7.5-2v17.5M12 8l7.5 2v10.5M2.5 20.5h19M7.5 8h1.5M7.5 12h1.5M7.5 16h1.5M15 13h1.5M15 17h1.5"/></symbol>
+  <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3l7.5 3v6c0 4.3-3.2 7.9-7.5 9-4.3-1.1-7.5-4.7-7.5-9V6z"/><path d="M9 12l2.2 2.2L15.5 10"/></symbol>
+  <symbol id="i-flow" viewBox="0 0 24 24"><circle cx="6" cy="6" r="2.5"/><circle cx="18" cy="18" r="2.5"/><circle cx="18" cy="6" r="2.5"/><path d="M8.5 6h7M6 8.5V14a4 4 0 0 0 4 4h5.5"/></symbol>
+  <symbol id="i-plug" viewBox="0 0 24 24"><path d="M9 3v4.5M15 3v4.5M6 7.5h12V11a6 6 0 0 1-12 0zM12 17v4"/></symbol>
+  <symbol id="i-list" viewBox="0 0 24 24"><path d="M4 6.5l1.5 1.5L8 5.5M4 12.5l1.5 1.5L8 11.5M4 18.5l1.5 1.5L8 17.5M11 7h9M11 13h9M11 19h9"/></symbol>
+  <symbol id="i-layers" viewBox="0 0 24 24"><path d="M12 3.5l8.5 4.5-8.5 4.5L3.5 8z"/><path d="M3.5 12.5l8.5 4.5 8.5-4.5M3.5 16.5l8.5 4.5 8.5-4.5"/></symbol>
+  <symbol id="i-alert" viewBox="0 0 24 24"><path d="M12 4l9 16H3z"/><path d="M12 10v4.5M12 17.2v.3"/></symbol>
+  <symbol id="i-audit" viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5L21 21M7.8 10.6l1.9 1.9 3.4-3.6"/></symbol>
+  <symbol id="i-key" viewBox="0 0 24 24"><circle cx="8" cy="15" r="4"/><path d="M11 12l8.5-8.5M16 7l2.5 2.5M13.8 9.2l2 2"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+  <symbol id="i-return" viewBox="0 0 24 24"><path d="M19 5v6.5a3 3 0 0 1-3 3H6"/><path d="M9.5 11L6 14.5 9.5 18"/></symbol>
+  <symbol id="i-db" viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="7" ry="2.8"/><path d="M5 6v12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V6M5 12c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8"/></symbol>
+  <symbol id="i-check" viewBox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"/></symbol>
+  <symbol id="i-lock" viewBox="0 0 24 24"><rect x="5" y="10.5" width="14" height="10" rx="2"/><path d="M8.5 10.5V7.5a3.5 3.5 0 0 1 7 0v3"/></symbol>
+  <symbol id="i-mask" viewBox="0 0 24 24"><path d="M3.5 7.5c3-1.4 14-1.4 17 0 0 6-3.6 9.5-8.5 9.5S3.5 13.5 3.5 7.5z"/><path d="M8 10.5h2.5M13.5 10.5H16"/></symbol>
+  <symbol id="i-ledger" viewBox="0 0 24 24"><path d="M5 3.5h11l3 3v14H5z"/><path d="M8.5 9h7M8.5 12.5h7M8.5 16h4"/></symbol>
+  <symbol id="i-gauge" viewBox="0 0 24 24"><path d="M4 16.5a8 8 0 1 1 16 0"/><path d="M12 16.5l4-5"/><path d="M4 19.5h16"/></symbol>
+  <symbol id="i-pen" viewBox="0 0 24 24"><path d="M4 20l1-4.5L16 4.5l3.5 3.5L8.5 19z"/><path d="M14 7l3 3"/></symbol>
+  <symbol id="i-people" viewBox="0 0 24 24"><circle cx="8" cy="8.5" r="3"/><circle cx="16.5" cy="8.5" r="3"/><path d="M2.5 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5M11 19.5c.4-3 2.7-5 5.5-5s5.1 2 5.5 5"/></symbol>
+  <symbol id="i-book" viewBox="0 0 24 24"><path d="M4 5.5c3-1.5 5.5-1.5 8 0 2.5-1.5 5-1.5 8 0v13c-3-1.5-5.5-1.5-8 0-2.5-1.5-5-1.5-8 0z"/><path d="M12 5.5v13"/></symbol>
+  <symbol id="i-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.5 2.4 3.6 5.3 3.6 8.5s-1.1 6.1-3.6 8.5c-2.5-2.4-3.6-5.3-3.6-8.5s1.1-6.1 3.6-8.5z"/></symbol>
+</svg>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-nav" data-nav>
+  <nav class="nav-bar" aria-label="Primary">
+    <a class="wordmark" href="index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+    <div class="nav-panel" id="nav-panel" data-nav-panel>
+      <ul class="nav-links" role="list">
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-ai" data-dd-btn><span class="spark" aria-hidden="true"></span>AI<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--ai" id="dd-ai" data-dd-panel>
+            <a class="dd-feature" href="ai/index.html">
+              <span class="dd-feature-k"><span class="spark" aria-hidden="true"></span>AI is the platform</span>
+              <span class="dd-feature-t">The intelligence layer</span>
+              <span class="dd-feature-d">One AI layer under all 13 modules: it reads what you hold, suggests, drafts, and says who approves.</span>
+              <span class="dd-feature-go">Explore the layer<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></span>
+            </a>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="ai/studio.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-pen"/></svg><span class="dd-text"><span class="dd-name">Compli AI Studio</span><span class="dd-sub">Write and edit documents with AI</span></span></a></li>
+              <li><a class="dd-link" href="ai/trust.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-lock"/></svg><span class="dd-text"><span class="dd-name">AI trust &amp; control</span><span class="dd-sub">Approval, masking, audit trail, budgets</span></span></a></li>
+              <li><a class="dd-link" href="ai/capabilities.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span class="dd-text"><span class="dd-name">All AI capabilities</span><span class="dd-sub">Every AI job, by module</span></span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-platform" data-dd-btn>Platform<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-platform" data-dd-panel>
+            <p class="dd-head"><a href="platform/index.html">Platform overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>13 modules · one data model</span></p>
+            <ul class="dd-mods" role="list">
+              <li><a class="dd-mod" href="modules/governance.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-doc"/></svg><span>Governance &amp; Documents</span></a></li>
+              <li><a class="dd-mod" href="modules/committees.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-users"/></svg><span>Committees &amp; Meetings</span></a></li>
+              <li><a class="dd-mod" href="modules/evidence.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-clip"/></svg><span>Evidence Management</span></a></li>
+              <li><a class="dd-mod" href="modules/vendors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-building"/></svg><span>Vendor Risk (TPRM)</span></a></li>
+              <li><a class="dd-mod" href="modules/cybersecurity.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><span>Cybersecurity Assessment &amp; Assurance</span></a></li>
+              <li><a class="dd-mod" href="modules/workflow.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-flow"/></svg><span>Workflow Automation</span></a></li>
+              <li><a class="dd-mod" href="modules/connectors.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span>Integrations &amp; Identity</span></a></li>
+              <li><a class="dd-mod" href="modules/assessments.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span>Compliance Assessments</span></a></li>
+              <li><a class="dd-mod" href="modules/controls.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-layers"/></svg><span>Unified Control Library</span></a></li>
+              <li><a class="dd-mod" href="modules/risk.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-alert"/></svg><span>Enterprise Risk (ERM)</span></a></li>
+              <li><a class="dd-mod" href="modules/audit.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-audit"/></svg><span>Audit Management</span></a></li>
+              <li><a class="dd-mod" href="modules/insights.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span>Dashboards &amp; Insights</span></a></li>
+              <li><a class="dd-mod" href="modules/access-reviews.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-key"/></svg><span>Access Reviews</span><span class="tag-new">New</span></a></li>
+            </ul>
+            <p class="dd-foot"><a href="solutions/index.html">Solutions by stage</a><a href="integrations.html" aria-current="page">Integrations</a><a href="hosting.html">Cloud or on-premise</a></p>
+          </div>
+        </li>
+        <li class="nav-item" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-services" data-dd-btn>Services<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--wide" id="dd-services" data-dd-panel>
+            <p class="dd-head"><a href="services/index.html">Services overview<svg class="ico" aria-hidden="true" focusable="false"><use href="#i-arrow"/></svg></a><span>Platform + people</span></p>
+            <ul class="dd-mods dd-mods--plain" role="list">
+              <li><a class="dd-mod" href="services/grc-consulting.html"><span>GRC Consulting &amp; Advisory</span></a></li>
+              <li><a class="dd-mod" href="services/regulatory-compliance.html"><span>Regulatory Compliance Consulting</span></a></li>
+              <li><a class="dd-mod" href="services/ai-governance.html"><span>AI Governance &amp; Risk Management</span></a></li>
+              <li><a class="dd-mod" href="services/compliance-automation.html"><span>Compliance Automation &amp; Digital Transformation</span></a></li>
+              <li><a class="dd-mod" href="services/risk-management.html"><span>Risk Assessment &amp; Management</span></a></li>
+              <li><a class="dd-mod" href="services/cybersecurity-assessment.html"><span>Cybersecurity Assessment</span></a></li>
+              <li><a class="dd-mod" href="services/policy-documentation.html"><span>Policy &amp; Documentation Management</span></a></li>
+              <li><a class="dd-mod" href="services/implementation-integration.html"><span>Implementation &amp; Integration</span></a></li>
+              <li><a class="dd-mod" href="services/training.html"><span>Training &amp; Capacity Building</span></a></li>
+            </ul>
+          </div>
+        </li>
+        <li class="nav-item"><a class="nav-btn" href="frameworks/index.html">Frameworks</a></li>
+        <li class="nav-item is-current" data-dd>
+          <button class="nav-btn" type="button" aria-expanded="false" aria-controls="dd-resources" data-dd-btn>Resources<span class="caret" aria-hidden="true"></span></button>
+          <div class="dd dd--res" id="dd-resources" data-dd-panel>
+            <ul class="dd-list" role="list">
+              <li><a class="dd-link" href="resources/index.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-book"/></svg><span class="dd-text"><span class="dd-name">Library</span><span class="dd-sub">Practical guides for audit season</span></span></a></li>
+              <li><a class="dd-link" href="resources/glossary.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><span class="dd-text"><span class="dd-name">Glossary</span><span class="dd-sub">The terms, as we use them</span></span></a></li>
+              <li><a class="dd-link" href="integrations.html" aria-current="page"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-plug"/></svg><span class="dd-text"><span class="dd-name">Integrations</span><span class="dd-sub">40 connectors, what each collects</span></span></a></li>
+              <li><a class="dd-link" href="hosting.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-globe"/></svg><span class="dd-text"><span class="dd-name">Cloud and on-premise</span><span class="dd-sub">Deployed the way your regulator expects</span></span></a></li>
+              <li><a class="dd-link" href="roi.html"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-gauge"/></svg><span class="dd-text"><span class="dd-name">ROI and time savings</span><span class="dd-sub">Manual process versus CompliVerse</span></span></a></li>
+            </ul>
+            <div class="dd-guides"><p class="dd-guides-k">From the library</p><ul role="list"><li><a href="resources/sama-csf-practical-map.html"><span class="dd-guide-cat">SAMA CSF</span>SAMA CSF compliance, control by control: a practical map</a></li><li><a href="resources/evidence-reuse.html"><span class="dd-guide-cat">Evidence</span>Evidence reuse: satisfy ISO 27001, SOC 2 and SAMA with one artifact</a></li><li><a href="resources/policy-gap-analysis.html"><span class="dd-guide-cat">Gap analysis</span>Running a policy gap analysis your regulator would sign</a></li></ul></div>
+          </div>
+        </li>
+      </ul>
+      <a class="btn btn--primary nav-panel-cta" href="request-demo.html">Book a demo</a>
+    </div>
+    <a class="btn btn--primary btn--sm nav-cta" href="request-demo.html">Book a demo</a>
+    <button class="nav-menu" type="button" aria-expanded="false" aria-controls="nav-panel" data-menu><span class="nav-menu-bars" aria-hidden="true"></span><span class="nav-menu-label">Menu</span></button>
+  </nav>
+</header>
+<main id="main">
+<section class="page-hero" aria-labelledby="page-title">
+  <div class="wrap">
+    <nav class="crumbs" aria-label="Breadcrumb"><ol role="list"><li><a href="index.html">Home</a></li><li><span aria-current="page">Integrations</span></li></ol></nav>
+    <div class="page-hero-grid">
+      <div class="page-hero-text">
+        <p class="eyebrow">Compliance automation</p>
+        <h1 class="page-title" id="page-title">Every connector, and exactly what it collects.</h1>
+        <p class="page-lede">40 integrations across eight categories. Each one lists the evidence it pulls, so you can check it answers your auditor’s question before you connect anything.</p>
+        <div class="actions"><a class="link-u" href="modules/connectors.html">Integrations &amp; Identity, the module</a></div>
+      </div>
+      
+    </div>
+    
+  </div>
+</section><section class="section ig" aria-labelledby="cat-title">
+  <div class="wrap">
+    <h2 class="sr-only" id="cat-title">The catalogue</h2>
+    <div class="ig-bar" data-ig>
+      <ul class="ig-pills" role="list" aria-label="Filter by category"><li><button class="ig-pill" type="button" aria-pressed="true" data-ig-cat="all">All<span>40</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="cloud">Cloud<span>8</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="identity">Identity<span>7</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="code">Code &amp; CI/CD<span>5</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="endpoint">Endpoint<span>6</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="ticketing">Ticketing<span>4</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="communication">Communication<span>3</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="hr">HR<span>4</span></button></li><li><button class="ig-pill" type="button" aria-pressed="false" data-ig-cat="data">Data &amp; Monitoring<span>4</span></button></li></ul>
+      <label class="ig-search"><span class="sr-only">Search integrations</span><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-search"/></svg><input class="input" type="search" placeholder="Search a system or an evidence type…" autocomplete="off" data-ig-input></label>
+      <p class="ig-count" aria-live="polite">Showing <span data-ig-count>40</span> of 40</p>
+    </div>
+    <ul class="ig-grid" role="list" data-ig-list><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="amazon web services iam users, roles and attached policies cloudtrail trail configuration and log file validation s3 bucket encryption and public-access settings security group ingress rules">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/aws.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Amazon Web Services</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>IAM users, roles and attached policies</li><li>CloudTrail trail configuration and log file validation</li><li>S3 bucket encryption and public-access settings</li><li>Security group ingress rules</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="google cloud iam policy bindings and service accounts cloud audit logs configuration cloud storage bucket access controls and encryption vpc firewall rules">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/gcp.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Google Cloud</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>IAM policy bindings and service accounts</li><li>Cloud Audit Logs configuration</li><li>Cloud Storage bucket access controls and encryption</li><li>VPC firewall rules</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="microsoft azure rbac role assignments across subscriptions activity log and diagnostic settings storage account encryption and public-access configuration network security group rules">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/azure.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Microsoft Azure</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>RBAC role assignments across subscriptions</li><li>Activity log and diagnostic settings</li><li>Storage account encryption and public-access configuration</li><li>Network security group rules</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="digitalocean team members and their access level cloud firewall rules spaces bucket permissions managed database backup and encryption settings">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">D</span></span>
+            <div><h3 class="ig-name">DigitalOcean</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Team members and their access level</li><li>Cloud firewall rules</li><li>Spaces bucket permissions</li><li>Managed database backup and encryption settings</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="heroku team members and app collaborators app, dyno and add-on inventory tls certificate and custom domain configuration">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">H</span></span>
+            <div><h3 class="ig-name">Heroku</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Team members and app collaborators</li><li>App, dyno and add-on inventory</li><li>TLS certificate and custom domain configuration</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="cloudflare account members and api token scopes waf and firewall rule configuration tls, hsts and minimum tls version settings dns zone records">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/cloudflare.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Cloudflare</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Account members and API token scopes</li><li>WAF and firewall rule configuration</li><li>TLS, HSTS and minimum TLS version settings</li><li>DNS zone records</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="kubernetes rbac roles, cluster roles and bindings namespace and pod security standards audit policy configuration secret inventory, names only, never values">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/kubernetes.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Kubernetes</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>RBAC roles, cluster roles and bindings</li><li>Namespace and pod security standards</li><li>Audit policy configuration</li><li>Secret inventory, names only, never values</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="cloud" data-ig-text="terraform cloud workspace membership and team access run, plan and apply history policy check results state version and encryption settings">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">TC</span></span>
+            <div><h3 class="ig-name">Terraform Cloud</h3><p class="ig-cats"><span class="chip">Cloud</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Workspace membership and team access</li><li>Run, plan and apply history</li><li>Policy check results</li><li>State version and encryption settings</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="okta user and group directory with lifecycle state application access assignments mfa factor enrolment per user sign-on and password policies">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/okta.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Okta</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>User and group directory with lifecycle state</li><li>Application access assignments</li><li>MFA factor enrolment per user</li><li>Sign-on and password policies</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="microsoft entra id users, groups and directory role assignments conditional access policies mfa registration state per user privileged role activations">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/azuread.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Microsoft Entra ID</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Users, groups and directory role assignments</li><li>Conditional access policies</li><li>MFA registration state per user</li><li>Privileged role activations</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="google workspace users, groups and organisational units 2-step verification enrolment per user admin role assignments third-party oauth app grants">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/googleworkspace.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Google Workspace</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Users, groups and organisational units</li><li>2-step verification enrolment per user</li><li>Admin role assignments</li><li>Third-party OAuth app grants</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="onelogin user and role directory application access assignments mfa factor enrolment per user security and password policies">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">O</span></span>
+            <div><h3 class="ig-name">OneLogin</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>User and role directory</li><li>Application access assignments</li><li>MFA factor enrolment per user</li><li>Security and password policies</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity endpoint" data-ig-text="jumpcloud user and user-group directory device-to-user bindings mfa enrolment per user system policies applied to managed devices">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">J</span></span>
+            <div><h3 class="ig-name">JumpCloud</h3><p class="ig-cats"><span class="chip">Identity</span><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>User and user-group directory</li><li>Device-to-user bindings</li><li>MFA enrolment per user</li><li>System policies applied to managed devices</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="auth0 tenant users and role assignments connection and mfa configuration application grants and api scopes tenant log stream configuration">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">A</span></span>
+            <div><h3 class="ig-name">Auth0</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Tenant users and role assignments</li><li>Connection and MFA configuration</li><li>Application grants and API scopes</li><li>Tenant log stream configuration</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="identity" data-ig-text="duo security enrolled users and their registered devices authentication policies per application protected application inventory administrator accounts and roles">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">DS</span></span>
+            <div><h3 class="ig-name">Duo Security</h3><p class="ig-cats"><span class="chip">Identity</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Enrolled users and their registered devices</li><li>Authentication policies per application</li><li>Protected application inventory</li><li>Administrator accounts and roles</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="code" data-ig-text="github organisation members, teams and repository access branch protection and required review rules pull request review and approval history dependabot and code scanning alerts">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/github.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">GitHub</h3><p class="ig-cats"><span class="chip">Code &amp; CI/CD</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Organisation members, teams and repository access</li><li>Branch protection and required review rules</li><li>Pull request review and approval history</li><li>Dependabot and code scanning alerts</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="code" data-ig-text="gitlab group and project membership with access level protected branch and merge approval rules merge request approval history pipeline and security scan results">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/gitlab.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">GitLab</h3><p class="ig-cats"><span class="chip">Code &amp; CI/CD</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Group and project membership with access level</li><li>Protected branch and merge approval rules</li><li>Merge request approval history</li><li>Pipeline and security scan results</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="code" data-ig-text="bitbucket workspace members and repository permissions branch restrictions and merge checks pull request approval history repository access keys, names only">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">B</span></span>
+            <div><h3 class="ig-name">Bitbucket</h3><p class="ig-cats"><span class="chip">Code &amp; CI/CD</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Workspace members and repository permissions</li><li>Branch restrictions and merge checks</li><li>Pull request approval history</li><li>Repository access keys, names only</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="code" data-ig-text="circleci project and context access pipeline and workflow run history manual approval job records environment variable inventory, names only">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">C</span></span>
+            <div><h3 class="ig-name">CircleCI</h3><p class="ig-cats"><span class="chip">Code &amp; CI/CD</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Project and context access</li><li>Pipeline and workflow run history</li><li>Manual approval job records</li><li>Environment variable inventory, names only</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="code" data-ig-text="jenkins user accounts and matrix permissions job configuration and build history installed plugin inventory and versions credential store inventory, names only">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">J</span></span>
+            <div><h3 class="ig-name">Jenkins</h3><p class="ig-cats"><span class="chip">Code &amp; CI/CD</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>User accounts and matrix permissions</li><li>Job configuration and build history</li><li>Installed plugin inventory and versions</li><li>Credential store inventory, names only</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="endpoint" data-ig-text="jamf managed device inventory and assigned user filevault disk encryption state per device os version and patch level configuration profiles applied">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">J</span></span>
+            <div><h3 class="ig-name">Jamf</h3><p class="ig-cats"><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Managed device inventory and assigned user</li><li>FileVault disk encryption state per device</li><li>OS version and patch level</li><li>Configuration profiles applied</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="endpoint" data-ig-text="kandji managed device inventory and assigned user filevault disk encryption state per device os patch level against the enforced baseline blueprint library items applied">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">K</span></span>
+            <div><h3 class="ig-name">Kandji</h3><p class="ig-cats"><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Managed device inventory and assigned user</li><li>FileVault disk encryption state per device</li><li>OS patch level against the enforced baseline</li><li>Blueprint library items applied</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="endpoint" data-ig-text="microsoft intune enrolled device inventory and assigned user bitlocker disk encryption state per device compliance policy evaluation per device update ring configuration">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">MI</span></span>
+            <div><h3 class="ig-name">Microsoft Intune</h3><p class="ig-cats"><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Enrolled device inventory and assigned user</li><li>BitLocker disk encryption state per device</li><li>Compliance policy evaluation per device</li><li>Update ring configuration</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="endpoint" data-ig-text="crowdstrike sensor installation coverage per host detection and incident history host group prevention policy assignment sensor version and update state">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/crowdstrike.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">CrowdStrike</h3><p class="ig-cats"><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Sensor installation coverage per host</li><li>Detection and incident history</li><li>Host group prevention policy assignment</li><li>Sensor version and update state</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="endpoint" data-ig-text="sentinelone agent installation coverage per endpoint threat detection and resolution history endpoint policy assignment agent version and update state">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">S</span></span>
+            <div><h3 class="ig-name">SentinelOne</h3><p class="ig-cats"><span class="chip">Endpoint</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Agent installation coverage per endpoint</li><li>Threat detection and resolution history</li><li>Endpoint policy assignment</li><li>Agent version and update state</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="ticketing" data-ig-text="jira issue records for linked change and incident workflows workflow status transitions with actor and timestamp approval and resolution history project permission schemes">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/jira.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Jira</h3><p class="ig-cats"><span class="chip">Ticketing</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Issue records for linked change and incident workflows</li><li>Workflow status transitions with actor and timestamp</li><li>Approval and resolution history</li><li>Project permission schemes</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="ticketing" data-ig-text="linear issue records and their state history team and project membership workflow state configuration cycle start and completion dates">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">L</span></span>
+            <div><h3 class="ig-name">Linear</h3><p class="ig-cats"><span class="chip">Ticketing</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Issue records and their state history</li><li>Team and project membership</li><li>Workflow state configuration</li><li>Cycle start and completion dates</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="ticketing" data-ig-text="asana task records with assignee and completion date project and team membership approval task outcomes custom field values used for tracking">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">A</span></span>
+            <div><h3 class="ig-name">Asana</h3><p class="ig-cats"><span class="chip">Ticketing</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Task records with assignee and completion date</li><li>Project and team membership</li><li>Approval task outcomes</li><li>Custom field values used for tracking</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="ticketing" data-ig-text="servicenow change request records and their approvals incident and problem tickets with resolution time cmdb configuration items assignment group membership">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/servicenow.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">ServiceNow</h3><p class="ig-cats"><span class="chip">Ticketing</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Change request records and their approvals</li><li>Incident and problem tickets with resolution time</li><li>CMDB configuration items</li><li>Assignment group membership</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="communication" data-ig-text="slack workspace members and account type channel inventory and privacy setting retention and export policy configuration installed app and integration inventory">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">S</span></span>
+            <div><h3 class="ig-name">Slack</h3><p class="ig-cats"><span class="chip">Communication</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Workspace members and account type</li><li>Channel inventory and privacy setting</li><li>Retention and export policy configuration</li><li>Installed app and integration inventory</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="communication" data-ig-text="microsoft teams team and channel membership guest access and external sharing settings meeting recording policy configuration retention policy configuration">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">MT</span></span>
+            <div><h3 class="ig-name">Microsoft Teams</h3><p class="ig-cats"><span class="chip">Communication</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Team and channel membership</li><li>Guest access and external sharing settings</li><li>Meeting recording policy configuration</li><li>Retention policy configuration</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="communication" data-ig-text="zoom user accounts and assigned licences meeting security and encryption settings cloud recording and retention settings admin role assignments">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">Z</span></span>
+            <div><h3 class="ig-name">Zoom</h3><p class="ig-cats"><span class="chip">Communication</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>User accounts and assigned licences</li><li>Meeting security and encryption settings</li><li>Cloud recording and retention settings</li><li>Admin role assignments</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="hr" data-ig-text="workday worker roster with hire and termination dates job, department and manager assignments onboarding and offboarding task completion background check and policy acknowledgement records">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">W</span></span>
+            <div><h3 class="ig-name">Workday</h3><p class="ig-cats"><span class="chip">HR</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Worker roster with hire and termination dates</li><li>Job, department and manager assignments</li><li>Onboarding and offboarding task completion</li><li>Background check and policy acknowledgement records</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="hr" data-ig-text="bamboohr employee roster with hire and termination dates job title, department and reporting line onboarding and offboarding task completion training and policy acknowledgement records">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">B</span></span>
+            <div><h3 class="ig-name">BambooHR</h3><p class="ig-cats"><span class="chip">HR</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Employee roster with hire and termination dates</li><li>Job title, department and reporting line</li><li>Onboarding and offboarding task completion</li><li>Training and policy acknowledgement records</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="hr" data-ig-text="rippling employee roster with employment status and dates onboarding and offboarding workflow completion device and application assignments per employee role and department data">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">R</span></span>
+            <div><h3 class="ig-name">Rippling</h3><p class="ig-cats"><span class="chip">HR</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Employee roster with employment status and dates</li><li>Onboarding and offboarding workflow completion</li><li>Device and application assignments per employee</li><li>Role and department data</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="hr" data-ig-text="gusto employee roster with hire and termination dates department and manager assignments employment type and status changes">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">G</span></span>
+            <div><h3 class="ig-name">Gusto</h3><p class="ig-cats"><span class="chip">HR</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Employee roster with hire and termination dates</li><li>Department and manager assignments</li><li>Employment type and status changes</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="data" data-ig-text="snowflake users, roles and grant hierarchy network policy and ip allow-list configuration login history and mfa enforcement retention, masking and encryption settings">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">S</span></span>
+            <div><h3 class="ig-name">Snowflake</h3><p class="ig-cats"><span class="chip">Data &amp; Monitoring</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Users, roles and grant hierarchy</li><li>Network policy and IP allow-list configuration</li><li>Login history and MFA enforcement</li><li>Retention, masking and encryption settings</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="data" data-ig-text="datadog monitor and alert rule configuration triggered alert and notification history user accounts and role assignments log retention and index configuration">
+          <div class="ig-top">
+            <span class="ig-logo"><img src="assets/datadog.svg" alt="" width="24" height="24" loading="lazy"></span>
+            <div><h3 class="ig-name">Datadog</h3><p class="ig-cats"><span class="chip">Data &amp; Monitoring</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Monitor and alert rule configuration</li><li>Triggered alert and notification history</li><li>User accounts and role assignments</li><li>Log retention and index configuration</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="data" data-ig-text="pagerduty on-call schedules and escalation policies incident timeline with acknowledgement and resolution service and team ownership user accounts and contact methods">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">P</span></span>
+            <div><h3 class="ig-name">PagerDuty</h3><p class="ig-cats"><span class="chip">Data &amp; Monitoring</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>On-call schedules and escalation policies</li><li>Incident timeline with acknowledgement and resolution</li><li>Service and team ownership</li><li>User accounts and contact methods</li></ul>
+        </li><li class="ig-card" data-ig-item data-ig-cats="data" data-ig-text="sentry organisation members and team access alert rule configuration and issue ownership release and deploy history data scrubbing and pii filtering settings">
+          <div class="ig-top">
+            <span class="ig-logo ig-logo--mono"><span aria-hidden="true">S</span></span>
+            <div><h3 class="ig-name">Sentry</h3><p class="ig-cats"><span class="chip">Data &amp; Monitoring</span></p></div>
+          </div>
+          <p class="ig-k">Collects</p>
+          <ul class="ig-list" role="list"><li>Organisation members and team access</li><li>Alert rule configuration and issue ownership</li><li>Release and deploy history</li><li>Data scrubbing and PII filtering settings</li></ul>
+        </li></ul>
+    <div class="ig-empty" data-ig-empty hidden><p>Nothing matches <b data-ig-q></b> in this category. Try “All”, or tell us about it in a demo: the parser can take systems that are not on this list yet.</p><button class="btn btn--line btn--sm" type="button" data-ig-reset>Show all</button></div>
+    <div class="ig-notes">
+      <div class="note"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-shield"/></svg><p><b>Vulnerability scanners connect through Cybersecurity Assessment &amp; Assurance:</b> Tenable Nessus, Rapid7 Nexpose / InsightVM, AWS Inspector, Microsoft Defender for Cloud, Google Security Command Center, or a spreadsheet upload. <a class="link" href="modules/cybersecurity.html">The module</a></p></div>
+      <div class="note"><svg class="ico" aria-hidden="true" focusable="false"><use href="#i-list"/></svg><p>The list above is the supported catalogue and the evidence each connector is scoped to collect, not a live status board. If a system you depend on is missing, tell us in the demo and we’ll tell you honestly where it sits.</p></div>
+    </div>
+  </div>
+</section><section class="cta-band" aria-labelledby="cta-title">
+  <div class="wrap cta-inner">
+    <h2 class="cta-title chrome-text" id="cta-title">Connect what you already run.</h2>
+    <div class="cta-foot">
+      <p class="lede">Bring the list of systems you depend on. We’ll show which connectors collect what, and where the evidence lands.</p>
+      <div class="actions">
+        <a class="btn btn--primary" href="request-demo.html">Book a live demo <span class="btn-arrow" aria-hidden="true">→</span></a>
+        <a class="btn btn--line" href="hosting.html">Cloud or on-premise</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+<footer class="footer">
+  <div class="wrap">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a class="wordmark" href="index.html" aria-label="CompliVerse AI home"><span class="wm-compli">Compli</span><span class="wm-verse">Verse</span><span class="wm-ai">AI</span></a>
+        <p>AI-native enterprise GRC, and the people to run it with you. Compliance that proves itself.</p>
+        <a class="btn btn--line btn--sm" href="request-demo.html">Book a live demo</a>
+      </div>
+      <nav class="footer-cols" aria-label="Footer">
+        <div><h2 class="footer-h"><span class="spark" aria-hidden="true"></span>AI</h2><ul role="list"><li><a href="ai/index.html">The intelligence layer</a></li><li><a href="ai/studio.html">Compli AI Studio</a></li><li><a href="ai/trust.html">AI trust &amp; control</a></li><li><a href="ai/capabilities.html">All AI capabilities</a></li></ul></div>
+        <div><h2 class="footer-h">Platform</h2><ul role="list"><li><a href="platform/index.html">Platform overview</a></li><li><a href="modules/governance.html">Governance &amp; Documents</a></li><li><a href="modules/committees.html">Committees &amp; Meetings</a></li><li><a href="modules/evidence.html">Evidence Management</a></li><li><a href="modules/vendors.html">Vendor Risk (TPRM)</a></li><li><a href="modules/cybersecurity.html">Cybersecurity Assessment &amp; Assurance</a></li><li><a href="modules/workflow.html">Workflow Automation</a></li><li><a href="modules/connectors.html">Integrations &amp; Identity</a></li><li><a href="modules/assessments.html">Compliance Assessments</a></li><li><a href="modules/controls.html">Unified Control Library</a></li><li><a href="modules/risk.html">Enterprise Risk (ERM)</a></li><li><a href="modules/audit.html">Audit Management</a></li><li><a href="modules/insights.html">Dashboards &amp; Insights</a></li><li><a href="modules/access-reviews.html">Access Reviews</a></li></ul></div>
+        <div><h2 class="footer-h">Services</h2><ul role="list"><li><a href="services/index.html">Services overview</a></li><li><a href="services/grc-consulting.html">GRC Consulting &amp; Advisory</a></li><li><a href="services/regulatory-compliance.html">Regulatory Compliance Consulting</a></li><li><a href="services/ai-governance.html">AI Governance &amp; Risk Management</a></li><li><a href="services/compliance-automation.html">Compliance Automation &amp; Digital Transformation</a></li><li><a href="services/risk-management.html">Risk Assessment &amp; Management</a></li><li><a href="services/cybersecurity-assessment.html">Cybersecurity Assessment</a></li><li><a href="services/policy-documentation.html">Policy &amp; Documentation Management</a></li><li><a href="services/implementation-integration.html">Implementation &amp; Integration</a></li><li><a href="services/training.html">Training &amp; Capacity Building</a></li></ul></div>
+        <div><h2 class="footer-h">Frameworks</h2><ul role="list"><li><a href="frameworks/index.html">Framework library</a></li><li><a href="frameworks/sama-csf.html">SAMA CSF</a></li><li><a href="frameworks/nca-ecc.html">NCA ECC</a></li><li><a href="frameworks/cbuae.html">CBUAE Art.13</a></li><li><a href="frameworks/sbp-etgrmf.html">SBP ETGRMF</a></li><li><a href="frameworks/iso-27001.html">ISO 27001</a></li><li><a href="frameworks/soc-2.html">SOC 2</a></li><li><a href="frameworks/pci-dss.html">PCI DSS</a></li><li><a href="frameworks/dora.html">DORA</a></li></ul></div>
+        <div><h2 class="footer-h">Solutions &amp; resources</h2><ul role="list"><li><a href="solutions/index.html">Solutions by stage</a></li><li><a href="solutions/compliance.html">Compliance</a></li><li><a href="solutions/governance.html">Governance</a></li><li><a href="integrations.html">Integrations</a></li><li><a href="hosting.html">Cloud and on-premise</a></li><li><a href="roi.html">ROI and time savings</a></li><li><a href="resources/index.html">Library</a></li><li><a href="resources/glossary.html">Glossary</a></li><li><a href="request-demo.html">Book a demo</a></li></ul></div>
+      </nav>
+    </div>
+    <div class="footer-base">
+      <p>© 2026 CompliVerse AI</p>
+      <p class="footer-legal"><a href="terms.html">Terms</a><a href="privacy.html">Privacy</a></p>
+      <p>Draft 4 · a static prototype: nothing you type here leaves your browser.</p>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

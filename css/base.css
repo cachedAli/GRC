@@ -1,0 +1,293 @@
+/* =========================================================
+   base.css: reset, type roles, links, buttons, chips, keys,
+   the AI marker (✦), the wordmark and utilities (core-owned).
+
+   The AI rule: AI is marked by one thing, a blue ✦ (.spark).
+   A dashed grey edge = a suggestion a person confirms; a solid
+   edge = it runs on its own. Blue never fills an AI surface.
+   ========================================================= */
+
+*, *::before, *::after { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; background: var(--black); color-scheme: dark; }
+section[id], [id^="loop-step"] { scroll-margin-top: calc(var(--nav-h) + 16px); }
+section.loop.loop--pinned { scroll-margin-top: 0; }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--font-sans);
+  font-size: 17px;
+  line-height: 1.55;
+  font-stretch: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  overflow-x: clip;
+}
+img, svg { display: block; max-width: 100%; }
+a { color: inherit; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+h1, h2, h3, h4, p, dl, dd, figure, blockquote { margin: 0; }
+table { border-collapse: collapse; }
+button, input, select, textarea { font: inherit; color: inherit; }
+b, strong { font-weight: 650; }
+::selection { background: var(--blue-btn); color: var(--on-accent); }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+.ico { width: 18px; height: 18px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+.mono { font-family: var(--font-mono); font-size: .92em; letter-spacing: -.01em; }
+.ref { font-family: var(--font-mono); font-size: .88em; letter-spacing: -.01em; }
+
+:focus-visible { outline: 2px solid var(--focus); outline-offset: 3px; border-radius: 4px; }
+
+.skip-link {
+  position: absolute; left: 16px; top: -100px; z-index: 100;
+  background: var(--blue-btn); color: var(--on-accent);
+  padding: 12px 18px; border-radius: 999px; text-decoration: none; font-weight: 600;
+}
+.skip-link:focus { top: 16px; }
+
+.wrap {
+  width: 100%;
+  max-width: calc(var(--max) + 2 * var(--gutter));
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+
+/* ---------- type roles ---------- */
+.eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font: 500 12.5px/1.3 var(--font-mono); letter-spacing: .06em; text-transform: uppercase;
+  color: var(--muted); margin-bottom: 18px;
+}
+.eyebrow::before { content: ""; width: 7px; height: 7px; border-radius: 50%; border: 1.5px solid currentColor; }
+.eyebrow--ai::before { display: none; }
+.eyebrow--ai { color: var(--text-2); }
+.h1 {
+  font-size: clamp(40px, 6.2vw, 96px); font-weight: 800; font-stretch: 125%;
+  line-height: .9; letter-spacing: -.045em; text-wrap: balance;
+}
+.h2 {
+  font-size: clamp(34px, 4.8vw, 76px); font-weight: 800; font-stretch: 122%;
+  line-height: .95; letter-spacing: -.035em; text-wrap: balance;
+}
+.h2-s {
+  font-size: clamp(26px, 2.6vw, 40px); font-weight: 800; font-stretch: 118%;
+  line-height: 1; letter-spacing: -.028em; text-wrap: balance;
+}
+.h3 { font-size: clamp(20px, 1.7vw, 25px); font-weight: 750; font-stretch: 112%; line-height: 1.1; letter-spacing: -.018em; }
+/* statement: the second sentence drops to secondary grey */
+.statement {
+  font-size: clamp(25px, 2.5vw, 40px); font-weight: 750; font-stretch: 110%;
+  line-height: 1.12; letter-spacing: -.025em; text-wrap: pretty; max-width: 40ch;
+}
+.statement .muted { color: var(--text-2); font-weight: 450; }
+.lede { font-size: clamp(17px, 1.3vw, 20px); line-height: 1.5; max-width: 52ch; color: var(--text-2); }
+.muted-text { color: var(--text-2); }
+
+/* the chrome sheen: display type only, never body copy */
+.chrome-text {
+  background: var(--chrome); color: var(--text);
+  -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;
+}
+@media (forced-colors: active) { .chrome-text { -webkit-text-fill-color: currentColor; background: none; } }
+
+/* ---------- links ---------- */
+.prose a, .link {
+  text-decoration: underline; text-decoration-color: var(--underline);
+  text-decoration-thickness: 1.5px; text-underline-offset: 4px;
+}
+.prose a:hover, .link:hover { color: var(--blue-hi); }
+.link-u {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px;
+  font-weight: 600; font-stretch: 108%;
+  text-decoration: underline; text-decoration-color: var(--underline);
+  text-decoration-thickness: 2px; text-underline-offset: 6px;
+}
+.link-u::after { content: "→"; transition: transform .25s var(--ease-out); }
+.link-u:hover { color: var(--blue-hi); }
+.link-u:hover::after { transform: translateX(4px); }
+.link-arrow {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 40px;
+  font-weight: 600; font-stretch: 106%; font-size: 15px;
+  text-decoration: underline; text-decoration-color: var(--edge-2);
+  text-decoration-thickness: 1.5px; text-underline-offset: 5px;
+}
+.link-arrow .ico { width: 16px; height: 16px; color: var(--blue-hi); transition: transform .25s var(--ease-out); }
+.link-arrow:hover { text-decoration-color: var(--blue); }
+.link-arrow:hover .ico { transform: translateX(3px); }
+
+/* ---------- buttons ---------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 12px;
+  min-height: 54px; padding: 0 26px;
+  border-radius: 999px; border: 1.5px solid transparent;
+  font-family: var(--font-sans); font-size: 16.5px; font-weight: 650; font-stretch: 112%;
+  line-height: 1; text-decoration: none; white-space: nowrap; cursor: pointer;
+  transition: background-color .2s, color .2s, border-color .2s, box-shadow .2s, transform .2s var(--ease-out);
+}
+.btn-arrow { transition: transform .25s var(--ease-out); }
+.btn:hover .btn-arrow { transform: translateX(5px); }
+.btn:active { transform: translateY(1px); }
+.btn--sm { min-height: 42px; padding: 0 18px; font-size: 14.5px; }
+.btn--primary { background: var(--blue-btn); color: var(--on-accent); box-shadow: 0 0 0 0 var(--blue-glow), inset 0 1px 0 rgba(255, 255, 255, .18); }
+.btn--primary:hover { background: var(--blue-btn-hover); box-shadow: 0 8px 28px -6px var(--blue-glow), inset 0 1px 0 rgba(255, 255, 255, .18); }
+.btn--line { border-color: var(--edge-2); color: var(--text); background: transparent; }
+.btn--line:hover { border-color: var(--text-2); background: var(--storm-1); }
+.btn--ghost { color: var(--text); background: var(--storm-2); border-color: var(--edge); }
+.btn--ghost:hover { background: var(--storm-3); }
+.actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 22px; }
+
+/* ---------- chips, dots, keys ---------- */
+.chip {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 4px 10px; border-radius: 999px;
+  font: 500 12.5px/1.3 var(--font-mono); letter-spacing: .01em;
+  background: var(--storm-2); color: var(--text-2); border: 1px solid var(--edge); white-space: nowrap;
+}
+.chip .dot { background: currentColor; }
+.chip--line { background: transparent; border-color: var(--edge-2); color: var(--text-2); }
+.chip--solid { background: var(--storm-3); color: var(--text); border-color: var(--edge-2); }
+/* status chips: proven is metal, gap is amber, exposure is coral */
+.chip--met { background: rgba(50, 205, 50, .08); color: var(--text); border-color: var(--edge); }
+.chip--met .dot { background: var(--metal); }
+.chip--gap { background: var(--amber-wash); color: var(--amber); border-color: transparent; }
+.chip--gap .dot { background: var(--amber); }
+.chip--risk { background: var(--coral-wash); color: var(--coral-text); border-color: transparent; }
+.chip--risk .dot { background: var(--coral); }
+
+.dot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; flex: none; background: var(--muted); }
+.dot--amber { background: var(--amber); }
+.dot--coral { background: var(--coral); }
+.dot--metal { background: var(--metal); }
+.dot--blue { background: var(--blue); box-shadow: 0 0 0 3px var(--blue-wash); }
+
+.key {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 22px; height: 22px; padding: 0 6px;
+  font: 500 11px/1 var(--font-mono); color: var(--text-2);
+  background: var(--storm-2); border: 1px solid var(--edge-2); border-bottom-width: 2px;
+  border-radius: 5px; white-space: nowrap;
+}
+.key .ico { width: 12px; height: 12px; }
+.tag-new {
+  display: inline-flex; align-items: center; height: 18px; padding: 0 6px; margin-left: 8px;
+  font: 500 10px/1 var(--font-mono); letter-spacing: .06em; text-transform: uppercase;
+  border-radius: 4px; border: 1px solid var(--edge-2); color: var(--text); vertical-align: 2px;
+}
+
+/* ---------- the AI marker (one treatment, every surface) ---------- */
+.spark {
+  display: inline-block; flex: none; width: .95em; height: .95em;
+  color: var(--blue); background: currentColor;
+  -webkit-mask: var(--spark) center / contain no-repeat; mask: var(--spark) center / contain no-repeat;
+  vertical-align: -.12em;
+}
+@media (forced-colors: active) { .spark { background: CanvasText; } }
+.ai-mini {
+  display: inline-flex; align-items: center; gap: 5px; flex: none;
+  height: 22px; padding: 0 8px; border-radius: 6px;
+  background: var(--storm-2); color: var(--text); border: 1px solid var(--edge-2);
+  font: 500 11.5px/1 var(--font-mono); letter-spacing: .02em; white-space: nowrap; vertical-align: 2px;
+}
+.ai-badge {
+  display: inline-flex; align-items: center; gap: 7px; flex: none;
+  min-height: 26px; padding: 3px 10px 3px 8px; border-radius: 999px;
+  background: var(--storm-2); color: var(--text);
+  font: 500 12px/1.2 var(--font-mono); white-space: nowrap;
+}
+.ai-badge--confirm { border: 1.5px dashed var(--edge-2); }
+.ai-badge--auto { border: 1.5px solid var(--edge-2); }
+/* approval mark: dashed ring = suggests, you confirm; filled = automatic */
+.mark { display: inline-block; width: 13px; height: 13px; border-radius: 50%; flex: none; }
+.mark--confirm { border: 2px dashed var(--text-2); }
+.mark--auto { border: 2px solid var(--text-2); background: radial-gradient(circle, var(--text-2) 36%, transparent 42%); }
+.status {
+  display: inline-flex; align-items: center; height: 22px; padding: 0 8px; border-radius: 6px;
+  font: 500 11.5px/1 var(--font-mono); white-space: nowrap;
+  background: transparent; color: var(--amber); border: 1px solid rgba(255, 181, 71, .55);
+}
+.status--dev { color: var(--text-2); border-style: dashed; border-color: var(--edge-2); }
+.status--shipped { color: var(--text-2); border-color: var(--edge); }
+
+/* ---------- wordmark: "Compli" + "Verse" + small "AI" ---------- */
+.wordmark {
+  display: inline-flex; align-items: flex-start;
+  font-weight: 800; font-stretch: 112%; font-size: 21px; letter-spacing: -.02em;
+  line-height: 1; text-decoration: none; padding: 6px 0; flex: none; color: var(--text);
+}
+.wm-verse { color: var(--wm-verse, #23A023); }  /* lime, deepened to read on white: 3.4 : 1 */
+.wm-ai {
+  font: 500 9.5px/1 var(--font-mono); letter-spacing: .06em;
+  margin-left: 4px; padding: 2px 4px; border-radius: 4px;
+  border: 1px solid var(--edge-2); color: var(--text-2); transform: translateY(-1px);
+}
+
+/* reduced motion: no travel on hovers or transitions either */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; scroll-behavior: auto !important; }
+}
+
+/* ---------- headlines and headers: black type, olive underline beneath ----------
+   The 10% black sits in the type; the 30% olive draws the rule right under it.
+   On olive surfaces --underline deepens (set by the surface scopes in tokens.css)
+   so the rule stays visible. Footer labels, screen-reader headings, glossary
+   letters and the headers inside app mock-ups are left plain. */
+:is(h1, h2, h3):not(.footer-h, .sr-only, .gl-L, .cx-h, .studio-h) {
+  text-decoration-line: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: max(3px, .06em);
+  text-underline-offset: .14em;
+  text-decoration-skip-ink: auto;
+}
+h3:not(.footer-h, .sr-only, .gl-L, .cx-h, .studio-h) {
+  text-decoration-thickness: 2px;
+  text-underline-offset: .16em;
+}
+/* An underlined headline needs room beneath every line, not just the last: the rule sits about
+   .2em under the baseline, so with display leading (.88 to .96) it ran into the next line's
+   ascenders. The gap between a rule and the line below is roughly line-height - .76em (ascender)
+   - offset - thickness, so 1.1 leaves about .14em on display type and 1.22 leaves room on h3.
+   The html:root prefix outranks the component rules (.cta-title, .page-title, .m-title, ...)
+   that set display leading on these headings. */
+html:root :is(h1, h2):not(.footer-h, .sr-only, .gl-L, .cx-h, .studio-h),
+html:root h1.m-title .m-outcome { line-height: 1.1; }
+html:root h3:not(.footer-h, .sr-only, .gl-L, .cx-h, .studio-h) { line-height: 1.22; }
+
+/* Two-part headings ("Lead. <span class=muted>more</span>"): only the black lead sentence carries
+   the rule. tools/build-headlines.mjs wraps the lead in .hl at build time. */
+:is(h1, h2, h3):has(> .hl) { text-decoration-line: none; }
+:is(h1, h2, h3) > .hl,
+h1.m-title .m-outcome,
+.hero-title .ht-a .w > span {
+  text-decoration-line: underline;
+  text-decoration-color: var(--underline);
+  text-decoration-thickness: max(3px, .06em);
+  text-underline-offset: .14em;
+  text-decoration-skip-ink: auto;
+}
+h3 > .hl { text-decoration-thickness: 2px; text-underline-offset: .16em; }
+/* module heroes: the outcome line is the headline; the module name above it is a label */
+h1.m-title { text-decoration-line: none; }
+/* home hero: each word is an animated inline-block (a reveal mask), so every word carries its own
+   rule; the masks get room below so it is not clipped, and the lines open up so a rule never touches
+   the line beneath */
+h1.hero-title { text-decoration-line: none; }
+html:root .hero-title .ht-a { line-height: 1.1; }
+.hero-title .ht-a .w { padding-bottom: .3em; margin-bottom: -.3em; }
+
+
+/* ---------- phones: a 12px floor for small labels ----------
+   Captions, kickers and keys are set at 10.5-11px for desktop density; on a phone they drop below
+   comfortable reading size, so they get 12px there. Left alone: the wordmark's "AI" tag (part of the
+   logo) and table text inside the app mock-ups, which mirrors the product's own UI. The html:root
+   prefix outranks the component rules, which load after this file. */
+@media (max-width: 720px) {
+  html:root :is(.ref, .fl-vig-k, .fl-k, .fl-who-k, .sv-lbl, .ai-badge, .cx-card-k, .pv-label, .tag-new,
+    .il-group-k, .fx-total-k, .fgroup-k, .cap-who-k, .studio-tag, .studio-k, .gw-k, .fl-node-c, .io-k,
+    .aip-who-k, .ctl-k, .mask-k, .svc-runs-k, .ig-k, .status, .flow-kind, .sv-card-k) { font-size: 12px; }
+}
