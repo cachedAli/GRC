@@ -56,9 +56,9 @@ export function Logo({
       className={`inline-flex items-start font-display font-bold leading-none tracking-[-.02em] ${className ?? ""}`}
       style={{ fontSize: size }}
       role="img"
-      aria-label="Compliverse AI"
+      aria-label="Complyverse AI"
     >
-      <span style={{ color: comply }}>Compli</span>
+      <span style={{ color: comply }}>Comply</span>
       <span style={{ color: verse }}>verse</span>
       <span
         className="font-semibold tracking-[.08em]"

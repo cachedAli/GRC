@@ -30,28 +30,28 @@ const sourceSerif = Source_Serif_4({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.compliverse.ai"),
+  metadataBase: new URL("https://www.complyverse.ai"),
   title: {
-    default: "Compliverse AI, Compliance that proves itself",
-    template: "%s | Compliverse AI",
+    default: "Complyverse AI, Compliance that proves itself",
+    template: "%s | Complyverse AI",
   },
   description:
     "Every framework, document, control, risk and piece of evidence in one connected system. Governance, risk and compliance on a single data model, with the links between them mapped for you.",
-  applicationName: "Compliverse AI",
-  creator: "Compliverse AI",
-  publisher: "Compliverse AI",
+  applicationName: "Complyverse AI",
+  creator: "Complyverse AI",
+  publisher: "Complyverse AI",
   openGraph: {
     type: "website",
     locale: "en_US",
-    siteName: "Compliverse AI",
-    title: "Compliverse AI, Compliance that proves itself",
+    siteName: "Complyverse AI",
+    title: "Complyverse AI, Compliance that proves itself",
     description:
       "Every framework, document, control, risk and piece of evidence in one connected system. Governance, risk and compliance on a single data model, with the links between them mapped for you.",
     url: "/",
   },
   twitter: {
     card: "summary",
-    title: "Compliverse AI, Compliance that proves itself",
+    title: "Complyverse AI, Compliance that proves itself",
     description:
       "Every framework, document, control, risk and piece of evidence in one connected system.",
   },
@@ -71,18 +71,18 @@ export const metadata: Metadata = {
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "Compliverse AI",
-  alternateName: "Compliverse",
-  url: "https://www.compliverse.ai/",
+  name: "Complyverse AI",
+  alternateName: "Complyverse",
+  url: "https://www.complyverse.ai/",
 };
 
 const organizationJsonLd = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Compliverse AI",
-  alternateName: "Compliverse",
-  url: "https://www.compliverse.ai/",
-  logo: "https://www.compliverse.ai/logo/complyverse-mark.svg",
+  name: "Complyverse AI",
+  alternateName: "Complyverse",
+  url: "https://www.complyverse.ai/",
+  logo: "https://www.complyverse.ai/logo/complyverse-mark.svg",
 };
 
 export default function RootLayout({
