@@ -14,7 +14,7 @@ import ModuleScene from "@/components/home/ModuleScenes";
  * The stage answers the same questions for every module in the same visual
  * grammar, so a visitor learns to read one diagram and then reads all twelve:
  * the end-to-end flow (the drawn scene), the proof stats, what the record links
- * into once it exists, and the problem it kills vs. how Compliverse fixes it.
+ * into once it exists, and the problem it kills vs. how Complyverse fixes it.
  */
 export default function ModuleExplorer() {
   const [active, setActive] = useState(0);
@@ -256,7 +256,7 @@ function LinkageRow({ links }: { links: string[] }) {
 }
 
 /**
- * The dark payoff panel: the problem this module kills, then how Compliverse
+ * The dark payoff panel: the problem this module kills, then how Complyverse
  * fixes it, then the way in. Reuses the same problem/shift copy as the
  * dedicated capability page, so the story is consistent everywhere.
  */
@@ -288,7 +288,7 @@ function ProblemSolution({
           <Sparkle />
         </span>
         <p className="text-[12px] leading-[1.5] text-slate-100">
-          <span className="font-semibold text-[#3ddfc2]">Compliverse: </span>
+          <span className="font-semibold text-[#3ddfc2]">Complyverse: </span>
           {page.problem.gain}
         </p>
       </div>
